@@ -15,9 +15,9 @@ export default async function Hero() {
       style={{ minHeight: `calc(100svh - ${NAV_H})` }}
     >
       {/* Background layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="apbsolute inset-0 z-0">
         <Image
-          src="/hero/hero-ops.png"
+          src="/hero/spifex-hero.png"
           alt=""
           aria-hidden="true"
           fill
