@@ -4,7 +4,7 @@ import { listMdxMeta } from "@/lib/content/mdx";
 export const runtime = "nodejs";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = (process.env.SITE_URL || "http://localhost:3000").replace(/\/+$/, "");
+  const siteUrl = (process.env.SITE_URL || "https://spifex.com").replace(/\/+$/, "");
 
   const blog = await listMdxMeta("blog", "en");
   const legal = await listMdxMeta("legal", "en");

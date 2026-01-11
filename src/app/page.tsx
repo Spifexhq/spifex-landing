@@ -9,8 +9,8 @@ export default function HomePage() {
     <>
       <Hero />
       <FeatureGrid />
-      <Modules />
       <Customers />
+      <Modules />
       <CTA />
     </>
   );

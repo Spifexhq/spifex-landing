@@ -177,6 +177,116 @@ const en = {
   footer: {
     rights: "All rights reserved.",
   },
+
+  customersPage: {
+    hero: {
+      title: "See what Spifex can do for you.",
+      subtitle: "Create an account in minutes and start operating with speed and control.",
+      emailPlaceholder: "Enter your work email",
+      cta: "Get started",
+      disclaimer:
+        "Spifex is a financial operations platform, not a bank. Banking services are provided by your connected banks.",
+    },
+
+    stories: {
+      title: "Success stories start here.",
+      subtitle:
+        "Whether you have 10 employees or 10,000, Spifex helps you run cashflow and payments with confidence.",
+      cards: {
+        limits: {
+          title: "Unlock higher limits.",
+          desc: "Operate payments with approvals, visibility, and controls that scale.",
+          imageSrc: "/customers/story-limits.png",
+          imageAlt: "Card and spending controls",
+        },
+        spend: {
+          title: "Simplify your spending.",
+          desc: "Manage vendor spend and reimbursements in one operating layer.",
+          imageSrc: "/customers/story-spend.png",
+          imageAlt: "Spending workflow approval",
+        },
+        budget: {
+          title: "Reimagine your budget.",
+          desc: "Keep bookings in policy and on budget with clear ownership.",
+          imageSrc: "/customers/story-budget.png",
+          imageAlt: "Budget management",
+        },
+        ap: {
+          title: "Automate payables.",
+          desc: "Speed up AP with structured evidence, approvals, and settlement events.",
+          imageSrc: "/customers/story-ap.png",
+          imageAlt: "Invoice processed successfully",
+        },
+      },
+    },
+
+    already: {
+      title: "Already a customer?",
+      subtitle:
+        "Connect with other customers and operators. Join sessions, early access programs, and community opportunities.",
+      learnMore: "Learn more",
+      images: {
+        a: { src: "/customers/community-1.png", alt: "Customer community meetup" },
+        b: { src: "/customers/community-2.png", alt: "Event conversation" },
+        c: { src: "/customers/community-3.png", alt: "Customer interview session" },
+      },
+    },
+
+    bottom: {
+      title: "The world’s best operators run on Spifex.",
+      subtitle: "Join teams that move faster with clear controls and real-time visibility.",
+      emailPlaceholder: "Enter your work email",
+      cta: "Get started",
+    },
+  },
+
+  customersLearnMore: {
+    title: "Stay informed about connection opportunities!",
+    intro:
+      "To learn about ways to connect with other Spifex customers and operators, fill out the form and we will be in touch.",
+
+    bullets: {
+      productDesign: {
+        title: "Product and Design:",
+        desc: "Join feedback sessions, beta test new features, and get early access to releases.",
+      },
+      localGroups: {
+        title: "Local user groups:",
+        desc: "Join a local cohort to network, share advice, and provide feedback.",
+      },
+      advocate: {
+        title: "Advocate:",
+        desc: "Showcase your brand and participate in case studies, events, or references.",
+      },
+    },
+
+    note:
+      "Submitting the form is not a commitment. It is a signal of interest. We will reach out with details as opportunities arise.",
+
+    form: {
+      title: "Sign up to learn more:",
+      firstName: "First name",
+      lastName: "Last name",
+      workEmail: "Work email",
+      company: "Company name",
+      optionsLabel: "Please select any of the following options for engagement below",
+      options: {
+        beta: "Product and Design: Beta test new releases and early access programs",
+        coCreation: "Product and Design feedback: Co-creation and feedback sessions",
+        userGroup: "User group: Join a local cohort to network and provide feedback",
+        speak: "Advocate: Speak at an event (in person or virtual)",
+        reference: "Advocate: Reference",
+        networking: "Advocate: Networking with other customers",
+        other: "Other",
+      },
+      submit: "Submit",
+      disclaimer:
+        "This form is a marketing template. Submission does not create a contract or commercial obligation.",
+      thanksTitle: "Thank you.",
+      thanksSubtitle: "We received your information and will contact you when opportunities match your interests.",
+    },
+  },
+
 } as const;
 
 export default en;

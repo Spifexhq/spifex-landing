@@ -15,7 +15,9 @@ function Wordmark() {
   return (
     <div className="flex items-center gap-2">
       <Image src="/icon/logo.svg" alt="Spifex logo" width={24} height={24} />
-      <span className="text-2xl font-semibold tracking-tight text-slate-900">Spifex</span>
+      <span className="text-2xl font-semibold tracking-tight text-slate-900">
+        Spifex
+      </span>
     </div>
   );
 }
@@ -39,15 +41,13 @@ export default function Navbar() {
           <nav className="hidden items-center gap-10 md:flex" aria-label="Primary">
             <ProductsMegaMenu />
 
-            <Link href="/#solutions" className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900">
+            <Link
+              href="/#solutions"
+              className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900"
+            >
               {t("nav.solutions")}
             </Link>
 
-            <Link href="/#customers" className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900">
-              {t("nav.customers")}
-            </Link>
-
-            {/* Option A (recommended): NAV_ITEMS uses i18n keys */}
             {NAV_ITEMS.map((it) => (
               <Link
                 key={it.href}
@@ -93,12 +93,23 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href="/pricing"
+                href="/#solutions"
                 className="text-sm font-medium text-slate-900"
                 onClick={() => setMobileOpen(false)}
               >
-                {t("nav.pricing")}
+                {t("nav.solutions")}
               </Link>
+
+              {NAV_ITEMS.map((it) => (
+                <Link
+                  key={it.href}
+                  href={it.href}
+                  className="text-sm font-medium text-slate-900"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t(it.i18nKey)}
+                </Link>
+              ))}
 
               <Link
                 href="/legal"
@@ -117,10 +128,20 @@ export default function Navbar() {
               </Link>
 
               <div className="flex gap-2 pt-2">
-                <Button href={DASHBOARD_URLS.signin} variant="secondary" size="sm" className="w-full">
+                <Button
+                  href={DASHBOARD_URLS.signin}
+                  variant="secondary"
+                  size="sm"
+                  className="w-full"
+                >
                   {t("nav.signin")}
                 </Button>
-                <Button href={DASHBOARD_URLS.signup} variant="primary" size="sm" className="w-full">
+                <Button
+                  href={DASHBOARD_URLS.signup}
+                  variant="primary"
+                  size="sm"
+                  className="w-full"
+                >
                   {t("nav.signup")}
                 </Button>
               </div>

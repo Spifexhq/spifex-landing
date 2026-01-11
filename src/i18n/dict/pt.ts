@@ -178,6 +178,117 @@ const pt = {
   footer: {
     rights: "Todos os direitos reservados.",
   },
+
+  customersPage: {
+    hero: {
+      title: "Veja o que o Spifex pode fazer por você.",
+      subtitle: "Crie uma conta em minutos e comece a operar com velocidade e controle.",
+      emailPlaceholder: "Digite seu e-mail de trabalho",
+      cta: "Começar agora",
+      disclaimer:
+        "O Spifex é uma plataforma de operações financeiras, não um banco. Os serviços bancários são prestados pelos seus bancos conectados.",
+    },
+
+    stories: {
+      title: "Histórias de sucesso começam aqui.",
+      subtitle:
+        "Se você tem 10 pessoas ou 10.000, o Spifex ajuda a operar fluxo de caixa e pagamentos com confiança.",
+      cards: {
+        limits: {
+          title: "Aumente limites com controle.",
+          desc: "Operação com aprovações, visibilidade e controles prontos para escala.",
+          imageSrc: "/customers/story-limits.png",
+          imageAlt: "Cartão e controles de gastos",
+        },
+        spend: {
+          title: "Simplifique seus gastos.",
+          desc: "Gerencie pagamentos e reembolsos em uma única camada operacional.",
+          imageSrc: "/customers/story-spend.png",
+          imageAlt: "Fluxo de aprovação de gastos",
+        },
+        budget: {
+          title: "Reinvente seu orçamento.",
+          desc: "Mantenha reservas dentro de política e orçamento com ownership claro.",
+          imageSrc: "/customers/story-budget.png",
+          imageAlt: "Gestão de orçamento",
+        },
+        ap: {
+          title: "Automatize contas a pagar.",
+          desc: "Acelere o AP com evidências, aprovações e eventos de liquidação estruturados.",
+          imageSrc: "/customers/story-ap.png",
+          imageAlt: "Fatura processada com sucesso",
+        },
+      },
+    },
+
+    already: {
+      title: "Já é cliente?",
+      subtitle:
+        "Conecte-se com outros clientes e operadores. Participe de sessões, programas de acesso antecipado e oportunidades de comunidade.",
+      learnMore: "Saiba mais",
+      images: {
+        a: { src: "/customers/community-1.png", alt: "Encontro da comunidade" },
+        b: { src: "/customers/community-2.png", alt: "Conversas em evento" },
+        c: { src: "/customers/community-3.png", alt: "Sessão com clientes" },
+      },
+    },
+
+    bottom: {
+      title: "Os melhores operadores do mundo rodam no Spifex.",
+      subtitle: "Junte-se a times que andam mais rápido com controle e visibilidade em tempo real.",
+      emailPlaceholder: "Digite seu e-mail de trabalho",
+      cta: "Começar agora",
+    },
+  },
+
+  customersLearnMore: {
+    title: "Fique por dentro das oportunidades de conexão.",
+    intro:
+      "Para saber como se conectar com outros clientes e operadores do Spifex, preencha o formulário e entraremos em contato.",
+
+    bullets: {
+      productDesign: {
+        title: "Produto e Design:",
+        desc: "Participe de sessões de feedback, teste recursos em beta e tenha acesso antecipado a lançamentos.",
+      },
+      localGroups: {
+        title: "Grupos locais:",
+        desc: "Entre em uma turma local para fazer networking, trocar experiências e enviar feedback.",
+      },
+      advocate: {
+        title: "Advocacy:",
+        desc: "Mostre sua marca e participe de cases, eventos ou referências.",
+      },
+    },
+
+    note:
+      "Preencher o formulário não é um compromisso. É um sinal de interesse. Entraremos em contato conforme surgirem oportunidades.",
+
+    form: {
+      title: "Cadastre-se para saber mais:",
+      firstName: "Nome",
+      lastName: "Sobrenome",
+      workEmail: "E-mail de trabalho",
+      company: "Nome da empresa",
+      optionsLabel: "Selecione uma ou mais opções de interesse abaixo",
+      options: {
+        beta: "Produto e Design: Testes beta e acesso antecipado a lançamentos",
+        coCreation: "Feedback de Produto e Design: Co-criação e sessões de feedback",
+        userGroup: "Grupo de usuários: Turma local para networking e feedback",
+        speak: "Advocacy: Palestrar em evento (presencial ou online)",
+        reference: "Advocacy: Referência",
+        networking: "Advocacy: Networking com outros clientes",
+        other: "Outro",
+      },
+      submit: "Enviar",
+      disclaimer:
+        "Esta página é um template de marketing. O envio não cria contrato nem obrigação comercial.",
+      thanksTitle: "Obrigado.",
+      thanksSubtitle: "Recebemos seus dados e entraremos em contato quando houver oportunidades alinhadas ao seu interesse.",
+    },
+  },
+
+
 } as const;
 
 export default pt;

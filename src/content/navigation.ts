@@ -4,5 +4,6 @@ export const DASHBOARD_URLS = {
 } as const;
 
 export const NAV_ITEMS = [
+  { i18nKey: "nav.customers", href: "/customers" },
   { i18nKey: "nav.pricing", href: "/pricing" },
 ] as const;

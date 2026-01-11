@@ -7,9 +7,9 @@ export default async function Customers() {
   const { t } = await getServerI18n();
 
   return (
-    <section id="customers" className="py-14 sm:py-16">
+    <section id="customers" className="py-14 sm:py-16 bg-gray-100">
       <Container>
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-10">
+        <div className="rounded-3xl border border-gray-300 bg-white p-8 sm:p-10">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
             {t("home.customers.title")}
           </h2>
@@ -21,7 +21,7 @@ export default async function Customers() {
             {CHIP_KEYS.map((k) => (
               <div
                 key={k}
-                className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-semibold text-slate-900"
+                className="rounded-2xl border border-slate-200 bg-gray-100 px-4 py-4 text-sm font-semibold text-slate-900"
               >
                 {t(`home.customers.chips.${k}`)}
               </div>
