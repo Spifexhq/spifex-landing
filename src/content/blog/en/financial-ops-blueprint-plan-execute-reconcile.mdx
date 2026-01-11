@@ -1,0 +1,136 @@
+---
+title: "The Financial Ops Blueprint: Plan → Execute → Reconcile"
+description: "A practical, end-to-end framework to replace spreadsheet finance with reliable cashflow, controlled payments, and audit-ready reporting."
+updatedAt: "2026-01-11"
+author: "Spifex"
+tags: ["Playbook", "Cashflow", "Governance", "Operations"]
+---
+
+<MdxImage
+  src="/blog/images/plan-execute-reconcile.png"
+  alt="Plan Execute Reconcile framework"
+  width={1600}
+  height={900}
+  caption="A simple operating model: planned intent connects to execution events and reconciliation signals."
+/>
+
+Finance breaks when the **money lifecycle** is split across tools: spreadsheets for planning, bank portals for execution, and ad-hoc reconciliation at month end. The result is predictable: inconsistent numbers, slow approvals, and zero traceability.
+
+This article presents a practical operating model you can implement in any business (and why Spifex was built around it).
+
+## Why spreadsheet finance fails at scale
+
+Spreadsheets are excellent for *thinking*. They are terrible for *operating*.
+
+At scale, teams face the same failure modes:
+
+- Planning is not connected to execution (payments and settlements happen elsewhere)
+- Changes become silent edits instead of auditable events
+- Ownership is unclear across projects and departments
+- Reporting is delayed because reconciliation is manual
+
+The real cost isn’t “time spent in Excel.” It’s **late decisions** and **avoidable risk**.
+
+## The core model: Plan → Execute → Reconcile
+
+### 1) Plan (Intent)
+Planning should capture **intent**, not just numbers.
+
+Minimum fields that matter:
+- What is the movement (inflow/outflow)?
+- Who owns it (project / department)?
+- When is it expected?
+- Why does it exist (context)?
+- How will it be classified (ledger category)?
+
+**Output:** planned entries that are structured and attributable.
+
+### 2) Execute (Events)
+Execution is a sequence of events:
+- a payment is initiated
+- approved
+- partially settled
+- completed
+- reversed or adjusted
+
+Each step should produce a **traceable event**.
+
+**Output:** settlements/transfers/payments recorded with “who/when/why”.
+
+### 3) Reconcile (Signals)
+Reconciliation should not be a month-end ritual. It should be a continuous signal loop:
+
+- Planned vs actual variance
+- Missing documentation
+- Category drift (misclassification)
+- “Unplanned” movements
+
+**Output:** exceptions and variance signals that improve forecasting.
+
+## What to standardize first (the 80/20)
+
+If you do only four things, do these:
+
+1. **A unified chart of accounts (ledger taxonomy)**  
+2. **Ownership mapping (project/department rules)**  
+3. **Approval boundaries (who can create vs approve vs execute)**  
+4. **A rule for unplanned movements (explicit, never hidden)**  
+
+## Practical implementation in 7 steps
+
+1. Inventory your inflow/outflow sources (revenue streams + cost centers)  
+2. Define your minimum required metadata (project, department, vendor/customer, evidence)  
+3. Create a lean ledger taxonomy (start small, expand intentionally)  
+4. Establish roles and permissions (RBAC by responsibility, not title)  
+5. Convert recurring items into templates (rent, payroll, retainers, subscriptions)  
+6. Link execution events to planned intents (or mark as unplanned)  
+7. Track variance weekly and make variance actionable
+
+## KPIs that actually matter
+
+Avoid vanity metrics. Use KPIs that drive action:
+
+- Forecast accuracy (e.g., 4-week variance)
+- Cash conversion cycle (if applicable)
+- Payables aging by category
+- Unplanned movements (% of total)
+- Approval cycle time (create → approve → execute)
+- Reconciliation lag (days)
+
+## Common pitfalls (and how to avoid them)
+
+### Pitfall: “We’ll fix classification later”
+Classification is not an accounting detail; it is **data quality**. If you don’t classify at the point of entry, you’ll pay for it later.
+
+### Pitfall: Too many categories too early
+Start with a small taxonomy. Expand based on reporting needs, not opinions.
+
+### Pitfall: Approvals that block the business
+Approvals should protect the business **without** creating queues. Use thresholds and role boundaries.
+
+## How Spifex supports this model
+
+Spifex was built to centralize the lifecycle:
+- Plan inflows/outflows as structured intents
+- Execute with traceable settlement/payment events
+- Reconcile continuously with variance and exception visibility
+- Report with KPIs tied to operational ownership
+
+## FAQ
+
+### What if we have multiple bank accounts and business units?
+That’s exactly when the model becomes mandatory. Bank accounts become execution channels; business units map to organization scope and ownership.
+
+### How do we handle partial payments?
+Treat partial settlements as events linked to the original intent. This preserves traceability.
+
+### Do we need a full accounting system?
+Not necessarily at the start. You need consistent classification and traceability. Accounting integration can be layered in when ready.
+
+## Next step
+
+Start with one operating rule:
+
+**Every executed movement must map to a planned intent — or be explicitly labeled as unplanned.**
+
+That one rule changes everything: forecasts become measurable, reconciliation becomes faster, and governance stops being a separate process.

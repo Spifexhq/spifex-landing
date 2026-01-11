@@ -1,0 +1,136 @@
+---
+title: "Blueprint de Operações Financeiras: Planejar → Executar → Conciliar"
+description: "Um framework prático e ponta a ponta para sair das planilhas e operar com fluxo de caixa confiável, pagamentos controlados e relatórios prontos para auditoria."
+updatedAt: "2026-01-11"
+author: "Spifex"
+tags: ["Playbook", "Cashflow", "Governança", "Operações"]
+---
+
+<MdxImage
+  src="/blog/images/plan-execute-reconcile.png"
+  alt="Framework Planejar Executar Conciliar"
+  width={1600}
+  height={900}
+  caption="Um modelo simples: o planejado se conecta a eventos de execução e sinais de conciliação."
+/>
+
+As finanças quebram quando o **ciclo do dinheiro** fica dividido entre ferramentas: planilhas para planejar, banco para executar e conciliação “na raça” no fim do mês. O resultado é previsível: números inconsistentes, aprovações lentas e pouca rastreabilidade.
+
+Este artigo apresenta um modelo operacional prático (e por que o Spifex foi construído em torno dele).
+
+## Por que “finanças na planilha” falham quando a empresa cresce
+
+Planilhas são ótimas para *pensar*. São ruins para *operar*.
+
+Conforme a operação cresce, surgem os mesmos problemas:
+
+- Planejamento não conversa com execução (pagamentos e liquidações acontecem fora)
+- Mudanças viram edições silenciosas, sem trilha
+- Responsabilidade se perde entre projetos e departamentos
+- Relatórios atrasam porque conciliar vira tarefa manual
+
+O custo real não é “tempo no Excel”. É **decisão tardia** e **risco evitável**.
+
+## O modelo central: Planejar → Executar → Conciliar
+
+### 1) Planejar (Intenção)
+Planejar é registrar **intenção**, não só valores.
+
+Campos mínimos que importam:
+- Qual é a movimentação (entrada/saída)?
+- Quem é o responsável (projeto/departamento)?
+- Quando é esperado?
+- Por que existe (contexto)?
+- Como será classificado (categoria/ledger)?
+
+**Saída:** lançamentos planejados estruturados e atribuíveis.
+
+### 2) Executar (Eventos)
+Execução é uma sequência de eventos:
+- pagamento iniciado
+- aprovado
+- liquidado parcialmente
+- concluído
+- estornado/ajustado
+
+Cada etapa deve gerar um **evento rastreável**.
+
+**Saída:** liquidações/transferências/pagamentos com “quem/quando/por quê”.
+
+### 3) Conciliar (Sinais)
+Conciliação não deve ser um ritual mensal. Deve ser um loop contínuo de sinais:
+
+- Diferença entre planejado e realizado
+- Falta de evidências/documentos
+- Deriva de classificação (categoria errada)
+- Movimentações “não planejadas”
+
+**Saída:** exceções e variâncias que melhoram a previsão.
+
+## O que padronizar primeiro (o 80/20)
+
+Se você fizer só quatro coisas, faça estas:
+
+1. **Taxonomia mínima de contas/categorias (ledger)**  
+2. **Regras de ownership (projeto/departamento)**  
+3. **Limites de aprovação (criar vs aprovar vs executar)**  
+4. **Regra para não planejados (explícito, nunca escondido)**  
+
+## Implementação prática em 7 passos
+
+1. Liste fontes de entrada/saída (receitas + centros de custo)  
+2. Defina metadados obrigatórios (projeto, departamento, cliente/fornecedor, evidência)  
+3. Crie uma taxonomia enxuta (comece pequeno e evolua)  
+4. Estabeleça papéis e permissões (RBAC por responsabilidade)  
+5. Transforme recorrências em templates (aluguel, folha, assinaturas)  
+6. Conecte execução à intenção planejada (ou marque como não planejado)  
+7. Acompanhe variância semanalmente e torne isso acionável
+
+## KPIs que realmente importam
+
+Evite métricas de vaidade. Use KPIs que geram ação:
+
+- Acurácia da previsão (variância em 4 semanas)
+- % de “não planejados” no total
+- Tempo de aprovação (criar → aprovar → executar)
+- Atraso de conciliação (dias)
+- Envelhecimento de contas a pagar por categoria
+- Concentração por fornecedor/cliente (risco)
+
+## Armadilhas comuns (e como evitar)
+
+### Armadilha: “Depois a gente classifica”
+Classificação não é detalhe contábil; é **qualidade de dado**. Se você não classifica na entrada, vai pagar depois.
+
+### Armadilha: categorias demais cedo demais
+Comece com poucas categorias. Expanda por necessidade de relatório, não por opinião.
+
+### Armadilha: aprovações que travam a operação
+Aprovação precisa proteger sem criar fila. Use limites por valor e responsabilidades claras.
+
+## Como o Spifex suporta esse modelo
+
+O Spifex centraliza o ciclo:
+- Planeja entradas/saídas como intenções estruturadas
+- Executa com eventos rastreáveis de pagamento/liquidação
+- Concilia continuamente com visibilidade de variância/exceções
+- Reporta com KPIs conectados ao ownership operacional
+
+## FAQ
+
+### E se eu tiver várias contas bancárias e unidades?
+É exatamente quando o modelo vira obrigatório. Contas são canais de execução; unidades mapeiam ownership e escopo.
+
+### Como tratar pagamentos parciais?
+Trate liquidações parciais como eventos vinculados à intenção original. Isso preserva rastreabilidade.
+
+### Preciso de um sistema contábil completo?
+Não necessariamente no início. Você precisa de classificação consistente e trilha. Integração contábil pode vir depois.
+
+## Próximo passo
+
+Comece com uma regra operacional:
+
+**Toda movimentação executada deve estar ligada a uma intenção planejada — ou ser explicitamente marcada como não planejada.**
+
+Essa regra sozinha muda o jogo: previsões viram mensuráveis, conciliação acelera e governança deixa de ser um processo paralelo.
