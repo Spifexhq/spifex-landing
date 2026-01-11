@@ -41,13 +41,6 @@ export default function Navbar() {
           <nav className="hidden items-center gap-10 md:flex" aria-label="Primary">
             <ProductsMegaMenu />
 
-            <Link
-              href="/#solutions"
-              className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900"
-            >
-              {t("nav.solutions")}
-            </Link>
-
             {NAV_ITEMS.map((it) => (
               <Link
                 key={it.href}
@@ -90,14 +83,6 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
               >
                 {t("nav.home")}
-              </Link>
-
-              <Link
-                href="/#solutions"
-                className="text-sm font-medium text-slate-900"
-                onClick={() => setMobileOpen(false)}
-              >
-                {t("nav.solutions")}
               </Link>
 
               {NAV_ITEMS.map((it) => (

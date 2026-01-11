@@ -49,7 +49,7 @@ export default function ProductsMegaMenu() {
     <div className="relative">
       <button
         type="button"
-        className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-sm font-medium text-slate-700 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
+        className="inline-flex items-center gap-1 rounded-lg px-2 py-6 text-sm font-medium text-slate-700 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
         aria-haspopup="menu"
         aria-expanded={open}
         onMouseEnter={() => {

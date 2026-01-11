@@ -1240,6 +1240,420 @@ inventoryPage: {
   },
 },
 
+solutionsPage: {
+  meta: {
+    title: "Soluções",
+    description: "Soluções financeiras que conectam planejamento, execução, conciliação e KPIs em uma camada operacional única.",
+  },
+
+  hero: {
+    title: "Finanças que rodam como operação",
+    subtitle:
+      "O Spifex conecta times, workflows e dados para que líderes ajam com velocidade e certeza—sem silos desconectados.",
+    cards: {
+      lifecycle: {
+        title: "Ciclo completo do dinheiro",
+        desc: "Do planejado às liquidações, transferências e conciliação. Tudo unificado de ponta a ponta.",
+      },
+      complexity: {
+        title: "Feito para complexidade operacional",
+        desc: "Gerencie múltiplas receitas e custos com padronização, automação e rastreabilidade.",
+      },
+      governance: {
+        title: "Governança por padrão",
+        desc: "Acesso por função, trilha de auditoria e estruturas por organização mantêm alinhamento e compliance.",
+      },
+      kpis: {
+        title: "Execução guiada por KPIs",
+        desc: "Dashboards e indicadores mantêm todos focados nas métricas que movem o negócio.",
+      },
+    },
+
+    emailPlaceholder: "Email de trabalho",
+    ctaEmail: "Começar agora",
+    ctaPricing: "Ver preços",
+    disclaimer:
+      "Ao enviar seu email, você será redirecionado para criar sua conta. Você pode ajustar preferências a qualquer momento.",
+  },
+
+  map: {
+    productsTitle: "Produtos",
+    workflowsTitle: "Workflows",
+
+    products: {
+      cashflow: {
+        title: "Cashflow",
+        desc: "Planeje entradas e saídas, crie cenários e acompanhe execução em tempo real.",
+      },
+      bankingPayments: {
+        title: "Banking & Payments",
+        desc: "Centralize contas bancárias, pague fornecedores e gerencie transferências com controles embutidos.",
+      },
+      spendSettlements: {
+        title: "Spend & Settlements",
+        desc: "Padronize aprovações, liquidações e movimentações internas de fundos.",
+      },
+      ledger: {
+        title: "Ledger",
+        desc: "Plano de contas, classificação e estrutura financeira pronta para auditoria.",
+      },
+      projects: {
+        title: "Projects",
+        desc: "Atribua custos e receitas a iniciativas com rastreabilidade total e KPIs.",
+      },
+      departments: {
+        title: "Departments",
+        desc: "Ownership de budget, accountability e governança operacional por time.",
+      },
+      crm: {
+        title: "CRM",
+        desc: "Conecte sinais do pipeline à visibilidade e ao planejamento de caixa.",
+      },
+      inventory: {
+        title: "Inventory",
+        desc: "Conecte inputs operacionais a resultados financeiros sem silos desconectados.",
+      },
+    },
+
+    workflows: {
+      reconciliation: {
+        title: "Reconciliation",
+        desc: "Feche o ciclo do planejado ao realizado com matching estruturado.",
+      },
+      accountingAutomation: {
+        title: "Automação contábil",
+        desc: "Reduza trabalho manual e mantenha consistência dos dados entre módulos.",
+      },
+      reportingKpis: {
+        title: "Relatórios & KPIs",
+        desc: "Dashboards e indicadores para manter alinhamento no que importa.",
+      },
+    },
+
+    governanceCard: {
+      title: "Uma camada operacional entre times",
+      desc:
+        "Organizações, funções, ownership e trilha de auditoria são primitivas do sistema, mantendo consistência mesmo com escala.",
+    },
+  },
+
+  operatingModel: {
+    title: "Um modelo operacional único conecta cada módulo",
+    subtitle:
+      "O Spifex é desenhado em torno de um loop: planejar intenção, executar com controles, conciliar com evidência. Assim a previsão vira confiável e o reporting vira acionável.",
+    chips: {
+      cashflow: "Cashflow",
+      spend: "Spend & Settlements",
+      banking: "Banking & Payments",
+      ledger: "Ledger",
+      projects: "Projects",
+      departments: "Departments",
+    },
+    stepPrefix: "Etapa",
+    outputsTitle: "Saídas operacionais",
+    controlsTitle: "Controles & governança",
+    steps: {
+      plan: {
+        title: "Planejar intenção",
+        desc:
+          "Defina o que deve acontecer: movimentos planejados, responsáveis, datas, categorias e contexto. Isso vira base de previsão e accountability.",
+        outputs:
+          "Movimentos planejados, templates recorrentes, cenários e ownership por projeto/departamento.",
+        controls:
+          "Classificação e estrutura padronizadas (Ledger + Departments/Projects) evitam caos a jusante.",
+      },
+      execute: {
+        title: "Executar com controles",
+        desc:
+          "Registre eventos reais: aprovações, liquidações parciais, transferências e pagamentos. A execução liga ao planejado ou é marcada como não planejada.",
+        outputs:
+          "Liquidações, transferências, eventos de pagamento e histórico rastreável ligado a responsáveis.",
+        controls:
+          "Aprovações por função, limites e políticas controlam gasto sem travar times.",
+      },
+      reconcile: {
+        title: "Conciliar com evidência",
+        desc:
+          "Feche o ciclo casando planejado vs realizado, anexando evidências e resolvendo exceções continuamente—para que o fim do mês não vire crise.",
+        outputs:
+          "Matching estruturado, workflow de exceções, fechamento limpo e trilha para auditoria.",
+        controls:
+          "Histórico de auditoria, evidências e regras consistentes mantêm reporting confiável.",
+      },
+    },
+  },
+
+  teams: {
+    title: "Soluções para os times que rodam o negócio",
+    subtitle:
+      "O Spifex conecta finanças e operação explicitando ownership, classificação e workflows—cada time ganha clareza sem sistemas separados.",
+    items: {
+      cfo: {
+        title: "CFO / Liderança financeira",
+        desc:
+          "Tenha visibilidade de caixa previsível, aplique governança e meça performance sem depender do fechamento mensal.",
+        point1: "Cenários de previsão ancorados na execução, não em planilhas estáticas.",
+        point2: "Governança por padrão: funções, trilha de auditoria e classificação padronizada.",
+        point3: "KPIs que conectam resultados financeiros a ownership e realidade operacional.",
+      },
+      financeOps: {
+        title: "Finance Ops / Controladoria",
+        desc:
+          "Reduza retrabalho padronizando como movimentos são criados, aprovados, liquidados e conciliados.",
+        point1: "Conciliação estruturada e evidências para fechar mais rápido.",
+        point2: "Classificação e automação baseadas no Ledger para manter consistência.",
+        point3: "Exceções visíveis: não planejados aparecem com ownership, não escondidos.",
+      },
+      operators: {
+        title: "Operadores / Responsáveis por times",
+        desc:
+          "Rode iniciativas e times com budgets, aprovações e sinais de performance claros—sem perder velocidade.",
+        point1: "Ownership de departamento e projeto para budgets e accountability.",
+        point2: "Controles e aprovações que respeitam o modo real de operar dos times.",
+        point3: "KPIs e reporting que refletem entrega, não só categorias contábeis.",
+      },
+    },
+  },
+
+  solutions: {
+    title: "Soluções centrais construídas a partir da plataforma",
+    subtitle:
+      "Cada solução é um padrão prático de sistema operacional. O Spifex combina os módulos certos para que o resultado seja mensurável, governável e escalável.",
+    sectionLabel: "Solução",
+    whatYouGetTitle: "O que você ganha",
+    kpisTitle: "KPIs para operar",
+    controlTitle: "Nota de governança",
+
+    items: {
+      cashVisibility: {
+        title: "Visibilidade de caixa confiável",
+        desc:
+          "Planejamento só vira confiável quando está conectado a eventos de execução e conciliado continuamente. Você vê o planejado, o executado e o que mudou—por responsável, time e iniciativa.",
+        chip1: "Cashflow",
+        chip1Href: "/products/cashflow",
+        chip2: "CRM",
+        chip2Href: "/products/crm",
+        chip3: "Relatórios & KPIs",
+        chip3Href: "#workflow-reporting-kpis",
+        bullets: {
+          b1: "Movimentos planejados com responsáveis, datas, categorias e cenários.",
+          b2: "Sinais do pipeline convertidos em entradas esperadas com timing e confiança.",
+          b3: "Variância semanal (planejado vs realizado) com drivers e accountability.",
+          b4: "Não planejados aparecem explicitamente, sem esconder em planilhas.",
+          b5: "Dashboards que conectam resultado de caixa a ownership operacional.",
+        },
+        kpis: {
+          k1: "Tendência de acurácia de previsão em 4 semanas com drivers de variância.",
+          k2: "Percentual de não planejados e principais fontes por depto/projeto.",
+          k3: "Tempo de fechamento e atraso de conciliação entre times.",
+        },
+        controlNote:
+          "Todo movimento liga a uma intenção planejada ou é marcado como não planejado, com owner e classificação—previsão vira auditável.",
+      },
+
+      spendGovernance: {
+        title: "Governança de gasto sem gargalos",
+        desc:
+          "Controle gastos com regras, aprovações e ownership alinhados ao modo real de operar. A execução continua rápida, mas a política é aplicada e exceções ficam visíveis.",
+        chip1: "Spend & Settlements",
+        chip1Href: "/products/spend-settlements",
+        chip2: "Departments",
+        chip2Href: "/products/departments",
+        chip3: "Projects",
+        chip3Href: "/products/projects",
+        bullets: {
+          b1: "Aprovações e limites por função para solicitações, liquidações e transferências.",
+          b2: "Ownership de budget por departamento com variância e compromissos visíveis.",
+          b3: "Atribuição por projeto para mapear gastos em iniciativas, não baldes genéricos.",
+          b4: "Fluxos padrão de liquidação (parcial, split, movimentação interna) com rastreabilidade.",
+          b5: "Controles por política para reduzir retrabalho e manter execução consistente.",
+        },
+        kpis: {
+          k1: "Tempo de aprovação por time e estágio de gargalo.",
+          k2: "Variância de budget e cobertura de compromissos por departamento.",
+          k3: "Completude de alocação por projeto e categoria.",
+        },
+        controlNote:
+          "A governança é aplicada no workflow (quem pode fazer o quê, quando e por quê), não só em relatórios depois do fato.",
+      },
+
+      bankingPayments: {
+        title: "Banking e pagamentos como workflow operacional",
+        desc:
+          "Centralize contas e execução de pagamentos com controles embutidos. Conecte eventos de pagamento à intenção, ownership e conciliação para previsibilidade real de timing de caixa.",
+        chip1: "Banking & Payments",
+        chip1Href: "/products/banking-payments",
+        chip2: "Cashflow",
+        chip2Href: "/products/cashflow",
+        chip3: "Reconciliation",
+        chip3Href: "#workflow-reconciliation",
+        bullets: {
+          b1: "Centralização de contas bancárias com estrutura por organização e controles.",
+          b2: "Pagamentos e transferências ligados a aprovações e ownership.",
+          b3: "Eventos de execução conectados ao planejado para rastreabilidade clara.",
+          b4: "Sinais de conciliação fecham o loop com evidências e exceções.",
+          b5: "Timeline consistente: intenção → pagamento → matching → reporting.",
+        },
+        kpis: {
+          k1: "Velocidade de execução (criado → aprovado → executado).",
+          k2: "Completude de liquidação (parcial/restante) por owner e time.",
+          k3: "Atraso de conciliação por conta e tipo de workflow.",
+        },
+        controlNote:
+          "Pagamentos não são só transações—são eventos de workflow governados, com aprovações, histórico e regras de matching.",
+      },
+
+      closeAudit: {
+        title: "Fechamento mais rápido e estrutura pronta para auditoria",
+        desc:
+          "Feche mais rápido tornando classificação e conciliação contínuas. Use estrutura baseada no Ledger e automação para manter consistência entre módulos.",
+        chip1: "Ledger",
+        chip1Href: "/products/ledger",
+        chip2: "Automação contábil",
+        chip2Href: "#workflow-accounting-automation",
+        chip3: "Reconciliation",
+        chip3Href: "#workflow-reconciliation",
+        bullets: {
+          b1: "Plano de contas e regras de classificação que padronizam reporting.",
+          b2: "Conciliação contínua com matching estruturado e evidências.",
+          b3: "Automação para reduzir retrabalho e duplicidade de lançamento.",
+          b4: "Trilha de auditoria em mudanças, aprovações e ações de conciliação.",
+          b5: "Consistência entre Cashflow, Spend, Banking, Projects e Departments.",
+        },
+        kpis: {
+          k1: "Atraso de fechamento e taxa de conciliação concluída.",
+          k2: "Volume de exceções por categoria e tempo de resolução.",
+          k3: "Consistência de classificação (parcela não mapeada/desconhecida).",
+        },
+        controlNote:
+          "Pronto para auditoria é nativo: funções, histórico, evidências e classificação consistente.",
+      },
+
+      profitability: {
+        title: "Visibilidade de rentabilidade por iniciativa e time",
+        desc:
+          "Meça rentabilidade por projeto e departamento, não apenas totais. Transforme accountability em um loop mensurável de operação.",
+        chip1: "Projects",
+        chip1Href: "/products/projects",
+        chip2: "Departments",
+        chip2Href: "/products/departments",
+        chip3: "Relatórios & KPIs",
+        chip3Href: "#workflow-reporting-kpis",
+        bullets: {
+          b1: "Custos e receitas atribuídos a iniciativas com ownership consistente.",
+          b2: "Budgets e compromissos por departamento conectados à governança operacional.",
+          b3: "Visão de margem e contribuição por projeto/time ao longo do tempo.",
+          b4: "Variância e burn para suportar priorização e alocação de recursos.",
+          b5: "KPIs conectando entrega à realidade financeira.",
+        },
+        kpis: {
+          k1: "Margem do projeto e burn ao longo do tempo por iniciativa.",
+          k2: "Variância de budget por departamento com drivers.",
+          k3: "Completude de alocação (% atribuído) em movimentos.",
+        },
+        controlNote:
+          "Accountability escala quando cada movimento tem owner e contexto de iniciativa, não só um rótulo de categoria.",
+      },
+
+      connectedOps: {
+        title: "Operação conectada: estoque, receita e caixa",
+        desc:
+          "Pare de tratar sistemas operacionais como separados de finanças. Conecte movimentos de estoque e custos à margem, conecte pipeline a entradas esperadas e mantenha consistência via Ledger.",
+        chip1: "Inventory",
+        chip1Href: "/products/inventory",
+        chip2: "CRM",
+        chip2Href: "/products/crm",
+        chip3: "Ledger",
+        chip3Href: "/products/ledger",
+        bullets: {
+          b1: "Movimentos de estoque ligados a custos e valuation para margem real.",
+          b2: "Inputs operacionais viram sinais de planejamento para compras e timing de caixa.",
+          b3: "Pipeline de receita convertido em premissas de caixa e cenários.",
+          b4: "Classificação baseada no Ledger mantém consistência financeira.",
+          b5: "Ownership e evidências reduzem disputas e retrabalho entre times.",
+        },
+        kpis: {
+          k1: "Giro, perdas e acurácia de estoque ao longo do tempo.",
+          k2: "Cobertura de entradas esperadas e conversão por estágio do pipeline.",
+          k3: "Impacto na margem por valuation e mudanças operacionais.",
+        },
+        controlNote:
+          "Operação conectada exige classificação e ownership consistentes para mapear eventos operacionais em resultados financeiros com clareza.",
+      },
+    },
+  },
+
+  workflowsDeep: {
+    title: "Workflows que mantêm o loop fechado",
+    subtitle:
+      "Esses workflows tornam módulos um sistema operacional repetível: conciliar continuamente, automatizar classificação e reportar KPIs que guiam execução.",
+    items: {
+      reconciliation: {
+        title: "Reconciliation",
+        desc:
+          "Case intenção planejada com eventos de execução, anexe evidências e resolva exceções continuamente—fechamento vira rotina.",
+        point1: "Matching estruturado por conta, contraparte, janela de data e tipo de movimento.",
+        point2: "Workflow de exceção: itens não planejados/descasados ficam visíveis, com owner e resolução.",
+        point3: "Evidências e trilha: mudanças são rastreadas e revisáveis.",
+      },
+      accountingAutomation: {
+        title: "Automação contábil",
+        desc:
+          "Reduza trabalho manual padronizando classificação e mantendo consistência entre módulos.",
+        point1: "Regras baseadas no Ledger: classificação aplicada no momento de criação.",
+        point2: "Menos duplicidade: primitivas compartilhadas entre Cashflow, Spend, Banking, Projects e Departments.",
+        point3: "Estrutura consistente ao longo do tempo com trilha de auditoria.",
+      },
+      reportingKpis: {
+        title: "Relatórios & KPIs",
+        desc:
+          "Meça o que move o negócio: acurácia, velocidade, governança e rentabilidade—por owner e estrutura operacional.",
+        point1: "Dashboards construídos de primitivas operacionais, não planilhas manuais.",
+        point2: "KPIs conectando resultado a responsabilidade (times, projetos, departamentos).",
+        point3: "Visão de tendência: variância, lag, conversão e completude ao longo do tempo.",
+      },
+    },
+  },
+
+  rollout: {
+    title: "Como implementar com o time",
+    subtitle:
+      "O Spifex é modular. Comece pela estrutura, depois conecte execução e conciliação para que reporting vire subproduto.",
+    steps: {
+      connect: {
+        title: "Conectar fontes de dados",
+        desc:
+          "Centralize contas e inputs operacionais (bancos, fornecedores, pipeline, sinais de estoque) para capturar eventos com consistência.",
+      },
+      structure: {
+        title: "Definir estrutura financeira",
+        desc:
+          "Configure plano de contas, classificação, departamentos, projetos e ownership para manter coerência com escala.",
+      },
+      operate: {
+        title: "Operar workflows com controles",
+        desc:
+          "Use aprovações, liquidações, transferências e conciliação como workflows—com políticas e exceções visíveis por owner.",
+      },
+      optimize: {
+        title: "Otimizar com KPIs",
+        desc:
+          "Meça acurácia, velocidade e rentabilidade. Melhore drivers de variância, reduza atraso de fechamento e refine regras.",
+      },
+    },
+    ctaPrimary: "Ver preços",
+    ctaSecondary: "Criar conta",
+  },
+
+  bottom: {
+    title: "Torne finanças operacionais",
+    subtitle:
+      "Substitua silos desconectados por uma camada operacional única para planejamento, execução, conciliação e decisões guiadas por KPIs.",
+    ctaPricing: "Ver preços",
+    ctaSignup: "Criar conta",
+  },
+},
+
 
 
 } as const;

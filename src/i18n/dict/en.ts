@@ -1238,6 +1238,420 @@ inventoryPage: {
   },
 },
 
+solutionsPage: {
+  meta: {
+    title: "Solutions",
+    description: "Finance solutions that connect planning, execution, reconciliation, and KPIs in one operating layer.",
+  },
+
+  hero: {
+    title: "Finance that runs like operations",
+    subtitle:
+      "Spifex connects teams, workflows, and data so leaders can act with speed and certainty—without disconnected silos.",
+    cards: {
+      lifecycle: {
+        title: "Full money lifecycle",
+        desc: "From planned cash movements to settlements, transfers, and reconciliation. Unified end-to-end.",
+      },
+      complexity: {
+        title: "Built for operational complexity",
+        desc: "Manage multiple revenue and cost streams with standardization, automation, and traceability.",
+      },
+      governance: {
+        title: "Governance by default",
+        desc: "Role-based access, audit trails, and organization-scoped structures keep teams aligned and compliant.",
+      },
+      kpis: {
+        title: "KPI-driven execution",
+        desc: "Dashboards and indicators keep everyone focused on the metrics that move the business.",
+      },
+    },
+
+    emailPlaceholder: "Work email",
+    ctaEmail: "Get started",
+    ctaPricing: "View pricing",
+    disclaimer:
+      "By submitting your email, you will be redirected to signup. You can update your preferences anytime.",
+  },
+
+  map: {
+    productsTitle: "Products",
+    workflowsTitle: "Workflows",
+
+    products: {
+      cashflow: {
+        title: "Cashflow",
+        desc: "Plan inflows and outflows, forecast scenarios, and track execution in real time.",
+      },
+      bankingPayments: {
+        title: "Banking & Payments",
+        desc: "Centralize bank accounts, pay vendors, and manage transfers with built-in controls.",
+      },
+      spendSettlements: {
+        title: "Spend & Settlements",
+        desc: "Standardize approvals, settlements, and internal movement of funds.",
+      },
+      ledger: {
+        title: "Ledger",
+        desc: "Chart of accounts, classification, and audit-ready financial structure.",
+      },
+      projects: {
+        title: "Projects",
+        desc: "Attribute costs and revenues to initiatives with full traceability and KPIs.",
+      },
+      departments: {
+        title: "Departments",
+        desc: "Budget ownership, accountability, and operational governance by team.",
+      },
+      crm: {
+        title: "CRM",
+        desc: "Connect pipeline signals to cashflow visibility and planning.",
+      },
+      inventory: {
+        title: "Inventory",
+        desc: "Link operational inputs to financial outcomes without disconnected silos.",
+      },
+    },
+
+    workflows: {
+      reconciliation: {
+        title: "Reconciliation",
+        desc: "Close the loop from planned to actual with structured matching.",
+      },
+      accountingAutomation: {
+        title: "Accounting automation",
+        desc: "Reduce manual work and keep finance data consistent across modules.",
+      },
+      reportingKpis: {
+        title: "Reporting & KPIs",
+        desc: "Dashboards and indicators to keep teams aligned on what matters.",
+      },
+    },
+
+    governanceCard: {
+      title: "One operating layer across teams",
+      desc:
+        "Organizations, roles, ownership, and audit trails are first-class primitives, so data stays consistent even as your workflows scale.",
+    },
+  },
+
+  operatingModel: {
+    title: "A single operating model connects every module",
+    subtitle:
+      "Spifex is designed around an operational loop: plan intent, execute with controls, reconcile with evidence. This is how forecasting becomes trustworthy and reporting becomes actionable.",
+    chips: {
+      cashflow: "Cashflow",
+      spend: "Spend & Settlements",
+      banking: "Banking & Payments",
+      ledger: "Ledger",
+      projects: "Projects",
+      departments: "Departments",
+    },
+    stepPrefix: "Step",
+    outputsTitle: "Operational outputs",
+    controlsTitle: "Controls & governance",
+    steps: {
+      plan: {
+        title: "Plan intent",
+        desc:
+          "Define what should happen: planned movements, owners, dates, categories, and context. This becomes your baseline forecast and accountability structure.",
+        outputs:
+          "Planned movements, recurring templates, forecast scenarios, and ownership by project/department.",
+        controls:
+          "Standardized classification and structure (Ledger + Departments/Projects) prevents chaos downstream.",
+      },
+      execute: {
+        title: "Execute with controls",
+        desc:
+          "Record real events: approvals, partial settlements, transfers, and vendor payments. Execution is connected back to planned intent or explicitly marked as unplanned.",
+        outputs:
+          "Settlements, transfers, payment events, and traceable operational history tied to owners.",
+        controls:
+          "Role-based approvals, limits, and policies keep spend controlled without slowing teams.",
+      },
+      reconcile: {
+        title: "Reconcile with evidence",
+        desc:
+          "Close the loop by matching planned vs actual, attaching evidence, and resolving exceptions continuously—so month-end becomes a byproduct, not a crisis.",
+        outputs:
+          "Structured matching, exceptions workflow, clean close, and audit-ready trails.",
+        controls:
+          "Audit history, evidence links, and consistent data rules keep reporting reliable.",
+      },
+    },
+  },
+
+  teams: {
+    title: "Solutions for the teams that run the business",
+    subtitle:
+      "Spifex connects finance and operations by making ownership, classification, and workflows explicit—so each team gets clarity without separate systems.",
+    items: {
+      cfo: {
+        title: "CFO / Finance leadership",
+        desc:
+          "Get predictable cash visibility, enforce governance, and measure performance without waiting for month-end reporting.",
+        point1: "Forecast scenarios grounded in execution, not static spreadsheets.",
+        point2: "Governance by default: roles, audit trails, and standardized classification.",
+        point3: "KPIs that tie financial outcomes to ownership and operational reality.",
+      },
+      financeOps: {
+        title: "Finance Ops / Controllers",
+        desc:
+          "Reduce manual work by standardizing how movements are created, approved, settled, and reconciled.",
+        point1: "Structured reconciliation and evidence tracking to close faster.",
+        point2: "Ledger-first classification and automation to keep data consistent.",
+        point3: "Exception workflows: unplanned activity is visible and accountable.",
+      },
+      operators: {
+        title: "Operators / Team owners",
+        desc:
+          "Run initiatives and teams with clear budgets, approvals, and performance signals—without losing speed.",
+        point1: "Department and project ownership for budgets and accountability.",
+        point2: "Spend controls and approvals that match how teams actually operate.",
+        point3: "KPIs and reporting that reflect delivery, not only accounting categories.",
+      },
+    },
+  },
+
+  solutions: {
+    title: "Core solutions built from the platform",
+    subtitle:
+      "Each solution is a practical operating system pattern. Spifex combines the right modules so the outcome is measurable, governable, and scalable.",
+    sectionLabel: "Solution",
+    whatYouGetTitle: "What you get",
+    kpisTitle: "KPIs you can run on",
+    controlTitle: "Governance note",
+
+    items: {
+      cashVisibility: {
+        title: "Cash visibility you can trust",
+        desc:
+          "Planning becomes reliable when it is connected to execution events and continuously reconciled. You see what is planned, what is executed, and what changed—by owner, team, and initiative.",
+        chip1: "Cashflow",
+        chip1Href: "/products/cashflow",
+        chip2: "CRM",
+        chip2Href: "/products/crm",
+        chip3: "Reporting & KPIs",
+        chip3Href: "#workflow-reporting-kpis",
+        bullets: {
+          b1: "Planned movements with owners, dates, categories, and scenario modeling.",
+          b2: "Pipeline signals translated into expected inflows with timing and confidence.",
+          b3: "Variance tracked weekly (planned vs actual) with drivers and accountability.",
+          b4: "Unplanned movements surfaced explicitly instead of hidden in spreadsheets.",
+          b5: "Dashboards that connect cash outcomes to operational ownership.",
+        },
+        kpis: {
+          k1: "Forecast accuracy trend over 4 weeks with variance drivers.",
+          k2: "Unplanned share and top sources by department/project.",
+          k3: "Time-to-close and reconciliation lag across teams.",
+        },
+        controlNote:
+          "Every movement is linked to planned intent or marked unplanned, with an owner and classification—so forecasting is auditable.",
+      },
+
+      spendGovernance: {
+        title: "Spend governance without bottlenecks",
+        desc:
+          "Control spend using rules, approvals, and ownership that match how teams operate. Execution stays fast, but policy is enforced and exceptions are visible.",
+        chip1: "Spend & Settlements",
+        chip1Href: "/products/spend-settlements",
+        chip2: "Departments",
+        chip2Href: "/products/departments",
+        chip3: "Projects",
+        chip3Href: "/products/projects",
+        bullets: {
+          b1: "Role-based approvals and thresholds for requests, settlements, and transfers.",
+          b2: "Budget ownership by department with variance and commitment visibility.",
+          b3: "Project attribution so spend maps to initiatives—not generic buckets.",
+          b4: "Standard settlement flows (partial, split, internal movement) with traceability.",
+          b5: "Policy-driven controls that reduce rework and keep execution consistent.",
+        },
+        kpis: {
+          k1: "Approval time by team and bottleneck stage.",
+          k2: "Budget variance and commitment coverage by department.",
+          k3: "Spend allocation completeness by project and category.",
+        },
+        controlNote:
+          "Governance is enforced at the workflow level (who can do what, when, and why), not only after-the-fact reporting.",
+      },
+
+      bankingPayments: {
+        title: "Banking and payments as an operational workflow",
+        desc:
+          "Centralize bank accounts and payment execution with built-in controls. Tie payment events to planned intent, ownership, and reconciliation so cash timing becomes predictable.",
+        chip1: "Banking & Payments",
+        chip1Href: "/products/banking-payments",
+        chip2: "Cashflow",
+        chip2Href: "/products/cashflow",
+        chip3: "Reconciliation",
+        chip3Href: "#workflow-reconciliation",
+        bullets: {
+          b1: "Bank account centralization with org-scoped structure and controls.",
+          b2: "Vendor payments and transfers connected to approvals and ownership.",
+          b3: "Execution events tied to planned movements for clear traceability.",
+          b4: "Reconciliation signals close the loop with evidence and exception handling.",
+          b5: "Consistent cash timeline: intent → payment → match → reporting.",
+        },
+        kpis: {
+          k1: "Payment execution velocity (created → approved → executed).",
+          k2: "Settlement completeness (partial/remaining) by owner and team.",
+          k3: "Reconciliation lag by account and workflow type.",
+        },
+        controlNote:
+          "Payments are not just transactions—they are governed workflow events with approvals, history, and matching rules.",
+      },
+
+      closeAudit: {
+        title: "Faster close and audit-ready structure",
+        desc:
+          "Close faster by making classification and reconciliation continuous. Use ledger-first structure and automation so finance data stays consistent across every module.",
+        chip1: "Ledger",
+        chip1Href: "/products/ledger",
+        chip2: "Accounting automation",
+        chip2Href: "#workflow-accounting-automation",
+        chip3: "Reconciliation",
+        chip3Href: "#workflow-reconciliation",
+        bullets: {
+          b1: "Chart of accounts and classification rules that standardize reporting.",
+          b2: "Continuous reconciliation with structured matching and evidence links.",
+          b3: "Automation that reduces manual rework and duplicated data entry.",
+          b4: "Audit trails across changes, approvals, and reconciliation actions.",
+          b5: "Consistent data across Cashflow, Spend, Banking, Projects, and Departments.",
+        },
+        kpis: {
+          k1: "Close lag and reconciliation completion rate.",
+          k2: "Exceptions volume by category and resolution time.",
+          k3: "Classification consistency (unknown/unmapped share).",
+        },
+        controlNote:
+          "Audit-readiness is built into the system primitives: roles, history, evidence, and consistent classification.",
+      },
+
+      profitability: {
+        title: "Initiative and team profitability visibility",
+        desc:
+          "Measure profitability and contribution by project and department, not only by company totals. Turn accountability into a measurable operating loop.",
+        chip1: "Projects",
+        chip1Href: "/products/projects",
+        chip2: "Departments",
+        chip2Href: "/products/departments",
+        chip3: "Reporting & KPIs",
+        chip3Href: "#workflow-reporting-kpis",
+        bullets: {
+          b1: "Costs and revenues attributed to initiatives with consistent ownership.",
+          b2: "Department budgets and commitments connected to operational governance.",
+          b3: "Margin and contribution view by project, team, and time window.",
+          b4: "Variance and burn tracking to support prioritization and resourcing decisions.",
+          b5: "KPIs that connect delivery reality to financial outcomes.",
+        },
+        kpis: {
+          k1: "Project margin and burn rate trend by initiative.",
+          k2: "Budget variance by department with drivers.",
+          k3: "Allocation completeness (percent attributed) across movements.",
+        },
+        controlNote:
+          "Accountability scales when every movement has a team owner and initiative context—not only a category label.",
+      },
+
+      connectedOps: {
+        title: "Connected operations: inventory, revenue, and cash",
+        desc:
+          "Stop treating operational systems as separate from finance. Link inventory movements and costing to margin, connect CRM pipeline to expected inflows, and keep everything consistent through the ledger structure.",
+        chip1: "Inventory",
+        chip1Href: "/products/inventory",
+        chip2: "CRM",
+        chip2Href: "/products/crm",
+        chip3: "Ledger",
+        chip3Href: "/products/ledger",
+        bullets: {
+          b1: "Inventory movements tied to costing and valuation for real margin visibility.",
+          b2: "Operational inputs become planning signals for purchasing and cash timing.",
+          b3: "Revenue pipeline expectations translated into cash assumptions and scenarios.",
+          b4: "Ledger-first classification keeps operational data finance-consistent.",
+          b5: "Shared ownership and evidence reduces disputes and rework across teams.",
+        },
+        kpis: {
+          k1: "Inventory turnover, shrinkage, and stock accuracy trend.",
+          k2: "Expected inflow coverage and conversion by pipeline stage.",
+          k3: "Margin impact driven by valuation and operational changes.",
+        },
+        controlNote:
+          "Connected ops requires consistent classification and ownership, so every operational event maps into finance outcomes cleanly.",
+      },
+    },
+  },
+
+  workflowsDeep: {
+    title: "Workflows that keep the loop closed",
+    subtitle:
+      "These workflows turn modules into a repeatable operating system: reconcile continuously, automate classification, and report on KPIs that drive execution.",
+    items: {
+      reconciliation: {
+        title: "Reconciliation",
+        desc:
+          "Match planned intent to execution events, attach evidence, and resolve exceptions continuously—so closing becomes routine.",
+        point1: "Structured matching by account, counterparty, date window, and movement type.",
+        point2: "Exception workflow: unplanned or mismatched items are visible, owned, and resolved.",
+        point3: "Evidence and audit history: changes are tracked and reviewable.",
+      },
+      accountingAutomation: {
+        title: "Accounting automation",
+        desc:
+          "Reduce manual work by standardizing classification and keeping data consistent across every module.",
+        point1: "Ledger-first rules: enforce classification at the moment data is created.",
+        point2: "Reduce duplicate entry: shared primitives across Cashflow, Spend, Banking, Projects, and Departments.",
+        point3: "Consistent reporting structure across time and teams with audit trails.",
+      },
+      reportingKpis: {
+        title: "Reporting & KPIs",
+        desc:
+          "Measure what moves the business: accuracy, velocity, governance, and profitability—by owner and operational structure.",
+        point1: "Dashboards built from operational primitives, not hand-built spreadsheets.",
+        point2: "KPIs that connect outcomes to responsibility (teams, projects, departments).",
+        point3: "Trend visibility: variance, lag, conversion, and allocation completeness over time.",
+      },
+    },
+  },
+
+  rollout: {
+    title: "How teams roll it out",
+    subtitle:
+      "Spifex is designed for modular adoption. Start with structure, then connect execution and reconciliation so reporting becomes a byproduct.",
+    steps: {
+      connect: {
+        title: "Connect data sources",
+        desc:
+          "Centralize accounts and operational inputs (banking, vendors, pipeline, inventory signals) so finance events are captured consistently.",
+      },
+      structure: {
+        title: "Define financial structure",
+        desc:
+          "Set up chart of accounts, classification, departments, projects, and ownership so the system stays coherent as volume grows.",
+      },
+      operate: {
+        title: "Run workflows with controls",
+        desc:
+          "Use approvals, settlements, transfers, and reconciliation as workflows—with policies and exceptions visible by owner.",
+      },
+      optimize: {
+        title: "Optimize with KPIs",
+        desc:
+          "Measure accuracy, velocity, and profitability. Improve variance drivers, reduce close lag, and refine governance rules.",
+      },
+    },
+    ctaPrimary: "View pricing",
+    ctaSecondary: "Create an account",
+  },
+
+  bottom: {
+    title: "Make finance operational",
+    subtitle:
+      "Replace disconnected silos with a single operating layer for planning, execution, reconciliation, and KPI-driven decisions.",
+    ctaPricing: "View pricing",
+    ctaSignup: "Create an account",
+  },
+},
+
 
 
 } as const;
