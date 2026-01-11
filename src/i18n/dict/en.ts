@@ -64,6 +64,54 @@ const en = {
     explore: "Explore platform",
   },
 
+  pricing: {
+    title: "Pricing",
+    subtitle:
+      "Choose a plan aligned to your operating complexity. Upgrade as governance, automation, and integrations become essential.",
+    note:
+      "Note: This page is a marketing template. Final commercial terms should be reviewed with your team.",
+    mostPopular: "Most popular",
+  },
+
+  pricingTiers: {
+    starter: {
+      name: "Starter",
+      priceLabel: "From $0",
+      description: "For small teams that need clarity and structure fast.",
+      highlights: {
+        0: "Cashflow planning and basic reporting",
+        1: "Core banking visibility",
+        2: "Role based access (standard)",
+        3: "CSV imports for quick onboarding",
+      },
+      ctaLabel: "Get started",
+    },
+    growth: {
+      name: "Growth",
+      priceLabel: "Custom",
+      description: "For operationally complex businesses scaling finance operations.",
+      highlights: {
+        0: "Cashflow, settlements, and transfers",
+        1: "Ledger structure and governance",
+        2: "Projects and department accountability",
+        3: "Automations and KPI dashboards",
+      },
+      ctaLabel: "Talk to sales",
+    },
+    enterprise: {
+      name: "Enterprise",
+      priceLabel: "Custom",
+      description: "For teams requiring advanced controls, compliance, and integrations.",
+      highlights: {
+        0: "Advanced RBAC and auditability",
+        1: "Integration support and custom workflows",
+        2: "Multi org and multi entity operations",
+        3: "Priority onboarding and support",
+      },
+      ctaLabel: "Contact us",
+    },
+  },
+
   home: {
     hero: {
       title: "Complete control over cash flow, payments, and performance",

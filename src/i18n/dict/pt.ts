@@ -64,6 +64,54 @@ const pt = {
     explore: "Explorar plataforma",
   },
 
+  pricing: {
+    title: "Preços",
+    subtitle:
+      "Escolha um plano alinhado à sua complexidade operacional. Evolua conforme governança, automação e integrações se tornam essenciais.",
+    note:
+      "Nota: esta página é um template de marketing. Termos comerciais finais devem ser revisados com sua equipe.",
+    mostPopular: "Mais popular",
+  },
+
+  pricingTiers: {
+    starter: {
+      name: "Starter",
+      priceLabel: "A partir de US$ 0",
+      description: "Para times pequenos que precisam de clareza e estrutura rapidamente.",
+      highlights: {
+        0: "Planejamento de cashflow e relatórios básicos",
+        1: "Visibilidade bancária essencial",
+        2: "Acesso por função (padrão)",
+        3: "Importação CSV para onboarding rápido",
+      },
+      ctaLabel: "Começar",
+    },
+    growth: {
+      name: "Growth",
+      priceLabel: "Sob consulta",
+      description: "Para operações mais complexas escalando a rotina financeira.",
+      highlights: {
+        0: "Cashflow, liquidações e transferências",
+        1: "Estrutura de ledger e governança",
+        2: "Responsabilidade por projetos e departamentos",
+        3: "Automações e dashboards de KPIs",
+      },
+      ctaLabel: "Falar com vendas",
+    },
+    enterprise: {
+      name: "Enterprise",
+      priceLabel: "Sob consulta",
+      description: "Para times que exigem controles avançados, compliance e integrações.",
+      highlights: {
+        0: "RBAC avançado e trilhas de auditoria",
+        1: "Integrações e workflows sob medida",
+        2: "Operação multi organização e multi entidade",
+        3: "Onboarding e suporte prioritários",
+      },
+      ctaLabel: "Falar conosco",
+    },
+  },
+
   home: {
     hero: {
       title: "Controle completo do fluxo de caixa, pagamentos e performance",

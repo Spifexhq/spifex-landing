@@ -1,27 +1,28 @@
 import Container from "@/components/ui/Container";
-import { PRICING_TIERS } from "@/content/pricing";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { getServerI18n } from "@/i18n/server";
+import { getPricingTiers } from "@/content/pricing";
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const { t } = await getServerI18n();
+  const tiers = getPricingTiers(t);
+
   return (
     <div className="py-14 sm:py-16">
       <Container>
         <div className="max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Pricing</h1>
-          <p className="mt-3 text-slate-600">
-            Choose a plan aligned to your operating complexity. Upgrade as governance, automation, and integrations
-            become essential.
-          </p>
-          <p className="mt-2 text-xs text-slate-500">
-            Note: This page is a marketing template. Final commercial terms should be reviewed with your team.
-          </p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            {t("pricing.title")}
+          </h1>
+          <p className="mt-3 text-slate-600">{t("pricing.subtitle")}</p>
+          <p className="mt-2 text-xs text-slate-500">{t("pricing.note")}</p>
         </div>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {PRICING_TIERS.map((tier) => (
+          {tiers.map((tier) => (
             <div
-              key={tier.name}
+              key={tier.key}
               className={cn(
                 "rounded-3xl border bg-white p-6",
                 tier.featured ? "border-slate-900" : "border-slate-200"
@@ -34,9 +35,10 @@ export default function PricingPage() {
                     {tier.priceLabel}
                   </div>
                 </div>
+
                 {tier.featured && (
                   <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
-                    Most popular
+                    {t("pricing.mostPopular")}
                   </div>
                 )}
               </div>
