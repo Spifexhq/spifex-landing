@@ -17,7 +17,7 @@ export default async function Hero() {
       {/* Background layer */}
       <div className="apbsolute inset-0 z-0">
         <Image
-          src="/hero/spifex-hero.png"
+          src="/hero/home-hero.png"
           alt=""
           aria-hidden="true"
           fill

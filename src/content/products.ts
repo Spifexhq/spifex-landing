@@ -45,14 +45,14 @@ export const PRODUCTS_MENU: MegaMenuGroup[] = [
   {
     groupKey: "products",
     items: [
-      { key: "cashflow", href: "/#cashflow", icon: "ArrowLeftRight" },
-      { key: "banking", href: "/#banking", icon: "Landmark" },
-      { key: "spend", href: "/#spend", icon: "CreditCard" },
-      { key: "ledger", href: "/#ledger", icon: "BookOpen" },
-      { key: "projects", href: "/#projects", icon: "BriefcaseBusiness" },
-      { key: "departments", href: "/#departments", icon: "Building2" },
-      { key: "crm", href: "/#crm", icon: "Users" },
-      { key: "inventory", href: "/#inventory", icon: "Boxes" },
+      { key: "cashflow", href: "/products/cashflow", icon: "ArrowLeftRight" },
+      { key: "banking", href: "/products/banking-payments", icon: "Landmark" },
+      { key: "spend", href: "/products/spend-settlements", icon: "CreditCard" },
+      { key: "ledger", href: "/products/ledger", icon: "BookOpen" },
+      { key: "projects", href: "/products/projects", icon: "BriefcaseBusiness" },
+      { key: "departments", href: "/products/departments", icon: "Building2" },
+      { key: "crm", href: "/products/crm", icon: "Users" },
+      { key: "inventory", href: "/products/inventory", icon: "Boxes" },
     ],
   },
   {
