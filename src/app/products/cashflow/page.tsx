@@ -30,7 +30,7 @@ export default async function CashflowProductPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-right"
+            className="object-cover object-right hero-start:max-hero-sharp:blur-md"
           />
           <div className="absolute inset-0 bg-linear-to-r from-white via-white/35 to-transparent" />
           <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/35" />
@@ -55,7 +55,7 @@ export default async function CashflowProductPage() {
                 {HERO_BULLET_KEYS.map((k) => (
                   <span
                     key={k}
-                    className="rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700"
+                    className="rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 hidden nav:block"
                   >
                     {t(`cashflowPage.hero.bullets.${k}`)}
                   </span>

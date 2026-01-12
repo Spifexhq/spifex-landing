@@ -13,3 +13,15 @@ const config: Config = {
 };
 
 export default config;
+
+module.exports = {
+  theme: {
+    extend: {
+      screens: {
+        'nav': '850px',
+        'hero-start': '0px',
+        'hero-sharp': '1150px',
+      },
+    },
+  },
+}

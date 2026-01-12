@@ -15,7 +15,7 @@ export default async function Hero() {
       style={{ minHeight: `calc(100svh - ${NAV_H})` }}
     >
       {/* Background layer */}
-      <div className="apbsolute inset-0 z-0">
+      <div className="absolute inset-0 z-0">
         <Image
           src="/hero/home-hero.png"
           alt=""
@@ -23,7 +23,7 @@ export default async function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right"
+          className="object-cover object-right hero-start:max-hero-sharp:blur-md"
         />
         <div className="absolute inset-0 bg-linear-to-r from-white via-white/30 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/40" />
