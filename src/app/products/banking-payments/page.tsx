@@ -224,9 +224,6 @@ export default async function BankingPaymentsProductPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="mt-3 px-2 text-xs text-slate-500">
-                    {t("bankingPaymentsPage.howItWorks.imageCaption")}
-                  </div>
                 </div>
 
                 <div className="mt-5 rounded-3xl border border-slate-200 bg-slate-50 p-6">

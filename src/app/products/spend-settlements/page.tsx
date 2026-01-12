@@ -54,7 +54,7 @@ export default async function SpendSettlementsProductPage() {
                 {HERO_BULLET_KEYS.map((k) => (
                   <span
                     key={k}
-                    className="rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 hidden nav:block hidden nav:block"
+                    className="rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 hidden nav:block"
                   >
                     {t(`spendSettlementsPage.hero.bullets.${k}`)}
                   </span>
@@ -171,9 +171,6 @@ export default async function SpendSettlementsProductPage() {
                   sizes="(min-width: 1024px) 520px, 100vw"
                   className="object-cover"
                 />
-              </div>
-              <div className="mt-3 px-2 text-xs text-slate-500">
-                {t("spendSettlementsPage.howItWorks.imageCaption")}
               </div>
             </div>
           </div>

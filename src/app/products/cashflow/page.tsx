@@ -174,7 +174,6 @@ export default async function CashflowProductPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="mt-3 px-2 text-xs text-slate-500">{t("cashflowPage.howItWorks.imageCaption")}</div>
             </div>
           </div>
         </Container>

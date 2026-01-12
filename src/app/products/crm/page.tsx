@@ -173,9 +173,6 @@ export default async function CrmProductPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="mt-3 px-2 text-xs text-slate-500">
-                {t("crmPage.howItWorks.imageCaption")}
-              </div>
             </div>
           </div>
         </Container>

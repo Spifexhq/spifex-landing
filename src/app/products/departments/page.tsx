@@ -173,9 +173,6 @@ export default async function DepartmentsProductPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="mt-3 px-2 text-xs text-slate-500">
-                {t("departmentsPage.howItWorks.imageCaption")}
-              </div>
             </div>
           </div>
         </Container>
