@@ -67,7 +67,17 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-15">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 nav:hidden"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={t("nav.toggleMenu")}
+            aria-expanded={mobileOpen}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          <div className="absolute left-1/2 -translate-x-1/2 nav:relative nav:left-auto nav:translate-x-0 flex items-center gap-15">
             <Link
               href="/"
               className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
@@ -99,16 +109,6 @@ export default function Navbar() {
               {t("nav.signup")}
             </Button>
           </div>
-
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 nav:hidden"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={t("nav.toggleMenu")}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
         </Container>
       </header>
 
