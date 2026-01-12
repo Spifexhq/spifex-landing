@@ -11,12 +11,49 @@ import { I18nProvider } from "@/components/i18n/I18nProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const OG_IMAGE_PATH = "/logo192.png";
+
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getServerI18n();
 
+  const siteUrl = process.env.SITE_URL ?? "https://www.spifex.com";
+  const base = new URL(siteUrl);
+
+  const title = t("meta.siteTitle");
+  const description = t("meta.siteDescription");
+
   return {
-    title: t("meta.siteTitle"),
-    description: t("meta.siteDescription"),
+    metadataBase: base,
+    title,
+    description,
+
+    openGraph: {
+      type: "website",
+      url: "/",
+      title,
+      description,
+      siteName: "Spifex",
+      images: [
+        {
+          url: OG_IMAGE_PATH,
+          width: 192,
+          height: 192,
+          alt: "Spifex",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary", // if you later add 1200x630, switch to "summary_large_image"
+      title,
+      description,
+      images: [OG_IMAGE_PATH],
+    },
+
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/logo192.png",
+    },
   };
 }
 
