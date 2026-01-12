@@ -133,7 +133,13 @@ export default function Navbar() {
         <div className="flex h-full flex-col">
           {/* Sidebar Header */}
           <div className="flex items-center justify-between border-b border-slate-200 p-4">
-            <Wordmark />
+            <Link
+              href="/"
+              className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Wordmark />
+            </Link>
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100"
