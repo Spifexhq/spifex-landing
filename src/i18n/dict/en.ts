@@ -20,7 +20,6 @@ const en = {
   legal: {
     title: "Legal",
     toc: "Table of Contents",
-    disclaimer: "Disclaimer: This page is a structural template and not legal advice.",
   },
 
   blog: {

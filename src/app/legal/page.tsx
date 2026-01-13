@@ -1,8 +1,9 @@
-// D:\Programming\spifex-landing\src\app\legal\page.tsx
+// src/app/legal/page.tsx
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import { getServerI18n } from "@/i18n/server";
 import { listMdxMeta } from "@/lib/content/mdx";
+import LegalToc from "./LegalToc";
 
 export default async function LegalHubPage() {
   const { locale, t } = await getServerI18n();
@@ -15,19 +16,17 @@ export default async function LegalHubPage() {
           <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
             {t("legal.title")}
           </h1>
-          <p className="mt-2 text-xs text-slate-500">{t("legal.disclaimer")}</p>
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[320px_1fr]">
           <aside className="lg:sticky lg:top-24 lg:h-[calc(100vh-7rem)]">
             <div className="rounded-3xl border border-slate-200 bg-white p-5">
-              <div className="text-sm font-semibold text-slate-900">{t("legal.toc")}</div>
-              <nav className="mt-4 space-y-2">
-                {docs.map((d) => (
-                  <Link key={d.slug} href={`/legal/${d.slug}`} className="block text-sm text-slate-700 hover:text-slate-900">
-                    {d.title}
-                  </Link>
-                ))}
+              <div className="text-sm font-semibold text-slate-900">
+                {t("legal.toc")}
+              </div>
+
+              <nav className="mt-4">
+                <LegalToc docs={docs} />
               </nav>
             </div>
           </aside>

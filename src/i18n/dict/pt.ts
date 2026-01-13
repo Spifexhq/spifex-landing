@@ -9,7 +9,7 @@ const pt = {
     solutions: "Soluções",
     customers: "Clientes",
     pricing: "Preços",
-    legal: "Jurídico",
+    legal: "Legal",
     blog: "Blog",
     signin: "Entrar",
     signup: "Criar conta",
@@ -18,9 +18,8 @@ const pt = {
   },
 
   legal: {
-    title: "Jurídico",
+    title: "Legal",
     toc: "Sumário",
-    disclaimer: "Aviso: esta página é um template estrutural e não constitui aconselhamento jurídico.",
   },
 
   blog: {

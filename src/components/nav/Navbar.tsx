@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { Home, Layers3, Users, BadgeDollarSign, Menu, X } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import ProductsMegaMenu from "@/components/nav/ProductsMegaMenu";
@@ -22,22 +23,52 @@ function Wordmark() {
   );
 }
 
+type MobileItem = {
+  href: string;
+  ariaLabel: string;
+  Icon: React.ComponentType<{ className?: string }>;
+};
+
+function MobileNavButton({
+  href,
+  ariaLabel,
+  Icon,
+  active,
+}: MobileItem & { active: boolean }) {
+  return (
+    <Link
+      href={href}
+      aria-label={ariaLabel}
+      aria-current={active ? "page" : undefined}
+      className={[
+        "inline-flex h-11 w-11 items-center justify-center rounded-xl",
+        "transition-colors",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300",
+        active
+          ? "bg-slate-900 text-white"
+          : "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
+      ].join(" ")}
+    >
+      <Icon className="h-5 w-5" />
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const t = useT();
+  const pathname = usePathname();
+
+  // Mobile sidebar state
   const [mobileOpen, setMobileOpen] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-  // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
 
-  // Freeze background page when sidebar is open
+  // Freeze background when sidebar is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (mobileOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -52,54 +83,49 @@ export default function Navbar() {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
+  // Right-to-left drawer: close on RIGHT swipe (user drags drawer towards right)
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    
-    if (isLeftSwipe) {
-      setMobileOpen(false);
-    }
+    if (touchStart == null || touchEnd == null) return;
+
+    const distance = touchEnd - touchStart; // positive = swipe right
+    const isRightSwipe = distance > minSwipeDistance;
+
+    if (isRightSwipe) setMobileOpen(false);
   };
+
+  // Bottom mobile nav items
+  const mobileItems: MobileItem[] = [
+    { href: "/", ariaLabel: "Home", Icon: Home },
+    { href: "/solutions", ariaLabel: "Solutions", Icon: Layers3 },
+    { href: "/customers", ariaLabel: "Clients", Icon: Users },
+    { href: "/pricing", ariaLabel: "Pricing", Icon: BadgeDollarSign },
+  ];
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
+      {/* Desktop / Tablet Navbar */}
+      <header className="hidden nav:block sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 nav:hidden"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={t("nav.toggleMenu")}
-            aria-expanded={mobileOpen}
+          <Link
+            href="/"
+            className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
           >
-            <Menu className="h-5 w-5" />
-          </button>
+            <Wordmark />
+          </Link>
 
-          <div className="absolute left-1/2 -translate-x-1/2 nav:relative nav:left-auto nav:translate-x-0 flex items-center gap-15">
-            <Link
-              href="/"
-              className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
-              onClick={() => setMobileOpen(false)}
-            >
-              <Wordmark />
-            </Link>
+          <nav className="hidden items-center gap-10 nav:flex" aria-label="Primary">
+            <ProductsMegaMenu />
 
-            <nav className="hidden items-center gap-10 nav:flex" aria-label="Primary">
-              <ProductsMegaMenu />
-
-              {NAV_ITEMS.map((it) => (
-                <Link
-                  key={it.href}
-                  href={it.href}
-                  className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900"
-                >
-                  {t(it.i18nKey)}
-                </Link>
-              ))}
-            </nav>
-          </div>
+            {NAV_ITEMS.map((it) => (
+              <Link
+                key={it.href}
+                href={it.href}
+                className="text-sm px-2 py-1 font-medium text-slate-700 hover:text-slate-900"
+              >
+                {t(it.i18nKey)}
+              </Link>
+            ))}
+          </nav>
 
           <div className="hidden items-center gap-2 nav:flex">
             <Button href={DASHBOARD_URLS.signin} variant="ghost" size="sm">
@@ -112,20 +138,63 @@ export default function Navbar() {
         </Container>
       </header>
 
+      {/* Mobile floating logo (top-left) */}
+      <Link
+        href="/"
+        aria-label="Spifex home"
+        onClick={() => setMobileOpen(false)}
+        className={[
+          "nav:hidden",
+          "fixed z-50",
+          "left-[max(1rem,env(safe-area-inset-left))]",
+          "top-[max(1rem,env(safe-area-inset-top))]",
+          "inline-flex h-11 w-11 items-center justify-center rounded-2xl",
+          "border border-slate-200 bg-white/90 shadow-lg backdrop-blur",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300",
+        ].join(" ")}
+      >
+        <Image src="/icon/logo.svg" alt="" aria-hidden="true" width={22} height={22} />
+      </Link>
+
+      {/* Mobile floating menu button (top-right) */}
+      <button
+        type="button"
+        aria-label={t("nav.toggleMenu")}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((v) => !v)}
+        className={[
+          "nav:hidden",
+          "fixed z-50",
+          "right-[max(1rem,env(safe-area-inset-right))]",
+          "top-[max(1rem,env(safe-area-inset-top))]",
+          "inline-flex h-11 w-11 items-center justify-center rounded-2xl",
+          "border border-slate-200 bg-white/90 shadow-lg backdrop-blur",
+          "text-slate-700 hover:bg-slate-100",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300",
+        ].join(" ")}
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm transition-opacity duration-300 nav:hidden ${
-          mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={[
+          "nav:hidden",
+          "fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm transition-opacity duration-300",
+          mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none",
+        ].join(" ")}
         onClick={() => setMobileOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Sidebar */}
+      {/* Sidebar (opens from right to left) */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out nav:hidden ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={[
+          "nav:hidden",
+          "fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-xl",
+          "transform transition-transform duration-300 ease-in-out",
+          mobileOpen ? "translate-x-0" : "translate-x-full",
+        ].join(" ")}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -140,6 +209,7 @@ export default function Navbar() {
             >
               <Wordmark />
             </Link>
+
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100"
@@ -192,7 +262,7 @@ export default function Navbar() {
 
           {/* Sidebar Footer */}
           <div className="border-t border-slate-200 p-4">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2" onClick={() => setMobileOpen(false)}>
               <Button
                 href={DASHBOARD_URLS.signin}
                 variant="secondary"
@@ -201,6 +271,7 @@ export default function Navbar() {
               >
                 {t("nav.signin")}
               </Button>
+
               <Button
                 href={DASHBOARD_URLS.signup}
                 variant="primary"
@@ -213,6 +284,35 @@ export default function Navbar() {
           </div>
         </div>
       </aside>
+
+      {/* Mobile Floating Bottom Navbar */}
+      <nav
+        className={[
+          "nav:hidden",
+          "fixed left-1/2 z-40 -translate-x-1/2",
+          "bottom-[calc(1rem+env(safe-area-inset-bottom))]",
+        ].join(" ")}
+        aria-label="Mobile"
+      >
+        <div className="flex items-center gap-1 rounded-2xl border border-slate-200 bg-white/90 px-2 py-2 shadow-lg backdrop-blur">
+          {mobileItems.map((it) => {
+            const active =
+              it.href === "/"
+                ? pathname === "/"
+                : pathname === it.href || pathname.startsWith(`${it.href}/`);
+
+            return (
+              <MobileNavButton
+                key={it.href}
+                href={it.href}
+                ariaLabel={it.ariaLabel}
+                Icon={it.Icon}
+                active={active}
+              />
+            );
+          })}
+        </div>
+      </nav>
     </>
   );
 }

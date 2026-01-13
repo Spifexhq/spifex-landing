@@ -62,7 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang={locale} className="h-full">
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} min-h-screen overflow-y-auto no-scrollbar nav:overflow-y-visible nav:[scrollbar-width:auto]`}>
         <I18nProvider locale={locale} messages={messages}>
           {/* Page shell */}
           <div className="min-h-screen flex flex-col">
@@ -71,7 +71,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {/* Grow to fill remaining height */}
             <main className="flex-1">{children}</main>
 
-            <footer className="border-t border-slate-200 bg-white">
+            <footer className="border-t border-slate-200 bg-white pb-[calc(1rem+env(safe-area-inset-bottom)+5rem)] nav:pb-0">
               <Container className="py-10">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                   <div className="text-sm text-slate-600">

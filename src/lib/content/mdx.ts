@@ -13,6 +13,9 @@ export type DocMeta = {
   description?: string;
   updatedAt?: string;
 
+  // NEW
+  category?: string;
+
   // Blog-oriented meta (safe for legal too)
   tags?: string[];
   author?: string;
@@ -40,11 +43,10 @@ async function resolveLocaleDir(kind: "legal" | "blog", locale: "en" | "pt") {
 }
 
 function estimateReadingTime(markdown: string) {
-  // very stable, avoids extra deps; tweak WPM if you want
   const words = markdown
-    .replace(/```[\s\S]*?```/g, "") // remove code blocks
-    .replace(/`[^`]*`/g, "") // inline code
-    .replace(/[#>*_\-\[\]\(\)!]/g, " ") // md tokens
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`]*`/g, "")
+    .replace(/[#>*_\-\[\]\(\)!]/g, " ")
     .split(/\s+/)
     .filter(Boolean).length;
 
@@ -56,7 +58,6 @@ function normalizeTags(value: unknown): string[] | undefined {
   if (!value) return undefined;
   if (Array.isArray(value)) return value.map(String).filter(Boolean);
   if (typeof value === "string") {
-    // allow: "Tag A, Tag B"
     return value
       .split(",")
       .map((s) => s.trim())
@@ -65,7 +66,23 @@ function normalizeTags(value: unknown): string[] | undefined {
   return undefined;
 }
 
-export async function listMdxMeta(kind: "legal" | "blog", locale: "en" | "pt"): Promise<DocMeta[]> {
+function normalizeCategory(value: unknown): string | undefined {
+  if (!value) return undefined;
+  if (Array.isArray(value)) {
+    const first = value.map(String).map((s) => s.trim()).filter(Boolean)[0];
+    return first || undefined;
+  }
+  if (typeof value === "string") {
+    const v = value.trim();
+    return v ? v : undefined;
+  }
+  return undefined;
+}
+
+export async function listMdxMeta(
+  kind: "legal" | "blog",
+  locale: "en" | "pt"
+): Promise<DocMeta[]> {
   const baseDir = await resolveLocaleDir(kind, locale);
   const files = (await fs.readdir(baseDir)).filter((f) => f.endsWith(".mdx"));
 
@@ -78,12 +95,14 @@ export async function listMdxMeta(kind: "legal" | "blog", locale: "en" | "pt"): 
     const slug = file.replace(/\.mdx$/, "");
     const tags = normalizeTags((data as any).tags);
     const author = (data as any).author ? String((data as any).author) : undefined;
+    const category = normalizeCategory((data as any).category);
 
     metas.push({
       slug,
       title: String((data as any).title ?? slug),
       description: (data as any).description ? String((data as any).description) : undefined,
       updatedAt: (data as any).updatedAt ? String((data as any).updatedAt) : undefined,
+      category,
       tags,
       author,
       readingTime: kind === "blog" ? estimateReadingTime(content) : undefined,
@@ -100,7 +119,11 @@ export async function listMdxMeta(kind: "legal" | "blog", locale: "en" | "pt"): 
   return metas;
 }
 
-export async function renderMdxBySlug(kind: "legal" | "blog", locale: "en" | "pt", slug: string) {
+export async function renderMdxBySlug(
+  kind: "legal" | "blog",
+  locale: "en" | "pt",
+  slug: string
+) {
   const baseDir = await resolveLocaleDir(kind, locale);
   const full = path.join(baseDir, `${slug}.mdx`);
 
@@ -112,7 +135,6 @@ export async function renderMdxBySlug(kind: "legal" | "blog", locale: "en" | "pt
     raw = await fs.readFile(fallback, "utf8");
   }
 
-  // Use gray-matter once so we can compute reading time reliably
   const parsed = matter(raw);
   const readingTime = kind === "blog" ? estimateReadingTime(parsed.content) : undefined;
 
@@ -120,6 +142,7 @@ export async function renderMdxBySlug(kind: "legal" | "blog", locale: "en" | "pt
     title?: string;
     description?: string;
     updatedAt?: string;
+    category?: string | string[];
     tags?: string[] | string;
     author?: string;
   }>({
@@ -132,6 +155,7 @@ export async function renderMdxBySlug(kind: "legal" | "blog", locale: "en" | "pt
   });
 
   const tags = normalizeTags(frontmatter.tags);
+  const category = normalizeCategory(frontmatter.category);
 
   return {
     content,
@@ -140,6 +164,7 @@ export async function renderMdxBySlug(kind: "legal" | "blog", locale: "en" | "pt
       title: String(frontmatter.title ?? slug),
       description: frontmatter.description ? String(frontmatter.description) : undefined,
       updatedAt: frontmatter.updatedAt ? String(frontmatter.updatedAt) : undefined,
+      category,
       tags,
       author: frontmatter.author ? String(frontmatter.author) : undefined,
       readingTime,
