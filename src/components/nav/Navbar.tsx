@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Home, Layers3, Users, BadgeDollarSign, Menu, X } from "lucide-react";
 
 import Container from "@/components/ui/Container";
@@ -58,13 +58,11 @@ export default function Navbar() {
   const t = useT();
   const pathname = usePathname();
 
-  // Mobile sidebar state
   const [mobileOpen, setMobileOpen] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
-  // Freeze background when sidebar is open
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -83,32 +81,33 @@ export default function Navbar() {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  // Right-to-left drawer: close on RIGHT swipe (user drags drawer towards right)
   const onTouchEnd = () => {
     if (touchStart == null || touchEnd == null) return;
 
-    const distance = touchEnd - touchStart; // positive = swipe right
+    const distance = touchEnd - touchStart;
     const isRightSwipe = distance > minSwipeDistance;
 
     if (isRightSwipe) setMobileOpen(false);
   };
 
-  // Bottom mobile nav items
-  const mobileItems: MobileItem[] = [
-    { href: "/", ariaLabel: "Home", Icon: Home },
-    { href: "/solutions", ariaLabel: "Solutions", Icon: Layers3 },
-    { href: "/customers", ariaLabel: "Clients", Icon: Users },
-    { href: "/pricing", ariaLabel: "Pricing", Icon: BadgeDollarSign },
-  ];
+  const mobileItems: MobileItem[] = useMemo(
+    () => [
+      { href: "/", ariaLabel: t("nav.home"), Icon: Home },
+      { href: "/solutions", ariaLabel: t("nav.solutions"), Icon: Layers3 },
+      { href: "/customers", ariaLabel: t("nav.customers"), Icon: Users },
+      { href: "/pricing", ariaLabel: t("nav.pricing"), Icon: BadgeDollarSign },
+    ],
+    [t]
+  );
 
   return (
     <>
-      {/* Desktop / Tablet Navbar */}
       <header className="hidden nav:block sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
           <Link
             href="/"
             className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
+            aria-label={t("nav.home")}
           >
             <Wordmark />
           </Link>
@@ -138,10 +137,9 @@ export default function Navbar() {
         </Container>
       </header>
 
-      {/* Mobile floating logo (top-left) */}
       <Link
         href="/"
-        aria-label="Spifex home"
+        aria-label={t("nav.home")}
         onClick={() => setMobileOpen(false)}
         className={[
           "nav:hidden",
@@ -156,7 +154,6 @@ export default function Navbar() {
         <Image src="/icon/logo.svg" alt="" aria-hidden="true" width={22} height={22} />
       </Link>
 
-      {/* Mobile floating menu button (top-right) */}
       <button
         type="button"
         aria-label={t("nav.toggleMenu")}
@@ -176,7 +173,6 @@ export default function Navbar() {
         <Menu className="h-5 w-5" />
       </button>
 
-      {/* Overlay */}
       <div
         className={[
           "nav:hidden",
@@ -187,7 +183,6 @@ export default function Navbar() {
         aria-hidden="true"
       />
 
-      {/* Sidebar (opens from right to left) */}
       <aside
         className={[
           "nav:hidden",
@@ -200,12 +195,12 @@ export default function Navbar() {
         onTouchEnd={onTouchEnd}
       >
         <div className="flex h-full flex-col">
-          {/* Sidebar Header */}
           <div className="flex items-center justify-between border-b border-slate-200 p-4">
             <Link
               href="/"
               className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
               onClick={() => setMobileOpen(false)}
+              aria-label={t("nav.home")}
             >
               <Wordmark />
             </Link>
@@ -220,7 +215,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Sidebar Content */}
           <nav className="flex-1 overflow-y-auto p-4">
             <div className="flex flex-col gap-1">
               <Link
@@ -260,7 +254,6 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* Sidebar Footer */}
           <div className="border-t border-slate-200 p-4">
             <div className="flex flex-col gap-2" onClick={() => setMobileOpen(false)}>
               <Button
@@ -285,7 +278,6 @@ export default function Navbar() {
         </div>
       </aside>
 
-      {/* Mobile Floating Bottom Navbar */}
       <nav
         className={[
           "nav:hidden",
