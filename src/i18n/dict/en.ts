@@ -66,48 +66,47 @@ const en = {
   pricing: {
     title: "Pricing",
     subtitle:
-      "Choose a plan aligned to your operating complexity. Upgrade as governance, automation, and integrations become essential.",
+      "Choose the plan that fits your stage. Pricing is shown in your regional billing currency when supported.",
     note:
-      "Note: This page is a marketing template. Final commercial terms should be reviewed with your team.",
+      "Displayed currency is determined from visitor location when available. Final billing and taxes may vary at checkout.",
     mostPopular: "Most popular",
+    perMonthFrom: "{price} / month",
   },
 
   pricingTiers: {
-    starter: {
-      name: "Starter",
-      priceLabel: "From $0",
-      description: "For small teams that need clarity and structure fast.",
+    free: {
+      name: "Free",
+      priceLabel: "Free",
+      description: "For individuals and very small teams getting started with structured financial operations.",
       highlights: {
-        0: "Cashflow planning and basic reporting",
-        1: "Core banking visibility",
-        2: "Role based access (standard)",
-        3: "CSV imports for quick onboarding",
+        0: "Core workspace access",
+        1: "Basic cashflow visibility",
+        2: "Standard onboarding flow",
+        3: "Start without payment method",
       },
       ctaLabel: "Get started",
     },
-    growth: {
-      name: "Growth",
-      priceLabel: "Custom",
-      description: "For operationally complex businesses scaling finance operations.",
+    starter: {
+      name: "Starter",
+      description: "For growing teams that need more structure, operational control, and recurring workflows.",
       highlights: {
-        0: "Cashflow, settlements, and transfers",
-        1: "Ledger structure and governance",
-        2: "Projects and department accountability",
-        3: "Automations and KPI dashboards",
+        0: "Cashflow planning and execution",
+        1: "Banking visibility and structured operations",
+        2: "Role-based access and operational ownership",
+        3: "Faster setup with imports and templates",
       },
-      ctaLabel: "Talk to sales",
+      ctaLabel: "Choose Starter",
     },
-    enterprise: {
-      name: "Enterprise",
-      priceLabel: "Custom",
-      description: "For teams requiring advanced controls, compliance, and integrations.",
+    pro: {
+      name: "Pro",
+      description: "For finance teams that need stronger governance, automation, and scalability.",
       highlights: {
-        0: "Advanced RBAC and auditability",
-        1: "Integration support and custom workflows",
-        2: "Multi org and multi entity operations",
-        3: "Priority onboarding and support",
+        0: "Advanced operating workflows",
+        1: "Governance, controls, and auditability",
+        2: "Projects, departments, and richer reporting",
+        3: "Built for more operational complexity",
       },
-      ctaLabel: "Contact us",
+      ctaLabel: "Choose Pro",
     },
   },
 
@@ -429,11 +428,11 @@ bankingPaymentsPage: {
       },
       visibility: {
         title: "Operational visibility",
-        desc: "Know what is pending, approved, executed, and failed—by owner, project, or department.",
+        desc: "Know what is pending, approved, executed, and failed - by owner, project, or department.",
       },
       compliance: {
         title: "Audit-ready records",
-        desc: "Each movement retains intent, evidence, and changes—so reviews do not depend on memory.",
+        desc: "Each movement retains intent, evidence, and changes - so reviews do not depend on memory.",
       },
     },
   },
@@ -463,7 +462,7 @@ bankingPaymentsPage: {
   howItWorks: {
     title: "How Banking & Payments works",
     subtitle:
-      "A simple flow connects account context, approval policies, and payment execution—then feeds reconciliation back into reporting.",
+      "A simple flow connects account context, approval policies, and payment execution - then feeds reconciliation back into reporting.",
     steps: {
       connect: {
         title: "Connect",
@@ -488,7 +487,7 @@ bankingPaymentsPage: {
 
   sideCard: {
     title: "Reduce risk without slowing down",
-    desc: "Standardize approvals and evidence so payments become predictable—even with more volume and more teams.",
+    desc: "Standardize approvals and evidence so payments become predictable - even with more volume and more teams.",
     linkPrimary: "See pricing",
     linkSecondary: "Create an account",
   },
@@ -532,7 +531,7 @@ bankingPaymentsPage: {
     },
     noteTitle: "Operational reliability, not bureaucracy",
     noteDesc:
-      "The goal is fewer mistakes and faster closes—by standardizing how payments are requested, approved, executed, and reconciled.",
+      "The goal is fewer mistakes and faster closes - by standardizing how payments are requested, approved, executed, and reconciled.",
   },
 
   governance: {
@@ -551,7 +550,7 @@ bankingPaymentsPage: {
 
   kpis: {
     title: "KPIs that improve payment quality",
-    subtitle: "Measure velocity and reliability—then remove bottlenecks systematically.",
+    subtitle: "Measure velocity and reliability - then remove bottlenecks systematically.",
     items: {
       approvalTime: { title: "Approval time", desc: "Time from request to approved and ready to pay." },
       paymentSuccess: { title: "Payment success rate", desc: "Percent executed without rework, retries, or exceptions." },
@@ -567,7 +566,7 @@ bankingPaymentsPage: {
     title: "Make payment execution predictable",
     subtitle:
       "Start with one rule: every payment is tied to an approved request, with clear ownership and a complete audit trail.",
-    trustLine: "Built to support governance, speed, and accountability—without forcing a rigid workflow.",
+    trustLine: "Built to support governance, speed, and accountability - without forcing a rigid workflow.",
     ctaPricing: "View pricing",
     ctaSignup: "Create an account",
     smallPrint: "You can start simple and evolve policies as you scale.",
@@ -596,11 +595,11 @@ spendSettlementsPage: {
   outcomes: {
     title: "Spend as an operating system, not scattered approvals",
     subtitle:
-      "Spend & Settlements helps teams execute spend with governance and speed—while keeping reporting consistent across projects and departments.",
+      "Spend & Settlements helps teams execute spend with governance and speed - while keeping reporting consistent across projects and departments.",
     items: {
       control: {
         title: "Controlled execution",
-        desc: "Requests and settlements follow roles, limits, and approvals—no ad-hoc decisions.",
+        desc: "Requests and settlements follow roles, limits, and approvals - no ad-hoc decisions.",
       },
       velocity: {
         title: "Faster cycles",
@@ -620,7 +619,7 @@ spendSettlementsPage: {
   howItWorks: {
     title: "How Spend & Settlements works",
     subtitle:
-      "A simple loop connects intent, approval, and settlement—then feeds reconciliation back into reporting.",
+      "A simple loop connects intent, approval, and settlement - then feeds reconciliation back into reporting.",
     steps: {
       request: {
         title: "Request",
@@ -628,7 +627,7 @@ spendSettlementsPage: {
       },
       approve: {
         title: "Approve",
-        desc: "Route approvals based on policy, limits, and responsibility—keeping the trail explicit.",
+        desc: "Route approvals based on policy, limits, and responsibility - keeping the trail explicit.",
       },
       settle: {
         title: "Settle",
@@ -665,7 +664,7 @@ spendSettlementsPage: {
 
   kpis: {
     title: "KPIs that improve spend execution",
-    subtitle: "Measure the bottlenecks and exception rate—then eliminate them systematically.",
+    subtitle: "Measure the bottlenecks and exception rate - then eliminate them systematically.",
     items: {
       cycleTime: { title: "Cycle time", desc: "Time from request created to settled with evidence." },
       exceptions: { title: "Exception rate", desc: "Percent of settlements that require rework or manual intervention." },
@@ -709,7 +708,7 @@ ledgerPage: {
     items: {
       structure: {
         title: "Clean structure",
-        desc: "A chart of accounts that maps to your operating model—projects, departments, and ownership.",
+        desc: "A chart of accounts that maps to your operating model - projects, departments, and ownership.",
       },
       consistency: {
         title: "Consistent classification",
@@ -970,7 +969,7 @@ departmentsPage: {
 
   features: {
     title: "Capabilities built for team governance",
-    subtitle: "Core features that make ownership, boundaries, and reporting operational—without spreadsheets.",
+    subtitle: "Core features that make ownership, boundaries, and reporting operational - without spreadsheets.",
     items: {
       budgets: {
         title: "Budgets and ownership",
@@ -1016,7 +1015,7 @@ crmPage: {
     badge: "CRM",
     title: "Connect pipeline signals to cashflow planning",
     subtitle:
-      "Turn your pipeline into cash visibility. Model probability, expected close dates, and payment terms so planning reflects what revenue is likely to happen—not just what you hope.",
+      "Turn your pipeline into cash visibility. Model probability, expected close dates, and payment terms so planning reflects what revenue is likely to happen - not just what you hope.",
     bullets: {
       b1: "Pipeline probabilities tied to forecasts",
       b2: "Expected cash timing by terms",
@@ -1091,7 +1090,7 @@ crmPage: {
       },
       scenarios: {
         title: "Forecast scenarios",
-        desc: "Model best/base/worst cases using probability and stage transitions—without manual spreadsheets.",
+        desc: "Model best/base/worst cases using probability and stage transitions - without manual spreadsheets.",
       },
       handoffs: {
         title: "Handoffs to execution",
@@ -1114,7 +1113,7 @@ crmPage: {
   bottom: {
     title: "Make pipeline signals operational",
     subtitle:
-      "Start with one rule: every opportunity has probability, expected timing, and terms—so planning is grounded in reality.",
+      "Start with one rule: every opportunity has probability, expected timing, and terms - so planning is grounded in reality.",
     ctaPricing: "View pricing",
     ctaSignup: "Create an account",
   },
@@ -1146,7 +1145,7 @@ inventoryPage: {
     items: {
       visibility: {
         title: "Operational visibility",
-        desc: "See what you have, where it is, and how it changes—without disconnected spreadsheets.",
+        desc: "See what you have, where it is, and how it changes - without disconnected spreadsheets.",
       },
       costing: {
         title: "Cost and margin clarity",
@@ -1238,7 +1237,7 @@ solutionsPage: {
   hero: {
     title: "Finance that runs like operations",
     subtitle:
-      "Spifex connects teams, workflows, and data so leaders can act with speed and certainty—without disconnected silos.",
+      "Spifex connects teams, workflows, and data so leaders can act with speed and certainty - without disconnected silos.",
     cards: {
       lifecycle: {
         title: "Full money lifecycle",
@@ -1363,7 +1362,7 @@ solutionsPage: {
       reconcile: {
         title: "Reconcile with evidence",
         desc:
-          "Close the loop by matching planned vs actual, attaching evidence, and resolving exceptions continuously—so month-end becomes a byproduct, not a crisis.",
+          "Close the loop by matching planned vs actual, attaching evidence, and resolving exceptions continuously - so month-end becomes a byproduct, not a crisis.",
         outputs:
           "Structured matching, exceptions workflow, clean close, and audit-ready trails.",
         controls:
@@ -1375,7 +1374,7 @@ solutionsPage: {
   teams: {
     title: "Solutions for the teams that run the business",
     subtitle:
-      "Spifex connects finance and operations by making ownership, classification, and workflows explicit—so each team gets clarity without separate systems.",
+      "Spifex connects finance and operations by making ownership, classification, and workflows explicit - so each team gets clarity without separate systems.",
     items: {
       cfo: {
         title: "CFO / Finance leadership",
@@ -1396,7 +1395,7 @@ solutionsPage: {
       operators: {
         title: "Operators / Team owners",
         desc:
-          "Run initiatives and teams with clear budgets, approvals, and performance signals—without losing speed.",
+          "Run initiatives and teams with clear budgets, approvals, and performance signals - without losing speed.",
         point1: "Department and project ownership for budgets and accountability.",
         point2: "Spend controls and approvals that match how teams actually operate.",
         point3: "KPIs and reporting that reflect delivery, not only accounting categories.",
@@ -1417,7 +1416,7 @@ solutionsPage: {
       cashVisibility: {
         title: "Cash visibility you can trust",
         desc:
-          "Planning becomes reliable when it is connected to execution events and continuously reconciled. You see what is planned, what is executed, and what changed—by owner, team, and initiative.",
+          "Planning becomes reliable when it is connected to execution events and continuously reconciled. You see what is planned, what is executed, and what changed - by owner, team, and initiative.",
         chip1: "Cashflow",
         chip1Href: "/products/cashflow",
         chip2: "CRM",
@@ -1437,7 +1436,7 @@ solutionsPage: {
           k3: "Time-to-close and reconciliation lag across teams.",
         },
         controlNote:
-          "Every movement is linked to planned intent or marked unplanned, with an owner and classification—so forecasting is auditable.",
+          "Every movement is linked to planned intent or marked unplanned, with an owner and classification - so forecasting is auditable.",
       },
 
       spendGovernance: {
@@ -1453,7 +1452,7 @@ solutionsPage: {
         bullets: {
           b1: "Role-based approvals and thresholds for requests, settlements, and transfers.",
           b2: "Budget ownership by department with variance and commitment visibility.",
-          b3: "Project attribution so spend maps to initiatives—not generic buckets.",
+          b3: "Project attribution so spend maps to initiatives - not generic buckets.",
           b4: "Standard settlement flows (partial, split, internal movement) with traceability.",
           b5: "Policy-driven controls that reduce rework and keep execution consistent.",
         },
@@ -1489,7 +1488,7 @@ solutionsPage: {
           k3: "Reconciliation lag by account and workflow type.",
         },
         controlNote:
-          "Payments are not just transactions—they are governed workflow events with approvals, history, and matching rules.",
+          "Payments are not just transactions - they are governed workflow events with approvals, history, and matching rules.",
       },
 
       closeAudit: {
@@ -1541,7 +1540,7 @@ solutionsPage: {
           k3: "Allocation completeness (percent attributed) across movements.",
         },
         controlNote:
-          "Accountability scales when every movement has a team owner and initiative context—not only a category label.",
+          "Accountability scales when every movement has a team owner and initiative context - not only a category label.",
       },
 
       connectedOps: {
@@ -1580,7 +1579,7 @@ solutionsPage: {
       reconciliation: {
         title: "Reconciliation",
         desc:
-          "Match planned intent to execution events, attach evidence, and resolve exceptions continuously—so closing becomes routine.",
+          "Match planned intent to execution events, attach evidence, and resolve exceptions continuously - so closing becomes routine.",
         point1: "Structured matching by account, counterparty, date window, and movement type.",
         point2: "Exception workflow: unplanned or mismatched items are visible, owned, and resolved.",
         point3: "Evidence and audit history: changes are tracked and reviewable.",
@@ -1596,7 +1595,7 @@ solutionsPage: {
       reportingKpis: {
         title: "Reporting & KPIs",
         desc:
-          "Measure what moves the business: accuracy, velocity, governance, and profitability—by owner and operational structure.",
+          "Measure what moves the business: accuracy, velocity, governance, and profitability - by owner and operational structure.",
         point1: "Dashboards built from operational primitives, not hand-built spreadsheets.",
         point2: "KPIs that connect outcomes to responsibility (teams, projects, departments).",
         point3: "Trend visibility: variance, lag, conversion, and allocation completeness over time.",
@@ -1622,7 +1621,7 @@ solutionsPage: {
       operate: {
         title: "Run workflows with controls",
         desc:
-          "Use approvals, settlements, transfers, and reconciliation as workflows—with policies and exceptions visible by owner.",
+          "Use approvals, settlements, transfers, and reconciliation as workflows - with policies and exceptions visible by owner.",
       },
       optimize: {
         title: "Optimize with KPIs",

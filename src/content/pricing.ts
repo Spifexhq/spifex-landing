@@ -1,6 +1,7 @@
-// src/content/pricing.ts
+import type { Locale } from "@/i18n/server";
+import type { SupportedCurrency } from "@/lib/location/billing-currency";
 
-export type PricingTierKey = "starter" | "growth" | "enterprise";
+export type PricingTierKey = "free" | "starter" | "pro";
 
 export type PricingTier = {
   key: PricingTierKey;
@@ -13,41 +14,81 @@ export type PricingTier = {
   featured?: boolean;
 };
 
-type TFn = (key: string) => string;
+type TFn = (key: string, vars?: Record<string, string | number>) => string;
+
+const PRICE_TABLE: Record<
+  Exclude<PricingTierKey, "free">,
+  Record<SupportedCurrency, number>
+> = {
+  starter: {
+    EUR: 15,
+    USD: 12,
+    BRL: 50,
+  },
+  pro: {
+    EUR: 27,
+    USD: 30,
+    BRL: 150,
+  },
+};
 
 function pickHighlights(t: TFn, baseKey: string, count: number): string[] {
   return Array.from({ length: count }, (_, i) => t(`${baseKey}.${i}`));
 }
 
-export function getPricingTiers(t: TFn): PricingTier[] {
+function formatMoney(locale: Locale, currency: SupportedCurrency, amount: number): string {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    minimumFractionDigits: currency === "BRL" ? 2 : 2,
+    maximumFractionDigits: currency === "BRL" ? 2 : 2,
+  }).format(amount);
+}
+
+function buildPaidPriceLabel(
+  t: TFn,
+  locale: Locale,
+  currency: SupportedCurrency,
+  amount: number
+): string {
+  return t("pricing.perMonthFrom", {
+    price: formatMoney(locale, currency, amount),
+  });
+}
+
+export function getPricingTiers(
+  t: TFn,
+  locale: Locale,
+  currency: SupportedCurrency
+): PricingTier[] {
   return [
+    {
+      key: "free",
+      name: t("pricingTiers.free.name"),
+      priceLabel: t("pricingTiers.free.priceLabel"),
+      description: t("pricingTiers.free.description"),
+      highlights: pickHighlights(t, "pricingTiers.free.highlights", 4),
+      ctaLabel: t("pricingTiers.free.ctaLabel"),
+      ctaHref: "https://dashboard.spifex.com/signup",
+    },
     {
       key: "starter",
       name: t("pricingTiers.starter.name"),
-      priceLabel: t("pricingTiers.starter.priceLabel"),
+      priceLabel: buildPaidPriceLabel(t, locale, currency, PRICE_TABLE.starter[currency]),
       description: t("pricingTiers.starter.description"),
       highlights: pickHighlights(t, "pricingTiers.starter.highlights", 4),
       ctaLabel: t("pricingTiers.starter.ctaLabel"),
       ctaHref: "https://dashboard.spifex.com/signup",
     },
     {
-      key: "growth",
-      name: t("pricingTiers.growth.name"),
-      priceLabel: t("pricingTiers.growth.priceLabel"),
-      description: t("pricingTiers.growth.description"),
-      highlights: pickHighlights(t, "pricingTiers.growth.highlights", 4),
-      ctaLabel: t("pricingTiers.growth.ctaLabel"),
+      key: "pro",
+      name: t("pricingTiers.pro.name"),
+      priceLabel: buildPaidPriceLabel(t, locale, currency, PRICE_TABLE.pro[currency]),
+      description: t("pricingTiers.pro.description"),
+      highlights: pickHighlights(t, "pricingTiers.pro.highlights", 4),
+      ctaLabel: t("pricingTiers.pro.ctaLabel"),
       ctaHref: "https://dashboard.spifex.com/signup",
       featured: true,
-    },
-    {
-      key: "enterprise",
-      name: t("pricingTiers.enterprise.name"),
-      priceLabel: t("pricingTiers.enterprise.priceLabel"),
-      description: t("pricingTiers.enterprise.description"),
-      highlights: pickHighlights(t, "pricingTiers.enterprise.highlights", 4),
-      ctaLabel: t("pricingTiers.enterprise.ctaLabel"),
-      ctaHref: "https://dashboard.spifex.com/signup",
     },
   ];
 }

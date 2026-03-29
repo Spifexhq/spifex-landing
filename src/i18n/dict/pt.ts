@@ -1,3 +1,4 @@
+// src\i18n\dict\pt.ts
 const pt = {
   common: {
     learnMore: "Saiba mais",
@@ -66,48 +67,47 @@ const pt = {
   pricing: {
     title: "Preços",
     subtitle:
-      "Escolha um plano alinhado à sua complexidade operacional. Evolua conforme governança, automação e integrações se tornam essenciais.",
+      "Escolha o plano ideal para a fase da sua operação. Os preços são exibidos na moeda regional suportada para o visitante.",
     note:
-      "Nota: esta página é um template de marketing. Termos comerciais finais devem ser revisados com sua equipe.",
+      "A moeda exibida é definida com base na localização do visitante quando disponível. Cobrança final e impostos podem variar no checkout.",
     mostPopular: "Mais popular",
+    perMonthFrom: "{price} / mês",
   },
 
   pricingTiers: {
-    starter: {
-      name: "Starter",
-      priceLabel: "A partir de US$ 0",
-      description: "Para times pequenos que precisam de clareza e estrutura rapidamente.",
+    free: {
+      name: "Free",
+      priceLabel: "Grátis",
+      description: "Para pessoas e equipas muito pequenas que estão a começar a estruturar a operação financeira.",
       highlights: {
-        0: "Planejamento de cashflow e relatórios básicos",
-        1: "Visibilidade bancária essencial",
-        2: "Acesso por função (padrão)",
-        3: "Importação CSV para onboarding rápido",
+        0: "Acesso base ao workspace",
+        1: "Visibilidade básica de cashflow",
+        2: "Fluxo padrão de onboarding",
+        3: "Comece sem método de pagamento",
       },
       ctaLabel: "Começar",
     },
-    growth: {
-      name: "Growth",
-      priceLabel: "Sob consulta",
-      description: "Para operações mais complexas escalando a rotina financeira.",
+    starter: {
+      name: "Starter",
+      description: "Para equipas em crescimento que precisam de mais estrutura, controlo operacional e rotinas recorrentes.",
       highlights: {
-        0: "Cashflow, liquidações e transferências",
-        1: "Estrutura de ledger e governança",
-        2: "Responsabilidade por projetos e departamentos",
-        3: "Automações e dashboards de KPIs",
+        0: "Planeamento e execução de cashflow",
+        1: "Visibilidade bancária e operação estruturada",
+        2: "Acesso por função e ownership operacional",
+        3: "Setup mais rápido com importações e templates",
       },
-      ctaLabel: "Falar com vendas",
+      ctaLabel: "Escolher Starter",
     },
-    enterprise: {
-      name: "Enterprise",
-      priceLabel: "Sob consulta",
-      description: "Para times que exigem controles avançados, compliance e integrações.",
+    pro: {
+      name: "Pro",
+      description: "Para equipas financeiras que exigem mais governança, automação e escala.",
       highlights: {
-        0: "RBAC avançado e trilhas de auditoria",
-        1: "Integrações e workflows sob medida",
-        2: "Operação multi organização e multi entidade",
-        3: "Onboarding e suporte prioritários",
+        0: "Workflows operacionais avançados",
+        1: "Governança, controlos e auditabilidade",
+        2: "Projetos, departamentos e reporting mais robusto",
+        3: "Preparado para maior complexidade operacional",
       },
-      ctaLabel: "Falar conosco",
+      ctaLabel: "Escolher Pro",
     },
   },
 
@@ -430,11 +430,11 @@ bankingPaymentsPage: {
       },
       visibility: {
         title: "Visibilidade operacional",
-        desc: "Saiba o que está pendente, aprovado, executado e com falha—por responsável, projeto ou departamento.",
+        desc: "Saiba o que está pendente, aprovado, executado e com falha - por responsável, projeto ou departamento.",
       },
       compliance: {
         title: "Registros prontos para auditoria",
-        desc: "Cada movimento mantém intenção, evidências e mudanças—sem depender de memória ou planilhas.",
+        desc: "Cada movimento mantém intenção, evidências e mudanças - sem depender de memória ou planilhas.",
       },
     },
   },
@@ -1240,7 +1240,7 @@ solutionsPage: {
   hero: {
     title: "Finanças que rodam como operação",
     subtitle:
-      "O Spifex conecta times, workflows e dados para que líderes ajam com velocidade e certeza—sem silos desconectados.",
+      "O Spifex conecta times, workflows e dados para que líderes ajam com velocidade e certeza - sem silos desconectados.",
     cards: {
       lifecycle: {
         title: "Ciclo completo do dinheiro",
@@ -1365,7 +1365,7 @@ solutionsPage: {
       reconcile: {
         title: "Conciliar com evidência",
         desc:
-          "Feche o ciclo casando planejado vs realizado, anexando evidências e resolvendo exceções continuamente—para que o fim do mês não vire crise.",
+          "Feche o ciclo casando planejado vs realizado, anexando evidências e resolvendo exceções continuamente - para que o fim do mês não vire crise.",
         outputs:
           "Matching estruturado, workflow de exceções, fechamento limpo e trilha para auditoria.",
         controls:
@@ -1377,7 +1377,7 @@ solutionsPage: {
   teams: {
     title: "Soluções para os times que rodam o negócio",
     subtitle:
-      "O Spifex conecta finanças e operação explicitando ownership, classificação e workflows—cada time ganha clareza sem sistemas separados.",
+      "O Spifex conecta finanças e operação explicitando ownership, classificação e workflows - cada time ganha clareza sem sistemas separados.",
     items: {
       cfo: {
         title: "CFO / Liderança financeira",
@@ -1398,7 +1398,7 @@ solutionsPage: {
       operators: {
         title: "Operadores / Responsáveis por times",
         desc:
-          "Rode iniciativas e times com budgets, aprovações e sinais de performance claros—sem perder velocidade.",
+          "Rode iniciativas e times com budgets, aprovações e sinais de performance claros - sem perder velocidade.",
         point1: "Ownership de departamento e projeto para budgets e accountability.",
         point2: "Controles e aprovações que respeitam o modo real de operar dos times.",
         point3: "KPIs e reporting que refletem entrega, não só categorias contábeis.",
@@ -1419,7 +1419,7 @@ solutionsPage: {
       cashVisibility: {
         title: "Visibilidade de caixa confiável",
         desc:
-          "Planejamento só vira confiável quando está conectado a eventos de execução e conciliado continuamente. Você vê o planejado, o executado e o que mudou—por responsável, time e iniciativa.",
+          "Planejamento só vira confiável quando está conectado a eventos de execução e conciliado continuamente. Você vê o planejado, o executado e o que mudou - por responsável, time e iniciativa.",
         chip1: "Cashflow",
         chip1Href: "/products/cashflow",
         chip2: "CRM",
@@ -1439,7 +1439,7 @@ solutionsPage: {
           k3: "Tempo de fechamento e atraso de conciliação entre times.",
         },
         controlNote:
-          "Todo movimento liga a uma intenção planejada ou é marcado como não planejado, com owner e classificação—previsão vira auditável.",
+          "Todo movimento liga a uma intenção planejada ou é marcado como não planejado, com owner e classificação - previsão vira auditável.",
       },
 
       spendGovernance: {
@@ -1491,7 +1491,7 @@ solutionsPage: {
           k3: "Atraso de conciliação por conta e tipo de workflow.",
         },
         controlNote:
-          "Pagamentos não são só transações—são eventos de workflow governados, com aprovações, histórico e regras de matching.",
+          "Pagamentos não são só transações - são eventos de workflow governados, com aprovações, histórico e regras de matching.",
       },
 
       closeAudit: {
@@ -1582,7 +1582,7 @@ solutionsPage: {
       reconciliation: {
         title: "Reconciliation",
         desc:
-          "Case intenção planejada com eventos de execução, anexe evidências e resolva exceções continuamente—fechamento vira rotina.",
+          "Case intenção planejada com eventos de execução, anexe evidências e resolva exceções continuamente - fechamento vira rotina.",
         point1: "Matching estruturado por conta, contraparte, janela de data e tipo de movimento.",
         point2: "Workflow de exceção: itens não planejados/descasados ficam visíveis, com owner e resolução.",
         point3: "Evidências e trilha: mudanças são rastreadas e revisáveis.",
@@ -1598,7 +1598,7 @@ solutionsPage: {
       reportingKpis: {
         title: "Relatórios & KPIs",
         desc:
-          "Meça o que move o negócio: acurácia, velocidade, governança e rentabilidade—por owner e estrutura operacional.",
+          "Meça o que move o negócio: acurácia, velocidade, governança e rentabilidade - por owner e estrutura operacional.",
         point1: "Dashboards construídos de primitivas operacionais, não planilhas manuais.",
         point2: "KPIs conectando resultado a responsabilidade (times, projetos, departamentos).",
         point3: "Visão de tendência: variância, lag, conversão e completude ao longo do tempo.",
@@ -1624,7 +1624,7 @@ solutionsPage: {
       operate: {
         title: "Operar workflows com controles",
         desc:
-          "Use aprovações, liquidações, transferências e conciliação como workflows—com políticas e exceções visíveis por owner.",
+          "Use aprovações, liquidações, transferências e conciliação como workflows - com políticas e exceções visíveis por owner.",
       },
       optimize: {
         title: "Otimizar com KPIs",
