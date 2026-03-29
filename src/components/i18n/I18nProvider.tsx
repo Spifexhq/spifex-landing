@@ -1,13 +1,13 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import React, { createContext, useContext, useMemo } from "react";
 import { createT, type Messages } from "@/i18n/translator";
 import type { Locale } from "@/i18n/server";
 
 type I18nContextValue = {
   locale: Locale;
   messages: Messages;
-  t: ReturnType<typeof createT>;
+  t: (key: string, vars?: Record<string, string | number>) => string;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -21,22 +21,14 @@ export function I18nProvider({
   messages: Messages;
   children: React.ReactNode;
 }) {
-  const value = useMemo(
-    () => ({
-      locale,
-      messages,
-      t: createT(messages),
-    }),
-    [locale, messages]
-  );
+  const t = useMemo(() => createT(messages), [messages]);
+  const value = useMemo(() => ({ locale, messages, t }), [locale, messages, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
-export function useI18n() {
+export function useT() {
   const ctx = useContext(I18nContext);
-  if (!ctx) {
-    throw new Error("useI18n must be used within I18nProvider");
-  }
-  return ctx;
+  if (!ctx) throw new Error("useT must be used inside I18nProvider");
+  return ctx.t;
 }
