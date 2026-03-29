@@ -26,6 +26,18 @@ function normalizeCountry(value?: string | null): string | null {
   return /^[A-Z]{2}$/.test(v) ? v : null;
 }
 
+function getCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+
+  const cookie = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${name}=`));
+
+  if (!cookie) return null;
+
+  return decodeURIComponent(cookie.split("=")[1] || "");
+}
+
 function setCookie(name: string, value: string, maxAgeSeconds: number): void {
   if (typeof document === "undefined") return;
 
@@ -49,7 +61,9 @@ function detectLocaleFromBrowser(): Locale {
   try {
     const browserLocale = Intl.DateTimeFormat().resolvedOptions().locale;
     if (browserLocale) candidates.push(browserLocale);
-  } catch {}
+  } catch {
+    // ignore
+  }
 
   for (const raw of candidates) {
     const value = raw.toLowerCase();
@@ -72,11 +86,25 @@ function getMessages(locale: Locale): Messages {
 }
 
 export default function PricingPage() {
+  /**
+   * Keep initial render stable between server and client:
+   * - locale starts as "en"
+   * - country starts as null through useAutoCountry initial state
+   * This prevents hydration mismatch.
+   */
   const [locale, setLocale] = useState<Locale>("en");
+  const [cookieCountryDebug, setCookieCountryDebug] = useState<string | null>(null);
+  const [browserLocaleDebug, setBrowserLocaleDebug] = useState<string>("en");
 
   const { country: detectedCountryRaw, isLoading } = useAutoCountry();
   const detectedCountry = normalizeCountry(detectedCountryRaw);
 
+  /**
+   * IMPORTANT:
+   * Pricing uses ONLY detectedCountry.
+   * Cookie is NOT used as a pricing input.
+   * So editing cookies manually does not change prices.
+   */
   const effectiveCountry = detectedCountry;
   const currency = currencyForCountry(effectiveCountry);
 
@@ -88,26 +116,48 @@ export default function PricingPage() {
     [t, locale, currency]
   );
 
+  /**
+   * Resolve locale after mount, asynchronously.
+   * Also persist locale cookie for consistency across the site.
+   */
   useEffect(() => {
     const id = window.setTimeout(() => {
       const resolvedLocale = detectLocaleFromBrowser();
       setLocale((prev) => (prev === resolvedLocale ? prev : resolvedLocale));
+      setBrowserLocaleDebug(resolvedLocale);
       setCookie(LOCALE_COOKIE_NAME, resolvedLocale, 60 * 60 * 24 * 365);
     }, 0);
 
     return () => window.clearTimeout(id);
   }, []);
 
+  /**
+   * Persist detected country to cookie only as a passive artifact/debug aid.
+   * It is NOT used to calculate pricing.
+   * So changing the cookie manually will not affect the displayed prices.
+   */
   useEffect(() => {
     if (isLoading) return;
     if (!detectedCountry) return;
 
     const id = window.setTimeout(() => {
       setCookie(COUNTRY_COOKIE_NAME, detectedCountry, 60 * 60 * 24 * 30);
+      setCookieCountryDebug(getCookie(COUNTRY_COOKIE_NAME));
     }, 0);
 
     return () => window.clearTimeout(id);
   }, [isLoading, detectedCountry]);
+
+  /**
+   * Read cookie only for debug display, never for pricing.
+   */
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      setCookieCountryDebug(getCookie(COUNTRY_COOKIE_NAME));
+    }, 0);
+
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
     <div className="py-14 sm:py-16">
@@ -119,6 +169,38 @@ export default function PricingPage() {
 
           <p className="mt-3 text-slate-600">{t("pricing.subtitle")}</p>
           <p className="mt-2 text-xs text-slate-500">{t("pricing.note")}</p>
+
+          <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+            <div>
+              <span className="font-semibold">Debug country:</span>{" "}
+              {effectiveCountry ?? "not detected"}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">Debug currency:</span> {currency}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">Debug locale:</span> {locale}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">browserDetectedCountry:</span>{" "}
+              {detectedCountry ?? "null"}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">cookieCountry:</span>{" "}
+              {cookieCountryDebug ?? "null"}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">browserLocaleDetected:</span>{" "}
+              {browserLocaleDebug}
+            </div>
+            <div className="mt-1">
+              <span className="font-semibold">countryDetectionLoading:</span>{" "}
+              {String(isLoading)}
+            </div>
+            <div className="mt-2 text-[11px] text-amber-800">
+              Cookie changes do not affect pricing. Pricing is based only on detected country.
+            </div>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
