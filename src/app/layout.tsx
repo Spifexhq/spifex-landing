@@ -26,7 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: base,
     title,
     description,
-
     openGraph: {
       type: "website",
       url: "/",
@@ -42,14 +41,12 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-
     twitter: {
-      card: "summary", // if you later add 1200x630, switch to "summary_large_image"
+      card: "summary",
       title,
       description,
       images: [OG_IMAGE_PATH],
     },
-
     icons: {
       icon: "/favicon.ico",
       apple: "/logo192.png",
@@ -57,18 +54,22 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { locale, messages, t } = await getServerI18n();
 
   return (
     <html lang={locale} className="h-full">
-      <body className={`${inter.className} min-h-screen overflow-y-auto no-scrollbar nav:overflow-y-visible nav:[scrollbar-width:auto]`}>
+      <body
+        className={`${inter.className} min-h-screen overflow-y-auto no-scrollbar nav:overflow-y-visible nav:[scrollbar-width:auto]`}
+      >
         <I18nProvider locale={locale} messages={messages}>
-          {/* Page shell */}
           <div className="min-h-screen flex flex-col">
             <Navbar />
 
-            {/* Grow to fill remaining height */}
             <main className="flex-1">{children}</main>
 
             <footer className="border-t border-slate-200 bg-white pb-[calc(1rem+env(safe-area-inset-bottom)+5rem)] nav:pb-0">
