@@ -1,5 +1,5 @@
 import Container from "@/components/ui/Container";
-import { getServerI18n } from "@/i18n/server";
+import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta, renderMdxBySlug } from "@/lib/content/mdx";
 import { notFound } from "next/navigation";
 
@@ -15,12 +15,13 @@ type PageProps = {
 };
 
 export default async function LegalDocPage({ params }: PageProps) {
-  const { slug } = await params; // Next 16: params is async
+  const { slug } = await params;
   const { locale } = await getServerI18n();
+  const contentLocale = toContentLocale(locale);
 
   const doc = await (async () => {
     try {
-      return await renderMdxBySlug("legal", locale, slug);
+      return await renderMdxBySlug("legal", contentLocale, slug);
     } catch {
       return null;
     }

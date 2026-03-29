@@ -1,13 +1,14 @@
 // src/app/legal/page.tsx
 import Container from "@/components/ui/Container";
 import Link from "next/link";
-import { getServerI18n } from "@/i18n/server";
+import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta } from "@/lib/content/mdx";
 import LegalToc from "./LegalToc";
 
 export default async function LegalHubPage() {
   const { locale, t } = await getServerI18n();
-  const docs = await listMdxMeta("legal", locale);
+  const contentLocale = toContentLocale(locale);
+  const docs = await listMdxMeta("legal", contentLocale);
 
   return (
     <div className="py-14 sm:py-16">

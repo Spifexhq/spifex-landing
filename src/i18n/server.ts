@@ -5,6 +5,11 @@ const LOCALE_COOKIE_NAME = "spifex_locale";
 const COUNTRY_COOKIE_NAME = "spifex_country";
 
 export type Locale = "en" | "pt" | "pt-BR" | "fr" | "de";
+export type ContentLocale = "en" | "pt";
+
+export function toContentLocale(locale: Locale): ContentLocale {
+  return locale === "pt" || locale === "pt-BR" ? "pt" : "en";
+}
 
 export async function getMessages(locale: Locale): Promise<Messages> {
   if (locale === "pt") return (await import("./dict/pt")).default;

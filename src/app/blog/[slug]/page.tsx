@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import Link from "next/link";
-import { getServerI18n } from "@/i18n/server";
+import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta, renderMdxBySlug } from "@/lib/content/mdx";
 import { notFound } from "next/navigation";
 
@@ -17,18 +17,17 @@ type PageProps = {
 
 function formatDateISO(iso?: string) {
   if (!iso) return null;
-  // Keep it simple, stable, and locale-agnostic
-  // If you want locale-aware formatting, we can format using Intl + locale.
   return iso;
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const { locale, t } = await getServerI18n();
+  const contentLocale = toContentLocale(locale);
 
   const post = await (async () => {
     try {
-      return await renderMdxBySlug("blog", locale, slug);
+      return await renderMdxBySlug("blog", contentLocale, slug);
     } catch {
       return null;
     }
@@ -36,7 +35,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   if (!post) return notFound();
 
-  const seriesLabel = post.meta.tags?.[0] ?? t("blog.seriesDefault"); // simple + future-proof
+  const seriesLabel = post.meta.tags?.[0] ?? t("blog.seriesDefault");
   const author = post.meta.author ?? "Spifex";
   const updated = formatDateISO(post.meta.updatedAt);
   const readingTime = post.meta.readingTime;
@@ -56,7 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span className="px-2">›</span>
               <span className="text-white/80">{t("blog.breadcrumbArticles")}</span>
               <span className="px-2">›</span>
-              <span className="inline-block align-bottom min-w-0 max-w-[280px] truncate text-white/90 sm:max-w-[300px]">
+              <span className="inline-block align-bottom min-w-0 max-w-70 truncate text-white/90 sm:max-w-75">
                 {post.meta.title}
               </span>
             </nav>
