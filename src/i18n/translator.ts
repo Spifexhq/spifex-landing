@@ -1,5 +1,3 @@
-// src\i18n\translator.ts
-
 export type Messages = Record<string, any>;
 
 function getByPath(obj: any, path: string) {

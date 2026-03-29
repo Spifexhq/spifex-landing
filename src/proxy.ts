@@ -1,29 +1,21 @@
-// src\proxy.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const COOKIE_NAME = "spifex_locale";
-const SUPPORTED = new Set(["en", "pt", "pt-BR", "fr", "de"]);
+const SUPPORTED = new Set(["en", "pt"]);
 
-function detectLocale(req: NextRequest): "en" | "pt" | "pt-BR" | "fr" | "de" {
+function detectLocale(req: NextRequest): "en" | "pt" {
+  // Optional override: ?lang=pt or ?lang=en
   const langParam = req.nextUrl.searchParams.get("lang");
-  if (langParam && SUPPORTED.has(langParam)) {
-    return langParam as "en" | "pt" | "pt-BR" | "fr" | "de";
-  }
+  if (langParam && SUPPORTED.has(langParam)) return langParam as "en" | "pt";
 
   const cookie = req.cookies.get(COOKIE_NAME)?.value;
-  if (cookie && SUPPORTED.has(cookie)) {
-    return cookie as "en" | "pt" | "pt-BR" | "fr" | "de";
-  }
+  if (cookie && SUPPORTED.has(cookie)) return cookie as "en" | "pt";
 
   const header = req.headers.get("accept-language") || "";
+  // Simple detection: if browser prefers Portuguese, use pt; else en
   const lowered = header.toLowerCase();
-
-  if (lowered.startsWith("pt-br") || lowered.includes("pt-br")) return "pt-BR";
   if (lowered.startsWith("pt") || lowered.includes("pt-")) return "pt";
-  if (lowered.startsWith("fr") || lowered.includes("fr-")) return "fr";
-  if (lowered.startsWith("de") || lowered.includes("de-")) return "de";
-
   return "en";
 }
 
