@@ -4,5 +4,4 @@ export type {
   InputKind,
   InputVariant,
   InputSize,
-  AmountDisplay,
 } from "./Input.types";
