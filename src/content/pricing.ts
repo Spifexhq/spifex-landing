@@ -40,8 +40,8 @@ function formatMoney(locale: Locale, currency: SupportedCurrency, amount: number
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
-    minimumFractionDigits: currency === "BRL" ? 2 : 2,
-    maximumFractionDigits: currency === "BRL" ? 2 : 2,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(amount);
 }
 
@@ -54,6 +54,13 @@ function buildPaidPriceLabel(
   return t("pricing.perMonthFrom", {
     price: formatMoney(locale, currency, amount),
   });
+}
+
+function buildSignupHref(key: PricingTierKey): string {
+  if (key === "free") {
+    return "/signup?intent=signup&plan=free";
+  }
+  return `/signup?intent=subscribe&plan=${key}`;
 }
 
 export function getPricingTiers(
@@ -69,7 +76,7 @@ export function getPricingTiers(
       description: t("pricingTiers.free.description"),
       highlights: pickHighlights(t, "pricingTiers.free.highlights", 4),
       ctaLabel: t("pricingTiers.free.ctaLabel"),
-      ctaHref: "https://dashboard.spifex.com/signup",
+      ctaHref: buildSignupHref("free"),
     },
     {
       key: "starter",
@@ -78,7 +85,7 @@ export function getPricingTiers(
       description: t("pricingTiers.starter.description"),
       highlights: pickHighlights(t, "pricingTiers.starter.highlights", 4),
       ctaLabel: t("pricingTiers.starter.ctaLabel"),
-      ctaHref: "https://dashboard.spifex.com/signup",
+      ctaHref: buildSignupHref("starter"),
     },
     {
       key: "pro",
@@ -87,7 +94,7 @@ export function getPricingTiers(
       description: t("pricingTiers.pro.description"),
       highlights: pickHighlights(t, "pricingTiers.pro.highlights", 4),
       ctaLabel: t("pricingTiers.pro.ctaLabel"),
-      ctaHref: "https://dashboard.spifex.com/signup",
+      ctaHref: buildSignupHref("pro"),
       featured: true,
     },
   ];

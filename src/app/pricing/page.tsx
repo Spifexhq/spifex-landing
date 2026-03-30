@@ -1,4 +1,3 @@
-// src\app\pricing\page.tsx
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -72,27 +71,48 @@ function getMessages(locale: Locale): Messages {
   return en;
 }
 
+function PricingCardSkeleton() {
+  return (
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 animate-pulse">
+      <div className="flex items-start justify-between gap-4">
+        <div className="w-full">
+          <div className="h-4 w-24 rounded bg-slate-200" />
+          <div className="mt-3 h-9 w-32 rounded bg-slate-200" />
+        </div>
+        <div className="h-7 w-24 rounded-full bg-slate-200" />
+      </div>
+
+      <div className="mt-4 h-4 w-full rounded bg-slate-200" />
+      <div className="mt-2 h-4 w-5/6 rounded bg-slate-200" />
+
+      <div className="mt-6 space-y-3">
+        <div className="h-4 w-full rounded bg-slate-200" />
+        <div className="h-4 w-11/12 rounded bg-slate-200" />
+        <div className="h-4 w-10/12 rounded bg-slate-200" />
+        <div className="h-4 w-9/12 rounded bg-slate-200" />
+      </div>
+
+      <div className="mt-8 h-10 w-full rounded-xl bg-slate-200" />
+    </div>
+  );
+}
+
 export default function PricingPage() {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale | null>(null);
 
   const { country: detectedCountryRaw, isLoading } = useAutoCountry();
   const detectedCountry = normalizeCountry(detectedCountryRaw);
 
-  const effectiveCountry = detectedCountry;
-  const currency = currencyForCountry(effectiveCountry);
-
-  const messages = useMemo<Messages>(() => getMessages(locale), [locale]);
-  const t = useMemo(() => createT(messages), [messages]);
-
-  const tiers = useMemo<PricingTier[]>(
-    () => getPricingTiers(t, locale, currency),
-    [t, locale, currency]
+  const messages = useMemo<Messages>(
+    () => getMessages(locale ?? "en"),
+    [locale]
   );
+  const t = useMemo(() => createT(messages), [messages]);
 
   useEffect(() => {
     const id = window.setTimeout(() => {
       const resolvedLocale = detectLocaleFromBrowser();
-      setLocale((prev) => (prev === resolvedLocale ? prev : resolvedLocale));
+      setLocale(resolvedLocale);
       setCookie(LOCALE_COOKIE_NAME, resolvedLocale, 60 * 60 * 24 * 365);
     }, 0);
 
@@ -110,6 +130,18 @@ export default function PricingPage() {
     return () => window.clearTimeout(id);
   }, [isLoading, detectedCountry]);
 
+  const isReady = locale !== null && !isLoading && !!detectedCountry;
+
+  const currency = useMemo(() => {
+    if (!isReady || !detectedCountry) return null;
+    return currencyForCountry(detectedCountry);
+  }, [isReady, detectedCountry]);
+
+  const tiers = useMemo<PricingTier[]>(() => {
+    if (!locale || !currency) return [];
+    return getPricingTiers(t, locale, currency);
+  }, [t, locale, currency]);
+
   return (
     <div className="py-14 sm:py-16">
       <Container>
@@ -123,58 +155,64 @@ export default function PricingPage() {
         </div>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {tiers.map((tier) => (
-            <div
-              key={tier.key}
-              className={cn(
-                "rounded-3xl border bg-white p-6",
-                tier.featured ? "border-slate-900 shadow-sm" : "border-slate-200"
-              )}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <div className="text-sm font-semibold text-slate-900">
-                    {tier.name}
+          {!isReady
+            ? Array.from({ length: 3 }).map((_, i) => (
+                <PricingCardSkeleton key={i} />
+              ))
+            : tiers.map((tier) => (
+                <div
+                  key={tier.key}
+                  className={cn(
+                    "rounded-3xl border bg-white p-6",
+                    tier.featured
+                      ? "border-slate-900 shadow-sm"
+                      : "border-slate-200"
+                  )}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-sm font-semibold text-slate-900">
+                        {tier.name}
+                      </div>
+                      <div className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
+                        {tier.priceLabel}
+                      </div>
+                    </div>
+
+                    {tier.featured && (
+                      <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+                        {t("pricing.mostPopular")}
+                      </div>
+                    )}
                   </div>
-                  <div className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
-                    {tier.priceLabel}
+
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {tier.description}
+                  </p>
+
+                  <ul className="mt-6 space-y-2 text-sm text-slate-700">
+                    {tier.highlights.map((highlight) => (
+                      <li key={highlight} className="flex gap-2">
+                        <span
+                          className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900"
+                          aria-hidden
+                        />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8">
+                    <Button
+                      href={tier.ctaHref}
+                      variant={tier.featured ? "primary" : "secondary"}
+                      className="w-full"
+                    >
+                      {tier.ctaLabel}
+                    </Button>
                   </div>
                 </div>
-
-                {tier.featured && (
-                  <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
-                    {t("pricing.mostPopular")}
-                  </div>
-                )}
-              </div>
-
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {tier.description}
-              </p>
-
-              <ul className="mt-6 space-y-2 text-sm text-slate-700">
-                {tier.highlights.map((highlight) => (
-                  <li key={highlight} className="flex gap-2">
-                    <span
-                      className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900"
-                      aria-hidden
-                    />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8">
-                <Button
-                  href={tier.ctaHref}
-                  variant={tier.featured ? "primary" : "secondary"}
-                  className="w-full"
-                >
-                  {tier.ctaLabel}
-                </Button>
-              </div>
-            </div>
-          ))}
+              ))}
         </div>
       </Container>
     </div>
