@@ -1,0 +1,321 @@
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import Container from "@/components/ui/Container";
+import { Icon } from "@/components/ui/Icon";
+import { Section, SectionHeading } from "@/components/marketing/Section";
+import { TrustStrip } from "@/components/marketing/TrustStrip";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ProductPreview } from "@/components/products/ProductPreview";
+import { PLAN_CATALOG } from "@/content/plans";
+import { getProductLink } from "@/content/products";
+import type { ProductPageContent } from "@/content/product-pages";
+import { getServerI18n } from "@/i18n/server";
+import { currencyForCountry } from "@/lib/location/billing-currency";
+import { breadcrumbSchema, softwareApplicationSchema } from "@/lib/seo/schema";
+
+export async function ProductPage({ content }: { content: ProductPageContent }) {
+  const { t, locale, country } = await getServerI18n();
+  const badge = content.name;
+  const plans = PLAN_CATALOG.business;
+  const currency = currencyForCountry(country);
+  const capabilityColumns = content.copy.capabilities.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-2";
+
+  const formatPrice = (amount: number) =>
+    new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency,
+      minimumFractionDigits: amount % 1 === 0 ? 0 : 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+
+  return (
+    <main className="bg-white">
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: badge, path: content.href },
+          ]),
+          softwareApplicationSchema(),
+        ]}
+      />
+
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[var(--canvas)]">
+        <div
+          className="pointer-events-none absolute -right-32 -top-40 h-[420px] w-[420px] rounded-full bg-[var(--brand)]/[0.07] blur-3xl"
+          aria-hidden="true"
+        />
+        <Container className="relative pb-12 pt-20 nav:pt-16 lg:pb-20 lg:pt-20">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[var(--muted)]">
+            <Link href="/" className="hover:text-[var(--ink)]">
+              {t("nav.home")}
+            </Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-[var(--ink)]">{badge}</span>
+          </nav>
+
+          <div className="mt-7 grid gap-10 lg:grid-cols-[1.02fr_.98fr] lg:items-center lg:gap-14">
+            <div>
+              <h1 className="text-balance mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--ink)] sm:text-5xl lg:text-[3.4rem]">
+                {content.copy.title}
+              </h1>
+              <p className="text-pretty mt-5 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg sm:leading-8">
+                {content.copy.subtitle}
+              </p>
+
+              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                {content.copy.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex items-start gap-2 text-[13px] leading-6 text-[var(--ink-soft)]"
+                  >
+                    <Check
+                      size={14}
+                      className="mt-1 shrink-0 text-[var(--brand-strong)]"
+                      aria-hidden="true"
+                    />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+                <Button
+                  href="/signup?intent=signup&product=business&plan=free"
+                  dataCta={`${content.key}-hero-start`}
+                >
+                  {t("productPages.startFree")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <Button
+                  href="/pricing?product=business"
+                  variant="secondary"
+                  dataCta={`${content.key}-hero-pricing`}
+                >
+                  {t("productPages.seePricing")}
+                </Button>
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[var(--muted)]">
+                <span>{t("productPages.heroNote")}</span>
+              </div>
+            </div>
+
+            <ProductPreview productKey={content.key} preview={content.preview} />
+          </div>
+        </Container>
+      </section>
+
+      <TrustStrip />
+
+      {/* Outcomes */}
+      <Section tone="white">
+        <Container>
+          <SectionHeading
+            eyebrow={t("productPages.outcomesEyebrow")}
+            title={t("productPages.outcomesTitle")}
+            description={t("productPages.outcomesSubtitle")}
+          />
+          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+            {content.copy.outcomes.map((outcome, index) => (
+              <Card key={outcome.title} className="p-6">
+                <span className="text-[11px] font-semibold tabular-nums text-[var(--brand-strong)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 text-[15px] font-semibold text-[var(--ink)]">
+                  {outcome.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{outcome.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Workflow */}
+      <Section tone="canvas">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
+            <SectionHeading
+              eyebrow={t("productPages.howEyebrow")}
+              title={t("productPages.howTitle")}
+              description={t("productPages.howSubtitle")}
+            />
+            <ol className="grid gap-3">
+              {content.copy.steps.map((step, index) => (
+                <li
+                  key={step.title}
+                  className="flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-5"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ink)] text-xs font-semibold text-white">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-[15px] font-semibold text-[var(--ink)]">{step.title}</h3>
+                    <p className="mt-1.5 text-sm leading-6 text-[var(--muted)]">{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Capabilities */}
+      <Section tone="white">
+        <Container>
+          <SectionHeading
+            eyebrow={t("productPages.capabilitiesEyebrow")}
+            title={content.copy.capabilitiesTitle}
+            description={content.copy.capabilitiesSubtitle}
+          />
+          <div className={`mt-10 grid gap-3 sm:grid-cols-2 ${capabilityColumns}`}>
+            {content.copy.capabilities.map((capability) => (
+              <Card key={capability.title} className="p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand-strong)]">
+                  <Check size={15} aria-hidden="true" />
+                </span>
+                <h3 className="mt-4 text-[15px] font-semibold text-[var(--ink)]">
+                  {capability.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{capability.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Plans */}
+      <Section tone="canvas">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-14">
+            <SectionHeading
+              eyebrow={t("productPages.plansEyebrow")}
+              title={t("productPages.plansTitle")}
+              description={t("productPages.plansSubtitle")}
+            />
+            <div>
+              <div className="grid gap-2">
+                {plans.map((plan) => {
+                  const amount = plan.prices[currency];
+                  return (
+                    <div
+                      key={plan.code}
+                      className="flex items-center justify-between gap-4 rounded-xl border border-[var(--line)] bg-white px-4 py-3.5"
+                    >
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-[var(--ink)]">{plan.name}</p>
+                        <p className="mt-0.5 truncate text-xs text-[var(--muted)]">
+                          {plan.comparison.entries} entries · {plan.comparison.banks} bank accounts
+                        </p>
+                      </div>
+                      <div className="shrink-0 text-right">
+                        <p className="text-sm font-semibold tabular-nums text-[var(--ink)]">
+                          {plan.tier === "free" || amount == null
+                            ? t("pricingTiers.free.priceLabel")
+                            : formatPrice(amount)}
+                        </p>
+                        <p className="text-[10px] text-[var(--muted)]">
+                          {plan.tier === "free" ? t("productPages.noCard") : t("productPages.perMonth")}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
+                <Button
+                  href="/signup?intent=signup&product=business&plan=free"
+                  dataCta={`${content.key}-plans-start`}
+                >
+                  {t("productPages.startFree")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <Button
+                  href="/pricing?product=business"
+                  variant="secondary"
+                  dataCta={`${content.key}-plans-compare`}
+                >
+                  {t("productPages.comparePlans")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Related products */}
+      <Section tone="white">
+        <Container>
+          <SectionHeading
+            eyebrow={t("productPages.relatedEyebrow")}
+            title={t("productPages.relatedTitle")}
+            description={t("productPages.relatedDesc")}
+          />
+          <div className="mt-10 grid gap-3 sm:grid-cols-3">
+            {content.related.map((key) => {
+              const related = getProductLink(key);
+              return (
+                <Link
+                  key={key}
+                  href={related.href}
+                  className="group rounded-2xl border border-[var(--line)] bg-white p-6 transition-colors hover:border-[#d7d1c8] hover:bg-[#fffdfa]"
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--canvas)] text-[var(--ink)]">
+                    <Icon name={related.icon} className="h-4 w-4" />
+                  </span>
+                  <h3 className="mt-4 text-[15px] font-semibold text-[var(--ink)]">
+                    {related.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{related.summary}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
+                    {t("common.learnMore")}
+                    <ArrowUpRight size={13} aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Final CTA */}
+      <Section tone="white" className="pb-20 pt-4 sm:pt-6">
+        <Container>
+          <div className="rounded-3xl bg-[var(--ink)] px-6 py-12 text-center sm:px-12">
+            <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-white">
+              {content.copy.finalTitle}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/65">
+              {content.copy.finalSubtitle}
+            </p>
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button
+                href="/signup?intent=signup&product=business&plan=free"
+                size="lg"
+                dataCta={`${content.key}-final-start`}
+              >
+                {t("productPages.startFree")}
+                <ArrowRight size={16} aria-hidden="true" />
+              </Button>
+              <Button
+                href="/pricing?product=business"
+                variant="ghost"
+                size="lg"
+                className="border border-white/20 text-white hover:bg-white/10 hover:text-white"
+                dataCta={`${content.key}-final-pricing`}
+              >
+                {t("productPages.seePricing")}
+              </Button>
+            </div>
+            <p className="mt-4 text-xs text-white/50">{t("productPages.heroNote")}</p>
+          </div>
+        </Container>
+      </Section>
+    </main>
+  );
+}

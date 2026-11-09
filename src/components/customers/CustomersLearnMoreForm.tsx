@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { useT } from "@/components/i18n/I18nProvider";
-import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Checkbox, Input } from "@/components/ui/Input";
 
 type OptionKey =
   | "beta"
@@ -33,102 +35,75 @@ export default function CustomersLearnMoreForm() {
         key: k,
         label: t(`customersLearnMore.form.options.${k}`),
       })),
-    [t]
+    [t],
   );
 
   if (submitted) {
     return (
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-        <div className="text-lg font-semibold text-slate-900">
+      <Card className="bg-[var(--canvas)] p-8">
+        <div className="text-lg font-semibold text-[var(--ink)]">
           {t("customersLearnMore.form.thanksTitle")}
         </div>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+        <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
           {t("customersLearnMore.form.thanksSubtitle")}
         </p>
-      </div>
+      </Card>
     );
   }
 
-  const inputClass = cn(
-    "h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none",
-    "placeholder:text-slate-400",
-    // thinner focus feel
-    "focus:border-slate-300 focus:ring-0"
-  );
-
   return (
     <form
-      className="rounded-3xl border border-slate-200 bg-white p-8"
+      className="rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[0_1px_2px_rgba(32,32,32,0.03)] sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
         setSubmitted(true);
       }}
     >
-      <div className="text-2xl font-semibold tracking-tight text-slate-900">
+      <div className="text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
         {t("customersLearnMore.form.title")}
       </div>
 
-      <div className="mt-6 grid gap-6 sm:grid-cols-2">
-        <div>
-          <label className="text-sm font-semibold text-slate-900">
-            {t("customersLearnMore.form.firstName")}
-          </label>
-          <input className={cn("mt-2", inputClass)} />
-        </div>
+      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+        <Input
+          name="firstName"
+          autoComplete="given-name"
+          label={t("customersLearnMore.form.firstName")}
+        />
+        <Input
+          name="lastName"
+          autoComplete="family-name"
+          label={t("customersLearnMore.form.lastName")}
+        />
+        <Input
+          name="email"
+          type="email"
+          autoComplete="email"
+          label={t("customersLearnMore.form.workEmail")}
+          containerClassName="sm:col-span-2"
+        />
+        <Input
+          name="company"
+          autoComplete="organization"
+          label={t("customersLearnMore.form.company")}
+          containerClassName="sm:col-span-2"
+        />
 
-        <div>
-          <label className="text-sm font-semibold text-slate-900">
-            {t("customersLearnMore.form.lastName")}
-          </label>
-          <input className={cn("mt-2", inputClass)} />
-        </div>
-
-        <div className="sm:col-span-2">
-          <label className="text-sm font-semibold text-slate-900">
-            {t("customersLearnMore.form.workEmail")}
-          </label>
-          <input type="email" autoComplete="email" className={cn("mt-2", inputClass)} />
-        </div>
-
-        <div className="sm:col-span-2">
-          <label className="text-sm font-semibold text-slate-900">
-            {t("customersLearnMore.form.company")}
-          </label>
-          <input className={cn("mt-2", inputClass)} />
-        </div>
-
-        <div className="sm:col-span-2">
-          <div className="text-sm font-semibold text-slate-900">
+        <fieldset className="sm:col-span-2">
+          <legend className="text-sm font-semibold text-[var(--ink)]">
             {t("customersLearnMore.form.optionsLabel")}
-          </div>
-
-          <div className="mt-4 space-y-3">
-            {options.map((o) => (
-              <label key={o.key} className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  className="mt-1 h-5 w-5 rounded-md border border-slate-300"
-                />
-                <span className="text-sm leading-relaxed text-slate-700">
-                  {o.label}
-                </span>
-              </label>
+          </legend>
+          <div className="mt-3 space-y-2.5">
+            {options.map((option) => (
+              <Checkbox key={option.key} name="interest" value={option.key} label={option.label} />
             ))}
           </div>
-        </div>
+        </fieldset>
 
-        <div className="sm:col-span-2 pt-2">
-          <button
-            type="submit"
-            className={cn(
-              "h-12 w-full rounded-2xl bg-orange-600 px-5 text-sm font-semibold text-white",
-              "hover:bg-orange-700 focus:outline-none focus:ring-0"
-            )}
-          >
+        <div className="sm:col-span-2">
+          <Button type="submit" className="w-full">
             {t("customersLearnMore.form.submit")}
-          </button>
-
-          <p className="mt-3 text-xs leading-relaxed text-slate-500">
+          </Button>
+          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
             {t("customersLearnMore.form.disclaimer")}
           </p>
         </div>

@@ -14,6 +14,7 @@
 ## Phase 2 — Conversion
 
 - [x] T006 Rewrite homepage hero, outcomes, module grid, AI connections, workflow, pricing preview, FAQ and final CTA.
+- [x] T006a Redesign the hero as a dark product theatre with “Money, in focus.” copy, a DOM/SVG workspace composition, staged CSS entrance motion, pointer parallax and a mobile-specific layout.
 - [x] T007 Add trust strip using only shipped facts (read-only AI access, tenant isolation, OAuth, free start).
 - [x] T008 Upgrade pricing cards, comparison, guarantee-free note and FAQ without inventing prices/limits.
 - [x] T008a Add Personal/Business segmented pricing with real Free/Starter/Pro catalog and quotas from `seed_plans.py` and entitlement seeds.
@@ -54,6 +55,18 @@
 - [ ] T030 Professional legal review of privacy, terms and cookie notice.
 - [ ] T031 Configure real Meta pixel/CAPI credentials and test events.
 - [ ] T032 Verify Google indexing, canonical URLs and sitemap submission after deploy.
+
+## Phase 6 — Commercial navigation and product pages
+
+- [x] T033 Install and apply the Emil Kowalski and Corey Haines marketing skill packs.
+- [x] T034 Standardize `Button` for link/button use and add `Input`, `Checkbox` and `Card`.
+- [x] T035 Rebuild the desktop mega menu with real product/platform routes and keyboard/escape/outside-click handling.
+- [x] T036 Remove the obstructing mobile tab bar and rebuild the mobile drawer with focus trap, CTA and full product list.
+- [x] T037 Replace the eight duplicated product pages with one `ProductPage` template and `product-pages.ts` content.
+- [x] T038 Rewrite product copy against the actual backend modules; remove unsupported approvals, pipeline, budget and valuation claims.
+- [x] T039 Remove hero/step/control tag chips and product email-capture forms.
+- [x] T040 Add real catalog plan prices in the detected currency and cross-product links.
+- [x] T041 Remove unused stock imagery and legacy section components; reframe `/customers` without fabricated proof.
 
 ## Notes
 

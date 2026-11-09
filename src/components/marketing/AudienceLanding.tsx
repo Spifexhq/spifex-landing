@@ -62,14 +62,7 @@ export function AudienceLanding({
               <Check size={14} className="text-[var(--success)]" aria-hidden="true" />
               {proof}
             </p>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-2">
-            {plans.map((plan) => (
-              <span key={plan} className="rounded-full border border-[var(--line)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--ink-soft)]">
-                {plan}
-              </span>
-            ))}
+            <p className="mt-2 text-xs text-[var(--muted)]">{plans.join(" · ")}</p>
           </div>
         </Container>
       </section>

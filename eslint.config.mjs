@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Installed agent skills are reference material, not application code.
+    ".agents/**",
   ]),
   // Custom rules
   {

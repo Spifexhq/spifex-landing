@@ -29,7 +29,7 @@ import { TrustStrip } from "@/components/marketing/TrustStrip";
 import { JsonLd } from "@/components/seo/JsonLd";
 import Hero from "@/components/home/Hero";
 import { DASHBOARD_URLS } from "@/content/navigation";
-import { PRODUCTS_MENU } from "@/content/products";
+import { PRODUCT_LINKS } from "@/content/products";
 import { getServerI18n } from "@/i18n/server";
 import { pageMetadata } from "@/lib/seo/metadata";
 import {
@@ -66,7 +66,7 @@ const PRODUCT_ICONS = {
 
 export default async function HomePage() {
   const { t } = await getServerI18n();
-  const products = PRODUCTS_MENU.find((group) => group.groupKey === "products")?.items ?? [];
+  const products = PRODUCT_LINKS;
   const faqItems = FAQ_KEYS.map((key) => ({
     question: t(`homeV2.faq.items.${key}.q`),
     answer: t(`homeV2.faq.items.${key}.a`),
@@ -93,20 +93,24 @@ export default async function HomePage() {
         <Container>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <p className="text-sm font-semibold text-[var(--ink)]">{t("homeV2.audiences.title")}</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--muted)]">
               {AUDIENCE_KEYS.map((key) => (
-                <span
-                  key={key}
-                  className="rounded-full border border-[var(--line)] bg-[var(--canvas)] px-3 py-1.5 text-xs font-medium text-[var(--ink-soft)]"
-                >
-                  {t(`homeV2.audiences.items.${key}`)}
-                </span>
+                <span key={key}>{t(`homeV2.audiences.items.${key}`)}</span>
               ))}
-              <Link href="/personal" className="rounded-full bg-[var(--ink)] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#343434]">
+              <span className="hidden h-3 w-px bg-[var(--line)] sm:block" aria-hidden="true" />
+              <Link
+                href="/personal"
+                className="inline-flex items-center gap-1 font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+              >
                 {t("nav.personal")}
+                <ArrowUpRight size={12} aria-hidden="true" />
               </Link>
-              <Link href="/business" className="rounded-full bg-[var(--ink)] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#343434]">
+              <Link
+                href="/business"
+                className="inline-flex items-center gap-1 font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+              >
                 {t("nav.business")}
+                <ArrowUpRight size={12} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -253,7 +257,7 @@ export default async function HomePage() {
                   key={product.key}
                   icon={IconComponent}
                   title={t(`products.items.${product.key}.title`)}
-                  description={t(`products.items.${product.key}.desc`)}
+                  description={product.summary}
                   href={product.href}
                 />
               );
@@ -302,7 +306,8 @@ export default async function HomePage() {
                     <p className="text-[11px] text-white/50">Streamable HTTP · MCP</p>
                   </div>
                 </div>
-                <span className="rounded-full border border-[var(--teal)]/30 bg-[var(--teal)]/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--teal)]">
+                <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--teal)]">
+                  <LockKeyhole size={11} aria-hidden="true" />
                   Read only
                 </span>
               </div>

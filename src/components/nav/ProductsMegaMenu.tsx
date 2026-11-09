@@ -3,24 +3,37 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Transition } from "@headlessui/react";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 
-import { PRODUCTS_MENU } from "@/content/products";
 import { Icon } from "@/components/ui/Icon";
+import { Button } from "@/components/ui/Button";
+import { PLATFORM_LINKS, PRODUCT_LINKS } from "@/content/products";
 import { useT } from "@/components/i18n/I18nProvider";
+
+const PANEL_ID = "products-mega-menu";
 
 export default function ProductsMegaMenu() {
   const t = useT();
+  const pathname = usePathname();
 
   const [open, setOpen] = useState(false);
-  const [hoverTrigger, setHoverTrigger] = useState(false);
-  const [hoverPanel, setHoverPanel] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const closeTimer = useRef<number | null>(null);
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(id);
+  }, []);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setOpen(false), 0);
+    return () => window.clearTimeout(id);
+  }, [pathname]);
 
   function cancelClose() {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -34,103 +47,185 @@ export default function ProductsMegaMenu() {
 
   function scheduleClose() {
     cancelClose();
-    closeTimer.current = window.setTimeout(() => {
-      if (!hoverTrigger && !hoverPanel) setOpen(false);
-    }, 80);
+    closeTimer.current = window.setTimeout(() => setOpen(false), 120);
   }
 
   useEffect(() => {
     if (!open) return;
-    if (!hoverTrigger && !hoverPanel) scheduleClose();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hoverTrigger, hoverPanel, open]);
 
-  const menuPanel = (
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      triggerRef.current?.focus();
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (panelRef.current?.contains(target) || triggerRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+      cancelClose();
+    };
+  }, [open]);
+
+  const panel = (
     <Transition
       as={Fragment}
       show={open}
-      enter="transition ease-out duration-150"
-      enterFrom="opacity-0 translate-y-2"
+      enter="transition duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]"
+      enterFrom="opacity-0 -translate-y-1"
       enterTo="opacity-100 translate-y-0"
-      leave="transition ease-in duration-120"
+      leave="transition duration-100 ease-out"
       leaveFrom="opacity-100 translate-y-0"
-      leaveTo="opacity-0 translate-y-2"
+      leaveTo="opacity-0 -translate-y-1"
     >
-      {/* Anchored to viewport now */}
       <div
-        className="fixed left-1/2 top-16 z-50 w-[min(80rem,calc(100vw-1.5rem))] sm:w-[min(80rem,calc(100vw-2rem))] -translate-x-1/2 pointer-events-none"
-        role="menu"
+        id={PANEL_ID}
+        ref={panelRef}
+        className="fixed left-1/2 top-16 z-50 w-[min(68rem,calc(100vw-2rem))] -translate-x-1/2"
+        onMouseEnter={openNow}
+        onMouseLeave={scheduleClose}
       >
-        <div
-          className="
-            pointer-events-auto
-            w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl
-            max-h-[calc(100dvh-4rem)]
-            flex flex-col
-          "
-          onMouseEnter={() => {
-            setHoverPanel(true);
-            openNow();
-          }}
-          onMouseLeave={() => {
-            setHoverPanel(false);
-            scheduleClose();
-          }}
-        >
-          <div className="flex-1 overflow-auto overscroll-contain">
-            <div className="grid gap-0 md:grid-cols-3">
-              {PRODUCTS_MENU.map((group) => (
-                <div key={group.groupKey} className="p-5">
-                  <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    {t(`products.groups.${group.groupKey}`)}
-                  </div>
+        <div className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-[var(--line)] bg-white shadow-[0_30px_80px_-25px_rgba(32,32,32,0.28)]">
+          <div className="grid lg:grid-cols-[1fr_20rem]">
+            <div className="flex flex-col p-4 sm:p-5">
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+                  {t("megaMenu.products")}
+                </p>
+                <Link
+                  href="/solutions"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                >
+                  {t("megaMenu.allSolutions")}
+                  <ArrowUpRight size={12} aria-hidden="true" />
+                </Link>
+              </div>
 
-                  <div className="space-y-2">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        className="flex gap-3 rounded-xl p-3 hover:bg-slate-50"
-                        onClick={() => setOpen(false)}
-                      >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-white">
-                          <Icon
-                            name={item.icon}
-                            className="h-5 w-5 shrink-0 text-slate-900"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <div className="text-sm font-semibold text-slate-900">
-                            {t(`products.items.${item.key}.title`)}
-                          </div>
-                          <div className="mt-0.5 text-sm text-slate-600">
-                            {t(`products.items.${item.key}.desc`)}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
+              <div className="my-auto grid gap-0.5 pt-3 sm:grid-cols-2">
+                {PRODUCT_LINKS.map((product) => (
+                  <Link
+                    key={product.key}
+                    href={product.href}
+                    onClick={() => setOpen(false)}
+                    className="group flex gap-3 rounded-xl p-2.5 transition-colors hover:bg-[var(--canvas)] focus-visible:bg-[var(--canvas)]"
+                  >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--line)] bg-white text-[var(--ink)]">
+                      <Icon name={product.icon} className="h-4 w-4" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-semibold text-[var(--ink)]">
+                        {t(`products.items.${product.key}.title`)}
+                      </span>
+                      <span className="mt-0.5 block text-xs leading-5 text-[var(--muted)]">
+                        {product.summary}
+                      </span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--line)] bg-[var(--canvas)] px-4 py-3">
+                <p className="text-xs leading-5 text-[var(--muted)]">{t("products.footer")}</p>
+                <Link
+                  href="/solutions"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                >
+                  {t("products.explore")}
+                  <ArrowUpRight size={12} aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="border-t border-[var(--line)] bg-[var(--canvas)] p-4 sm:p-5 lg:border-l lg:border-t-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+                {t("megaMenu.platform")}
+              </p>
+
+              <div className="mt-2 space-y-0.5">
+                {PLATFORM_LINKS.map((link) => (
+                  <Link
+                    key={link.key}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="flex gap-2.5 rounded-lg p-2 transition-colors hover:bg-white"
+                  >
+                    <Icon
+                      name={link.icon}
+                      className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-strong)]"
+                    />
+                    <span className="min-w-0">
+                      <span className="block text-[13px] font-semibold text-[var(--ink)]">
+                        {t(link.titleKey)}
+                      </span>
+                      <span className="mt-0.5 block text-[11px] leading-4 text-[var(--muted)]">
+                        {t(link.descKey)}
+                      </span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-xl border border-[var(--line)] bg-white p-4">
+                <p className="text-sm font-semibold text-[var(--ink)]">
+                  {t("megaMenu.startTitle")}
+                </p>
+
+                <div className="mt-3 grid gap-2">
+                  <Link
+                    href="/personal"
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg border border-[var(--line)] p-2.5 transition-colors hover:border-[#d7d1c8] hover:bg-[var(--canvas)]"
+                  >
+                    <span className="block text-[13px] font-semibold text-[var(--ink)]">
+                      {t("nav.personal")}
+                    </span>
+                    <span className="mt-0.5 block text-[11px] leading-4 text-[var(--muted)]">
+                      {t("megaMenu.personalDesc")}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/business"
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg border border-[var(--line)] p-2.5 transition-colors hover:border-[#d7d1c8] hover:bg-[var(--canvas)]"
+                  >
+                    <span className="block text-[13px] font-semibold text-[var(--ink)]">
+                      {t("nav.business")}
+                    </span>
+                    <span className="mt-0.5 block text-[11px] leading-4 text-[var(--muted)]">
+                      {t("megaMenu.businessDesc")}
+                    </span>
+                  </Link>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] px-5 py-4">
-            <div className="flex flex-wrap gap-4 text-sm font-semibold">
-              <Link href="/personal" className="text-[var(--ink)] hover:underline" onClick={() => setOpen(false)}>
-                {t("nav.personal")}
-              </Link>
-              <Link href="/business" className="text-[var(--ink)] hover:underline" onClick={() => setOpen(false)}>
-                {t("nav.business")}
-              </Link>
+                <Button
+                  href="/signup?intent=signup&plan=free"
+                  size="sm"
+                  className="mt-3 w-full"
+                  dataCta="mega-start-free"
+                >
+                  {t("megaMenu.startCta")}
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Button>
+
+                <Link
+                  href="/pricing"
+                  onClick={() => setOpen(false)}
+                  className="mt-2.5 flex items-center justify-center gap-1 text-xs font-semibold text-[var(--muted)] hover:text-[var(--ink)]"
+                >
+                  {t("megaMenu.comparePlans")}
+                  <ArrowRight size={12} aria-hidden="true" />
+                </Link>
+              </div>
             </div>
-            <Link
-              href="/solutions"
-              className="text-sm font-semibold text-[var(--ink)] hover:underline"
-              onClick={() => setOpen(false)}
-            >
-              {t("products.explore")}
-            </Link>
           </div>
         </div>
       </div>
@@ -140,33 +235,33 @@ export default function ProductsMegaMenu() {
   return (
     <div className="relative">
       <button
+        ref={triggerRef}
         type="button"
-        className="inline-flex items-center gap-1 rounded-lg px-2 py-6 text-sm font-medium text-slate-700 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
-        aria-haspopup="menu"
+        className="inline-flex items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30"
+        aria-haspopup="true"
         aria-expanded={open}
-        onMouseEnter={() => {
-          setHoverTrigger(true);
+        aria-controls={PANEL_ID}
+        onMouseEnter={openNow}
+        onMouseLeave={scheduleClose}
+        onFocus={openNow}
+        onKeyDown={(event) => {
+          if (event.key !== "ArrowDown") return;
+          event.preventDefault();
           openNow();
+          window.requestAnimationFrame(() => {
+            panelRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+          });
         }}
-        onMouseLeave={() => {
-          setHoverTrigger(false);
-          scheduleClose();
-        }}
-        onFocus={() => {
-          setHoverTrigger(true);
-          openNow();
-        }}
-        onBlur={() => {
-          setHoverTrigger(false);
-          scheduleClose();
-        }}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen((value) => !value)}
       >
         {t("nav.products")}
-        <ChevronDown className="h-4 w-4" />
+        <ChevronDown
+          className={`h-4 w-4 transition-transform duration-150 ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
       </button>
 
-      {mounted ? createPortal(menuPanel, document.body) : null}
+      {mounted ? createPortal(panel, document.body) : null}
     </div>
   );
 }

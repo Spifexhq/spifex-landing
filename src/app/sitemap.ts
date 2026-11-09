@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listMdxMeta } from "@/lib/content/mdx";
 import { DOCS } from "@/content/docs";
-import { PRODUCTS_MENU } from "@/content/products";
+import { PRODUCT_LINKS } from "@/content/products";
 
 export const runtime = "nodejs";
 
@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blog = await listMdxMeta("blog", "en");
   const legal = await listMdxMeta("legal", "en");
-  const products = PRODUCTS_MENU.find((group) => group.groupKey === "products")?.items ?? [];
+  const products = PRODUCT_LINKS;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, changeFrequency: "weekly", priority: 1 },

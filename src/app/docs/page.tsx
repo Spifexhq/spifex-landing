@@ -35,7 +35,7 @@ export default async function DocsHubPage({
       />
       <Container>
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-soft)]">
+          <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">
             <BookOpen size={13} className="text-[var(--brand)]" aria-hidden="true" />
             {t("docsPage.eyebrow")}
           </span>

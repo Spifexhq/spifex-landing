@@ -12,6 +12,7 @@ import {
   Search,
   Sparkles,
   UsersRound,
+  UserRound,
   Wallet,
 } from "lucide-react";
 
@@ -111,7 +112,9 @@ export default function HeroVisual({ label }: { label: string }) {
                   Search
                   <span className="ml-1 rounded bg-[#f3f0ea] px-1 text-[7px]">⌘K</span>
                 </span>
-                <span className="h-5 w-5 rounded-full bg-gradient-to-br from-[#e8e5df] to-[#d6d0c8]" />
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#efe7dd] text-[#8a6f5a]">
+                  <UserRound size={10} aria-hidden="true" />
+                </span>
               </div>
             </div>
 

@@ -60,6 +60,23 @@ For free signup, `/signup` shows a Personal/Business workspace-type selector tha
 syncs `?product=` in the URL. Paid signup hides the selector and derives the
 category from the plan code so the plan and category cannot diverge.
 
+## Design system and product pages
+
+- Shared UI lives in `src/components/ui`: `Button` (link or native button),
+  `Input`, `Checkbox`, `Card`, `Container` and `Icon`.
+- Navigation lives in `src/components/nav`: `Navbar` (desktop header + mobile
+  drawer) and `ProductsMegaMenu`.
+- Product pages share `src/components/products/ProductPage.tsx`,
+  `ProductPreview.tsx` and the content in `src/content/product-pages.ts`.
+  Adding a product page means adding one entry and a short route file.
+- Product-page visuals are DOM/SVG compositions, not screenshots. The unused
+  stock image sets were removed from `public/`.
+- Product-page copy is currently English-first; the new keys and content still
+  need pt/pt-BR/fr/de translation.
+
+Agent skills are installed under `.agents/skills` by the `skills` CLI. They are
+excluded from ESLint and are not part of the application bundle.
+
 ## Configuration
 
 Copy `.env.example` and set:
@@ -84,6 +101,8 @@ Marketing analytics is consent-gated. With no credentials, tracking is a no-op.
 
 ## Notes
 
+- The homepage hero is a DOM/SVG Spifex workspace preview with staged CSS motion
+  and pointer parallax; it does not use stock financial imagery.
 - No testimonials, customer logos or performance metrics are invented.
 - Pricing comes from the existing Personal/Business Free, Starter and Pro catalog.
 - The Personal/Business toggle updates the URL (`?product=`) without a reload, and

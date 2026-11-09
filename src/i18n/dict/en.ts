@@ -16,8 +16,52 @@ const en = {
     blog: "Blog",
     signin: "Sign in",
     signup: "Sign up",
+    startFree: "Start free",
     home: "Home",
     toggleMenu: "Toggle menu",
+    closeMenu: "Close menu",
+    menu: "Menu",
+  },
+
+  megaMenu: {
+    products: "Products",
+    platform: "Platform",
+    allSolutions: "All solutions",
+    personalDesc: "Accounts, budgets and goals for your own money.",
+    businessDesc: "Cash flow, banking and team controls.",
+    startTitle: "Start with the workspace you need",
+    startCta: "Start free",
+    comparePlans: "Compare plans",
+    solutions: "See how every module fits together.",
+    pricing: "Compare Free, Starter and Pro.",
+    ai: "Connect ChatGPT or Claude with read-only access.",
+    security: "Roles, lifecycle states and connector activity.",
+    aiTitle: "AI connections",
+    securityTitle: "Roles and activity",
+    viewAll: "See all products",
+  },
+
+  productPages: {
+    startFree: "Start free",
+    seePricing: "See pricing",
+    heroNote: "Free plan · No card required · Personal & Business",
+    outcomesEyebrow: "What changes",
+    outcomesTitle: "The work this module takes off your plate",
+    outcomesSubtitle: "A clearer operating model, using the same workspace and data.",
+    howEyebrow: "How it works",
+    howTitle: "From setup to the first useful view",
+    howSubtitle: "A short implementation path that does not require a separate project.",
+    capabilitiesEyebrow: "Capabilities",
+    plansEyebrow: "Plans",
+    plansTitle: "Start free. Upgrade when the work grows.",
+    plansSubtitle:
+      "Every product runs on the same Spifex workspace. Move to Starter or Pro when you need more capacity.",
+    comparePlans: "Compare plans",
+    noCard: "No card required",
+    perMonth: "per month",
+    relatedEyebrow: "Keep exploring",
+    relatedTitle: "One workspace, more control",
+    relatedDesc: "Add the modules that connect to this workflow.",
   },
 
   legal: {
@@ -62,7 +106,7 @@ const en = {
       governance: { title: "Governance", desc: "Role-based access, audit trails, and organization-scoped structure." },
       global: { title: "Global-ready", desc: "Multi-stream operations designed for scale and complexity." },
     },
-    footer: "One platform for cashflow, payments, governance, and performance.",
+    footer: "One workspace for cashflow, banking, reporting and operations.",
     explore: "Explore platform",
   },
 
@@ -183,40 +227,30 @@ const en = {
     hero: {
       title: "See what Spifex can do for you.",
       subtitle: "Create an account in minutes and start operating with speed and control.",
-      emailPlaceholder: "Enter your work email",
-      cta: "Get started",
       disclaimer:
         "Spifex is a financial operations platform, not a bank. Banking services are provided by your connected banks.",
     },
 
     stories: {
-      title: "Success stories start here.",
+      title: "Built for the work you do.",
       subtitle:
-        "Whether you have 10 employees or 10,000, Spifex helps you run cashflow and payments with confidence.",
+        "From cashflow planning to payments and reporting, Spifex connects the workflows teams run every day.",
       cards: {
         limits: {
-          title: "Unlock higher limits.",
-          desc: "Operate payments with approvals, visibility, and controls that scale.",
-          imageSrc: "/customers/story-limits.png",
-          imageAlt: "Card and spending controls",
+          title: "Keep cash visible.",
+          desc: "Track planned and settled movements in one workspace.",
         },
         spend: {
-          title: "Simplify your spending.",
-          desc: "Manage vendor spend and reimbursements in one operating layer.",
-          imageSrc: "/customers/story-spend.png",
-          imageAlt: "Spending workflow approval",
+          title: "Settle in parts.",
+          desc: "Record outgoing entries and settle them in full or in parts.",
         },
         budget: {
-          title: "Reimagine your budget.",
-          desc: "Keep bookings in policy and on budget with clear ownership.",
-          imageSrc: "/customers/story-budget.png",
-          imageAlt: "Budget management",
+          title: "Give costs an owner.",
+          desc: "Allocate entries to the departments and projects that own them.",
         },
         ap: {
-          title: "Automate payables.",
-          desc: "Speed up AP with structured evidence, approvals, and settlement events.",
-          imageSrc: "/customers/story-ap.png",
-          imageAlt: "Invoice processed successfully",
+          title: "Connect banking.",
+          desc: "Import statements and match them to cashflow entries.",
         },
       },
     },
@@ -226,18 +260,11 @@ const en = {
       subtitle:
         "Connect with other customers and operators. Join sessions, early access programs, and community opportunities.",
       learnMore: "Learn more",
-      images: {
-        a: { src: "/customers/community-1.png", alt: "Customer community meetup" },
-        b: { src: "/customers/community-2.png", alt: "Event conversation" },
-        c: { src: "/customers/community-3.png", alt: "Customer interview session" },
-      },
     },
 
     bottom: {
-      title: "The world’s best operators run on Spifex.",
-      subtitle: "Join teams that move faster with clear controls and real-time visibility.",
-      emailPlaceholder: "Enter your work email",
-      cta: "Get started",
+      title: "Bring your operations into one clear view.",
+      subtitle: "Start free, connect your workspace, and add structure as your team grows.",
     },
   },
 

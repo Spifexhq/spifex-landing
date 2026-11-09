@@ -101,7 +101,7 @@ export default async function RootLayout({
 
               <main className="flex-1">{children}</main>
 
-              <footer className="border-t border-[var(--line)] bg-[#fbfaf7] pb-[calc(1rem+env(safe-area-inset-bottom)+5rem)] nav:pb-0">
+              <footer className="border-t border-[var(--line)] bg-[#fbfaf7] pb-[env(safe-area-inset-bottom)]">
                 <Container className="py-12">
                   <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_.8fr_.8fr_.8fr]">
                     <div>

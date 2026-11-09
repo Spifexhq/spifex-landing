@@ -84,11 +84,3 @@ export function SectionHeading({
 export function MarketingContainer({ children, className }: { children: ReactNode; className?: string }) {
   return <Container className={cn("px-5 sm:px-6 lg:px-8", className)}>{children}</Container>;
 }
-
-export function Eyebrow({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-soft)] backdrop-blur">
-      {children}
-    </span>
-  );
-}

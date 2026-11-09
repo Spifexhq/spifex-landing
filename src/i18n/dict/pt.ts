@@ -189,33 +189,25 @@ const pt = {
     },
 
     stories: {
-      title: "Histórias de sucesso começam aqui.",
+      title: "Feito para o trabalho que você faz.",
       subtitle:
-        "Se você tem 10 pessoas ou 10.000, o Spifex ajuda a operar fluxo de caixa e pagamentos com confiança.",
+        "Do planejamento de fluxo de caixa a pagamentos e relatórios, o Spifex conecta os fluxos de trabalho do dia a dia.",
       cards: {
         limits: {
-          title: "Aumente limites com controle.",
-          desc: "Operação com aprovações, visibilidade e controles prontos para escala.",
-          imageSrc: "/customers/story-limits.png",
-          imageAlt: "Cartão e controles de gastos",
+          title: "Mantenha o caixa visível.",
+          desc: "Acompanhe movimentos planejados e liquidados em um só workspace.",
         },
         spend: {
-          title: "Simplifique seus gastos.",
-          desc: "Gerencie pagamentos e reembolsos em uma única camada operacional.",
-          imageSrc: "/customers/story-spend.png",
-          imageAlt: "Fluxo de aprovação de gastos",
+          title: "Liquide em partes.",
+          desc: "Registre saídas e liquide em uma ou várias parcelas.",
         },
         budget: {
-          title: "Reinvente seu orçamento.",
-          desc: "Mantenha reservas dentro de política e orçamento com ownership claro.",
-          imageSrc: "/customers/story-budget.png",
-          imageAlt: "Gestão de orçamento",
+          title: "Dê um dono ao custo.",
+          desc: "Aloque lançamentos aos departamentos e projetos responsáveis.",
         },
         ap: {
-          title: "Automatize contas a pagar.",
-          desc: "Acelere o AP com evidências, aprovações e eventos de liquidação estruturados.",
-          imageSrc: "/customers/story-ap.png",
-          imageAlt: "Fatura processada com sucesso",
+          title: "Conecte o banking.",
+          desc: "Importe extratos e concilie com os lançamentos de caixa.",
         },
       },
     },
@@ -225,16 +217,11 @@ const pt = {
       subtitle:
         "Conecte-se com outros clientes e operadores. Participe de sessões, programas de acesso antecipado e oportunidades de comunidade.",
       learnMore: "Saiba mais",
-      images: {
-        a: { src: "/customers/community-1.png", alt: "Encontro da comunidade" },
-        b: { src: "/customers/community-2.png", alt: "Conversas em evento" },
-        c: { src: "/customers/community-3.png", alt: "Sessão com clientes" },
-      },
     },
 
     bottom: {
-      title: "Os melhores operadores do mundo rodam no Spifex.",
-      subtitle: "Junte-se a times que andam mais rápido com controle e visibilidade em tempo real.",
+      title: "Traga suas operações para uma visão clara.",
+      subtitle: "Comece grátis, conecte seu workspace e adicione estrutura conforme sua equipe cresce.",
       emailPlaceholder: "Digite seu e-mail de trabalho",
       cta: "Começar agora",
     },

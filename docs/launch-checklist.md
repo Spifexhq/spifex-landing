@@ -17,6 +17,14 @@
   pages and legal pages return 200.
 - [ ] `/pricing?product=personal` and `/pricing?product=business` server-render
   the correct category, prices and currency.
+- [ ] All eight `/products/*` pages return 200 and show the current English
+  product copy and detected-currency plan prices.
+- [ ] The desktop mega menu opens with pointer and keyboard, closes on Escape and
+  outside click, and contains no dead anchors.
+- [ ] The mobile drawer opens, traps focus, closes on Escape/swipe and lists all
+  eight products; no bottom tab bar covers content.
+- [ ] Confirm no stock product/hero/customer images remain in `public/` or in
+  rendered pages.
 - [ ] Pricing toggle updates `?product=` without a reload and keeps the URL
   shareable.
 - [ ] `/signup?intent=signup&product=personal&plan=free` creates a Personal
@@ -28,6 +36,8 @@
   category.
 - [ ] Business signup still uses `free`, `starter` and `pro` codes.
 - [ ] `/sitemap.xml` and `/robots.txt` are correct for the production origin.
+- [ ] Homepage hero renders its final state with `prefers-reduced-motion`,
+  no horizontal overflow at 390/768/1440 and no stock financial imagery.
 - [ ] Canary share shows the 1200×630 Open Graph image.
 - [ ] `/signup` completes against production or staging APIs.
 - [ ] Marketing consent rejected: no Meta requests in the network panel.
