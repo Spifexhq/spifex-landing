@@ -16,7 +16,7 @@ import { useT } from "@/components/i18n/I18nProvider";
 function Wordmark() {
   return (
     <div className="flex items-center gap-2">
-      <Image src="/icon/logo.svg" alt="Spifex logo" width={24} height={24} />
+      <Image src="/icon/logo.svg" alt="" aria-hidden="true" width={24} height={24} />
       <span className="text-2xl font-semibold tracking-tight text-slate-900">
         Spifex
       </span>
@@ -109,7 +109,6 @@ export default function Navbar() {
           <Link
             href="/"
             className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
-            aria-label={t("nav.home")}
           >
             <Wordmark />
           </Link>
@@ -138,12 +137,6 @@ export default function Navbar() {
           </div>
         </Container>
       </header>
-
-      {/* Mobile top scrim keeps floating controls readable over scrolled content. */}
-      <div
-        className="nav:hidden pointer-events-none fixed inset-x-0 top-0 z-40 h-20 bg-gradient-to-b from-white/95 via-white/60 to-transparent"
-        aria-hidden="true"
-      />
 
       <Link
         href="/"
@@ -211,7 +204,6 @@ export default function Navbar() {
               href="/"
               className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
               onClick={() => setMobileOpen(false)}
-              aria-label={t("nav.home")}
             >
               <Wordmark />
             </Link>

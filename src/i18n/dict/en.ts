@@ -1649,16 +1649,18 @@ solutionsPage: {
 
   homeV2: {
     hero: {
-      eyebrow: "Financial operations, unified",
-      title: "Run cash flow, banking and reporting from one operating layer",
+      eyebrow: "Personal + Business · One system",
+      title: "Money, in focus",
       subtitle:
-        "One operating layer for personal and business finances: plan cash flow, connect accounts, reconcile settlements and report with confidence.",
+        "One live picture of every account, plan and settlement — for your money and your business.",
       primary: "Start free",
-      secondary: "See pricing",
+      secondary: "Explore the product",
       emailPlaceholder: "Enter your work email",
       emailCta: "Start free",
-      disclaimer: "Free plan available. No credit card required.",
+      disclaimer: "Free plan · No card required · Personal & Business",
       proof: "Built for multi-stream, vendor-heavy and project-based operations.",
+      visualAlt:
+        "Spifex workspace preview showing cash position, plan versus settled chart, settlement health and a read-only AI cash-flow summary.",
     },
     audiences: {
       title: "One platform for personal and business financial operations",

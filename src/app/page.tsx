@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -25,9 +24,10 @@ import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FAQ } from "@/components/marketing/FAQ";
 import { FeatureCard } from "@/components/marketing/FeatureCard";
-import { Section, SectionHeading, Eyebrow } from "@/components/marketing/Section";
+import { Section, SectionHeading } from "@/components/marketing/Section";
 import { TrustStrip } from "@/components/marketing/TrustStrip";
 import { JsonLd } from "@/components/seo/JsonLd";
+import Hero from "@/components/home/Hero";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { PRODUCTS_MENU } from "@/content/products";
 import { getServerI18n } from "@/i18n/server";
@@ -84,76 +84,7 @@ export default async function HomePage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#fbfaf7]">
-        <div className="pointer-events-none absolute inset-0 brand-gradient" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] grid-fade opacity-70" aria-hidden="true" />
-        <Container className="relative py-16 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-14">
-            <div className="max-w-2xl animate-rise">
-              <Eyebrow>
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand)]" aria-hidden="true" />
-                {t("homeV2.hero.eyebrow")}
-              </Eyebrow>
-              <h1 className="text-balance mt-6 text-[2.65rem] font-semibold leading-[1.03] tracking-[-0.045em] text-[var(--ink)] sm:text-6xl lg:text-[4.1rem]">
-                {t("homeV2.hero.title")}
-              </h1>
-              <p className="text-pretty mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
-                {t("homeV2.hero.subtitle")}
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href={`${DASHBOARD_URLS.signup}?intent=signup&plan=free`} size="lg" dataCta="hero-start-free">
-                  {t("homeV2.hero.primary")}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Button>
-                <Button href="/pricing" variant="secondary" size="lg" dataCta="hero-pricing">
-                  {t("homeV2.hero.secondary")}
-                </Button>
-              </div>
-
-              <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--muted)]">
-                <Check size={14} className="text-[var(--success)]" aria-hidden="true" />
-                {t("homeV2.hero.disclaimer")}
-              </p>
-              <p className="mt-6 max-w-lg text-sm leading-6 text-[var(--muted)]">{t("homeV2.hero.proof")}</p>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-[620px] lg:mx-0 animate-rise-delay">
-              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[var(--brand)]/15 via-transparent to-[var(--teal)]/25 blur-2xl" aria-hidden="true" />
-              <div className="relative overflow-hidden rounded-[1.4rem] border border-[#ded8cf] bg-white p-2 shadow-lift">
-                <div className="flex items-center gap-1.5 px-2 py-2" aria-hidden="true">
-                  <span className="h-2 w-2 rounded-full bg-[#f2b8a3]" />
-                  <span className="h-2 w-2 rounded-full bg-[#f5d6a1]" />
-                  <span className="h-2 w-2 rounded-full bg-[#b7dccf]" />
-                  <span className="ml-3 h-4 flex-1 rounded bg-[#f3f0ea]" />
-                </div>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#eeeae4] bg-[#f7f6f3]">
-                  <Image
-                    src="/products/cashflow/cashflow-ui.png"
-                    alt="Spifex cash-flow workspace with planned and settled entries"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 620px, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              <div className="absolute -bottom-5 -left-3 hidden w-[240px] rounded-xl border border-[var(--line)] bg-white p-3 shadow-card sm:block animate-float">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)]">
-                    <Bot size={14} aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-[11px] font-semibold text-[var(--ink)]">Read-only AI connection</p>
-                    <p className="text-[10px] text-[var(--muted)]">ChatGPT · Claude · MCP</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <Hero />
 
       <TrustStrip />
 

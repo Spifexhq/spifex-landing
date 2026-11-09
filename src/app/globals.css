@@ -54,6 +54,7 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -110,4 +111,204 @@ body {
 
 .animate-float {
   animation: spifex-float 6s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Homepage hero                                                       */
+/* ------------------------------------------------------------------ */
+
+.hero-aurora {
+  background:
+    radial-gradient(58% 48% at 72% 2%, rgba(244, 106, 53, 0.16), transparent 68%),
+    radial-gradient(46% 42% at 10% 60%, rgba(155, 231, 226, 0.09), transparent 70%),
+    radial-gradient(42% 36% at 50% 100%, rgba(244, 106, 53, 0.07), transparent 76%);
+  animation: hero-aurora 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-aurora {
+  from {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1.5%, 1.5%, 0) scale(1.06);
+  }
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(75% 65% at 50% 28%, black, transparent 78%);
+  opacity: 0.55;
+}
+
+.hero-reveal {
+  animation: hero-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-line {
+  animation: hero-line 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-line {
+  from {
+    transform: translateY(114%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-dash-entrance {
+  animation: hero-dash-in 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+@keyframes hero-dash-in {
+  from {
+    opacity: 0;
+    transform: translateY(64px) rotateX(12deg) scale(0.97);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.hero-tilt {
+  transform: perspective(1800px) rotateX(calc(3.2deg + var(--py, 0) * -2deg))
+    rotateY(calc(var(--px, 0) * 3deg));
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.hero-chart-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-draw 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+}
+
+@keyframes hero-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-chart-area {
+  opacity: 0;
+  animation: hero-area 0.9s ease-out 1.1s forwards;
+}
+
+@keyframes hero-area {
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-chart-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-chart-ping 2.8s ease-out 2.1s infinite;
+}
+
+@keyframes hero-chart-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.35;
+  }
+  70%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.hero-ring {
+  stroke-dashoffset: 100;
+  animation: hero-ring 1.3s cubic-bezier(0.16, 1, 0.3, 1) 1.35s forwards;
+}
+
+@keyframes hero-ring {
+  to {
+    stroke-dashoffset: 18;
+  }
+}
+
+.hero-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hero-bar 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.45s forwards;
+}
+
+@keyframes hero-bar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-float-in {
+  animation: hero-float-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-idle {
+  animation: hero-idle 8s ease-in-out infinite;
+}
+
+@keyframes hero-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.hero-live-dot {
+  animation: hero-live 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-live {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  .hero-tilt {
+    transform: none;
+  }
 }
