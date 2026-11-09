@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -13,6 +15,15 @@ const OUTCOME_KEYS = ["visibility", "costing", "planning", "governance"] as cons
 const STEP_KEYS = ["define", "move", "reconcile"] as const;
 const FEATURE_KEYS = ["items", "movements", "valuation", "integrations"] as const;
 const KPI_KEYS = ["stockAccuracy", "turnover", "shrinkage", "marginImpact"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("inventoryPage.hero.title"),
+    description: t("inventoryPage.hero.subtitle"),
+    path: "/products/inventory",
+  });
+}
 
 export default async function InventoryProductPage() {
   const { t } = await getServerI18n();

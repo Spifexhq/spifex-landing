@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- Snackbar freezes its content while opening; the state sync is intentional. */
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import type { SnackbarProps } from "./Snackbar.types";

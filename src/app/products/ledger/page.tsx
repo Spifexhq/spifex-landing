@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -13,6 +15,15 @@ const OUTCOME_KEYS = ["structure", "consistency", "traceability", "readiness"] a
 const STEP_KEYS = ["design", "classify", "audit"] as const;
 const FEATURE_KEYS = ["chart", "rules", "imports", "controls"] as const;
 const KPI_KEYS = ["coverage", "reclassRate", "closeLag", "auditTime"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("ledgerPage.hero.title"),
+    description: t("ledgerPage.hero.subtitle"),
+    path: "/products/ledger",
+  });
+}
 
 export default async function LedgerProductPage() {
   const { t } = await getServerI18n();

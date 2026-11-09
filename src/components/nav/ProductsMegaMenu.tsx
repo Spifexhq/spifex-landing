@@ -115,11 +115,18 @@ export default function ProductsMegaMenu() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-slate-200 px-5 py-4">
-            <div className="text-sm text-slate-600">{t("products.footer")}</div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] px-5 py-4">
+            <div className="flex flex-wrap gap-4 text-sm font-semibold">
+              <Link href="/personal" className="text-[var(--ink)] hover:underline" onClick={() => setOpen(false)}>
+                {t("nav.personal")}
+              </Link>
+              <Link href="/business" className="text-[var(--ink)] hover:underline" onClick={() => setOpen(false)}>
+                {t("nav.business")}
+              </Link>
+            </div>
             <Link
               href="/solutions"
-              className="text-sm font-semibold text-slate-900 hover:underline"
+              className="text-sm font-semibold text-[var(--ink)] hover:underline"
               onClick={() => setOpen(false)}
             >
               {t("products.explore")}

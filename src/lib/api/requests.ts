@@ -8,7 +8,7 @@ import type {
   CreateCheckoutSessionResponse,
 } from "./types";
 
-export type PlanCode = "starter" | "pro";
+export type PlanCode = "starter" | "pro" | "personal-starter" | "personal-pro";
 
 export const api = {
   checkEmailAvailability: (email: string) =>

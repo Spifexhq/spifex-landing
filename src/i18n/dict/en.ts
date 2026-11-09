@@ -9,6 +9,9 @@ const en = {
     solutions: "Solutions",
     customers: "Customers",
     pricing: "Pricing",
+    docs: "Docs",
+    personal: "Personal",
+    business: "Business",
     legal: "Legal",
     blog: "Blog",
     signin: "Sign in",
@@ -168,9 +171,9 @@ const en = {
     },
   },
   meta: {
-    siteTitle: "Spifex, financial operations unified",
+    siteTitle: "Spifex — personal and business financial operations",
     siteDescription:
-      "A modern financial operations platform that gives businesses complete control of cash flow, payments, and operational performance in one place.",
+      "Spifex unifies personal and business cash flow, banking, settlements, reporting and read-only AI connections in one operating platform.",
   },
   footer: {
     rights: "All rights reserved.",
@@ -1644,6 +1647,248 @@ solutionsPage: {
 
 
 
+  homeV2: {
+    hero: {
+      eyebrow: "Financial operations, unified",
+      title: "Run cash flow, banking and reporting from one operating layer",
+      subtitle:
+        "One operating layer for personal and business finances: plan cash flow, connect accounts, reconcile settlements and report with confidence.",
+      primary: "Start free",
+      secondary: "See pricing",
+      emailPlaceholder: "Enter your work email",
+      emailCta: "Start free",
+      disclaimer: "Free plan available. No credit card required.",
+      proof: "Built for multi-stream, vendor-heavy and project-based operations.",
+    },
+    audiences: {
+      title: "One platform for personal and business financial operations",
+      items: {
+        multiEntity: "Multi-entity operations",
+        financeOps: "Finance operations",
+        projectLed: "Project-led businesses",
+        vendorHeavy: "Vendor-heavy teams",
+      },
+    },
+    personal: {
+      eyebrow: "Spifex Personal",
+      title: "Your personal finances, with the clarity of an operating system",
+      subtitle:
+        "Bring accounts, categories, budgets and goals into one workspace, then see how today's spending changes what you planned next.",
+      bullets: {
+        accounts: "Keep personal bank accounts and balances in one view.",
+        budgets: "Plan budgets and goals, then track progress against real transactions.",
+        reporting:
+          "Review categories, outstanding settlements and indicators without rebuilding a spreadsheet.",
+        ai: "Connect ChatGPT or Claude with read-only access to summarize your cash flow.",
+      },
+      plans: "Personal Free · Personal Starter · Personal Pro",
+      cta: "Explore Spifex Personal",
+      start: "Start Personal free",
+      note: "Free plan available. No credit card required.",
+    },
+    outcomes: {
+      eyebrow: "Why Spifex",
+      title: "Replace disconnected spreadsheets and tools with one money workflow",
+      subtitle:
+        "Plan what will happen, execute with controls, reconcile what did happen, and report without rebuilding the same data in four places.",
+      items: {
+        visibility: {
+          title: "See the full money picture",
+          desc: "Cash-flow plans, settlements, bank balances and reporting live in one workspace instead of separate files.",
+        },
+        control: {
+          title: "Control execution",
+          desc: "Role-based access, settlements and transfers follow a consistent, workspace-scoped operating model.",
+        },
+        traceability: {
+          title: "Keep every movement traceable",
+          desc: "Connect planned entries to settlements, ledger structure and department or project ownership.",
+        },
+        decisions: {
+          title: "Decide with current numbers",
+          desc: "Use KPIs and filtered views to understand outstanding, settled and projected positions without manual reconciliation.",
+        },
+      },
+    },
+    modules: {
+      eyebrow: "Platform",
+      title: "One platform. Every money workflow.",
+      subtitle:
+        "Use the modules you need today and add structure as the business grows. All modules share the same workspace, currency and access model.",
+      cta: "Explore the platform",
+    },
+    ai: {
+      eyebrow: "AI connections",
+      title: "Ask ChatGPT or Claude about your cash flow",
+      subtitle:
+        "Connect Spifex through a read-only MCP connection. Your assistant can list workspaces, inspect transactions, summarize totals and map categories — without the ability to create, edit, settle or transfer anything.",
+      bullets: {
+        readOnly: "Read-only scope: cashflow:read",
+        oauth: "Per-user OAuth 2.1 with PKCE",
+        revoke: "Revoke access instantly in Settings",
+        privacy: "Notes, observations and attachments stay out of responses",
+      },
+      cta: "See how AI connections work",
+      note: "Available from Settings → AI connections in Business and Personal workspaces.",
+    },
+    workflow: {
+      eyebrow: "How it works",
+      title: "Start with your data. Add controls as you grow.",
+      subtitle: "No long implementation project required to get the first useful view.",
+      steps: {
+        create: {
+          title: "Create your workspace",
+          desc: "Choose your country, currency and workspace type. Start on the Free plan without a card.",
+        },
+        structure: {
+          title: "Structure the essentials",
+          desc: "Add bank accounts, categories, projects or departments. Import data where you already have it.",
+        },
+        operate: {
+          title: "Operate and review",
+          desc: "Plan cash flow, settle entries, reconcile movements and review KPIs from the same workspace.",
+        },
+      },
+    },
+    pricing: {
+      eyebrow: "Pricing",
+      title: "Start free. Upgrade when operations grow.",
+      subtitle:
+        "Every plan includes the core workspace. Paid plans add capacity and more operating room for growing teams.",
+      note: "Regional pricing is shown on the pricing page. Final billing and taxes may vary at checkout.",
+      cta: "Compare plans",
+    },
+    faq: {
+      eyebrow: "Questions",
+      title: "What teams ask before starting",
+      items: {
+        free: {
+          q: "Is the Free plan really free?",
+          a: "Yes. You can create a workspace and start without a payment method. Paid plans are available when you need more capacity.",
+        },
+        replace: {
+          q: "Does Spifex replace my accounting software?",
+          a: "Spifex is the operating layer for cash flow, banking visibility, settlements, governance and reporting. It complements your accounting stack rather than replacing statutory accounting.",
+        },
+        ai: {
+          q: "Can the AI assistant change my data?",
+          a: "No. The v1 connector is read-only and requests only the cashflow:read scope. It cannot create, edit, delete, settle or transfer anything.",
+        },
+        security: {
+          q: "How is workspace data isolated?",
+          a: "Every query is scoped to a workspace the authenticated user owns or belongs to. Roles, lifecycle rules and plan entitlements are enforced server-side.",
+        },
+        migrate: {
+          q: "Can I import existing data?",
+          a: "Spifex supports structured imports for banking statements and common financial data. You can also start with a small workspace and add structure over time.",
+        },
+      },
+    },
+    finalCta: {
+      title: "Bring your cash flow, banking and reporting into one operating layer.",
+      subtitle: "Start free, invite your team when ready, and keep the controls your finance operation needs.",
+      primary: "Start free",
+      secondary: "Talk to the team",
+    },
+  },
+
+  pricingV2: {
+    eyebrow: "Plans",
+    title: "Choose the plan that fits how you manage money",
+    subtitle:
+      "Personal and Business each start free, then move to Starter or Pro for more capacity. Every limit shown here is the limit enforced in your workspace.",
+    billedMonthly: "Billed monthly",
+    noCard: "No card required",
+    personal: "Personal",
+    business: "Business",
+    personalDesc:
+      "Organize personal cash flow, accounts, categories, budgets and goals with the same operating discipline as a business.",
+    businessDesc:
+      "Run business cash flow, banking, settlements, ledger structure, projects and reporting with role-based controls.",
+    startFree: "Start free",
+    choosePlan: "Choose {plan}",
+    recommended: "Recommended",
+    compareTitle: "Compare plans",
+    compareSubtitle: "The same core workspace, with more capacity as your operation grows.",
+    rows: {
+      workspace: "Owned workspaces",
+      cashflow: "Cash-flow planning and execution",
+      banking: "Banking visibility and accounts",
+      settlements: "Settlements and transfers",
+      reporting: "KPIs and reporting",
+      governance: "Roles and governance",
+      ai: "Read-only AI connections",
+    },
+    included: "Included",
+    notIncluded: "Not included",
+    faqTitle: "Pricing questions",
+    faq: {
+      card: {
+        q: "Do I need a credit card for the Free plan?",
+        a: "No. The Free plan starts without a payment method.",
+      },
+      change: {
+        q: "Can I change plans later?",
+        a: "Yes. You can upgrade from the workspace billing settings when your operation needs more capacity.",
+      },
+      currency: {
+        q: "Why do prices change by country?",
+        a: "Spifex bills in supported regional currencies. The pricing page uses your detected country and falls back to a default when it cannot determine one.",
+      },
+      taxes: {
+        q: "Are taxes included?",
+        a: "Final billing and applicable taxes are shown at secure checkout.",
+      },
+    },
+    trustNote: "No invented limits or hidden add-ons. Plan details are shown before checkout.",
+  },
+
+  docsPage: {
+    eyebrow: "Documentation",
+    title: "Spifex product documentation",
+    subtitle:
+      "Practical guides for setting up your workspace, running cash-flow workflows and connecting AI assistants.",
+    searchPlaceholder: "Search guides, workflows and settings",
+    searchLabel: "Search documentation",
+    noResults: "No guides match that search.",
+    all: "All guides",
+    readGuide: "Read guide",
+    related: "Related guides",
+    back: "All documentation",
+    updated: "Last updated",
+    reviewNote:
+      "Operational documentation. Legal pages are separate and require professional review before launch.",
+    categories: {
+      gettingStarted: "Getting started",
+      cashflow: "Cash flow",
+      banking: "Banking and settlements",
+      reporting: "Reporting",
+      ai: "AI connections",
+      security: "Security and billing",
+    },
+  },
+
+  signupSuccess: {
+    title: "Your workspace is ready",
+    subtitle: "You can continue to your dashboard or review the setup guides while your account is prepared.",
+    dashboard: "Open dashboard",
+    docs: "Read the setup guide",
+    nextTitle: "Recommended next steps",
+    nextItems: {
+      workspace: "Choose your active workspace and currency.",
+      banks: "Add a bank account to connect balances and settlements.",
+      categories: "Review categories so reporting stays consistent.",
+      ai: "Connect ChatGPT or Claude with read-only access if you want AI-assisted analysis.",
+    },
+  },
+
+  cookiesBanner: {
+    title: "Cookies and measurement",
+    body: "We use essential cookies to run Spifex. With your permission, we also use marketing cookies to measure campaigns.",
+    accept: "Accept all",
+    reject: "Essential only",
+    policy: "Cookie policy",
+  },
 } as const;
 
 export default en;

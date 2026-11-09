@@ -1,12 +1,23 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
 const STORY_KEYS = ["limits", "spend", "budget", "ap"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("customersPage.hero.title"),
+    description: t("customersPage.hero.subtitle"),
+    path: "/customers",
+  });
+}
 
 export default async function CustomersPage() {
   const { t } = await getServerI18n();

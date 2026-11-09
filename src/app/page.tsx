@@ -1,215 +1,506 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BadgeCheck,
+  Banknote,
+  BookOpenCheck,
+  Bot,
+  ChartNoAxesCombined,
+  Check,
+  CircleDollarSign,
+  Landmark,
+  LockKeyhole,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  UsersRound,
+  Wallet,
+} from "lucide-react";
+
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
-
+import { FAQ } from "@/components/marketing/FAQ";
+import { FeatureCard } from "@/components/marketing/FeatureCard";
+import { Section, SectionHeading, Eyebrow } from "@/components/marketing/Section";
+import { TrustStrip } from "@/components/marketing/TrustStrip";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { PRODUCTS_MENU } from "@/content/products";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
+import {
+  faqSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+  websiteSchema,
+} from "@/lib/seo/schema";
 
-const EMAIL_PARAM = "email";
-const FEATURE_KEYS = ["moneyLifecycle", "complexity", "governance", "kpiExecution"] as const;
-const CHIP_KEYS = ["multiStreamRevenue", "vendorHeavyOps", "projectCostAttribution"] as const;
-
-function toSectionId(key: string) {
-  return key.replaceAll("_", "-");
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("meta.siteTitle"),
+    description: t("meta.siteDescription"),
+    path: "/",
+  });
 }
+
+const OUTCOME_KEYS = ["visibility", "control", "traceability", "decisions"] as const;
+const AUDIENCE_KEYS = ["multiEntity", "financeOps", "projectLed", "vendorHeavy"] as const;
+const WORKFLOW_KEYS = ["create", "structure", "operate"] as const;
+const FAQ_KEYS = ["free", "replace", "ai", "security", "migrate"] as const;
+
+const PRODUCT_ICONS = {
+  cashflow: ChartNoAxesCombined,
+  banking: Landmark,
+  spend: CircleDollarSign,
+  ledger: BookOpenCheck,
+  projects: BadgeCheck,
+  departments: UsersRound,
+  crm: UsersRound,
+  inventory: Banknote,
+} as const;
 
 export default async function HomePage() {
   const { t } = await getServerI18n();
-
-  const products = PRODUCTS_MENU.find((g) => g.groupKey === "products")?.items ?? [];
+  const products = PRODUCTS_MENU.find((group) => group.groupKey === "products")?.items ?? [];
+  const faqItems = FAQ_KEYS.map((key) => ({
+    question: t(`homeV2.faq.items.${key}.q`),
+    answer: t(`homeV2.faq.items.${key}.a`),
+  }));
 
   return (
     <main className="bg-white">
-      {/* Hero (same formatting as CashflowProductPage hero) */}
-{/* Hero */}
-<section className="relative overflow-hidden nav:min-h-[calc(100svh-4rem)]">
-  {/* Background layer */}
-  <div className="absolute inset-0 z-0">
-    <Image
-      src="/hero/home-hero.png"
-      alt=""
-      aria-hidden="true"
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover object-right hero-start:max-hero-sharp:blur-md"
-    />
-    <div className="absolute inset-0 bg-linear-to-r from-white via-white/30 to-transparent" />
-    <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/40" />
-  </div>
+      <JsonLd
+        data={[
+          organizationSchema(),
+          websiteSchema(),
+          softwareApplicationSchema(),
+          faqSchema(faqItems),
+        ]}
+      />
 
-  {/* Content */}
-  <div className="relative z-10 nav:min-h-[calc(100svh-4rem)] nav:flex nav:items-center">
-    <Container className="py-16 sm:py-20 nav:py-0">
-      <div className="max-w-3xl">
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-          {t("home.hero.title")}
-        </h1>
-      </div>
-
-      <div className="mt-6 max-w-md">
-        <p className="text-lg leading-relaxed text-slate-600">
-          {t("home.hero.subtitle")}
-        </p>
-
-        <form action={DASHBOARD_URLS.signup} method="GET" className="mt-10">
-          <div className="relative rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <input
-              type="email"
-              name={EMAIL_PARAM}
-              required
-              inputMode="email"
-              autoComplete="email"
-              placeholder={t("home.hero.emailPlaceholder")}
-              className="h-14 w-full rounded-2xl bg-transparent px-5 pr-36 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-slate-300"
-            />
-
-            <button
-              type="submit"
-              className="absolute right-2 top-1/2 h-10 -translate-y-1/2 rounded-xl bg-orange-600 px-5 text-sm font-semibold text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-200"
-            >
-              {t("home.hero.ctaPrimary")}
-            </button>
-          </div>
-        </form>
-
-        <p className="mt-10 text-xs leading-relaxed text-slate-500">
-          {t("home.hero.disclaimer")}
-        </p>
-      </div>
-    </Container>
-  </div>
-</section>
-
-
-      {/* Feature Grid */}
-      <section id="solutions" className="py-14 sm:py-16">
-        <Container>
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-                {t("home.features.title")}
-              </h2>
-              <p className="mt-2 max-w-2xl text-slate-600">
-                {t("home.features.subtitle")}
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#fbfaf7]">
+        <div className="pointer-events-none absolute inset-0 brand-gradient" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] grid-fade opacity-70" aria-hidden="true" />
+        <Container className="relative py-16 sm:py-20 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-14">
+            <div className="max-w-2xl animate-rise">
+              <Eyebrow>
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand)]" aria-hidden="true" />
+                {t("homeV2.hero.eyebrow")}
+              </Eyebrow>
+              <h1 className="text-balance mt-6 text-[2.65rem] font-semibold leading-[1.03] tracking-[-0.045em] text-[var(--ink)] sm:text-6xl lg:text-[4.1rem]">
+                {t("homeV2.hero.title")}
+              </h1>
+              <p className="text-pretty mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
+                {t("homeV2.hero.subtitle")}
               </p>
-            </div>
-          </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {FEATURE_KEYS.map((k) => (
-              <div key={k} className="rounded-3xl border border-slate-200 bg-white p-6">
-                <div className="text-sm font-semibold text-slate-900">
-                  {t(`home.features.items.${k}.title`)}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button href={`${DASHBOARD_URLS.signup}?intent=signup&plan=free`} size="lg" dataCta="hero-start-free">
+                  {t("homeV2.hero.primary")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <Button href="/pricing" variant="secondary" size="lg" dataCta="hero-pricing">
+                  {t("homeV2.hero.secondary")}
+                </Button>
+              </div>
+
+              <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--muted)]">
+                <Check size={14} className="text-[var(--success)]" aria-hidden="true" />
+                {t("homeV2.hero.disclaimer")}
+              </p>
+              <p className="mt-6 max-w-lg text-sm leading-6 text-[var(--muted)]">{t("homeV2.hero.proof")}</p>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-[620px] lg:mx-0 animate-rise-delay">
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[var(--brand)]/15 via-transparent to-[var(--teal)]/25 blur-2xl" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-[#ded8cf] bg-white p-2 shadow-lift">
+                <div className="flex items-center gap-1.5 px-2 py-2" aria-hidden="true">
+                  <span className="h-2 w-2 rounded-full bg-[#f2b8a3]" />
+                  <span className="h-2 w-2 rounded-full bg-[#f5d6a1]" />
+                  <span className="h-2 w-2 rounded-full bg-[#b7dccf]" />
+                  <span className="ml-3 h-4 flex-1 rounded bg-[#f3f0ea]" />
                 </div>
-                <div className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {t(`home.features.items.${k}.desc`)}
+                <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#eeeae4] bg-[#f7f6f3]">
+                  <Image
+                    src="/products/cashflow/cashflow-ui.png"
+                    alt="Spifex cash-flow workspace with planned and settled entries"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 620px, 100vw"
+                    className="object-cover"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-        </Container>
-      </section>
 
-      {/* Customers */}
-      <section id="customers" className="bg-gray-100 py-14 sm:py-16">
-        <Container>
-          <div className="rounded-3xl border border-gray-300 bg-white p-8 sm:p-10">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-              {t("home.customers.title")}
-            </h2>
-            <p className="mt-2 max-w-2xl text-slate-600">
-              {t("home.customers.subtitle")}
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {CHIP_KEYS.map((k) => (
-                <div
-                  key={k}
-                  className="rounded-2xl border border-slate-200 bg-gray-100 px-4 py-4 text-sm font-semibold text-slate-900"
-                >
-                  {t(`home.customers.chips.${k}`)}
+              <div className="absolute -bottom-5 -left-3 hidden w-[240px] rounded-xl border border-[var(--line)] bg-white p-3 shadow-card sm:block animate-float">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)]">
+                    <Bot size={14} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-[11px] font-semibold text-[var(--ink)]">Read-only AI connection</p>
+                    <p className="text-[10px] text-[var(--muted)]">ChatGPT · Claude · MCP</p>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </Container>
       </section>
+
+      <TrustStrip />
+
+      {/* Audiences */}
+      <Section tone="white" className="py-10 sm:py-12">
+        <Container>
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <p className="text-sm font-semibold text-[var(--ink)]">{t("homeV2.audiences.title")}</p>
+            <div className="flex flex-wrap gap-2">
+              {AUDIENCE_KEYS.map((key) => (
+                <span
+                  key={key}
+                  className="rounded-full border border-[var(--line)] bg-[var(--canvas)] px-3 py-1.5 text-xs font-medium text-[var(--ink-soft)]"
+                >
+                  {t(`homeV2.audiences.items.${key}`)}
+                </span>
+              ))}
+              <Link href="/personal" className="rounded-full bg-[var(--ink)] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#343434]">
+                {t("nav.personal")}
+              </Link>
+              <Link href="/business" className="rounded-full bg-[var(--ink)] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#343434]">
+                {t("nav.business")}
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Outcomes */}
+      <Section tone="canvas" id="solutions">
+        <Container>
+          <SectionHeading
+            eyebrow={t("homeV2.outcomes.eyebrow")}
+            title={t("homeV2.outcomes.title")}
+            description={t("homeV2.outcomes.subtitle")}
+          />
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {OUTCOME_KEYS.map((key, index) => {
+              const icons = [ChartNoAxesCombined, ShieldCheck, RefreshCw, Sparkles];
+              const IconComponent = icons[index];
+              return (
+                <FeatureCard
+                  key={key}
+                  icon={IconComponent}
+                  title={t(`homeV2.outcomes.items.${key}.title`)}
+                  description={t(`homeV2.outcomes.items.${key}.desc`)}
+                />
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Personal */}
+      <Section tone="white" id="personal">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center lg:gap-14">
+            <div>
+              <SectionHeading
+                eyebrow={t("homeV2.personal.eyebrow")}
+                title={t("homeV2.personal.title")}
+                description={t("homeV2.personal.subtitle")}
+              />
+              <ul className="mt-8 grid gap-3.5">
+                {(["accounts", "budgets", "reporting", "ai"] as const).map((key, index) => {
+                  const icons = [Wallet, Target, ChartNoAxesCombined, Bot];
+                  const IconComponent = icons[index];
+                  return (
+                    <li key={key} className="flex gap-3 text-sm leading-6 text-[var(--ink-soft)]">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--brand-soft)] text-[var(--brand)]">
+                        <IconComponent size={13} aria-hidden="true" />
+                      </span>
+                      <span>{t(`homeV2.personal.bullets.${key}`)}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  href="/signup?intent=signup&product=personal&plan=free"
+                  dataCta="home-personal-start"
+                >
+                  {t("homeV2.personal.start")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <Button href="/personal" variant="secondary" dataCta="home-personal-explore">
+                  {t("homeV2.personal.cta")}
+                </Button>
+              </div>
+              <p className="mt-4 text-xs font-medium text-[var(--muted)]">{t("homeV2.personal.note")}</p>
+            </div>
+
+            <div className="rounded-3xl border border-[var(--line)] bg-[#fbfaf7] p-4 shadow-card sm:p-6">
+              <div className="rounded-2xl border border-[var(--line)] bg-white p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-[var(--ink)]">Personal workspace</p>
+                    <p className="mt-0.5 text-[11px] text-[var(--muted)]">This month · all accounts</p>
+                  </div>
+                  <span className="rounded-full border border-[var(--line)] bg-[var(--canvas)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+                    Personal
+                  </span>
+                </div>
+
+                <div className="mt-5 space-y-4">
+                  {[
+                    { label: "Planned budget", value: "68%", width: "68%" },
+                    { label: "Settled", value: "42%", width: "42%" },
+                    { label: "Goals on track", value: "3 of 4", width: "75%" },
+                  ].map((row) => (
+                    <div key={row.label}>
+                      <div className="flex items-center justify-between text-[11px] font-medium text-[var(--ink-soft)]">
+                        <span>{row.label}</span>
+                        <span className="text-[var(--muted)]">{row.value}</span>
+                      </div>
+                      <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#eeeae4]">
+                        <div
+                          className="h-full rounded-full bg-[var(--brand)]"
+                          style={{ width: row.width }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[#fbfaf7] p-3 text-[11px] text-[var(--muted)]">
+                  <Check size={13} className="text-[var(--success)]" aria-hidden="true" />
+                  Accounts, categories and goals share one currency and workspace.
+                </div>
+              </div>
+
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                {["Free", "Starter", "Pro"].map((tier) => (
+                  <div
+                    key={tier}
+                    className="rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-center text-xs font-semibold text-[var(--ink-soft)]"
+                  >
+                    Personal {tier}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* Modules */}
-      <section id="platform" className="py-14 sm:py-16">
+      <Section tone="canvas" id="platform">
         <Container>
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-            {t("home.modules.title")}
-          </h2>
-          <p className="mt-2 max-w-2xl text-slate-600">
-            {t("home.modules.subtitle")}
-          </p>
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+            <SectionHeading
+              eyebrow={t("homeV2.modules.eyebrow")}
+              title={t("homeV2.modules.title")}
+              description={t("homeV2.modules.subtitle")}
+            />
+            <Button href="/solutions" variant="outline" dataCta="modules-explore">
+              {t("homeV2.modules.cta")}
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Button>
+          </div>
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product) => {
+              const IconComponent = PRODUCT_ICONS[product.key as keyof typeof PRODUCT_ICONS];
+              return (
+                <FeatureCard
+                  key={product.key}
+                  icon={IconComponent}
+                  title={t(`products.items.${product.key}.title`)}
+                  description={t(`products.items.${product.key}.desc`)}
+                  href={product.href}
+                />
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p) => (
-              <div
-                key={p.key}
-                id={toSectionId(p.key)}
-                className="rounded-3xl border border-slate-200 bg-white p-6"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white">
-                    <Icon name={p.icon} className="h-5 w-5 text-slate-900" />
-                  </div>
-                  <div className="text-sm font-semibold text-slate-900">
-                    {t(`products.items.${p.key}.title`)}
+      {/* AI connections */}
+      <Section tone="ink" id="ai-connections" className="relative overflow-hidden">
+        <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-[var(--brand)]/20 blur-3xl" aria-hidden="true" />
+        <Container className="relative">
+          <div className="grid gap-10 lg:grid-cols-[1.02fr_.98fr] lg:items-center">
+            <div>
+              <SectionHeading
+                eyebrow={t("homeV2.ai.eyebrow")}
+                title={t("homeV2.ai.title")}
+                description={t("homeV2.ai.subtitle")}
+                dark
+              />
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {(["readOnly", "oauth", "revoke", "privacy"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2.5 text-sm leading-6 text-white/75">
+                    <Check size={15} className="mt-1 shrink-0 text-[var(--teal)]" aria-hidden="true" />
+                    {t(`homeV2.ai.bullets.${key}`)}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Button href="/docs/connect-chatgpt-claude" variant="primary" dataCta="ai-docs">
+                  {t("homeV2.ai.cta")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <span className="text-xs text-white/50">{t("homeV2.ai.note")}</span>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur">
+              <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-[var(--teal)]">
+                    <Bot size={16} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Spifex connector</p>
+                    <p className="text-[11px] text-white/50">Streamable HTTP · MCP</p>
                   </div>
                 </div>
+                <span className="rounded-full border border-[var(--teal)]/30 bg-[var(--teal)]/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--teal)]">
+                  Read only
+                </span>
+              </div>
+              <div className="mt-4 space-y-3 font-mono text-[12px] text-white/70">
+                <p><span className="text-white/60">scope</span> cashflow:read</p>
+                <p><span className="text-white/60">tools</span> list_workspaces, list_cashflow_rows</p>
+                <p><span className="text-white/60">summary</span> summarize_cashflow</p>
+                <p><span className="text-white/60">categories</span> list_cashflow_categories</p>
+              </div>
+              <div className="mt-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/15 p-3 text-xs text-white/60">
+                <LockKeyhole size={14} className="text-[var(--teal)]" aria-hidden="true" />
+                Cannot create, edit, settle or transfer.
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {t(`products.items.${p.key}.desc`)}
+      {/* Workflow */}
+      <Section tone="canvas" id="how-it-works">
+        <Container>
+          <SectionHeading
+            eyebrow={t("homeV2.workflow.eyebrow")}
+            title={t("homeV2.workflow.title")}
+            description={t("homeV2.workflow.subtitle")}
+          />
+          <div className="mt-10 grid gap-3 md:grid-cols-3">
+            {WORKFLOW_KEYS.map((key, index) => (
+              <div key={key} className="rounded-2xl border border-[var(--line)] bg-white p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-xs font-semibold text-white">
+                  {index + 1}
+                </span>
+                <h3 className="mt-5 text-[15px] font-semibold text-[var(--ink)]">
+                  {t(`homeV2.workflow.steps.${key}.title`)}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+                  {t(`homeV2.workflow.steps.${key}.desc`)}
                 </p>
-
-                <div className="mt-4 text-sm font-semibold text-slate-900">
-                  {/* Keep <a> in case some items are external */}
-                  <a className="hover:underline" href={p.href}>
-                    {t("common.learnMore")}
-                  </a>
-                </div>
               </div>
             ))}
           </div>
         </Container>
-      </section>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-14 sm:py-16">
+      {/* Pricing preview */}
+      <Section tone="white" id="pricing-preview">
         <Container>
-          <div className="rounded-3xl border border-slate-200 bg-slate-900 px-6 py-10 sm:px-10">
-            <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
+          <div className="rounded-3xl border border-[var(--line)] bg-[#fbfaf7] p-6 sm:p-10">
+            <div className="grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight text-white">
-                  {t("home.cta.title")}
-                </h3>
-                <p className="mt-2 text-slate-200">
-                  {t("home.cta.subtitle")}
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-                <Button href={DASHBOARD_URLS.signup} variant="secondary">
-                  {t("home.cta.primary")}
+                <SectionHeading
+                  eyebrow={t("homeV2.pricing.eyebrow")}
+                  title={t("homeV2.pricing.title")}
+                  description={t("homeV2.pricing.subtitle")}
+                />
+                <p className="mt-4 text-xs leading-5 text-[var(--muted)]">{t("homeV2.pricing.note")}</p>
+                <Button href="/pricing" variant="dark" className="mt-6" dataCta="home-compare-plans">
+                  {t("homeV2.pricing.cta")}
+                  <ArrowRight size={16} aria-hidden="true" />
                 </Button>
-                <Button
-                  href="/pricing"
-                  variant="ghost"
-                  className="border border-white/15 text-white hover:bg-white/10"
-                >
-                  {t("home.cta.secondary")}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {(["personal", "business"] as const).map((category) => (
+                  <div key={category} className="rounded-2xl border border-[var(--line)] bg-white p-5">
+                    <p className="text-sm font-semibold text-[var(--ink)]">
+                      {t(`pricingV2.${category}`)}
+                    </p>
+                    <p className="mt-2 text-xs leading-5 text-[var(--muted)]">
+                      {t(`pricingV2.${category}Desc`)}
+                    </p>
+                    <p className="mt-3 text-xs font-semibold text-[var(--ink-soft)]">
+                      Free · Starter · Pro
+                    </p>
+                    <Link
+                      href={`/pricing?product=${category}`}
+                      className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                      data-cta={`home-plans-${category}`}
+                    >
+                      {t("homeV2.pricing.cta")} <ArrowUpRight size={12} aria-hidden="true" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* FAQ */}
+      <Section tone="canvas" id="faq">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+            <SectionHeading
+              eyebrow={t("homeV2.faq.eyebrow")}
+              title={t("homeV2.faq.title")}
+            />
+            <FAQ items={faqItems} />
+          </div>
+        </Container>
+      </Section>
+
+      {/* Final CTA */}
+      <Section tone="white" className="pb-20">
+        <Container>
+          <div className="relative overflow-hidden rounded-3xl bg-[var(--ink)] px-6 py-12 sm:px-12 sm:py-16">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[var(--brand)]/25 blur-3xl" aria-hidden="true" />
+            <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--teal)]">
+                  Start with clarity
+                </p>
+                <h2 className="text-balance mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">
+                  {t("homeV2.finalCta.title")}
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-white/65">{t("homeV2.finalCta.subtitle")}</p>
+              </div>
+              <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
+                <Button href={`${DASHBOARD_URLS.signup}?intent=signup&plan=free`} size="lg" dataCta="final-start-free">
+                  {t("homeV2.finalCta.primary")}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Button>
+                <Button href="/customers/learn-more" variant="outline" size="lg" className="border-white/20 text-white hover:border-white/50 hover:bg-white/10" dataCta="final-contact">
+                  {t("homeV2.finalCta.secondary")}
                 </Button>
               </div>
             </div>
           </div>
         </Container>
-      </section>
+      </Section>
     </main>
   );
 }

@@ -1,9 +1,20 @@
 // src/app/legal/page.tsx
+import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta } from "@/lib/content/mdx";
+import { pageMetadata } from "@/lib/seo/metadata";
 import LegalToc from "./LegalToc";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("legal.title"),
+    description: "Spifex legal documents, privacy, terms and cookie notice.",
+    path: "/legal",
+  });
+}
 
 export default async function LegalHubPage() {
   const { locale, t } = await getServerI18n();

@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
-import { Home, Layers3, Users, BadgeDollarSign, Menu, X } from "lucide-react";
+import { Home, Wallet, Users, BadgeDollarSign, Menu, X, BookOpen } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import ProductsMegaMenu from "@/components/nav/ProductsMegaMenu";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS, NAV_ITEMS } from "@/content/navigation";
+import { PRODUCTS_MENU } from "@/content/products";
 import { useT } from "@/components/i18n/I18nProvider";
 
 function Wordmark() {
@@ -93,9 +94,10 @@ export default function Navbar() {
   const mobileItems: MobileItem[] = useMemo(
     () => [
       { href: "/", ariaLabel: t("nav.home"), Icon: Home },
-      { href: "/solutions", ariaLabel: t("nav.solutions"), Icon: Layers3 },
-      { href: "/customers", ariaLabel: t("nav.customers"), Icon: Users },
+      { href: "/personal", ariaLabel: t("nav.personal"), Icon: Wallet },
+      { href: "/business", ariaLabel: t("nav.business"), Icon: Users },
       { href: "/pricing", ariaLabel: t("nav.pricing"), Icon: BadgeDollarSign },
+      { href: "/docs", ariaLabel: t("nav.docs"), Icon: BookOpen },
     ],
     [t]
   );
@@ -112,7 +114,7 @@ export default function Navbar() {
             <Wordmark />
           </Link>
 
-          <nav className="hidden items-center gap-10 nav:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-7 nav:flex" aria-label="Primary">
             <ProductsMegaMenu />
 
             {NAV_ITEMS.map((it) => (
@@ -130,12 +132,18 @@ export default function Navbar() {
             <Button href={DASHBOARD_URLS.signin} variant="ghost" size="sm">
               {t("nav.signin")}
             </Button>
-            <Button href={DASHBOARD_URLS.signup} variant="primary" size="sm">
+            <Button href={DASHBOARD_URLS.signup} variant="primary" size="sm" dataCta="nav-signup">
               {t("nav.signup")}
             </Button>
           </div>
         </Container>
       </header>
+
+      {/* Mobile top scrim keeps floating controls readable over scrolled content. */}
+      <div
+        className="nav:hidden pointer-events-none fixed inset-x-0 top-0 z-40 h-20 bg-gradient-to-b from-white/95 via-white/60 to-transparent"
+        aria-hidden="true"
+      />
 
       <Link
         href="/"
@@ -184,6 +192,9 @@ export default function Navbar() {
       />
 
       <aside
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("nav.toggleMenu")}
         className={[
           "nav:hidden",
           "fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-xl",
@@ -225,6 +236,22 @@ export default function Navbar() {
                 {t("nav.home")}
               </Link>
 
+              <div className="mt-3 border-t border-slate-200 pt-3">
+                <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                  {t("nav.products")}
+                </p>
+                {PRODUCTS_MENU[0].items.slice(0, 6).map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className="rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {t(`products.items.${item.key}.title`)}
+                  </Link>
+                ))}
+              </div>
+
               {NAV_ITEMS.map((it) => (
                 <Link
                   key={it.href}
@@ -235,6 +262,22 @@ export default function Navbar() {
                   {t(it.i18nKey)}
                 </Link>
               ))}
+
+              <Link
+                href="/solutions"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-900 hover:bg-slate-100"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t("nav.solutions")}
+              </Link>
+
+              <Link
+                href="/customers"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-900 hover:bg-slate-100"
+                onClick={() => setMobileOpen(false)}
+              >
+                {t("nav.customers")}
+              </Link>
 
               <Link
                 href="/legal"
@@ -270,6 +313,7 @@ export default function Navbar() {
                 variant="primary"
                 size="sm"
                 className="w-full"
+                dataCta="mobile-nav-signup"
               >
                 {t("nav.signup")}
               </Button>

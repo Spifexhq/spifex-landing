@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spifex landing
 
-## Getting Started
+Public marketing site for Spifex, built with Next.js App Router, React 19 and
+Tailwind CSS 4.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-## Learn More
+## Routes
 
-To learn more about Next.js, take a look at the following resources:
+- `/` — conversion homepage for Personal and Business
+- `/personal` — Personal positioning, capabilities and plan CTAs
+- `/business` — Business positioning, capabilities and plan CTAs
+- `/pricing` — regional pricing with Personal/Business toggle, comparison and FAQ
+- `/pricing?product=personal|business` — pricing deep link for each category
+- `/solutions` — platform and operating-model overview
+- `/products/*` — product detail pages
+- `/docs` — searchable product documentation
+- `/docs/[slug]` — onboarding, cashflow, banking, reporting, AI and security guides
+- `/lp/[slug]` — noindex campaign landing pages
+- `/legal/*` — privacy, terms and cookie notice
+- `/blog` — MDX articles
+- `/signup` — category-aware account creation and checkout handoff
+- `/signup/success` — post-verification next steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Product categories and plans
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`src/content/plans.ts` is the landing-page catalog for both product categories.
+Prices and quotas mirror the backend `seed_plans.py` and entitlement seeds:
 
-## Deploy on Vercel
+| Category | Plan | EUR | USD | BRL |
+|---|---|---|---|---|
+| Personal | Personal Free | 0 | 0 | 0 |
+| Personal | Personal Starter | 9.99 | 7.99 | 39.99 |
+| Personal | Personal Pro | 14.99 | 12.99 | 109.99 |
+| Business | Business Free | 0 | 0 | 0 |
+| Business | Business Starter | 15 | 12 | 50 |
+| Business | Business Pro | 27 | 30 | 150 |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Signup always starts the new workspace on the category’s Free plan
+(`free` or `personal-free`) because the API rejects paid plans at registration.
+The selected paid code (`starter`, `pro`, `personal-starter`, `personal-pro`)
+is preserved and used by the post-verification checkout call.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For free signup, `/signup` shows a Personal/Business workspace-type selector that
+syncs `?product=` in the URL. Paid signup hides the selector and derives the
+category from the plan code so the plan and category cannot diverge.
+
+## Configuration
+
+Copy `.env.example` and set:
+
+| Variable | Purpose |
+|---|---|
+| `SITE_URL` | Canonical origin for metadata, sitemap and Open Graph |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Browser Meta Pixel (optional) |
+| `META_PIXEL_ID` | Server CAPI pixel ID (optional) |
+| `META_CAPI_ACCESS_TOKEN` | Server CAPI access token (optional) |
+| `META_CAPI_TEST_EVENT_CODE` | Meta test event code (optional) |
+| `GOOGLE_SITE_VERIFICATION` | Search Console verification (optional) |
+| `BING_SITE_VERIFICATION` | Bing verification (optional) |
+
+Marketing analytics is consent-gated. With no credentials, tracking is a no-op.
+
+## Documentation
+
+- [Meta Ads readiness](docs/meta-ads.md)
+- [Launch checklist](docs/launch-checklist.md)
+- [Spec Kit feature](specs/001-landing-growth/spec.md)
+
+## Notes
+
+- No testimonials, customer logos or performance metrics are invented.
+- Pricing comes from the existing Personal/Business Free, Starter and Pro catalog.
+- The Personal/Business toggle updates the URL (`?product=`) without a reload, and
+  prices are server-rendered for the detected currency.
+- Legal content is an operational draft and requires professional review.
+- Purchase events belong in the server-side Stripe checkout completion path.

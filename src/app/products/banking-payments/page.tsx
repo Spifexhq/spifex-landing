@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -18,6 +20,15 @@ const CONTROL_CHIP_KEYS = ["rbac", "approvals", "auditTrail", "makerChecker", "t
 const GOVERNANCE_CHECK_KEYS = ["ownership", "policies", "evidence", "segregation"] as const;
 
 const KPI_KEYS = ["approvalTime", "paymentSuccess", "reworkRate", "closeLag"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("bankingPaymentsPage.hero.title"),
+    description: t("bankingPaymentsPage.hero.subtitle"),
+    path: "/products/banking-payments",
+  });
+}
 
 export default async function BankingPaymentsProductPage() {
   const { t } = await getServerI18n();

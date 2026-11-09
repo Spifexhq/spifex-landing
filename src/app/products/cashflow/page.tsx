@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -13,6 +15,15 @@ const OUTCOME_KEYS = ["forecast", "execution", "reconciliation", "governance"] a
 const FEATURE_KEYS = ["planning", "settlements", "allocations", "reporting"] as const;
 const STEP_KEYS = ["plan", "execute", "reconcile"] as const;
 const KPI_KEYS = ["accuracy", "unplanned", "approvalTime", "closeLag"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("cashflowPage.hero.title"),
+    description: t("cashflowPage.hero.subtitle"),
+    path: "/products/cashflow",
+  });
+}
 
 export default async function CashflowProductPage() {
   const { t } = await getServerI18n();

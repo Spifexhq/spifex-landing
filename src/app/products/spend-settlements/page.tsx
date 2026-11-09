@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -13,6 +15,15 @@ const OUTCOME_KEYS = ["control", "velocity", "traceability", "accuracy"] as cons
 const STEP_KEYS = ["request", "approve", "settle"] as const;
 const FEATURE_KEYS = ["requests", "settlements", "allocations", "policies"] as const;
 const KPI_KEYS = ["cycleTime", "exceptions", "policyCompliance", "closeLag"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("spendSettlementsPage.hero.title"),
+    description: t("spendSettlementsPage.hero.subtitle"),
+    path: "/products/spend-settlements",
+  });
+}
 
 export default async function SpendSettlementsProductPage() {
   const { t } = await getServerI18n();

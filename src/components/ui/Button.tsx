@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "ghost";
-type Size = "sm" | "md";
+type Variant = "primary" | "secondary" | "ghost" | "dark" | "outline";
+type Size = "sm" | "md" | "lg";
 
 export function Button({
   href,
@@ -10,29 +10,44 @@ export function Button({
   variant = "primary",
   size = "md",
   className,
+  dataCta,
+  ariaLabel,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: Variant;
   size?: Size;
   className?: string;
+  dataCta?: string;
+  ariaLabel?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-xl font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+
   const sizes = {
-    sm: "h-9 px-3 text-sm",
-    md: "h-11 px-4 text-sm",
+    sm: "h-9 px-3.5 text-[13px]",
+    md: "h-11 px-5 text-sm",
+    lg: "h-12 px-6 text-[15px]",
   }[size];
 
   const styles = {
-    primary: "bg-slate-900 text-white hover:bg-slate-800",
-    secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200",
-    ghost: "bg-transparent text-slate-900 hover:bg-slate-100",
+    primary:
+      "bg-[var(--brand-strong)] text-white shadow-[0_10px_24px_-14px_rgba(194,65,12,.65)] hover:bg-[var(--brand-strong-hover)] active:bg-[var(--brand-strong-pressed)]",
+    secondary:
+      "border border-[var(--line)] bg-white text-[var(--ink)] hover:border-[#d9d4cc] hover:bg-[#faf9f7]",
+    ghost: "bg-transparent text-[var(--ink)] hover:bg-black/[0.05]",
+    dark: "bg-[var(--ink)] text-white hover:bg-[#343434]",
+    outline:
+      "border border-[#d6d0c8] bg-transparent text-[var(--ink)] hover:border-[var(--ink)] hover:bg-white",
   }[variant];
 
-  // Next <Link> supports external URLs; this keeps consistent styling.
   return (
-    <Link href={href} className={cn(base, sizes, styles, className)}>
+    <Link
+      href={href}
+      aria-label={ariaLabel}
+      data-cta={dataCta}
+      className={cn(base, sizes, styles, className)}
+    >
       {children}
     </Link>
   );

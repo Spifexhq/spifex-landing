@@ -53,6 +53,9 @@ export type SignUpStartRequest = {
   name: string;
   email: string;
   password: string;
+  product_category: "business" | "personal";
+  plan_code: string;
+  workspace_name?: string;
   timezone: string;
   country: string;
   language?: "en" | "pt" | "fr" | "de";

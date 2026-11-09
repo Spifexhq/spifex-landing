@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 const EMAIL_PARAM = "email";
 
@@ -13,6 +15,15 @@ const OUTCOME_KEYS = ["visibility", "forecasting", "alignment", "execution"] as 
 const STEP_KEYS = ["capture", "model", "plan"] as const;
 const FEATURE_KEYS = ["pipeline", "signals", "scenarios", "handoffs"] as const;
 const KPI_KEYS = ["coverage", "conversion", "forecastAccuracy", "cycleTime"] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("crmPage.hero.title"),
+    description: t("crmPage.hero.subtitle"),
+    path: "/products/crm",
+  });
+}
 
 export default async function CrmProductPage() {
   const { t } = await getServerI18n();

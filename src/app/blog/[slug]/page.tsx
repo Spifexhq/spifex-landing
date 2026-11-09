@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta, renderMdxBySlug } from "@/lib/content/mdx";
 import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
   const en = await listMdxMeta("blog", "en");
@@ -18,6 +20,22 @@ type PageProps = {
 function formatDateISO(iso?: string) {
   if (!iso) return null;
   return iso;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const { locale } = await getServerI18n();
+  const contentLocale = toContentLocale(locale);
+  try {
+    const post = await renderMdxBySlug("blog", contentLocale, slug);
+    return pageMetadata({
+      title: post.meta.title,
+      description: post.meta.description ?? "Insights on financial operations from Spifex.",
+      path: `/blog/${slug}`,
+    });
+  } catch {
+    return pageMetadata({ title: "Article", description: "", path: `/blog/${slug}`, noIndex: true });
+  }
 }
 
 export default async function BlogPostPage({ params }: PageProps) {

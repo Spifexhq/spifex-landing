@@ -1,5 +1,6 @@
 import { cookies, headers } from "next/headers";
 import { createT, type Messages } from "./translator";
+import { mergeMessages } from "./merge";
 
 const LOCALE_COOKIE_NAME = "spifex_locale";
 const COUNTRY_COOKIE_NAME = "spifex_country";
@@ -12,11 +13,12 @@ export function toContentLocale(locale: Locale): ContentLocale {
 }
 
 export async function getMessages(locale: Locale): Promise<Messages> {
-  if (locale === "pt") return (await import("./dict/pt")).default;
-  if (locale === "pt-BR") return (await import("./dict/pt-BR")).default;
-  if (locale === "fr") return (await import("./dict/fr")).default;
-  if (locale === "de") return (await import("./dict/de")).default;
-  return (await import("./dict/en")).default;
+  const base = (await import("./dict/en")).default;
+  if (locale === "pt") return mergeMessages(base, (await import("./dict/pt")).default);
+  if (locale === "pt-BR") return mergeMessages(base, (await import("./dict/pt-BR")).default);
+  if (locale === "fr") return mergeMessages(base, (await import("./dict/fr")).default);
+  if (locale === "de") return mergeMessages(base, (await import("./dict/de")).default);
+  return base;
 }
 
 function normalizeLocale(value?: string | null): Locale | null {

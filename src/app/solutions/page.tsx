@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 import {
   ArrowRightLeft,
@@ -26,10 +27,11 @@ const EMAIL_PARAM = "email";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getServerI18n();
-  return {
+  return pageMetadata({
     title: t("solutionsPage.meta.title"),
     description: t("solutionsPage.meta.description"),
-  };
+    path: "/solutions",
+  });
 }
 
 const HERO_CARD_KEYS = ["lifecycle", "complexity", "governance", "kpis"] as const;

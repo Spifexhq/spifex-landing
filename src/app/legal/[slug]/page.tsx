@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta, renderMdxBySlug } from "@/lib/content/mdx";
 import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
   const en = await listMdxMeta("legal", "en");
@@ -13,6 +15,22 @@ export async function generateStaticParams() {
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const { locale } = await getServerI18n();
+  const contentLocale = toContentLocale(locale);
+  try {
+    const doc = await renderMdxBySlug("legal", contentLocale, slug);
+    return pageMetadata({
+      title: doc.meta.title,
+      description: doc.meta.description ?? "Spifex legal document.",
+      path: `/legal/${slug}`,
+    });
+  } catch {
+    return pageMetadata({ title: "Legal", description: "", path: `/legal/${slug}`, noIndex: true });
+  }
+}
 
 export default async function LegalDocPage({ params }: PageProps) {
   const { slug } = await params;

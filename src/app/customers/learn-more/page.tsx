@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import { getServerI18n } from "@/i18n/server";
 import CustomersLearnMoreForm from "@/components/customers/CustomersLearnMoreForm";
+import { pageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerI18n();
+  return pageMetadata({
+    title: t("customersLearnMore.title"),
+    description: t("customersLearnMore.intro"),
+    path: "/customers/learn-more",
+  });
+}
 
 export default async function CustomersLearnMorePage() {
   const { t } = await getServerI18n();

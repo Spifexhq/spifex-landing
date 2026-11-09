@@ -28,6 +28,12 @@ import Snackbar from "@/shared/ui/Snackbar";
 import Checkbox from "@/shared/ui/Checkbox";
 import Button from "@/shared/ui/Button";
 import SelectDropdown from "@/shared/ui/SelectDropdown/SelectDropdown";
+import {
+  trackCompleteRegistration,
+  trackInitiateCheckout,
+  trackLead,
+  trackMeta,
+} from "@/lib/analytics/meta";
 
 type Step = 1 | 2 | 3 | 4 | 5;
 type AppLanguage = "en" | "pt" | "fr" | "de";
@@ -60,7 +66,12 @@ function normalizeCountry(value?: string | null): string {
 }
 
 function isPlanCode(value: string | null): value is PlanCode {
-  return value === "starter" || value === "pro";
+  return (
+    value === "starter" ||
+    value === "pro" ||
+    value === "personal-starter" ||
+    value === "personal-pro"
+  );
 }
 
 function normalizeLanguageFromLocale(localeValue: string): AppLanguage {
@@ -103,7 +114,29 @@ export default function SignupPage() {
   const intent = searchParams.get("intent") === "subscribe" ? "subscribe" : "signup";
   const emailFromQuery = searchParams.get("email")?.trim() || "";
   const planFromQuery = searchParams.get("plan");
-  const planCode = isPlanCode(planFromQuery) ? planFromQuery : null;
+  const paidPlan = isPlanCode(planFromQuery) ? planFromQuery : null;
+  const productFromQuery = searchParams.get("product");
+  const initialCategory: "business" | "personal" = paidPlan
+    ? paidPlan.startsWith("personal-")
+      ? "personal"
+      : "business"
+    : productFromQuery === "personal"
+      ? "personal"
+      : "business";
+  const [productCategory, setProductCategory] = useState<"business" | "personal">(initialCategory);
+  const planCode = paidPlan;
+  const freePlanCode = productCategory === "personal" ? "personal-free" : "free";
+  const isPaidIntent = intent === "subscribe" && !!planCode;
+
+  function changeCategory(next: "business" | "personal") {
+    if (paidPlan) return;
+    setProductCategory(next);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("product", next);
+    url.searchParams.set("plan", "free");
+    window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+  }
 
   const browserLanguage =
     typeof navigator !== "undefined" ? navigator.language : "";
@@ -177,6 +210,10 @@ export default function SignupPage() {
       email: prev.email || emailFromQuery.toLowerCase(),
     }));
   }, [emailFromQuery]);
+
+  useEffect(() => {
+    trackMeta("ViewContent", { contentName: "Signup" });
+  }, []);
 
   useEffect(() => {
     if (!prefs.language) return;
@@ -255,10 +292,10 @@ export default function SignupPage() {
   const heading = useMemo(() => {
     if (step === 4) return "Verify your account";
     if (step === 5) return "Redirecting to secure checkout";
-    return intent === "subscribe"
+    return isPaidIntent
       ? "Create your account to continue"
       : "Create your account";
-  }, [step, intent]);
+  }, [step, isPaidIntent]);
 
   const subheading = useMemo(() => {
     if (step === 4) {
@@ -267,11 +304,11 @@ export default function SignupPage() {
     if (step === 5) {
       return "Preparing your secure checkout...";
     }
-    if (intent === "subscribe" && planCode) {
-      return `Plan selected: ${planCode}`;
+    if (isPaidIntent && planCode) {
+      return `${productCategory === "personal" ? "Personal" : "Business"} plan selected: ${planCode}. You will start on the Free workspace and continue to secure checkout after verification.`;
     }
-    return "Finish your signup below.";
-  }, [step, intent, planCode, form.email]);
+    return `Start with a Free ${productCategory === "personal" ? "Personal" : "Business"} workspace.`;
+  }, [step, isPaidIntent, planCode, form.email, productCategory]);
 
   const handleInputChange =
     (field: keyof typeof form) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -342,6 +379,7 @@ export default function SignupPage() {
         email: emailCheck.normalized,
       }));
 
+      trackLead({ email: emailCheck.normalized, contentName: "Signup" });
       setStep(2);
     } catch (err) {
       showSnack(getApiMessage(err, "Could not validate email."), "error");
@@ -372,6 +410,9 @@ export default function SignupPage() {
         name: form.name.trim(),
         email: form.email.trim().toLowerCase(),
         password: form.password,
+        product_category: productCategory,
+        plan_code: freePlanCode,
+        workspace_name: productCategory === "personal" ? "Personal workspace" : "Business workspace",
         timezone,
         country: prefs.country,
         language: prefs.language || undefined,
@@ -434,7 +475,14 @@ export default function SignupPage() {
       if (orgExternalId) setOrgExternalId(orgExternalId);
       if (userId) setUserId(userId);
 
-      if (intent === "subscribe" && planCode) {
+      trackCompleteRegistration({
+        email: form.email.trim().toLowerCase(),
+        plan: planCode ?? freePlanCode,
+        contentName: "Signup complete",
+      });
+
+      if (isPaidIntent && planCode) {
+        trackInitiateCheckout({ plan: planCode, contentName: `${planCode} checkout` });
         setStep(5);
 
         const checkout = await api.createCheckoutSession(
@@ -452,7 +500,7 @@ export default function SignupPage() {
         return;
       }
 
-      router.push("/signup/success");
+      router.push(`/signup/success?plan=${planCode ?? freePlanCode}`);
     } catch (err) {
       showSnack(getApiMessage(err, "Invalid or expired verification code."), "error");
     } finally {
@@ -524,6 +572,41 @@ export default function SignupPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {step === 1 && (
                 <div className="space-y-4">
+                  {!paidPlan && (
+                    <div>
+                      <p className="text-xs font-medium text-slate-600">Workspace type</p>
+                      <div
+                        className="mt-2 grid grid-cols-2 gap-1 rounded-xl border border-slate-200 bg-slate-50 p-1"
+                        role="group"
+                        aria-label="Workspace type"
+                      >
+                        {(["business", "personal"] as const).map((key) => (
+                          <button
+                            key={key}
+                            type="button"
+                            aria-pressed={productCategory === key}
+                            onClick={() => changeCategory(key)}
+                            disabled={isLoading}
+                            className={[
+                              "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
+                              "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300",
+                              productCategory === key
+                                ? "bg-white text-slate-900 shadow-sm"
+                                : "text-slate-500 hover:text-slate-900",
+                            ].join(" ")}
+                          >
+                            {key === "personal" ? "Personal" : "Business"}
+                          </button>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-xs leading-5 text-slate-500">
+                        {productCategory === "personal"
+                          ? "Personal workspace for your own accounts, budgets and goals."
+                          : "Business workspace for team cash flow, banking, settlements and reporting."}
+                      </p>
+                    </div>
+                  )}
+
                   <Input
                     kind="text"
                     label="Full name"
