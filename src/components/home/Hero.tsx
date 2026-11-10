@@ -17,7 +17,7 @@ export default async function Hero() {
         <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
 
         <Container className="relative">
-          <div className="pt-20 sm:pt-20 lg:pt-14">
+          <div className="pt-8 sm:pt-12 lg:pt-14">
             <div className="flex items-center justify-between gap-4">
               <p
                 className="hero-reveal flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 sm:text-[11px]"

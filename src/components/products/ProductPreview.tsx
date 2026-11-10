@@ -13,16 +13,21 @@ const STATUS: Record<PreviewStatus, { dot: string; label: string }> = {
 export function ProductPreview({
   productKey,
   preview,
+  tone = "light",
 }: {
   productKey: ProductKey;
   preview: ProductPreviewContent;
+  tone?: "light" | "dark";
 }) {
   const product = getProductLink(productKey);
+  const dark = tone === "dark";
 
   return (
-    <figure className="relative mx-auto w-full max-w-[540px]">
+    <figure className="relative mx-auto w-full max-w-[560px]">
       <div
-        className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-[var(--brand)]/[0.07] blur-2xl"
+        className={`pointer-events-none absolute -inset-6 rounded-[2.5rem] blur-3xl ${
+          dark ? "bg-[var(--brand)]/20" : "bg-[var(--brand)]/[0.07]"
+        }`}
         aria-hidden="true"
       />
       <div
@@ -128,7 +133,11 @@ export function ProductPreview({
         </div>
       </div>
 
-      <figcaption className="mt-3 flex items-center justify-center gap-1.5 text-[10px] text-[var(--muted)]">
+      <figcaption
+        className={`mt-3 flex items-center justify-center gap-1.5 text-[11px] ${
+          dark ? "text-white/55" : "text-[var(--muted)]"
+        }`}
+      >
         <Check size={11} className="text-[var(--success)]" aria-hidden="true" />
         Illustrative workspace preview
       </figcaption>

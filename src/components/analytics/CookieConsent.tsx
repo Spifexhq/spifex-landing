@@ -40,7 +40,7 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie preferences"
       aria-live="polite"
-      className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[80] rounded-2xl border border-[var(--line)] bg-white p-4 shadow-[0_20px_60px_-20px_rgba(32,32,32,.35)] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:w-[380px] sm:p-5"
+      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[80] rounded-2xl border border-[var(--line)] bg-white p-4 shadow-[0_20px_60px_-20px_rgba(32,32,32,.35)] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:w-[380px] sm:p-5"
     >
       <div className="flex items-start gap-3">
         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)]">

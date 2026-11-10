@@ -44,70 +44,73 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[var(--canvas)]">
-        <div
-          className="pointer-events-none absolute -right-32 -top-40 h-[420px] w-[420px] rounded-full bg-[var(--brand)]/[0.07] blur-3xl"
-          aria-hidden="true"
-        />
-        <Container className="relative pb-12 pt-20 nav:pt-16 lg:pb-20 lg:pt-20">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[var(--muted)]">
-            <Link href="/" className="hover:text-[var(--ink)]">
-              {t("nav.home")}
-            </Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-[var(--ink)]">{badge}</span>
-          </nav>
+      <section className="relative px-2 pt-2 sm:px-3 sm:pt-3 lg:px-4 lg:pt-4">
+        <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0c0c0c] sm:rounded-[2rem]">
+          <div className="hero-aurora pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
 
-          <div className="mt-7 grid gap-10 lg:grid-cols-[1.02fr_.98fr] lg:items-center lg:gap-14">
-            <div>
-              <h1 className="text-balance mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--ink)] sm:text-5xl lg:text-[3.4rem]">
-                {content.copy.title}
-              </h1>
-              <p className="text-pretty mt-5 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg sm:leading-8">
-                {content.copy.subtitle}
-              </p>
+          <Container className="relative pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[11px] font-medium text-white/55">
+              <Link href="/" className="transition-colors hover:text-white">
+                {t("nav.home")}
+              </Link>
+              <span aria-hidden="true" className="text-white/25">
+                /
+              </span>
+              <span className="text-white/85">{badge}</span>
+            </nav>
 
-              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                {content.copy.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex items-start gap-2 text-[13px] leading-6 text-[var(--ink-soft)]"
+            <div className="mt-10 grid gap-12 lg:mt-14 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-14">
+              <div>
+                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">
+                  <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-[var(--brand)]" aria-hidden="true" />
+                  {t("productPages.moduleLabel")}
+                </p>
+
+                <h1 className="text-balance mt-5 text-[clamp(2.5rem,5.4vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.045em] text-white">
+                  {content.copy.title}
+                </h1>
+
+                <p className="text-pretty mt-6 max-w-xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
+                  {content.copy.subtitle}
+                </p>
+
+                <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
+                  {content.copy.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2.5 text-[13px] leading-6 text-white/80">
+                      <Check size={14} className="mt-1 shrink-0 text-[var(--brand)]" aria-hidden="true" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-9 flex flex-col gap-2.5 sm:flex-row">
+                  <Button
+                    href="/signup?intent=signup&product=business&plan=free"
+                    size="lg"
+                    dataCta={`${content.key}-hero-start`}
                   >
-                    <Check
-                      size={14}
-                      className="mt-1 shrink-0 text-[var(--brand-strong)]"
-                      aria-hidden="true"
-                    />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+                    {t("productPages.startFree")}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Button>
+                  <Button
+                    href="/pricing?product=business"
+                    variant="ghost"
+                    size="lg"
+                    className="border border-white/15 bg-white/[0.04] text-white hover:bg-white/[0.09] hover:text-white"
+                    dataCta={`${content.key}-hero-pricing`}
+                  >
+                    {t("productPages.seePricing")}
+                  </Button>
+                </div>
 
-              <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
-                <Button
-                  href="/signup?intent=signup&product=business&plan=free"
-                  dataCta={`${content.key}-hero-start`}
-                >
-                  {t("productPages.startFree")}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Button>
-                <Button
-                  href="/pricing?product=business"
-                  variant="secondary"
-                  dataCta={`${content.key}-hero-pricing`}
-                >
-                  {t("productPages.seePricing")}
-                </Button>
+                <p className="mt-4 text-[11px] font-medium text-white/50">{t("productPages.heroNote")}</p>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[var(--muted)]">
-                <span>{t("productPages.heroNote")}</span>
-              </div>
+              <ProductPreview productKey={content.key} preview={content.preview} tone="dark" />
             </div>
-
-            <ProductPreview productKey={content.key} preview={content.preview} />
-          </div>
-        </Container>
+          </Container>
+        </div>
       </section>
 
       <TrustStrip />

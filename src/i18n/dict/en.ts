@@ -45,6 +45,7 @@ const en = {
     startFree: "Start free",
     seePricing: "See pricing",
     heroNote: "Free plan · No card required · Personal & Business",
+    moduleLabel: "Business module",
     outcomesEyebrow: "What changes",
     outcomesTitle: "The work this module takes off your plate",
     outcomesSubtitle: "A clearer operating model, using the same workspace and data.",
