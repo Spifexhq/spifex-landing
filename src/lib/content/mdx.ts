@@ -11,12 +11,10 @@ export type DocMeta = {
   slug: string;
   title: string;
   description?: string;
-  updatedAt?: string;
-
-  // NEW
+  seoTitle?: string;
+  updatedAt?: string; // YYYY-MM-DD
+  publishedAt?: string; // YYYY-MM-DD
   category?: string;
-
-  // Blog-oriented meta (safe for legal too)
   tags?: string[];
   author?: string;
   readingTime?: string;
@@ -101,7 +99,9 @@ export async function listMdxMeta(
       slug,
       title: String((data as any).title ?? slug),
       description: (data as any).description ? String((data as any).description) : undefined,
+      seoTitle: (data as any).seoTitle ? String((data as any).seoTitle) : undefined,
       updatedAt: (data as any).updatedAt ? String((data as any).updatedAt) : undefined,
+      publishedAt: (data as any).publishedAt ? String((data as any).publishedAt) : undefined,
       category,
       tags,
       author,
@@ -116,6 +116,11 @@ export async function listMdxMeta(
     return a.title.localeCompare(b.title);
   });
 
+  metas.sort((a, b) => {
+    const ad = a.publishedAt ?? a.updatedAt ?? "";
+    const bd = b.publishedAt ?? b.updatedAt ?? "";
+    return bd.localeCompare(ad) || a.title.localeCompare(b.title);
+  });
   return metas;
 }
 
@@ -141,7 +146,9 @@ export async function renderMdxBySlug(
   const { content, frontmatter } = await compileMDX<{
     title?: string;
     description?: string;
+    seoTitle?: string;
     updatedAt?: string;
+    publishedAt?: string;
     category?: string | string[];
     tags?: string[] | string;
     author?: string;
@@ -163,7 +170,9 @@ export async function renderMdxBySlug(
       slug,
       title: String(frontmatter.title ?? slug),
       description: frontmatter.description ? String(frontmatter.description) : undefined,
+      seoTitle: frontmatter.seoTitle ? String(frontmatter.seoTitle) : undefined,
       updatedAt: frontmatter.updatedAt ? String(frontmatter.updatedAt) : undefined,
+      publishedAt: frontmatter.publishedAt ? String(frontmatter.publishedAt) : undefined,
       category,
       tags,
       author: frontmatter.author ? String(frontmatter.author) : undefined,

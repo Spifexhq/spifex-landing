@@ -1,65 +1,98 @@
-// src/app/legal/page.tsx
 import type { Metadata } from "next";
-import Container from "@/components/ui/Container";
 import Link from "next/link";
+import { ArrowRight, FileText, Scale, Cookie, ShieldAlert } from "lucide-react";
+
+import Container from "@/components/ui/Container";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getServerI18n, toContentLocale } from "@/i18n/server";
 import { listMdxMeta } from "@/lib/content/mdx";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
 import LegalToc from "./LegalToc";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { t } = await getServerI18n();
   return pageMetadata({
-    title: t("legal.title"),
-    description: "Spifex legal documents, privacy, terms and cookie notice.",
+    title: "Legal",
+    description: "Spifex privacy policy, terms of service, cookie notice and acceptable use information.",
     path: "/legal",
   });
 }
 
+const primary = [
+  { slug: "privacy", title: "Privacy Policy", description: "How Spifex handles personal data, account information and service data.", icon: FileText },
+  { slug: "user_terms", title: "Terms of Service", description: "Rules for using the Spifex website, platform and related services.", icon: Scale },
+  { slug: "cookie_notice", title: "Cookie Notice", description: "Cookies, local storage and similar technologies used by this website.", icon: Cookie },
+  { slug: "prohibited_and_restricted_activities", title: "Acceptable Use", description: "Activities that are prohibited or restricted when using Spifex.", icon: ShieldAlert },
+] as const;
+
 export default async function LegalHubPage() {
-  const { locale, t } = await getServerI18n();
+  const { locale } = await getServerI18n();
   const contentLocale = toContentLocale(locale);
   const docs = await listMdxMeta("legal", contentLocale);
 
   return (
-    <div className="py-14 sm:py-16">
-      <Container>
-        <div className="max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            {t("legal.title")}
-          </h1>
-        </div>
+    <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            name: "Spifex Legal",
+            description: "Privacy policy, terms of service, cookie notice and acceptable use information for Spifex.",
+            path: "/legal",
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Legal", path: "/legal" },
+          ]),
+        ]}
+      />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[320px_1fr]">
-          <aside className="lg:sticky lg:top-24 lg:h-[calc(100vh-7rem)]">
-            <div className="rounded-3xl border border-slate-200 bg-white p-5">
-              <div className="text-sm font-semibold text-slate-900">
-                {t("legal.toc")}
-              </div>
-
-              <nav className="mt-4">
-                <LegalToc docs={docs} />
-              </nav>
-            </div>
-          </aside>
-
-          <div className="space-y-4">
-            {docs.map((d) => (
-              <Link
-                key={d.slug}
-                href={`/legal/${d.slug}`}
-                className="block rounded-3xl border border-slate-200 bg-white p-6 hover:bg-slate-50"
-              >
-                <div className="text-lg font-semibold text-slate-900">{d.title}</div>
-                {d.description && <p className="mt-2 text-sm text-slate-600">{d.description}</p>}
-                <div className="mt-4 text-sm font-semibold text-slate-900 hover:underline">
-                  Open
-                </div>
-              </Link>
-            ))}
+      <div className="bg-[var(--canvas)] py-14 sm:py-16 lg:py-20">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">Legal</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
+              Policies and terms
+            </h1>
+            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+              These documents explain how Spifex handles data, cookies and use of the website and services. They are
+              provided for general information and should be reviewed by qualified legal counsel for your organization.
+            </p>
           </div>
-        </div>
-      </Container>
-    </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {primary.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.slug}
+                  href={`/legal/${item.slug}`}
+                  className="group flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--canvas)] text-[var(--ink)] ring-1 ring-[var(--line)]">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] group-hover:text-[var(--brand-strong)]">
+                        {item.title}
+                      </span>
+                      <ArrowRight size={16} className="shrink-0 text-[var(--muted)]" aria-hidden="true" />
+                    </span>
+                    <span className="mt-2 block text-sm leading-6 text-[var(--muted)]">{item.description}</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-xl font-semibold tracking-[-0.03em] text-[var(--ink)]">All documents</h2>
+            <div className="mt-4 rounded-2xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+              <LegalToc docs={docs.map((d) => ({ slug: d.slug, title: d.title, category: d.category }))} />
+            </div>
+          </div>
+        </Container>
+      </div>
+    </>
   );
 }

@@ -1,0 +1,83 @@
+---
+title: "Using an AI Financial Assistant Safely: Read-Only Access and MCP Connections"
+seoTitle: "AI Financial Assistant with Read-Only Access: MCP Connections for Finance Teams"
+description: "How finance teams can use AI assistants like ChatGPT or Claude with read-only financial data access, clear permissions and controlled MCP connections."
+publishedAt: "2026-08-14"
+updatedAt: "2026-11-10"
+author: "Spifex"
+category: "AI connections"
+tags: ["AI", "MCP", "ChatGPT", "Claude", "Security"]
+---
+
+AI assistants can help teams ask better questions about financial operations: What changed in cash flow this week? Which payments are still outstanding? What should we review before a close? The value is real, but the setup matters.
+
+For financial data, convenience cannot replace control. A safe AI financial assistant should use clear permissions, limited access and an auditable connection model. That is where read-only access and the Model Context Protocol, or MCP, become important.
+
+## What is an AI financial assistant?
+
+An AI financial assistant is an AI tool that helps users interpret, summarize or explore financial information through natural language. Instead of navigating every screen manually, a user can ask questions and receive guided answers.
+
+The quality of those answers depends on context. If the assistant cannot access relevant data, it guesses or stays generic. If it can access too much, or can take actions without approval, the risk increases.
+
+## Why read-only access matters
+
+Read-only access means the assistant can retrieve or analyze permitted information without creating, changing or deleting records. For many finance workflows, this is the right starting point.
+
+Read-only AI access helps teams:
+
+- explore cash flow, account and reporting context faster;
+- reduce manual data gathering for routine questions;
+- keep humans in control of approvals and changes;
+- limit the impact of ambiguous prompts or model mistakes.
+
+It is not a substitute for permissions design. The assistant should only see data the connected workspace and user are allowed to access.
+
+## What is MCP?
+
+MCP, the Model Context Protocol, is a standard way to connect AI tools to external systems through defined capabilities. Instead of building a custom, opaque integration for every assistant, MCP provides a structured interface for tools and resources.
+
+In practice, MCP helps answer three operational questions:
+
+- **What can the assistant access?** The available tools and resources are explicit.
+- **How is access granted?** The connection can use an authorization flow.
+- **What can the assistant do?** Capabilities can be limited, such as read-only data retrieval.
+
+## Questions to ask before connecting AI to financial data
+
+Before enabling an AI connector, review the operational controls.
+
+### What data is in scope?
+
+Define which modules, records and workspaces the assistant can access. Financial operations data can include cash flow plans, bank records, settlements, ledger structure, projects, counterparties and reporting views.
+
+### Is the connection read-only?
+
+If the use case is analysis, summaries or question answering, read-only access is usually safer than write access. Action-taking workflows need stronger approval and audit controls.
+
+### Who authorized the connection?
+
+The connection should be tied to a clear authorization path and workspace context. Shared or unmanaged credentials create avoidable risk.
+
+### Can the team understand the connection later?
+
+Admins and operators should be able to explain what tool was connected, when it was connected and what it can access.
+
+## How Spifex approaches AI connections
+
+Spifex supports AI connections for supported assistants, including workflows that connect tools such as ChatGPT or Claude through MCP-based integrations. These connections are designed around read-only financial context, so teams can ask questions about their workspace without giving the assistant permission to change records.
+
+The exact setup depends on the workspace, connector and environment. Teams should follow the product documentation and review permissions before connecting any external AI tool.
+
+Spifex is financial operations software. AI features are meant to help users understand and navigate operational data, not to provide banking, tax, legal or investment advice.
+
+## A safe rollout checklist
+
+Use this checklist for an AI finance assistant rollout:
+
+- Start with a narrow, read-only use case.
+- Confirm the workspace and data scope.
+- Review who can authorize and manage the connector.
+- Test prompts with known answers before broad use.
+- Keep approval and execution steps inside controlled product workflows.
+
+AI can make financial operations more accessible. The best implementations pair useful answers with clear boundaries.

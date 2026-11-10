@@ -27,10 +27,6 @@ function cn(...classes: Array<string | undefined | false | null>) {
   return classes.filter(Boolean).join(" ");
 }
 
-/* -------------------------------------------------------------------------- */
-/* Utils: height-measured collapse (smooth content push-down)                  */
-/* -------------------------------------------------------------------------- */
-
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -42,20 +38,13 @@ function useMeasureHeight<T extends HTMLElement>() {
     const el = ref.current;
     if (!el) return;
 
-    const raf =
-      typeof window !== "undefined"
-        ? window.requestAnimationFrame(() => setHeight(el.scrollHeight))
-        : 0;
+    const update = () => setHeight(el.scrollHeight);
+    update();
 
-    const ro = new ResizeObserver(() => {
-      setHeight(el.scrollHeight);
-    });
+    const ro = new ResizeObserver(() => update());
     ro.observe(el);
 
-    return () => {
-      ro.disconnect();
-      if (typeof window !== "undefined") window.cancelAnimationFrame(raf);
-    };
+    return () => ro.disconnect();
   }, []);
 
   return { ref, height };
@@ -74,23 +63,18 @@ function Collapse({
 
   return (
     <div
+      aria-hidden={!open}
       className={cn(
-        "will-change-[height] overflow-hidden",
-        "transition-[height,opacity,transform] duration-300 ease-out",
+        "overflow-hidden transition-[max-height,opacity,transform] duration-300 ease-out motion-reduce:transition-none",
         open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
         className
       )}
-      style={{ height: open ? height : 0 }}
-      aria-hidden={!open}
+      style={{ maxHeight: open ? height : 0 }}
     >
       <div ref={ref}>{children}</div>
     </div>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* UI: Personalized SearchBox (expands + animated placeholder)                 */
-/* -------------------------------------------------------------------------- */
 
 function SearchBox({
   value,
@@ -107,41 +91,27 @@ function SearchBox({
   const expanded = focused || value.trim().length > 0;
 
   return (
-    <div
-      className={cn(
-        "relative w-full lg:w-auto",
-        "transition-[width] duration-300 ease-out",
-        expanded ? "lg:w-120" : "lg:w-80"
-      )}
-    >
-      <div
-        className={cn(
-          "relative flex items-center rounded-xl border bg-white",
-          "border-slate-200",
-          "transition-[box-shadow,border-color] duration-200",
-          // thinner focus highlight (inset 1px ring)
-          focused ? "border-slate-300 ring-1 ring-inset ring-slate-300/60" : "ring-0"
-        )}
-      >
-        <Search className="ml-3 h-4 w-4 text-slate-400" />
+    <div className={cn("relative transition-[width] duration-200 ease-out motion-reduce:transition-none", expanded ? "w-full lg:w-[460px]" : "w-full lg:w-[320px]")}>
+      <div className="relative">
+        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" />
 
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          placeholder={expanded ? placeholder : ""}
           className={cn(
-            "h-11 w-full bg-transparent px-3 pr-11 text-sm text-slate-900 outline-none",
-            "placeholder:opacity-0"
+            "w-full rounded-xl border border-[var(--line)] bg-white py-3 pl-10 pr-10",
+            "text-sm text-[var(--ink)] placeholder:text-[var(--muted)]",
+            "focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20 focus:border-[var(--brand)]/40"
           )}
         />
 
-        {/* Animated placeholder */}
         <div
           className={cn(
             "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2",
-            "text-sm text-slate-400",
-            "transition-all duration-200",
+            "text-sm text-[var(--muted)] transition-all duration-200",
             expanded ? "opacity-0 translate-x-1" : "opacity-100 translate-x-0"
           )}
         >
@@ -151,9 +121,9 @@ function SearchBox({
         {value.trim().length > 0 ? (
           <button
             type="button"
-            onMouseDown={(e) => e.preventDefault()} // keep focus
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => onChange("")}
-            className="absolute right-2 inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+            className="absolute right-2 inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] hover:bg-[var(--canvas)] hover:text-[var(--ink)]"
             aria-label={clearLabel}
           >
             <X className="h-4 w-4" />
@@ -163,10 +133,6 @@ function SearchBox({
     </div>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* Dropdown portal renderer                                                    */
-/* -------------------------------------------------------------------------- */
 
 type DropdownPos = { left: number; top: number; width: number };
 
@@ -181,8 +147,7 @@ function TopicOptionsPortal({
   options: Array<{ value: string; label: string }>;
   allLabel: string;
 }) {
-  if (typeof document === "undefined") return null;
-  if (!pos) return null;
+  if (typeof document === "undefined" || !pos) return null;
 
   return createPortal(
     <Transition
@@ -197,16 +162,8 @@ function TopicOptionsPortal({
     >
       <ListboxOptions
         static
-        style={{
-          position: "fixed",
-          left: pos.left,
-          top: pos.top,
-          width: pos.width,
-        }}
-        className={cn(
-          "z-9999 overflow-auto rounded-2xl border border-slate-200 bg-white shadow-xl",
-          "max-h-72 focus:outline-none"
-        )}
+        style={{ position: "fixed", left: pos.left, top: pos.top, width: pos.width }}
+        className="z-[9999] max-h-72 overflow-auto rounded-xl border border-[var(--line)] bg-white shadow-xl focus:outline-none"
       >
         {options.map((opt) => (
           <ListboxOption
@@ -215,24 +172,18 @@ function TopicOptionsPortal({
             className={({ active }) =>
               cn(
                 "relative cursor-pointer select-none px-4 py-3 text-sm",
-                active ? "bg-slate-50 text-slate-900" : "text-slate-700"
+                active ? "bg-[var(--canvas)] text-[var(--ink)]" : "text-[var(--ink-soft)]"
               )
             }
           >
             {({ selected }) => (
               <div className="flex items-center justify-between gap-3">
-                <span
-                  className={cn(
-                    "truncate",
-                    selected ? "font-semibold text-slate-900" : "font-medium"
-                  )}
-                >
+                <span className={cn("truncate", selected ? "font-semibold text-[var(--ink)]" : "font-medium")}>
                   {opt.value === "__all__" ? allLabel : opt.label}
                 </span>
-
                 {selected ? (
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 bg-white">
-                    <Check className="h-4 w-4 text-slate-900" />
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--line)] bg-white">
+                    <Check className="h-4 w-4 text-[var(--brand-strong)]" />
                   </span>
                 ) : null}
               </div>
@@ -244,10 +195,6 @@ function TopicOptionsPortal({
     document.body
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* UI: Topic dropdown (portaled options)                                       */
-/* -------------------------------------------------------------------------- */
 
 function TopicDropdown({
   label,
@@ -264,85 +211,51 @@ function TopicDropdown({
 }) {
   const ALL = "__all__";
   const items = useMemo(() => [ALL, ...options], [options]);
-
   const displayValue = value === ALL ? allLabel : value;
-
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [pos, setPos] = useState<DropdownPos | null>(null);
 
   const updatePos = useCallback(() => {
     const el = buttonRef.current;
     if (!el || typeof window === "undefined") return;
-
     const r = el.getBoundingClientRect();
     const vw = window.innerWidth;
     const margin = 12;
-
     const width = Math.round(Math.min(r.width, vw - margin * 2));
     const left = Math.round(Math.min(Math.max(r.left, margin), vw - margin - width));
-
-    // glued under the button (no extra gap) + rounded to avoid subpixel seam
-    const top = Math.round(r.bottom);
-
-    setPos({ left, top, width });
+    setPos({ left, top: Math.round(r.bottom), width });
   }, []);
 
   useEffect(() => {
-    const onWin = () => {
-      if (typeof window === "undefined") return;
-      window.requestAnimationFrame(updatePos);
-    };
-
+    const onWin = () => window.requestAnimationFrame(updatePos);
     window.addEventListener("resize", onWin);
     window.addEventListener("scroll", onWin, true);
-
     return () => {
       window.removeEventListener("resize", onWin);
       window.removeEventListener("scroll", onWin, true);
     };
   }, [updatePos]);
 
-  const portalOptions = useMemo(
-    () => items.map((v) => ({ value: v, label: v })),
-    [items]
-  );
+  const portalOptions = useMemo(() => items.map((v) => ({ value: v, label: v })), [items]);
 
   return (
     <div>
-      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-        {label}
-      </div>
-
+      <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">{label}</div>
       <Listbox value={value} onChange={onChange}>
         {({ open }) => (
           <div className="relative mt-2">
             <ListboxButton
               ref={buttonRef}
-              onClick={() => {
-                requestAnimationFrame(updatePos);
-              }}
-              onKeyDown={() => {
-                requestAnimationFrame(updatePos);
-              }}
-              className={cn(
-                "relative w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pr-10 text-left",
-                "text-sm text-slate-900",
-                // thinner focus highlight
-                "focus:outline-none focus:ring-1 focus:ring-inset focus:ring-slate-300/60 focus:border-slate-300"
-              )}
+              onClick={() => requestAnimationFrame(updatePos)}
+              onKeyDown={() => requestAnimationFrame(updatePos)}
+              className="relative w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 pr-10 text-left text-sm text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20"
             >
               <span className="block truncate">{displayValue}</span>
               <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                <ChevronDown className="h-4 w-4 text-slate-400" />
+                <ChevronDown className="h-4 w-4 text-[var(--muted)]" />
               </span>
             </ListboxButton>
-
-            <TopicOptionsPortal
-              open={open}
-              pos={pos}
-              options={portalOptions}
-              allLabel={allLabel}
-            />
+            <TopicOptionsPortal open={open} pos={pos} options={portalOptions} allLabel={allLabel} />
           </div>
         )}
       </Listbox>
@@ -350,15 +263,16 @@ function TopicDropdown({
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Main                                                                        */
-/* -------------------------------------------------------------------------- */
+function formatDate(iso?: string) {
+  if (!iso) return null;
+  const d = new Date(`${iso}T00:00:00Z`);
+  if (Number.isNaN(d.getTime())) return iso;
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(d);
+}
 
 export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
   const t = useT();
-
   const [query, setQuery] = useState("");
-
   const [filterOpen, setFilterOpen] = useState(false);
   const [topicDraft, setTopicDraft] = useState<string>("__all__");
   const [topicApplied, setTopicApplied] = useState<string>("__all__");
@@ -371,161 +285,142 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-
     return posts.filter((p) => {
       if (topicApplied !== "__all__" && !(p.tags ?? []).includes(topicApplied)) return false;
       if (!q) return true;
-
       const hay = `${p.title} ${p.description ?? ""} ${(p.tags ?? []).join(" ")}`.toLowerCase();
       return hay.includes(q);
     });
   }, [posts, query, topicApplied]);
 
-  const filterButtonClass = cn(
-    "inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium",
-    "focus:outline-none focus:ring-1 focus:ring-inset focus:ring-slate-300/60 focus:border-slate-300",
-    filterOpen
-      ? "border-slate-300 bg-slate-50 text-slate-900"
-      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-  );
-
   return (
     <div>
-      {/* Header row */}
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <h1 className="text-6xl font-semibold tracking-tight text-slate-900 sm:text-7xl">
+        <div className="max-w-2xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">Insights</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
             {t("blog.indexTitle")}
           </h1>
-          <p className="mt-4 max-w-2xl text-slate-600">{t("blog.indexSubtitle")}</p>
+          <p className="mt-4 text-lg leading-8 text-[var(--muted)]">{t("blog.indexSubtitle")}</p>
         </div>
 
-        <div className="flex w-full flex-col gap-3 lg:w-auto lg:items-end">
-          <div className="flex w-full items-center gap-3 lg:w-auto">
-            <SearchBox
-              value={query}
-              onChange={setQuery}
-              placeholder={t("blog.searchPlaceholder")}
-              clearLabel={t("blog.clearSearch")}
-            />
-
-            <button
-              type="button"
-              onClick={() => setFilterOpen((v) => !v)}
-              className={filterButtonClass}
-              aria-expanded={filterOpen}
-              aria-controls="blog-filter-bar"
-            >
-              {t("blog.filter")}
-              <ChevronDown
-                className={cn(
-                  "h-4 w-4 transition-transform",
-                  filterOpen ? "rotate-180" : "rotate-0"
-                )}
-              />
-            </button>
-          </div>
+        <div className="flex w-full items-center gap-3 lg:w-auto">
+          <SearchBox
+            value={query}
+            onChange={setQuery}
+            placeholder={t("blog.searchPlaceholder")}
+            clearLabel={t("blog.clearSearch")}
+          />
+          <button
+            type="button"
+            onClick={() => setFilterOpen((v) => !v)}
+            className={cn(
+              "inline-flex shrink-0 items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20",
+              filterOpen
+                ? "border-[var(--ink)]/15 bg-[var(--ink)] text-white"
+                : "border-[var(--line)] bg-white text-[var(--ink-soft)] hover:bg-[var(--canvas)]"
+            )}
+            aria-expanded={filterOpen}
+            aria-controls="blog-filter-bar"
+          >
+            {t("blog.filter")}
+            <ChevronDown className={cn("h-4 w-4 transition-transform", filterOpen ? "rotate-180" : "rotate-0")} />
+          </button>
         </div>
       </div>
 
-      {/* Collapsible filter bar */}
       <Collapse open={filterOpen} className="mt-8">
-        <div id="blog-filter-bar" className="rounded-2xl bg-slate-50 p-5">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5">
-            <div className="grid gap-4 lg:grid-cols-[1fr_160px] lg:items-end">
-              <TopicDropdown
-                label={t("blog.topic")}
-                value={topicDraft}
-                onChange={setTopicDraft}
-                options={allTopics}
-                allLabel={t("blog.filterAll")}
-              />
+        <div id="blog-filter-bar" className="rounded-2xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+          <div className="grid gap-4 lg:grid-cols-[1fr_180px] lg:items-end">
+            <TopicDropdown
+              label={t("blog.topic")}
+              value={topicDraft}
+              onChange={setTopicDraft}
+              options={allTopics}
+              allLabel={t("blog.filterAll")}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setTopicApplied(topicDraft);
+                setFilterOpen(false);
+              }}
+              className="h-[46px] rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white transition-colors hover:bg-[var(--ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/30"
+            >
+              {t("blog.applyFilter")}
+            </button>
+          </div>
 
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted)]">
+            <div>
+              {topicApplied !== "__all__" ? (
+                <span>
+                  {t("blog.activeFilter")}: <span className="font-semibold text-[var(--ink)]">{topicApplied}</span>
+                </span>
+              ) : (
+                <span>{t("blog.noActiveFilter")}</span>
+              )}
+            </div>
+            {topicApplied !== "__all__" ? (
               <button
                 type="button"
                 onClick={() => {
-                  setTopicApplied(topicDraft);
-                  setFilterOpen(false);
+                  setTopicDraft("__all__");
+                  setTopicApplied("__all__");
                 }}
-                className={cn(
-                  "h-11.5 rounded-xl bg-orange-600 px-4 text-sm font-semibold text-white",
-                  "hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-200"
-                )}
+                className="rounded-lg px-2 py-1 font-medium text-[var(--ink-soft)] hover:bg-[var(--canvas)]"
               >
-                {t("blog.applyFilter")}
+                {t("blog.clearFilter")}
               </button>
-            </div>
-
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
-              <div>
-                {topicApplied !== "__all__" ? (
-                  <span>
-                    {t("blog.activeFilter")}:{" "}
-                    <span className="font-semibold text-slate-700">{topicApplied}</span>
-                  </span>
-                ) : (
-                  <span>{t("blog.noActiveFilter")}</span>
-                )}
-              </div>
-
-              {topicApplied !== "__all__" ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setTopicDraft("__all__");
-                    setTopicApplied("__all__");
-                  }}
-                  className="rounded-lg px-2 py-1 font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-800"
-                >
-                  {t("blog.clearFilter")}
-                </button>
-              ) : null}
-            </div>
+            ) : null}
           </div>
         </div>
       </Collapse>
 
-      {/* Posts */}
       <div className="mt-10">
         {filtered.length === 0 ? (
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 text-sm text-slate-600">
+          <div className="rounded-2xl border border-[var(--line)] bg-white p-8 text-sm text-[var(--muted)]">
             {t("blog.noResults")}
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {filtered.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                className="group block rounded-3xl border border-slate-200 bg-white p-7 hover:bg-slate-50"
-              >
-                {p.tags?.length ? (
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    {p.tags.slice(0, 3).map((tg) => (
-                      <span
-                        key={tg}
-                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
-                      >
-                        {tg}
-                      </span>
-                    ))}
+              <article key={p.slug} className="group">
+                <Link
+                  href={`/blog/${p.slug}`}
+                  className="flex h-full flex-col rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  {p.category || p.tags?.length ? (
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {p.category ? (
+                        <span className="rounded-full bg-[var(--canvas)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--brand-strong)]">
+                          {p.category}
+                        </span>
+                      ) : null}
+                      {(p.tags ?? []).slice(0, 2).map((tg) => (
+                        <span key={tg} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-[11px] font-medium text-[var(--muted)]">
+                          {tg}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  <h2 className="text-xl font-semibold leading-snug tracking-[-0.03em] text-[var(--ink)] group-hover:text-[var(--brand-strong)]">
+                    {p.title}
+                  </h2>
+                  {p.description ? (
+                    <p className="mt-3 flex-1 text-sm leading-6 text-[var(--muted)]">{p.description}</p>
+                  ) : (
+                    <div className="flex-1" />
+                  )}
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-[var(--line)] pt-4 text-xs text-[var(--muted)]">
+                    {formatDate(p.publishedAt || p.updatedAt) ? <time>{formatDate(p.publishedAt || p.updatedAt)}</time> : null}
+                    {p.readingTime ? <span aria-hidden="true">·</span> : null}
+                    {p.readingTime ? <span>{p.readingTime}</span> : null}
                   </div>
-                ) : null}
-
-                <div className="text-xl font-semibold tracking-tight text-slate-900 group-hover:underline">
-                  {p.title}
-                </div>
-
-                {p.description ? (
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{p.description}</p>
-                ) : null}
-
-                <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500">
-                  {p.updatedAt ? <span>{p.updatedAt}</span> : null}
-                  {p.readingTime ? <span>•</span> : null}
-                  {p.readingTime ? <span>{p.readingTime}</span> : null}
-                </div>
-              </Link>
+                </Link>
+              </article>
             ))}
           </div>
         )}

@@ -26,7 +26,7 @@ export function websiteSchema() {
   };
 }
 
-export function softwareApplicationSchema() {
+export function softwareApplicationSchema(description?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -35,6 +35,7 @@ export function softwareApplicationSchema() {
     operatingSystem: "Web",
     url: SITE_URL,
     description:
+      description ||
       "Financial operations software for cash-flow planning, banking visibility, settlements, ledger structure and KPI reporting.",
     offers: [
       { "@type": "Offer", name: "Free", price: "0", priceCurrency: "EUR" },
@@ -66,5 +67,68 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       name: item.name,
       item: `${SITE_URL}${item.path}`,
     })),
+  };
+}
+
+export function webPageSchema({
+  name,
+  description,
+  path,
+}: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: `${SITE_URL}${path}`,
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+  };
+}
+
+export function articleSchema({
+  title,
+  description,
+  path,
+  datePublished,
+  dateModified,
+  author = SITE_NAME,
+  keywords = [],
+  section,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished?: string;
+  dateModified?: string;
+  author?: string;
+  keywords?: string[];
+  section?: string;
+}) {
+  const url = `${SITE_URL}${path}`;
+  const published = datePublished || dateModified;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    image: [`${SITE_URL}/opengraph-image`],
+    author: { "@type": "Organization", name: author, url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo/logo512.png` },
+    },
+    ...(published ? { datePublished: published } : {}),
+    ...(dateModified ? { dateModified } : {}),
+    ...(keywords.length ? { keywords: keywords.join(", ") } : {}),
+    ...(section ? { articleSection: section } : {}),
+    inLanguage: "en",
   };
 }
