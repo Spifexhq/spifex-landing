@@ -27,7 +27,7 @@ export const CAMPAIGNS: Campaign[] = [
     plan: "free",
     primaryLabel: "Start free",
     proof: "Works with ChatGPT and Claude through the same remote MCP server.",
-    secondaryHref: "/docs/connect-chatgpt-claude",
+    secondaryHref: "/docs/ai-connections",
     secondaryLabel: "Read the setup guide",
   },
   {

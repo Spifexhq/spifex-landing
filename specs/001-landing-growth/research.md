@@ -22,7 +22,7 @@
 | personal cash flow app | Commercial | `/personal` |
 | budget and goal tracking software | Commercial | `/personal` |
 | personal finance dashboard | Commercial | `/personal` |
-| personal finance AI assistant | Emerging | `/personal`, `/docs/connect-chatgpt-claude` |
+| personal finance AI assistant | Emerging | `/personal`, `/docs/ai-connections` |
 
 ### Personal — informational
 
@@ -41,7 +41,7 @@
 | business cash flow forecasting | Commercial | `/products/cashflow` |
 | settlement and reconciliation software | Commercial | `/products/spend-settlements` |
 | finance operations platform | Commercial | `/solutions` |
-| business finance AI connector | Emerging | `/business`, `/docs/connect-chatgpt-claude` |
+| business finance AI connector | Emerging | `/business`, `/docs/ai-connections` |
 
 ### Business — informational
 

@@ -287,7 +287,7 @@ export default async function HomePage() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Button href="/docs/connect-chatgpt-claude" variant="primary" dataCta="ai-docs">
+                <Button href="/docs/ai-connections" variant="primary" dataCta="ai-docs">
                   {t("homeV2.ai.cta")}
                   <ArrowRight size={16} aria-hidden="true" />
                 </Button>

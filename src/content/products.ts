@@ -115,7 +115,7 @@ export const PLATFORM_LINKS: PlatformLink[] = [
   },
   {
     key: "ai",
-    href: "/docs/connect-chatgpt-claude",
+    href: "/docs/ai-connections",
     icon: "Sparkles",
     titleKey: "megaMenu.aiTitle",
     descKey: "megaMenu.ai",

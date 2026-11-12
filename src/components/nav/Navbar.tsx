@@ -110,7 +110,7 @@ export default function Navbar() {
     { href: "/solutions", key: "nav.solutions" },
     { href: "/pricing", key: "nav.pricing" },
     { href: "/docs", key: "nav.docs" },
-    { href: "/docs/connect-chatgpt-claude", key: "megaMenu.aiTitle" },
+    { href: "/docs/ai-connections", key: "megaMenu.aiTitle" },
     { href: "/customers", key: "nav.customers" },
     { href: "/blog", key: "nav.blog" },
   ];

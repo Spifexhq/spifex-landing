@@ -118,7 +118,7 @@ export default async function RootLayout({
                         <Link href="/business" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.business")}</Link>
                         <Link href="/solutions" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.solutions")}</Link>
                         <Link href="/pricing" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.pricing")}</Link>
-                        <Link href="/docs/connect-chatgpt-claude" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">AI connections</Link>
+                        <Link href="/docs/ai-connections" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">AI connections</Link>
                       </div>
                     </div>
                     <div>

@@ -261,7 +261,7 @@ export const DOCS: DocArticle[] = [
     related: ["plan-and-execute", "roles-and-audit"],
   },
   {
-    slug: "connect-chatgpt-claude",
+    slug: "ai-connections",
     title: "Connect ChatGPT or Claude to Spifex",
     summary: "Set up the read-only MCP connector, approve consent and revoke access when needed.",
     category: "ai",
@@ -326,7 +326,7 @@ export const DOCS: DocArticle[] = [
         body: [],
       },
     ],
-    related: ["account-and-security", "connect-chatgpt-claude"],
+    related: ["account-and-security", "ai-connections"],
   },
   {
     slug: "plans-and-checkout",
