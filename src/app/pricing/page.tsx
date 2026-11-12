@@ -4,7 +4,6 @@ import PricingClient from "./PricingClient";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqSchema, softwareApplicationSchema } from "@/lib/seo/schema";
 import { pageMetadata } from "@/lib/seo/metadata";
-import { currencyForCountry } from "@/lib/location/billing-currency";
 import { getServerI18n } from "@/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,10 +20,9 @@ export default async function PricingPage({
 }: {
   searchParams: Promise<{ product?: string }>;
 }) {
-  const { t, locale, country } = await getServerI18n();
+  const { t } = await getServerI18n();
   const { product } = await searchParams;
   const initialCategory = product === "personal" ? "personal" : "business";
-  const initialCurrency = currencyForCountry(country);
   const faq = (["card", "change", "currency", "taxes"] as const).map((key) => ({
     question: t(`pricingV2.faq.${key}.q`),
     answer: t(`pricingV2.faq.${key}.a`),
@@ -42,11 +40,7 @@ export default async function PricingPage({
           faqSchema(faq),
         ]}
       />
-      <PricingClient
-        initialCategory={initialCategory}
-        initialLocale={locale}
-        initialCurrency={initialCurrency}
-      />
+      <PricingClient initialCategory={initialCategory} />
     </main>
   );
 }

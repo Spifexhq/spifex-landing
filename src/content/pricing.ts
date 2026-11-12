@@ -1,5 +1,4 @@
-import type { Locale } from "@/i18n/server";
-import type { SupportedCurrency } from "@/lib/location/billing-currency";
+import type { Locale, SupportedCurrency } from "@/lib/location/markets";
 
 export type PricingTierKey = "free" | "starter" | "pro";
 

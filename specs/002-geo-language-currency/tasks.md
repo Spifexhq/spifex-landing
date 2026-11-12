@@ -1,0 +1,22 @@
+# Tasks — Country-based language and currency defaults
+
+- [x] T001 Add supported market table (`COUNTRY_MARKETS`) and locale metadata with RTL flag.
+- [x] T002 Derive billing currency from the market table; keep `currencyForCountry` API; default USD.
+- [x] T003 Resolve locale as explicit choice → country language → English in `getServerI18n`.
+- [x] T004 Read country from Vercel/Cloudflare/CloudFront/ALB headers in the proxy and persist `spifex_country`.
+- [x] T005 Clear the legacy auto-detected `spifex_locale` cookie.
+- [x] T006 Add `/api/geo` and a client fallback (`GeoDefaults`) for hosts without geo headers.
+- [x] T007 Add `?lang=<locale>` / `?lang=auto` overrides via an internal request header.
+- [x] T008 Add the language picker (navbar, mobile drawer, footer) with cookie + localStorage persistence and a locked currency indicator.
+- [x] T009 Render Arabic right-to-left via `<html dir>`.
+- [x] T010 Remove client-side currency mutation from pricing; prices use server currency.
+- [x] T011 Make signup currency read-only and map UI locales to the backend language contract.
+- [x] T012 Translate the used UI dictionary into every supported language.
+- [x] T013 Translate product-page copy into every supported language with English fallback.
+- [x] T013a Translate the Personal and Business audience pages into every supported language.
+- [x] T014 Localize footer, hero, trust strip, product cards, pricing catalog and signup strings.
+- [x] T015 Make illustrative hero figures follow the visitor currency.
+- [x] T016 Update the cookie notice for the new locale/country cookies.
+- [x] T017 Verify country/language/currency combinations with geo headers and browser flows.
+- [x] T018 Run TypeScript, ESLint and production build.
+- [ ] T019 Native-speaker copy review of new locales (recommended before launch).

@@ -64,12 +64,12 @@ export default async function Hero() {
               >
                 <span className="block overflow-hidden pb-[0.06em]">
                   <span className="hero-line block" style={{ animationDelay: "0.18s" }}>
-                    Money,
+                    {t("homeV2.hero.line1")}
                   </span>
                 </span>
                 <span className="block overflow-hidden pb-[0.06em]">
                   <span className="hero-line block" style={{ animationDelay: "0.28s" }}>
-                    in focus<span className="text-[var(--brand)]">.</span>
+                    {t("homeV2.hero.line2")}<span className="text-[var(--brand)]">.</span>
                   </span>
                 </span>
               </h1>
@@ -86,7 +86,7 @@ export default async function Hero() {
                   <Button
                     href="/signup?intent=signup&plan=free"
                     size="lg"
-                    className="w-full bg-[var(--brand)] text-[var(--ink)] shadow-[0_18px_44px_-18px_rgba(244,106,53,.95)] hover:bg-[#ff7a45] active:bg-[#e85f2b] sm:w-auto"
+                    className="w-full bg-[var(--brand)] text-[var(--ink)] shadow-[0_18px_44px_-18px_rgba(0,0,0,.55)] hover:bg-[#ff7a45] active:bg-[#e85f2b] sm:w-auto"
                     dataCta="hero-start-free"
                   >
                     {t("homeV2.hero.primary")}

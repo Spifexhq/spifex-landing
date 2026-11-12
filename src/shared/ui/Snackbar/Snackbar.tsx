@@ -246,7 +246,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
                 }}
                 className={cls(
                   "ml-auto p-2 text-neutral-500 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-white",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accentPrimary)]/70",
+                  "focus-visible:outline-none",
                   "transition-colors"
                 )}
                 aria-label="Fechar notificação"

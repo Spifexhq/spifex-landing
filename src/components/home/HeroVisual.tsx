@@ -16,16 +16,32 @@ import {
   Wallet,
 } from "lucide-react";
 
+import { useI18n } from "@/components/i18n/I18nProvider";
+
 const RAIL_ICONS = [LayoutDashboard, ChartNoAxesCombined, Landmark, RefreshCw, UsersRound] as const;
 
 const UPCOMING = [
-  { label: "Vendor payout", amount: "€12,400", dot: "bg-[#d97706]" },
-  { label: "Payroll", amount: "€28,900", dot: "bg-[#f46a35]" },
-  { label: "Card settlement", amount: "€6,120", dot: "bg-[#16a34a]" },
+  { label: "Vendor payout", amount: 12400, dot: "bg-[#d97706]" },
+  { label: "Payroll", amount: 28900, dot: "bg-[#f46a35]" },
+  { label: "Card settlement", amount: 6120, dot: "bg-[#16a34a]" },
 ] as const;
 
 export default function HeroVisual({ label }: { label: string }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const { locale, currency } = useI18n();
+
+  // Illustrative EUR-based figures, converted so the mockup matches the visitor's region.
+  const rate = currency === "BRL" ? 5.6 : currency === "USD" ? 1.08 : 1;
+
+  const money = (amount: number, compact = false) =>
+    new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency,
+      notation: compact ? "compact" : "standard",
+      maximumFractionDigits: compact ? 1 : 0,
+    }).format(amount * rate);
+
+  const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(new Date());
 
   useEffect(() => {
     const element = ref.current;
@@ -150,7 +166,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       </span>
                     </div>
                     <p className="mt-0.5 text-[8px] text-[#5f6b7d] sm:text-[9px]">
-                      January · All accounts · EUR
+                      {month} · All accounts · {currency}
                     </p>
                   </div>
 
@@ -167,7 +183,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       Cash position
                     </p>
                     <p className="mt-0.5 text-[14px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[17px]">
-                      €482.9k
+                      {money(482900, true)}
                     </p>
                     <p className="text-[7px] font-medium text-[#15803d] sm:text-[8px]">+8.2% vs plan</p>
                   </div>
@@ -176,7 +192,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       Planned
                     </p>
                     <p className="mt-0.5 text-[12px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[15px]">
-                      €164.2k
+                      {money(164200, true)}
                     </p>
                   </div>
                   <div className="rounded-md border border-black/[0.06] bg-white px-2 py-1.5 sm:px-2.5 sm:py-2">
@@ -184,7 +200,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       Settled
                     </p>
                     <p className="mt-0.5 text-[12px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[15px]">
-                      €138.7k
+                      {money(138700, true)}
                     </p>
                   </div>
                 </div>
@@ -312,7 +328,7 @@ export default function HeroVisual({ label }: { label: string }) {
                             <span className={`h-1 w-1 shrink-0 rounded-full ${item.dot}`} />
                             <span className="truncate">{item.label}</span>
                           </span>
-                          <span className="font-medium tabular-nums text-[#202020]">{item.amount}</span>
+                          <span className="font-medium tabular-nums text-[#202020]">{money(item.amount)}</span>
                         </div>
                       ))}
                     </div>
@@ -390,7 +406,7 @@ export default function HeroVisual({ label }: { label: string }) {
                 <Check size={10} aria-hidden="true" />
               </span>
               <span className="text-[8px] font-semibold text-[#202020]">Settlement matched</span>
-              <span className="text-[8px] tabular-nums text-[#6b7280]">€18,420.00</span>
+              <span className="text-[8px] tabular-nums text-[#6b7280]">{money(18420)}</span>
             </div>
           </div>
         </div>

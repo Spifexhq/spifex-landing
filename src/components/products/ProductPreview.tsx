@@ -3,24 +3,32 @@ import { Check } from "lucide-react";
 import { Icon } from "@/components/ui/Icon";
 import { getProductLink, type ProductKey } from "@/content/products";
 import type { ProductPreviewContent, PreviewStatus } from "@/content/product-pages";
+import { PREVIEW_LABELS } from "@/i18n/preview-labels";
+import type { Locale } from "@/lib/location/markets";
 
-const STATUS: Record<PreviewStatus, { dot: string; label: string }> = {
-  positive: { dot: "bg-[#16a34a]", label: "On track" },
-  warning: { dot: "bg-[#d97706]", label: "Needs attention" },
-  neutral: { dot: "bg-[#94a3b8]", label: "In progress" },
+const STATUS: Record<PreviewStatus, { dot: string }> = {
+  positive: { dot: "bg-[#16a34a]" },
+  warning: { dot: "bg-[#d97706]" },
+  neutral: { dot: "bg-[#94a3b8]" },
 };
 
 export function ProductPreview({
   productKey,
   preview,
   tone = "light",
+  locale = "en",
 }: {
   productKey: ProductKey;
   preview: ProductPreviewContent;
   tone?: "light" | "dark";
+  locale?: Locale;
 }) {
   const product = getProductLink(productKey);
   const dark = tone === "dark";
+  const labels = PREVIEW_LABELS[locale] ?? PREVIEW_LABELS.en;
+  const months = Array.from({ length: 6 }, (_, index) =>
+    new Intl.DateTimeFormat(locale, { month: "short" }).format(new Date(2026, index, 1)),
+  );
 
   return (
     <figure className="relative mx-auto w-full max-w-[560px]">
@@ -32,7 +40,7 @@ export function ProductPreview({
       />
       <div
         role="img"
-        aria-label={`${preview.label} workspace preview showing ${preview.metric.label}, ${preview.secondary.label} and recent activity.`}
+        aria-label={`${preview.label} ${labels.illustrative}. ${preview.metric.label}, ${preview.secondary.label}.`}
         className="relative overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_30px_80px_-35px_rgba(32,32,32,0.35)]"
       >
         <div className="flex items-center gap-3 border-b border-[var(--line)] px-4 py-3">
@@ -41,11 +49,11 @@ export function ProductPreview({
           </span>
           <div className="min-w-0">
             <p className="truncate text-[13px] font-semibold text-[var(--ink)]">{preview.label}</p>
-            <p className="text-[10px] text-[var(--muted)]">Business workspace</p>
+            <p className="text-[10px] text-[var(--muted)]">{labels.businessWorkspace}</p>
           </div>
-          <span className="ml-auto flex items-center gap-1.5 text-[10px] font-medium text-[var(--muted)]">
+          <span className="ms-auto flex items-center gap-1.5 text-[10px] font-medium text-[var(--muted)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" aria-hidden="true" />
-            Live preview
+            {labels.livePreview}
           </span>
         </div>
 
@@ -67,14 +75,14 @@ export function ProductPreview({
               <p className="mt-1 text-[18px] font-semibold tabular-nums tracking-[-0.02em] text-[var(--ink)]">
                 {preview.secondary.value}
               </p>
-              <p className="mt-0.5 text-[10px] text-[var(--muted)]">This month</p>
+              <p className="mt-0.5 text-[10px] text-[var(--muted)]">{labels.thisMonth}</p>
             </div>
           </div>
 
           <div className="mt-2.5 rounded-xl border border-[var(--line)] bg-white p-3">
             <div className="flex items-center justify-between">
               <p className="text-[10px] font-semibold text-[var(--ink)]">{preview.chartLabel}</p>
-              <span className="text-[9px] text-[var(--muted)]">Last 6 months</span>
+              <span className="text-[9px] text-[var(--muted)]">{labels.lastSixMonths}</span>
             </div>
             <svg
               viewBox="0 0 320 82"
@@ -105,7 +113,7 @@ export function ProductPreview({
               <circle cx="286" cy="20" r="3" fill="#f46a35" />
             </svg>
             <div className="mt-1 flex justify-between text-[8px] text-[var(--muted)]">
-              {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((month) => (
+              {months.map((month) => (
                 <span key={month}>{month}</span>
               ))}
             </div>
@@ -139,7 +147,7 @@ export function ProductPreview({
         }`}
       >
         <Check size={11} className="text-[var(--success)]" aria-hidden="true" />
-        Illustrative workspace preview
+        {labels.illustrative}
       </figcaption>
     </figure>
   );

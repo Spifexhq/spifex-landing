@@ -8,8 +8,7 @@ function cn(...classes: Array<string | undefined | false | null>) {
 
 const base =
   "inline-flex select-none items-center justify-center gap-2 rounded-md font-medium " +
-  "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
-  "focus-visible:ring-orange-500 disabled:cursor-not-allowed disabled:opacity-60";
+  "transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60";
 
 const sizes: Record<ButtonSize, string> = {
   xs: "h-7 px-2.5 text-[11px]",

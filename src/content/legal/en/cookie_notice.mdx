@@ -27,8 +27,9 @@ These technologies support core Website functions. They do not require marketing
 
 | Technology | Type | Purpose | Typical duration |
 | --- | --- | --- | --- |
-| `spifex_locale` | Cookie | Remembers your language preference. | Session or until updated |
-| `spifex_country` | Cookie | Helps display region-appropriate content, such as currency context. | Session or until updated |
+| `spifex_locale_user` | Cookie | Remembers your chosen language. | Up to 1 year |
+| `spifex_locale` | Local storage | Stores the same language choice as a fallback. | Until cleared or changed |
+| `spifex_country` | Cookie | Remembers the detected country so region-appropriate content, such as currency, stays consistent. | Up to 30 days |
 | `spx_cookie_consent` | Cookie | Stores your cookie choice (accepted or rejected for marketing technologies). | Up to 180 days |
 | `spx_cookie_consent_v1` | Local storage | Stores the same cookie choice as a fallback when storage is available. | Until cleared or changed |
 

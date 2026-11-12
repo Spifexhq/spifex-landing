@@ -104,7 +104,7 @@ function SearchBox({
           className={cn(
             "w-full rounded-xl border border-[var(--line)] bg-white py-3 pl-10 pr-10",
             "text-sm text-[var(--ink)] placeholder:text-[var(--muted)]",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20 focus:border-[var(--brand)]/40"
+            "focus:outline-none"
           )}
         />
 
@@ -248,7 +248,7 @@ function TopicDropdown({
               ref={buttonRef}
               onClick={() => requestAnimationFrame(updatePos)}
               onKeyDown={() => requestAnimationFrame(updatePos)}
-              className="relative w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 pr-10 text-left text-sm text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20"
+              className="relative w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 pr-10 text-left text-sm text-[var(--ink)] focus:outline-none"
             >
               <span className="block truncate">{displayValue}</span>
               <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
@@ -315,7 +315,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
             type="button"
             onClick={() => setFilterOpen((v) => !v)}
             className={cn(
-              "inline-flex shrink-0 items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/20",
+              "inline-flex shrink-0 items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none",
               filterOpen
                 ? "border-[var(--ink)]/15 bg-[var(--ink)] text-white"
                 : "border-[var(--line)] bg-white text-[var(--ink-soft)] hover:bg-[var(--canvas)]"
@@ -345,7 +345,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
                 setTopicApplied(topicDraft);
                 setFilterOpen(false);
               }}
-              className="h-[46px] rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white transition-colors hover:bg-[var(--ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--brand)]/30"
+              className="h-[46px] rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white transition-colors hover:bg-[var(--ink-soft)] focus:outline-none"
             >
               {t("blog.applyFilter")}
             </button>

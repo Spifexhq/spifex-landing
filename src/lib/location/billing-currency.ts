@@ -1,5 +1,16 @@
-// src\lib\location\billing-currency.ts
-export type SupportedCurrency = "BRL" | "EUR" | "USD";
+// src/lib/location/billing-currency.ts
+//
+// Billing currency is derived server-side from the visitor's country. It is
+// never user-selectable: the client only ever displays what the server resolved.
+
+import {
+  COUNTRY_MARKETS,
+  DEFAULT_CURRENCY,
+  currencyForCountry as currencyForMarketCountry,
+  type SupportedCurrency,
+} from "./markets";
+
+export type { SupportedCurrency };
 
 export type BillingCurrencyConfig = {
   supportedCurrencies: ReadonlySet<SupportedCurrency>;
@@ -7,24 +18,14 @@ export type BillingCurrencyConfig = {
   defaultCurrency: SupportedCurrency;
 };
 
-const EU_ISO2 = new Set([
-  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR",
-  "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL",
-  "PL", "PT", "RO", "SK", "SI", "ES", "SE",
-]);
-
-const countryToCurrency: Record<string, SupportedCurrency> = {
-  BR: "BRL",
-};
-
-for (const code of EU_ISO2) {
-  countryToCurrency[code] = "EUR";
-}
+const countryToCurrency: Record<string, SupportedCurrency> = Object.fromEntries(
+  Object.entries(COUNTRY_MARKETS).map(([country, market]) => [country, market.currency]),
+);
 
 export const BILLING_CURRENCY: BillingCurrencyConfig = {
-  supportedCurrencies: new Set(["BRL", "EUR", "USD"]),
+  supportedCurrencies: new Set<SupportedCurrency>(["BRL", "EUR", "USD"]),
   countryToCurrency,
-  defaultCurrency: "USD",
+  defaultCurrency: DEFAULT_CURRENCY,
 };
 
 export function normalizeCountry(countryCode?: string | null): string | null {
@@ -34,7 +35,6 @@ export function normalizeCountry(countryCode?: string | null): string | null {
 }
 
 export function currencyForCountry(countryCode?: string | null): SupportedCurrency {
-  const c = normalizeCountry(countryCode);
-  const cur = (c ? BILLING_CURRENCY.countryToCurrency[c] : undefined) ?? BILLING_CURRENCY.defaultCurrency;
+  const cur = currencyForMarketCountry(countryCode);
   return BILLING_CURRENCY.supportedCurrencies.has(cur) ? cur : BILLING_CURRENCY.defaultCurrency;
 }

@@ -31,7 +31,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-150 focus:outline-none disabled:pointer-events-none disabled:opacity-50";
 
   const sizes = {
     sm: "h-9 px-3.5 text-[13px]",
@@ -41,7 +41,7 @@ export function Button({
 
   const styles = {
     primary:
-      "bg-[var(--brand-strong)] text-white shadow-[0_10px_24px_-14px_rgba(194,65,12,.65)] hover:bg-[var(--brand-strong-hover)] active:bg-[var(--brand-strong-pressed)] active:scale-[0.98]",
+      "bg-[var(--brand-strong)] text-white shadow-[0_10px_24px_-14px_rgba(0,0,0,.35)] hover:bg-[var(--brand-strong-hover)] active:bg-[var(--brand-strong-pressed)] active:scale-[0.98]",
     secondary:
       "border border-[var(--line)] bg-white text-[var(--ink)] hover:border-[#d9d4cc] hover:bg-[#faf9f7] active:scale-[0.99]",
     ghost: "bg-transparent text-[var(--ink)] hover:bg-black/[0.05]",

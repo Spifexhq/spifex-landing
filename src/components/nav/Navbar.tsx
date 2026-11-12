@@ -13,6 +13,7 @@ import { Icon } from "@/components/ui/Icon";
 import { DASHBOARD_URLS, NAV_ITEMS } from "@/content/navigation";
 import { PRODUCT_LINKS } from "@/content/products";
 import { useT } from "@/components/i18n/I18nProvider";
+import LanguageSwitcher from "@/components/i18n/LanguageSwitcher";
 import { cn } from "@/lib/cn";
 
 const DRAWER_ID = "mobile-nav-drawer";
@@ -121,7 +122,7 @@ export default function Navbar() {
         <Container className="flex h-16 items-center gap-8">
           <Link
             href="/"
-            className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30"
+            className="rounded-lg focus:outline-none"
           >
             <Wordmark />
           </Link>
@@ -136,7 +137,7 @@ export default function Navbar() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30",
+                    "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
                     active ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]",
                   )}
                 >
@@ -152,7 +153,8 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ms-auto flex items-center gap-1.5">
+            <LanguageSwitcher className="me-1" />
             <Button href={DASHBOARD_URLS.signin} variant="ghost" size="sm">
               {t("nav.signin")}
             </Button>
@@ -166,7 +168,7 @@ export default function Navbar() {
       <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-[var(--line)] bg-white/90 px-4 backdrop-blur-xl nav:hidden">
         <Link
           href="/"
-          className="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30"
+          className="rounded-lg focus:outline-none"
         >
           <Wordmark />
         </Link>
@@ -182,7 +184,7 @@ export default function Navbar() {
             aria-expanded={mobileOpen}
             aria-controls={DRAWER_ID}
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--line)] bg-white text-[var(--ink)] transition-colors hover:bg-[var(--canvas)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--line)] bg-white text-[var(--ink)] transition-colors hover:bg-[var(--canvas)] focus:outline-none"
           >
             <Menu className="h-[18px] w-[18px]" aria-hidden="true" />
           </button>
@@ -220,7 +222,7 @@ export default function Navbar() {
             type="button"
             onClick={closeDrawer}
             aria-label={t("nav.closeMenu")}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)] focus:outline-none"
           >
             <X className="h-[18px] w-[18px]" aria-hidden="true" />
           </button>
@@ -278,7 +280,7 @@ export default function Navbar() {
                       <Icon name={product.icon} className="h-4 w-4" />
                     </span>
                     <span className="min-w-0 flex-1 text-sm font-medium text-[var(--ink-soft)] group-hover:text-[var(--ink)]">
-                      {product.name}
+                      {t(`products.items.${product.key}.title`)}
                     </span>
                     <ChevronRight size={14} className="text-[var(--muted)]" aria-hidden="true" />
                   </Link>
@@ -311,17 +313,20 @@ export default function Navbar() {
           </section>
         </div>
 
-        <div className="flex shrink-0 items-center gap-4 border-t border-[var(--line)] px-6 py-4 text-xs text-[var(--muted)]">
-          <Link href="/legal" className="hover:text-[var(--ink)]" onClick={() => setMobileOpen(false)}>
-            {t("nav.legal")}
-          </Link>
-          <Link
-            href="/legal/cookie_notice"
-            className="hover:text-[var(--ink)]"
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("cookiesBanner.policy")}
-          </Link>
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-t border-[var(--line)] px-6 py-4 text-xs text-[var(--muted)]">
+          <div className="flex items-center gap-4">
+            <Link href="/legal" className="hover:text-[var(--ink)]" onClick={() => setMobileOpen(false)}>
+              {t("nav.legal")}
+            </Link>
+            <Link
+              href="/legal/cookie_notice"
+              className="hover:text-[var(--ink)]"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("cookiesBanner.policy")}
+            </Link>
+          </div>
+          <LanguageSwitcher />
         </div>
       </aside>
     </>

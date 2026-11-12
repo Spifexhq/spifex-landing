@@ -674,7 +674,7 @@ function SelectDropdown<T>({
             SIZE[size].trigger,
             disabled
               ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400"
-              : "border-gray-300 bg-white text-gray-800 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-gray-300"
+              : "border-gray-300 bg-white text-gray-800 hover:bg-gray-50"
           )}
         >
           <span

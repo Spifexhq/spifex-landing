@@ -122,9 +122,9 @@ export default function ProductsMegaMenu() {
                     <Icon name={product.icon} className="h-[18px] w-[18px]" />
                   </span>
                   <span className="min-w-0 pt-0.5">
-                    <span className="block text-sm font-semibold text-[var(--ink)]">{product.name}</span>
+                    <span className="block text-sm font-semibold text-[var(--ink)]">{t(`products.items.${product.key}.title`)}</span>
                     <span className="mt-0.5 block text-xs leading-5 text-[var(--muted)]">
-                      {product.summary}
+                      {t(`products.items.${product.key}.desc`)}
                     </span>
                   </span>
                 </Link>
@@ -201,7 +201,7 @@ export default function ProductsMegaMenu() {
         ref={triggerRef}
         type="button"
         className={cn(
-          "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30",
+          "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
           open ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]",
         )}
         aria-haspopup="true"

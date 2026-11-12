@@ -9,21 +9,161 @@ const de = {
     solutions: "Lösungen",
     customers: "Kunden",
     pricing: "Preise",
+    docs: "Dokumentation",
+    personal: "Privat",
+    business: "Business",
     legal: "Rechtliches",
     blog: "Blog",
     signin: "Anmelden",
     signup: "Registrieren",
+    startFree: "Kostenlos starten",
     home: "Startseite",
-    toggleMenu: "Menü öffnen",
+    toggleMenu: "Menü umschalten",
+    closeMenu: "Menü schließen",
+    menu: "Menü",
+  },
+
+  megaMenu: {
+    products: "Produkte",
+    platform: "Plattform",
+    allSolutions: "Alle Lösungen",
+    personalDesc: "Konten, Budgets und Ziele für Ihre privaten Finanzen.",
+    businessDesc: "Cashflow, Banking und Kontrolle für Teams.",
+    startTitle: "Starten Sie mit dem Workspace, den Sie brauchen",
+    startCta: "Kostenlos starten",
+    comparePlans: "Pläne vergleichen",
+    solutions: "Sehen Sie, wie alle Module zusammenwirken.",
+    pricing: "Vergleichen Sie Free, Starter und Pro.",
+    ai: "Verbinden Sie ChatGPT oder Claude mit schreibgeschütztem Zugriff.",
+    security: "Rollen, Lifecycle-Status und Connector-Aktivitäten.",
+    aiTitle: "KI-Verbindungen",
+    securityTitle: "Rollen und Aktivitäten",
+    viewAll: "Alle Produkte ansehen",
+  },
+
+  productPages: {
+    startFree: "Kostenlos starten",
+    seePricing: "Preise ansehen",
+    heroNote: "Kostenloser Plan · Keine Karte erforderlich · Privat und Business",
+    moduleLabel: "Business-Modul",
+    outcomesEyebrow: "Was sich ändert",
+    outcomesTitle: "Die Arbeit, die Ihnen dieses Modul abnimmt",
+    outcomesSubtitle: "Ein klareres Betriebsmodell – mit demselben Workspace und denselben Daten.",
+    howEyebrow: "So funktioniert es",
+    howTitle: "Vom Setup zur ersten aussagekräftigen Ansicht",
+    howSubtitle: "Ein kurzer Einführungspfad, der kein separates Projekt erfordert.",
+    capabilitiesEyebrow: "Funktionen",
+    plansEyebrow: "Pläne",
+    plansTitle: "Kostenlos starten. Upgraden, wenn die Arbeit wächst.",
+    plansSubtitle: "Jedes Produkt läuft im selben Spifex-Workspace. Wechseln Sie zu Starter oder Pro, wenn Sie mehr Kapazität benötigen.",
+    comparePlans: "Pläne vergleichen",
+    noCard: "Keine Karte erforderlich",
+    perMonth: "pro Monat",
+    relatedEyebrow: "Weiter entdecken",
+    relatedTitle: "Ein Workspace, mehr Kontrolle",
+    relatedDesc: "Ergänzen Sie die Module, die zu diesem Workflow passen.",
+  },
+
+  legal: {
+    title: "Rechtliches",
+    toc: "Inhaltsverzeichnis",
+  },
+
+  blog: {
+    indexTitle: "Blog",
+    indexSubtitle: "Einblicke in Finanzprozesse, Cashflow, Governance und Automatisierung.",
+    searchPlaceholder: "Suchen",
+    clearSearch: "Suche löschen",
+    filter: "Filtern",
+    topic: "Thema",
+    filterAll: "Alle Themen",
+    applyFilter: "Filtern",
+    activeFilter: "Aktiver Filter",
+    noActiveFilter: "Kein aktiver Filter",
+    clearFilter: "Filter löschen",
+    noResults: "Keine Beiträge für die aktuelle Suche oder Filterung gefunden.",
+    breadcrumbBlog: "Blog",
+    breadcrumbArticles: "Artikel",
+    seriesDefault: "Spifex Blog",
+  },
+
+  products: {
+    groups: {
+      products: "Produkte",
+      workflows: "Workflows",
+      platform: "Plattform",
+    },
+    items: {
+      cashflow: {
+        title: "Cashflow",
+        desc: "Planen Sie Zu- und Abflüsse, simulieren Sie Szenarien und verfolgen Sie die Umsetzung in Echtzeit.",
+      },
+      banking: {
+        title: "Banking und Zahlungen",
+        desc: "Bündeln Sie Bankkonten, bezahlen Sie Lieferanten und verwalten Sie Überweisungen mit integrierten Kontrollen.",
+      },
+      spend: {
+        title: "Ausgaben und Abrechnungen",
+        desc: "Standardisieren Sie Freigaben, Abrechnungen und interne Mittelbewegungen.",
+      },
+      ledger: {
+        title: "Hauptbuch",
+        desc: "Kontenplan, Klassifizierung und prüfungsfähige Finanzstruktur.",
+      },
+      projects: {
+        title: "Projekte",
+        desc: "Ordnen Sie Kosten und Erlöse Initiativen zu – vollständig nachvollziehbar und mit KPIs.",
+      },
+      departments: {
+        title: "Abteilungen",
+        desc: "Budgetverantwortung, Rechenschaft und operative Governance pro Team.",
+      },
+      crm: {
+        title: "CRM",
+        desc: "Verbinden Sie Pipeline-Signale mit Cashflow-Transparenz und Planung.",
+      },
+      inventory: {
+        title: "Bestand",
+        desc: "Verzahnen Sie operative Eingänge mit finanziellen Ergebnissen – ohne Datensilos.",
+      },
+      reconciliation: {
+        title: "Abstimmung",
+        desc: "Schließen Sie den Kreis von der Planung zum Ist mit strukturiertem Abgleich.",
+      },
+      automation: {
+        title: "Buchhaltungsautomatisierung",
+        desc: "Reduzieren Sie manuelle Arbeit und halten Sie Finanzdaten modulübergreifend konsistent.",
+      },
+      kpis: {
+        title: "Reporting und KPIs",
+        desc: "Dashboards und Kennzahlen, damit Teams auf das Wesentliche ausgerichtet bleiben.",
+      },
+      integrations: {
+        title: "Integrationen",
+        desc: "Verbinden Sie Spifex mit Ihren Tools und standardisieren Sie die Datenbasis.",
+      },
+      intelligence: {
+        title: "Intelligence",
+        desc: "Umsetzbare Erkenntnisse, mit denen Operatoren Risiken und Chancen früh erkennen.",
+      },
+      governance: {
+        title: "Governance",
+        desc: "Rollenbasierter Zugriff, Audit-Trails und organisationsweite Struktur.",
+      },
+      global: {
+        title: "Weltweit einsatzbereit",
+        desc: "Multi-Stream-Operationen, ausgelegt auf Skalierung und Komplexität.",
+      },
+    },
+    footer: "Ein Workspace für Cashflow, Banking, Reporting und Betrieb.",
+    explore: "Plattform entdecken",
   },
 
   pricing: {
     title: "Preise",
-    subtitle:
-      "Wählen Sie den Plan, der zu Ihrer Phase passt. Preise werden in Ihrer lokalen Währung angezeigt.",
-    note:
-      "Die angezeigte Währung basiert auf Ihrem Standort. Endpreise können beim Checkout variieren.",
-    mostPopular: "Beliebtester Plan",
+    subtitle: "Wählen Sie den Plan, der zu Ihrer Phase passt. Preise werden, sofern unterstützt, in Ihrer regionalen Abrechnungswährung angezeigt.",
+    note: "Die angezeigte Währung ergibt sich, wenn verfügbar, aus dem Standort der Besucher. Endgültige Abrechnung und Steuern können beim Checkout abweichen.",
+    mostPopular: "Am beliebtesten",
     perMonthFrom: "{price} / Monat",
   },
 
@@ -31,125 +171,882 @@ const de = {
     free: {
       name: "Kostenlos",
       priceLabel: "Kostenlos",
-      description:
-        "Für Einzelpersonen und kleine Teams, die starten.",
+      description: "Für Einzelpersonen und sehr kleine Teams, die mit strukturierten Finanzprozessen starten.",
       highlights: {
-        0: "Zugriff auf Basisfunktionen",
-        1: "Grundlegende Cashflow-Übersicht",
-        2: "Standard-Onboarding",
-        3: "Keine Zahlungsmethode erforderlich",
+        0: "Zugriff auf den Kern-Workspace",
+        1: "Grundlegende Cashflow-Transparenz",
+        2: "Standard-Onboarding-Prozess",
+        3: "Start ohne Zahlungsmethode",
       },
       ctaLabel: "Loslegen",
     },
-
     starter: {
       name: "Starter",
-      description:
-        "Für wachsende Teams mit Bedarf an Struktur und Kontrolle.",
+      description: "Für wachsende Teams, die mehr Struktur, operative Kontrolle und wiederkehrende Workflows brauchen.",
       highlights: {
-        0: "Cashflow-Planung und Ausführung",
-        1: "Bankübersicht und strukturierte Prozesse",
-        2: "Rollenbasierter Zugriff",
-        3: "Schneller Start durch Vorlagen",
+        0: "Cashflow-Planung und Umsetzung",
+        1: "Banking-Transparenz und strukturierte Abläufe",
+        2: "Rollenbasierter Zugriff und operative Verantwortung",
+        3: "Schnelleres Setup mit Importen und Vorlagen",
       },
       ctaLabel: "Starter wählen",
     },
-
     pro: {
       name: "Pro",
-      description:
-        "Für Finanzteams mit Fokus auf Governance und Skalierung.",
+      description: "Für Finanzteams, die stärkere Governance, Automatisierung und Skalierbarkeit benötigen.",
       highlights: {
-        0: "Erweiterte Workflows",
-        1: "Kontrollen und Auditfähigkeit",
-        2: "Projekt- und Reportingfunktionen",
-        3: "Für komplexe Organisationen",
+        0: "Erweiterte operative Workflows",
+        1: "Governance, Kontrollen und Prüfungsfähigkeit",
+        2: "Projekte, Abteilungen und umfassenderes Reporting",
+        3: "Für höhere operative Komplexität gebaut",
       },
       ctaLabel: "Pro wählen",
     },
   },
 
-  home: {
+  homeV2: {
     hero: {
-      title: "Volle Kontrolle über Cashflow und Zahlungen",
-      subtitle:
-        "Verwalten Sie Ihre Finanzprozesse in einem System.",
-      emailPlaceholder: "Geschäftliche E-Mail",
-      ctaPrimary: "Starten",
-      disclaimer:
-        "Mit der Nutzung stimmen Sie dem Erhalt von Produkt-E-Mails zu.",
+      eyebrow: "Privat + Business · Ein System",
+      title: "Geld im Blick",
+      line1: "Geld,",
+      line2: "im Blick",
+      subtitle: "Ein live aktuelles Bild aller Konten, Pläne und Abrechnungen – für Ihre privaten Finanzen und Ihr Unternehmen.",
+      primary: "Kostenlos starten",
+      secondary: "Das Produkt entdecken",
+      emailPlaceholder: "Geschäftliche E-Mail-Adresse eingeben",
+      emailCta: "Kostenlos starten",
+      disclaimer: "Kostenloser Plan · Keine Karte erforderlich · Privat und Business",
+      proof: "Gebaut für Multi-Stream-, lieferantenintensive und projektbasierte Abläufe.",
+      visualAlt: "Vorschau des Spifex-Workspace mit Liquiditätsposition, Diagramm Plan versus abgerechnet, Status der Abrechnungen und einer schreibgeschützten KI-Zusammenfassung des Cashflows.",
     },
-
-    features: {
-      title: "Finanzen als operatives System",
-      subtitle:
-        "Spifex verbindet Teams, Prozesse und Daten.",
+    audiences: {
+      title: "Eine Plattform für private und geschäftliche Finanzprozesse",
       items: {
-        moneyLifecycle: {
-          title: "Vollständiger Geldfluss",
-          desc: "Von Planung bis Abstimmung.",
+        multiEntity: "Multi-Entity-Operationen",
+        financeOps: "Finanzprozesse",
+        projectLed: "Projektgetriebene Unternehmen",
+        vendorHeavy: "Lieferantenintensive Teams",
+      },
+    },
+    personal: {
+      eyebrow: "Spifex Personal",
+      title: "Ihre persönlichen Finanzen – mit der Klarheit eines Betriebssystems",
+      subtitle: "Führen Sie Konten, Kategorien, Budgets und Ziele in einem Workspace zusammen und sehen Sie, wie sich heutige Ausgaben auf Ihre nächsten Pläne auswirken.",
+      bullets: {
+        accounts: "Private Bankkonten und Salden in einer Ansicht.",
+        budgets: "Planen Sie Budgets und Ziele und verfolgen Sie den Fortschritt anhand echter Transaktionen.",
+        reporting: "Prüfen Sie Kategorien, offene Abrechnungen und Kennzahlen, ohne eine Tabelle neu aufzubauen.",
+        ai: "Verbinden Sie ChatGPT oder Claude mit schreibgeschütztem Zugriff, um Ihren Cashflow zusammenzufassen.",
+      },
+      plans: "Personal Free · Personal Starter · Personal Pro",
+      cta: "Spifex Personal entdecken",
+      start: "Personal kostenlos starten",
+      note: "Kostenloser Plan verfügbar. Keine Kreditkarte erforderlich.",
+    },
+    outcomes: {
+      eyebrow: "Warum Spifex",
+      title: "Ersetzen Sie getrennte Tabellen und Tools durch einen Geld-Workflow",
+      subtitle: "Planen Sie, was passieren soll, setzen Sie es mit Kontrollen um, gleichen Sie ab, was tatsächlich passiert ist, und berichten Sie – ohne dieselben Daten an vier Stellen neu aufzubauen.",
+      items: {
+        visibility: {
+          title: "Das vollständige Geldbild sehen",
+          desc: "Cashflow-Pläne, Abrechnungen, Banksalden und Reporting liegen in einem Workspace statt in getrennten Dateien.",
         },
-        complexity: {
-          title: "Für komplexe Abläufe",
-          desc: "Mehrere Einnahme- und Kostenströme verwalten.",
+        control: {
+          title: "Ausführung steuern",
+          desc: "Rollenbasierter Zugriff, Abrechnungen und Überweisungen folgen einem konsistenten Betriebsmodell innerhalb des Workspace.",
         },
-        governance: {
-          title: "Integrierte Governance",
-          desc: "Kontrollen und Audit-Logs standardmäßig.",
+        traceability: {
+          title: "Jede Bewegung nachvollziehbar halten",
+          desc: "Verbinden Sie geplante Einträge mit Abrechnungen, Hauptbuchstruktur und Verantwortung in Abteilung oder Projekt.",
         },
-        kpiExecution: {
-          title: "KPI-gesteuert",
-          desc: "Fokus auf relevante Kennzahlen.",
+        decisions: {
+          title: "Mit aktuellen Zahlen entscheiden",
+          desc: "Nutzen Sie KPIs und gefilterte Ansichten, um offene, abgerechnete und geplante Positionen ohne manuelle Abstimmung zu verstehen.",
+        },
+      },
+    },
+    modules: {
+      eyebrow: "Plattform",
+      title: "Eine Plattform. Jeder Geld-Workflow.",
+      subtitle: "Nutzen Sie die Module, die Sie heute brauchen, und ergänzen Sie Struktur, wenn das Unternehmen wächst. Alle Module teilen denselben Workspace, dieselbe Währung und dasselbe Zugriffsmodell.",
+      cta: "Plattform entdecken",
+    },
+    ai: {
+      eyebrow: "KI-Verbindungen",
+      title: "Fragen Sie ChatGPT oder Claude zu Ihrem Cashflow",
+      subtitle: "Verbinden Sie Spifex über eine schreibgeschützte MCP-Verbindung. Ihr Assistent kann Workspaces auflisten, Transaktionen prüfen, Summen zusammenfassen und Kategorien zuordnen – ohne etwas erstellen, bearbeiten, abrechnen oder überweisen zu können.",
+      bullets: {
+        readOnly: "Schreibgeschützter Scope: cashflow:read",
+        oauth: "OAuth 2.1 pro Benutzer mit PKCE",
+        revoke: "Zugriff jederzeit in den Einstellungen widerrufen",
+        privacy: "Notizen, Beobachtungen und Anhänge bleiben außerhalb der Antworten",
+      },
+      cta: "So funktionieren KI-Verbindungen",
+      note: "Verfügbar unter Einstellungen → KI-Verbindungen in Business- und Personal-Workspaces.",
+    },
+    workflow: {
+      eyebrow: "So funktioniert es",
+      title: "Starten Sie mit Ihren Daten. Ergänzen Sie Kontrollen, wenn Sie wachsen.",
+      subtitle: "Kein langwieriges Implementierungsprojekt bis zur ersten aussagekräftigen Ansicht.",
+      steps: {
+        create: {
+          title: "Workspace erstellen",
+          desc: "Wählen Sie Land, Währung und Workspace-Typ. Starten Sie im kostenlosen Plan ohne Karte.",
+        },
+        structure: {
+          title: "Das Wesentliche strukturieren",
+          desc: "Fügen Sie Bankkonten, Kategorien, Projekte oder Abteilungen hinzu. Importieren Sie Daten, wo Sie bereits welche haben.",
+        },
+        operate: {
+          title: "Betreiben und prüfen",
+          desc: "Planen Sie Cashflow, rechnen Sie Einträge ab, gleichen Sie Bewegungen ab und prüfen Sie KPIs im selben Workspace.",
+        },
+      },
+    },
+    pricing: {
+      eyebrow: "Preise",
+      title: "Kostenlos starten. Upgraden, wenn der Betrieb wächst.",
+      subtitle: "Jeder Plan enthält den Kern-Workspace. Kostenpflichtige Pläne schaffen mehr Kapazität und Spielraum für wachsende Teams.",
+      note: "Regionale Preise finden Sie auf der Preisseite. Endgültige Abrechnung und Steuern können beim Checkout abweichen.",
+      cta: "Pläne vergleichen",
+    },
+    faq: {
+      eyebrow: "Fragen",
+      title: "Was Teams vor dem Start fragen",
+      items: {
+        free: {
+          q: "Ist der kostenlose Plan wirklich kostenlos?",
+          a: "Ja. Sie können einen Workspace erstellen und ohne Zahlungsmethode starten. Kostenpflichtige Pläne stehen bereit, wenn Sie mehr Kapazität benötigen.",
+        },
+        replace: {
+          q: "Ersetzt Spifex meine Buchhaltungssoftware?",
+          a: "Spifex ist die operative Schicht für Cashflow, Banking-Transparenz, Abrechnungen, Governance und Reporting. Es ergänzt Ihren Buchhaltungs-Stack, statt die gesetzliche Buchhaltung zu ersetzen.",
+        },
+        ai: {
+          q: "Kann der KI-Assistent meine Daten verändern?",
+          a: "Nein. Der Connector der Version 1 ist schreibgeschützt und fordert ausschließlich den Scope cashflow:read an. Er kann nichts erstellen, bearbeiten, löschen, abrechnen oder überweisen.",
+        },
+        security: {
+          q: "Wie sind Workspace-Daten isoliert?",
+          a: "Jede Abfrage ist auf einen Workspace begrenzt, dem der authentifizierte Benutzer gehört oder angehört. Rollen, Lifecycle-Regeln und Plan-Berechtigungen werden serverseitig durchgesetzt.",
+        },
+        migrate: {
+          q: "Kann ich bestehende Daten importieren?",
+          a: "Spifex unterstützt strukturierte Importe für Kontoauszüge und gängige Finanzdaten. Sie können auch mit einem kleinen Workspace starten und später Struktur ergänzen.",
+        },
+      },
+    },
+    finalCta: {
+      title: "Bündeln Sie Cashflow, Banking und Reporting in einer operativen Schicht.",
+      subtitle: "Starten Sie kostenlos, laden Sie Ihr Team ein, sobald Sie bereit sind, und behalten Sie die Kontrollen, die Ihr Finanzbetrieb braucht.",
+      primary: "Kostenlos starten",
+      secondary: "Mit dem Team sprechen",
+    },
+  },
+
+  pricingV2: {
+    eyebrow: "Pläne",
+    title: "Wählen Sie den Plan, der zu Ihrer Art des Geldmanagements passt",
+    subtitle: "Personal und Business starten jeweils kostenlos und wechseln dann zu Starter oder Pro für mehr Kapazität. Jedes hier gezeigte Limit ist das Limit, das in Ihrem Workspace durchgesetzt wird.",
+    billedMonthly: "Monatliche Abrechnung",
+    noCard: "Keine Karte erforderlich",
+    personal: "Privat",
+    business: "Business",
+    personalDesc: "Organisieren Sie privaten Cashflow, Konten, Kategorien, Budgets und Ziele mit derselben operativen Disziplin wie ein Unternehmen.",
+    businessDesc: "Steuern Sie geschäftlichen Cashflow, Banking, Abrechnungen, Hauptbuchstruktur, Projekte und Reporting mit rollenbasierten Kontrollen.",
+    startFree: "Kostenlos starten",
+    choosePlan: "{plan} wählen",
+    recommended: "Empfohlen",
+    compareTitle: "Pläne vergleichen",
+    compareSubtitle: "Derselbe Kern-Workspace – mit mehr Kapazität, wenn Ihr Betrieb wächst.",
+    rows: {
+      workspace: "Eigene Workspaces",
+      cashflow: "Cashflow-Planung und Umsetzung",
+      banking: "Banking-Transparenz und Konten",
+      settlements: "Abrechnungen und Überweisungen",
+      reporting: "KPIs und Reporting",
+      governance: "Rollen und Governance",
+      ai: "Schreibgeschützte KI-Verbindungen",
+    },
+    included: "Enthalten",
+    notIncluded: "Nicht enthalten",
+    faqTitle: "Fragen zu den Preisen",
+    faq: {
+      card: {
+        q: "Brauche ich für den kostenlosen Plan eine Kreditkarte?",
+        a: "Nein. Der kostenlose Plan startet ohne Zahlungsmethode.",
+      },
+      change: {
+        q: "Kann ich den Plan später wechseln?",
+        a: "Ja. Sie können in den Abrechnungseinstellungen des Workspace upgraden, wenn Ihr Betrieb mehr Kapazität benötigt.",
+      },
+      currency: {
+        q: "Warum unterscheiden sich die Preise je nach Land?",
+        a: "Spifex rechnet in unterstützten regionalen Währungen ab. Die Preisseite verwendet Ihr erkanntes Land und greift auf einen Standardwert zurück, wenn keines ermittelt werden kann.",
+      },
+      taxes: {
+        q: "Sind Steuern enthalten?",
+        a: "Die endgültige Abrechnung und anfallende Steuern werden im sicheren Checkout angezeigt.",
+      },
+    },
+    trustNote: "Keine erfundenen Limits, keine versteckten Add-ons. Plandetails werden vor dem Checkout angezeigt.",
+  },
+
+  pricingCatalog: {
+    feature: "Funktion",
+    unlimited: "Unbegrenzt",
+    perMonthValue: "{value} / Monat",
+    tiers: {
+      free: "Kostenlos",
+      starter: "Starter",
+      pro: "Pro",
+    },
+    rows: {
+      workspaces: "Eigene Workspaces",
+      transactions: "Transaktionen",
+      accounts: "Bankkonten",
+      categories: "Kategorien",
+      budgets: "Budgets",
+      goals: "Ziele",
+      views: "Gespeicherte Ansichten",
+      attachments: "Anhänge",
+      entries: "Cashflow-Einträge",
+      banks: "Bankkonten",
+      members: "Teammitglieder",
+      projects: "Projekte",
+      ledger: "Hauptbuchkonten",
+      statements: "Kontoauszugsimporte",
+    },
+    personal: {
+      free: {
+        name: "Personal Free",
+        description: "Organisieren Sie privaten Cashflow und Konten ohne Zahlungsmethode.",
+        highlights: {
+          0: "250 Transaktionen pro Monat",
+          1: "2 Bankkonten",
+          2: "25 Kategorien und 3 Budgets",
+          3: "3 Ziele und 2 gespeicherte Ansichten",
+        },
+      },
+      starter: {
+        name: "Personal Starter",
+        description: "Mehr Spielraum für tägliche persönliche Finanz-Workflows und wiederkehrende Planung.",
+        highlights: {
+          0: "5.000 Transaktionen pro Monat",
+          1: "10 Bankkonten",
+          2: "100 Kategorien und 25 Budgets",
+          3: "25 Ziele und 25 gespeicherte Ansichten",
+        },
+      },
+      pro: {
+        name: "Personal Pro",
+        description: "Persönliche Planung mit hohem Volumen für komplexe finanzielle Lebenssituationen.",
+        highlights: {
+          0: "50.000 Transaktionen pro Monat",
+          1: "50 Bankkonten",
+          2: "500 Kategorien und 250 Budgets",
+          3: "250 Ziele und 200 gespeicherte Ansichten",
+        },
+      },
+    },
+    business: {
+      free: {
+        name: "Business Free",
+        description: "Starten Sie einen strukturierten Business-Workspace ohne Zahlungsmethode.",
+        highlights: {
+          0: "1.000 Einträge pro Monat",
+          1: "2 Bankkonten und 1 Mitglied",
+          2: "2 Projekte und 10 Hauptbuchkonten",
+          3: "2 Kontoauszugsimporte pro Monat",
+        },
+      },
+      starter: {
+        name: "Business Starter",
+        description: "Für wachsende Teams, die Struktur, Kontrollen und wiederkehrende Abläufe ergänzen.",
+        highlights: {
+          0: "10.000 Einträge pro Monat",
+          1: "10 Bankkonten und 5 Mitglieder",
+          2: "50 Projekte und 100 Hauptbuchkonten",
+          3: "20 Kontoauszugsimporte pro Monat",
+        },
+      },
+      pro: {
+        name: "Business Pro",
+        description: "Für Finanzteams, die in großem Maßstab mit unbegrenzten Kern-Workflows arbeiten.",
+        highlights: {
+          0: "Unbegrenzte Cashflow-Einträge",
+          1: "Unbegrenzte Bankkonten, bis zu 50 Mitglieder",
+          2: "Unbegrenzte Projekte, Hauptbuchkonten und Kontoauszüge",
+          3: "Bis zu 6 eigene Workspaces",
         },
       },
     },
   },
 
-  cashflowPage: {
-    hero: {
-      badge: "Cashflow",
-      title: "Verlässlicher Cashflow von Planung bis Umsetzung",
-      subtitle:
-        "Ersetzen Sie Tabellen durch ein einheitliches System.",
-      bullets: {
-        b1: "Nachvollziehbare Prognosen",
-        b2: "Ausführung mit Bezug zum Plan",
-        b3: "Kontinuierliche Abstimmung",
-        b4: "Operative KPIs",
-      },
-      emailPlaceholder: "Geschäftliche E-Mail",
-      ctaEmail: "Starten",
-      ctaPricing: "Preise ansehen",
-    },
+  signup: {
+    workspaceType: "Workspace-Typ",
+    business: "Business",
+    personal: "Privat",
+    personalDesc: "Persönlicher Workspace für Ihre eigenen Konten, Budgets und Ziele.",
+    businessDesc: "Business-Workspace für Team-Cashflow, Banking, Abrechnungen und Reporting.",
+    fullName: "Vollständiger Name",
+    email: "E-Mail",
+    password: "Passwort",
+    confirmPassword: "Passwort bestätigen",
+    language: "Sprache",
+    country: "Land",
+    currency: "Währung",
+    currencyFixed: "Wird aus Ihrem Rechnungsland übernommen und kann nicht geändert werden.",
+    acceptPrivacy: "Ich akzeptiere die Datenschutzrichtlinie.",
+    acceptTerms: "Ich akzeptiere die Nutzungsbedingungen.",
+    acceptMarketing: "Ich stimme dem Erhalt von Marketing-Mitteilungen zu.",
+    verifyTitle: "Bestätigen Sie Ihr Konto",
+    redirectingTitle: "Weiterleitung zum sicheren Checkout",
+    createAccountPaid: "Erstellen Sie Ihr Konto, um fortzufahren",
+    createAccount: "Konto erstellen",
+    planSelected: "{category}-Plan ausgewählt: {plan}. Sie starten im kostenlosen Workspace und gelangen nach der Bestätigung zum sicheren Checkout.",
+    startFree: "Starten Sie mit einem kostenlosen {category}-Workspace.",
+    codeSentTo: "Wir haben einen 6-stelligen Code an {email} gesendet",
+    preparingCheckout: "Ihr sicherer Checkout wird vorbereitet…",
+    verificationCode: "Bestätigungscode",
+    codePlaceholder: "6-stelligen Code eingeben",
+    back: "Zurück",
+    resendIn: "Erneut senden ({seconds}s)",
+    resendUnavailable: "Erneutes Senden nicht verfügbar",
+    resendCode: "Code erneut senden",
+    verifyCode: "Code bestätigen",
+    sendCode: "Bestätigungscode senden",
+    continue: "Weiter",
+    fillAllFields: "Bitte füllen Sie alle Felder aus.",
+    invalidEmail: "Ungültige E-Mail-Adresse.",
+    passwordsMismatch: "Die Passwörter stimmen nicht überein.",
+    passwordMin: "Das Passwort muss mindestens 8 Zeichen haben.",
+    emailInUse: "Diese E-Mail-Adresse wird bereits verwendet.",
+    couldNotValidateEmail: "E-Mail-Adresse konnte nicht geprüft werden.",
+    mustAccept: "Sie müssen die erforderlichen Einwilligungen akzeptieren.",
+    verificationSent: "Bestätigungscode gesendet.",
+    couldNotStart: "Registrierung konnte nicht gestartet werden.",
+    enterValidCode: "Geben Sie einen gültigen 6-stelligen Code ein.",
+    missingChallenge: "Die Verifizierungsaufforderung fehlt.",
+    missingAccess: "Zugriffstoken nach der Bestätigung fehlt.",
+    invalidCode: "Ungültiger oder abgelaufener Bestätigungscode.",
+    codeSentAgain: "Code erneut gesendet.",
+    couldNotResendCode: "Code konnte nicht erneut gesendet werden.",
+    couldNotRedirect: "Weiterleitung zum Checkout nicht möglich.",
+  },
 
-    outcomes: {
-      title: "Ein operatives Cashflow-Modell",
-      subtitle:
-        "Planung, Ausführung und Abstimmung verbunden.",
-      items: {
-        forecast: {
-          title: "Prognosegenauigkeit",
-          desc: "Abweichungen kontinuierlich messen.",
-        },
-        execution: {
-          title: "Kontrollierte Ausführung",
-          desc: "Zahlungen strukturiert durchführen.",
-        },
-        reconciliation: {
-          title: "Kontinuierliche Abstimmung",
-          desc: "Schnellere Abschlüsse.",
-        },
-        governance: {
-          title: "Governance",
-          desc: "Volle Nachvollziehbarkeit.",
-        },
-      },
+  docsPage: {
+    eyebrow: "Dokumentation",
+    title: "Produktdokumentation von Spifex",
+    subtitle: "Praxisnahe Leitfäden für die Einrichtung Ihres Workspace, für Cashflow-Workflows und für die Anbindung von KI-Assistenten.",
+    searchPlaceholder: "Leitfäden, Workflows und Einstellungen durchsuchen",
+    searchLabel: "Dokumentation durchsuchen",
+    noResults: "Keine Leitfäden passen zu dieser Suche.",
+    all: "Alle Leitfäden",
+    readGuide: "Leitfaden lesen",
+    related: "Verwandte Leitfäden",
+    back: "Gesamte Dokumentation",
+    updated: "Zuletzt aktualisiert",
+    reviewNote: "Operative Dokumentation. Rechtliche Seiten sind separat und erfordern vor dem Launch eine fachliche Prüfung.",
+    categories: {
+      gettingStarted: "Erste Schritte",
+      cashflow: "Cashflow",
+      banking: "Banking und Abrechnungen",
+      reporting: "Reporting",
+      ai: "KI-Verbindungen",
+      security: "Sicherheit und Abrechnung",
     },
+  },
+
+  signupSuccess: {
+    title: "Ihr Workspace ist bereit",
+    subtitle: "Sie können zu Ihrem Dashboard wechseln oder die Einrichtungsleitfäden lesen, während Ihr Konto vorbereitet wird.",
+    dashboard: "Dashboard öffnen",
+    docs: "Einrichtungsleitfaden lesen",
+    nextTitle: "Empfohlene nächste Schritte",
+    nextItems: {
+      workspace: "Wählen Sie Ihren aktiven Workspace und Ihre Währung.",
+      banks: "Fügen Sie ein Bankkonto hinzu, um Salden und Abrechnungen zu verbinden.",
+      categories: "Prüfen Sie die Kategorien, damit das Reporting konsistent bleibt.",
+      ai: "Verbinden Sie ChatGPT oder Claude mit schreibgeschütztem Zugriff, wenn Sie KI-gestützte Analysen wünschen.",
+    },
+  },
+
+  cookiesBanner: {
+    title: "Cookies und Messung",
+    body: "Wir verwenden notwendige Cookies, um Spifex zu betreiben. Mit Ihrer Zustimmung nutzen wir zudem Marketing-Cookies, um Kampagnen zu messen.",
+    accept: "Alle akzeptieren",
+    reject: "Nur notwendige",
+    policy: "Cookie-Richtlinie",
+  },
+
+  trust: {
+    noCard: "Kostenloser Plan, keine Karte erforderlich",
+    isolation: "Mandantenisolierte Workspaces",
+    ai: "OAuth 2.1, schreibgeschützter KI-Zugriff",
+    multiStream: "Gebaut für Multi-Stream-Operationen",
+  },
+
+  languageSwitcher: {
+    label: "Sprache",
+    currency: "Währung",
+    currencyFixed: "durch Ihre Region festgelegt",
+  },
+
+  meta: {
+    siteTitle: "Spifex — Finanzprozesse für Privat und Business",
+    siteDescription: "Spifex vereint privaten und geschäftlichen Cashflow, Banking, Abrechnungen, Reporting und schreibgeschützte KI-Verbindungen in einer operativen Plattform.",
   },
 
   footer: {
     rights: "Alle Rechte vorbehalten.",
+    tagline: "Finanzprozesse für Cashflow, Banking, Abrechnungen, Reporting und Governance.",
+    product: "Produkt",
+    resources: "Ressourcen",
+    company: "Unternehmen",
+    aiConnections: "KI-Verbindungen",
+    privacy: "Datenschutz",
+    terms: "AGB",
+    cookies: "Cookies",
+    notBank: "Spifex ist Software für Finanzprozesse, keine Bank.",
   },
-};
+
+  customersPage: {
+    hero: {
+      title: "Sehen Sie, was Spifex für Sie leisten kann.",
+      subtitle: "Erstellen Sie in wenigen Minuten ein Konto und arbeiten Sie schnell und kontrolliert.",
+      disclaimer: "Spifex ist eine Plattform für Finanzprozesse, keine Bank. Bankdienstleistungen werden von Ihren verbundenen Banken erbracht.",
+    },
+    stories: {
+      title: "Gebaut für Ihre tägliche Arbeit.",
+      subtitle: "Von der Cashflow-Planung bis zu Zahlungen und Reporting verbindet Spifex die Workflows, die Teams täglich nutzen.",
+      cards: {
+        limits: {
+          title: "Liquidität sichtbar halten.",
+          desc: "Verfolgen Sie geplante und abgerechnete Bewegungen in einem Workspace.",
+        },
+        spend: {
+          title: "In Teilen abrechnen.",
+          desc: "Erfassen Sie Ausgänge und rechnen Sie sie vollständig oder in Teilen ab.",
+        },
+        budget: {
+          title: "Kosten eine Verantwortung geben.",
+          desc: "Ordnen Sie Einträge den Abteilungen und Projekten zu, die sie verantworten.",
+        },
+        ap: {
+          title: "Banking anbinden.",
+          desc: "Importieren Sie Kontoauszüge und gleichen Sie sie mit Cashflow-Einträgen ab.",
+        },
+      },
+    },
+    already: {
+      title: "Schon Kunde?",
+      subtitle: "Tauschen Sie sich mit anderen Kunden und Operatoren aus. Nehmen Sie an Sessions, Early-Access-Programmen und Community-Angeboten teil.",
+      learnMore: "Mehr erfahren",
+    },
+    bottom: {
+      title: "Bündeln Sie Ihren Betrieb in einer klaren Übersicht.",
+      subtitle: "Starten Sie kostenlos, verbinden Sie Ihren Workspace und ergänzen Sie Struktur, wenn Ihr Team wächst.",
+    },
+  },
+
+  customersLearnMore: {
+    title: "Bleiben Sie über Möglichkeiten zum Austausch informiert!",
+    intro: "Wenn Sie erfahren möchten, wie Sie sich mit anderen Spifex-Kunden und Operatoren vernetzen können, füllen Sie das Formular aus – wir melden uns bei Ihnen.",
+    bullets: {
+      productDesign: {
+        title: "Produkt und Design:",
+        desc: "Nehmen Sie an Feedback-Sessions teil, testen Sie neue Funktionen in der Beta und erhalten Sie frühen Zugang zu Releases.",
+      },
+      localGroups: {
+        title: "Lokale Anwendergruppen:",
+        desc: "Treten Sie einer lokalen Gruppe bei, um sich zu vernetzen, Erfahrungen zu teilen und Feedback zu geben.",
+      },
+      advocate: {
+        title: "Advocate:",
+        desc: "Präsentieren Sie Ihre Marke und wirken Sie an Fallstudien, Events oder Referenzen mit.",
+      },
+    },
+    note: "Das Absenden des Formulars ist keine Verpflichtung, sondern ein Interesse-Signal. Wir melden uns mit Details, sobald sich passende Möglichkeiten ergeben.",
+    form: {
+      title: "Registrieren Sie sich für weitere Informationen:",
+      firstName: "Vorname",
+      lastName: "Nachname",
+      workEmail: "Geschäftliche E-Mail",
+      company: "Firmenname",
+      optionsLabel: "Bitte wählen Sie unten die Optionen für eine Zusammenarbeit aus",
+      options: {
+        beta: "Produkt und Design: Neue Releases und Early-Access-Programme testen",
+        coCreation: "Produkt- und Design-Feedback: Co-Creation- und Feedback-Sessions",
+        userGroup: "Anwendergruppe: Einer lokalen Gruppe beitreten, um sich zu vernetzen und Feedback zu geben",
+        speak: "Advocate: Bei einem Event sprechen (persönlich oder virtuell)",
+        reference: "Advocate: Referenz",
+        networking: "Advocate: Networking mit anderen Kunden",
+        other: "Sonstiges",
+      },
+      submit: "Absenden",
+      disclaimer: "Dieses Formular ist eine Marketing-Vorlage. Das Absenden begründet weder einen Vertrag noch eine geschäftliche Verpflichtung.",
+      thanksTitle: "Vielen Dank.",
+      thanksSubtitle: "Wir haben Ihre Angaben erhalten und melden uns, sobald Möglichkeiten zu Ihren Interessen passen.",
+    },
+  },
+
+  solutionsPage: {
+    meta: {
+      title: "Lösungen",
+      description: "Finanzlösungen, die Planung, Ausführung, Abstimmung und KPIs in einer operativen Schicht verbinden.",
+    },
+    hero: {
+      title: "Finanzen, die wie Operations laufen",
+      subtitle: "Spifex verbindet Teams, Workflows und Daten, damit Führungskräfte schnell und sicher handeln können – ohne getrennte Silos.",
+      cards: {
+        lifecycle: {
+          title: "Vollständiger Geld-Lebenszyklus",
+          desc: "Von geplanten Geldbewegungen bis zu Abrechnungen, Überweisungen und Abstimmung. Durchgängig vereint.",
+        },
+        complexity: {
+          title: "Gebaut für operative Komplexität",
+          desc: "Steuern Sie mehrere Umsatz- und Kostenströme mit Standardisierung, Automatisierung und Nachvollziehbarkeit.",
+        },
+        governance: {
+          title: "Governance standardmäßig",
+          desc: "Rollenbasierter Zugriff, Audit-Trails und organisationsweite Strukturen halten Teams abgestimmt und regelkonform.",
+        },
+        kpis: {
+          title: "KPI-getriebene Umsetzung",
+          desc: "Dashboards und Kennzahlen halten alle auf die Metriken fokussiert, die das Geschäft voranbringen.",
+        },
+      },
+      emailPlaceholder: "Geschäftliche E-Mail",
+      ctaEmail: "Loslegen",
+      ctaPricing: "Preise ansehen",
+      disclaimer: "Mit dem Absenden Ihrer E-Mail werden Sie zur Registrierung weitergeleitet. Sie können Ihre Einstellungen jederzeit ändern.",
+    },
+    map: {
+      productsTitle: "Produkte",
+      workflowsTitle: "Workflows",
+      products: {
+        cashflow: {
+          title: "Cashflow",
+          desc: "Planen Sie Zu- und Abflüsse, simulieren Sie Szenarien und verfolgen Sie die Umsetzung in Echtzeit.",
+        },
+        bankingPayments: {
+          title: "Banking und Zahlungen",
+          desc: "Bündeln Sie Bankkonten, bezahlen Sie Lieferanten und verwalten Sie Überweisungen mit integrierten Kontrollen.",
+        },
+        spendSettlements: {
+          title: "Ausgaben und Abrechnungen",
+          desc: "Standardisieren Sie Freigaben, Abrechnungen und interne Mittelbewegungen.",
+        },
+        ledger: {
+          title: "Hauptbuch",
+          desc: "Kontenplan, Klassifizierung und prüfungsfähige Finanzstruktur.",
+        },
+        projects: {
+          title: "Projekte",
+          desc: "Ordnen Sie Kosten und Erlöse Initiativen zu – vollständig nachvollziehbar und mit KPIs.",
+        },
+        departments: {
+          title: "Abteilungen",
+          desc: "Budgetverantwortung, Rechenschaft und operative Governance pro Team.",
+        },
+        crm: {
+          title: "CRM",
+          desc: "Verbinden Sie Pipeline-Signale mit Cashflow-Transparenz und Planung.",
+        },
+        inventory: {
+          title: "Bestand",
+          desc: "Verzahnen Sie operative Eingänge mit finanziellen Ergebnissen – ohne Datensilos.",
+        },
+      },
+      workflows: {
+        reconciliation: {
+          title: "Abstimmung",
+          desc: "Schließen Sie den Kreis von der Planung zum Ist mit strukturiertem Abgleich.",
+        },
+        accountingAutomation: {
+          title: "Buchhaltungsautomatisierung",
+          desc: "Reduzieren Sie manuelle Arbeit und halten Sie Finanzdaten modulübergreifend konsistent.",
+        },
+        reportingKpis: {
+          title: "Reporting und KPIs",
+          desc: "Dashboards und Kennzahlen, damit Teams auf das Wesentliche ausgerichtet bleiben.",
+        },
+      },
+      governanceCard: {
+        title: "Eine operative Schicht über alle Teams",
+        desc: "Organisationen, Rollen, Verantwortung und Audit-Trails sind zentrale Bausteine – so bleiben Daten konsistent, auch wenn Ihre Workflows skalieren.",
+      },
+    },
+    operatingModel: {
+      title: "Ein einziges Betriebsmodell verbindet alle Module",
+      subtitle: "Spifex ist um einen operativen Kreislauf herum konzipiert: Absicht planen, mit Kontrollen ausführen, mit Nachweisen abstimmen. So werden Prognosen verlässlich und Reporting wird umsetzbar.",
+      chips: {
+        cashflow: "Cashflow",
+        spend: "Ausgaben und Abrechnungen",
+        banking: "Banking und Zahlungen",
+        ledger: "Hauptbuch",
+        projects: "Projekte",
+        departments: "Abteilungen",
+      },
+      stepPrefix: "Schritt",
+      outputsTitle: "Operative Ergebnisse",
+      controlsTitle: "Kontrollen und Governance",
+      steps: {
+        plan: {
+          title: "Absicht planen",
+          desc: "Definieren Sie, was passieren soll: geplante Bewegungen, Verantwortliche, Termine, Kategorien und Kontext. Das wird Ihre Basisprognose und Ihre Verantwortungsstruktur.",
+          outputs: "Geplante Bewegungen, wiederkehrende Vorlagen, Prognoseszenarien und Verantwortung nach Projekt und Abteilung.",
+          controls: "Standardisierte Klassifizierung und Struktur (Hauptbuch und Abteilungen/Projekte) verhindern Unordnung im weiteren Verlauf.",
+        },
+        execute: {
+          title: "Mit Kontrollen ausführen",
+          desc: "Erfassen Sie reale Ereignisse: Freigaben, Teilabrechnungen, Überweisungen und Lieferantenzahlungen. Die Ausführung wird mit der geplanten Absicht verknüpft oder ausdrücklich als ungeplant markiert.",
+          outputs: "Abrechnungen, Überweisungen, Zahlungsereignisse und nachvollziehbare operative Historie, gebunden an Verantwortliche.",
+          controls: "Rollenbasierte Freigaben, Limits und Richtlinien halten Ausgaben unter Kontrolle, ohne Teams auszubremsen.",
+        },
+        reconcile: {
+          title: "Mit Nachweisen abstimmen",
+          desc: "Schließen Sie den Kreis, indem Sie Plan und Ist abgleichen, Belege anhängen und Ausnahmen laufend klären – so wird der Monatsabschluss zum Nebeneffekt statt zur Krise.",
+          outputs: "Strukturierter Abgleich, Ausnahmen-Workflow, saubere Abschlüsse und prüfungsfähige Nachweise.",
+          controls: "Audit-Historie, Belegverknüpfungen und konsistente Datenregeln halten das Reporting verlässlich.",
+        },
+      },
+    },
+    teams: {
+      title: "Lösungen für die Teams, die das Geschäft betreiben",
+      subtitle: "Spifex verbindet Finanzen und Operations, indem Verantwortung, Klassifizierung und Workflows explizit werden – so erhält jedes Team Klarheit ohne separate Systeme.",
+      items: {
+        cfo: {
+          title: "CFO / Finanzleitung",
+          desc: "Erhalten Sie planbare Liquiditätstransparenz, setzen Sie Governance durch und messen Sie Performance, ohne auf das Monatsende zu warten.",
+          point1: "Prognoseszenarien, die auf der Ausführung basieren, nicht auf statischen Tabellen.",
+          point2: "Governance standardmäßig: Rollen, Audit-Trails und standardisierte Klassifizierung.",
+          point3: "KPIs, die finanzielle Ergebnisse mit Verantwortung und operativer Realität verbinden.",
+        },
+        financeOps: {
+          title: "Finance Ops / Controller",
+          desc: "Reduzieren Sie manuelle Arbeit, indem Sie standardisieren, wie Bewegungen erstellt, freigegeben, abgerechnet und abgestimmt werden.",
+          point1: "Strukturierte Abstimmung und Belegverfolgung für einen schnelleren Abschluss.",
+          point2: "Hauptbuchbasierte Klassifizierung und Automatisierung für konsistente Daten.",
+          point3: "Ausnahmen-Workflows: ungeplante Aktivitäten sind sichtbar und zugeordnet.",
+        },
+        operators: {
+          title: "Operatoren / Teamverantwortliche",
+          desc: "Führen Sie Initiativen und Teams mit klaren Budgets, Freigaben und Performance-Signalen – ohne Geschwindigkeit zu verlieren.",
+          point1: "Verantwortung für Budgets und Rechenschaft nach Abteilung und Projekt.",
+          point2: "Ausgabenkontrollen und Freigaben, die zur Arbeitsweise der Teams passen.",
+          point3: "KPIs und Reporting, die Lieferung abbilden, nicht nur Buchhaltungskategorien.",
+        },
+      },
+    },
+    solutions: {
+      title: "Kernlösungen auf Basis der Plattform",
+      subtitle: "Jede Lösung ist ein praxiserprobtes Muster eines Betriebssystems. Spifex kombiniert die passenden Module, damit das Ergebnis messbar, steuerbar und skalierbar ist.",
+      sectionLabel: "Lösung",
+      whatYouGetTitle: "Das erhalten Sie",
+      kpisTitle: "KPIs, auf die Sie aufbauen können",
+      controlTitle: "Hinweis zur Governance",
+      items: {
+        cashVisibility: {
+          title: "Liquiditätstransparenz, der Sie vertrauen können",
+          desc: "Planung wird verlässlich, wenn sie mit Ausführungsereignissen verbunden und laufend abgestimmt wird. Sie sehen, was geplant ist, was umgesetzt wurde und was sich geändert hat – nach Verantwortlichem, Team und Initiative.",
+          chip1: "Cashflow",
+          chip1Href: "/products/cashflow",
+          chip2: "CRM",
+          chip2Href: "/products/crm",
+          chip3: "Reporting und KPIs",
+          chip3Href: "#workflow-reporting-kpis",
+          bullets: {
+            b1: "Geplante Bewegungen mit Verantwortlichen, Terminen, Kategorien und Szenariomodellierung.",
+            b2: "Pipeline-Signale, übersetzt in erwartete Zuflüsse mit Timing und Konfidenz.",
+            b3: "Wöchentlich verfolgte Abweichungen (Plan versus Ist) mit Treibern und Verantwortung.",
+            b4: "Ungeplante Bewegungen werden ausdrücklich sichtbar gemacht statt in Tabellen versteckt.",
+            b5: "Dashboards, die Cash-Ergebnisse mit operativer Verantwortung verbinden.",
+          },
+          kpis: {
+            k1: "Trend der Prognosegenauigkeit über 4 Wochen mit Abweichungstreibern.",
+            k2: "Anteil ungeplanter Positionen und wichtigste Quellen nach Abteilung/Projekt.",
+            k3: "Time-to-Close und Abstimmungsverzug über Teams hinweg.",
+          },
+          controlNote: "Jede Bewegung ist mit einer geplanten Absicht verknüpft oder als ungeplant markiert – mit Verantwortlichem und Klassifizierung. So bleibt die Prognose prüfbar.",
+        },
+        spendGovernance: {
+          title: "Ausgaben-Governance ohne Engpässe",
+          desc: "Steuern Sie Ausgaben mit Regeln, Freigaben und Verantwortung, die zur Arbeitsweise der Teams passen. Die Ausführung bleibt schnell, Richtlinien werden durchgesetzt und Ausnahmen sichtbar.",
+          chip1: "Ausgaben und Abrechnungen",
+          chip1Href: "/products/spend-settlements",
+          chip2: "Abteilungen",
+          chip2Href: "/products/departments",
+          chip3: "Projekte",
+          chip3Href: "/products/projects",
+          bullets: {
+            b1: "Rollenbasierte Freigaben und Schwellenwerte für Anträge, Abrechnungen und Überweisungen.",
+            b2: "Budgetverantwortung nach Abteilung mit Transparenz zu Abweichungen und Bindungen.",
+            b3: "Projektzuordnung, damit Ausgaben Initiativen zugeordnet werden – nicht generischen Töpfen.",
+            b4: "Standardisierte Abrechnungsabläufe (Teil, Split, interne Bewegung) mit Nachvollziehbarkeit.",
+            b5: "Richtlinienbasierte Kontrollen, die Nacharbeit reduzieren und die Ausführung konsistent halten.",
+          },
+          kpis: {
+            k1: "Freigabedauer nach Team und Engpass-Stufe.",
+            k2: "Budgetabweichung und Abdeckung von Bindungen nach Abteilung.",
+            k3: "Vollständigkeit der Ausgabenzuordnung nach Projekt und Kategorie.",
+          },
+          controlNote: "Governance wird auf Workflow-Ebene durchgesetzt (wer wann was und warum tun darf), nicht nur im nachträglichen Reporting.",
+        },
+        bankingPayments: {
+          title: "Banking und Zahlungen als operativer Workflow",
+          desc: "Bündeln Sie Bankkonten und Zahlungsausführung mit integrierten Kontrollen. Verknüpfen Sie Zahlungsereignisse mit geplanter Absicht, Verantwortung und Abstimmung, damit das Cash-Timing planbar wird.",
+          chip1: "Banking und Zahlungen",
+          chip1Href: "/products/banking-payments",
+          chip2: "Cashflow",
+          chip2Href: "/products/cashflow",
+          chip3: "Abstimmung",
+          chip3Href: "#workflow-reconciliation",
+          bullets: {
+            b1: "Zentralisierung von Bankkonten mit organisationsweiter Struktur und Kontrollen.",
+            b2: "Lieferantenzahlungen und Überweisungen, verbunden mit Freigaben und Verantwortung.",
+            b3: "Ausführungsereignisse, verknüpft mit geplanten Bewegungen für klare Nachvollziehbarkeit.",
+            b4: "Abstimmungssignale schließen den Kreis mit Belegen und Ausnahmenbearbeitung.",
+            b5: "Konsistente Cash-Timeline: Absicht → Zahlung → Abgleich → Reporting.",
+          },
+          kpis: {
+            k1: "Geschwindigkeit der Zahlungsausführung (erstellt → freigegeben → ausgeführt).",
+            k2: "Vollständigkeit der Abrechnung (Teil/offen) nach Verantwortlichem und Team.",
+            k3: "Abstimmungsverzug nach Konto und Workflow-Typ.",
+          },
+          controlNote: "Zahlungen sind nicht nur Transaktionen – sie sind gesteuerte Workflow-Ereignisse mit Freigaben, Historie und Abgleichsregeln.",
+        },
+        closeAudit: {
+          title: "Schnellerer Abschluss und prüfungsfähige Struktur",
+          desc: "Schließen Sie schneller ab, indem Klassifizierung und Abstimmung kontinuierlich erfolgen. Nutzen Sie eine hauptbuchbasierte Struktur und Automatisierung, damit Finanzdaten in jedem Modul konsistent bleiben.",
+          chip1: "Hauptbuch",
+          chip1Href: "/products/ledger",
+          chip2: "Buchhaltungsautomatisierung",
+          chip2Href: "#workflow-accounting-automation",
+          chip3: "Abstimmung",
+          chip3Href: "#workflow-reconciliation",
+          bullets: {
+            b1: "Kontenplan und Klassifizierungsregeln, die das Reporting standardisieren.",
+            b2: "Kontinuierliche Abstimmung mit strukturiertem Abgleich und Belegverknüpfungen.",
+            b3: "Automatisierung, die manuelle Nacharbeit und doppelte Dateneingabe reduziert.",
+            b4: "Audit-Trails über Änderungen, Freigaben und Abstimmungsschritte hinweg.",
+            b5: "Konsistente Daten in Cashflow, Ausgaben, Banking, Projekten und Abteilungen.",
+          },
+          kpis: {
+            k1: "Abschlussverzug und Abschlussquote der Abstimmung.",
+            k2: "Umfang der Ausnahmen nach Kategorie und Bearbeitungszeit.",
+            k3: "Konsistenz der Klassifizierung (Anteil unbekannt oder nicht zugeordnet).",
+          },
+          controlNote: "Prüfungsbereitschaft ist in den Systembausteinen verankert: Rollen, Historie, Belege und konsistente Klassifizierung.",
+        },
+        profitability: {
+          title: "Transparenz über die Profitabilität von Initiativen und Teams",
+          desc: "Messen Sie Profitabilität und Beitrag nach Projekt und Abteilung, nicht nur über Unternehmenstotale. Machen Sie Verantwortung zu einem messbaren operativen Kreislauf.",
+          chip1: "Projekte",
+          chip1Href: "/products/projects",
+          chip2: "Abteilungen",
+          chip2Href: "/products/departments",
+          chip3: "Reporting und KPIs",
+          chip3Href: "#workflow-reporting-kpis",
+          bullets: {
+            b1: "Kosten und Erlöse, Initiativen mit konsistenter Verantwortung zugeordnet.",
+            b2: "Abteilungsbudgets und Bindungen, verbunden mit operativer Governance.",
+            b3: "Margen- und Beitragssicht nach Projekt, Team und Zeitraum.",
+            b4: "Abweichungs- und Burn-Tracking zur Unterstützung von Priorisierung und Ressourcenplanung.",
+            b5: "KPIs, die die Lieferrealität mit finanziellen Ergebnissen verbinden.",
+          },
+          kpis: {
+            k1: "Trend von Projektmarge und Burn Rate je Initiative.",
+            k2: "Budgetabweichung nach Abteilung mit Treibern.",
+            k3: "Vollständigkeit der Zuordnung (prozentualer Anteil) über alle Bewegungen.",
+          },
+          controlNote: "Verantwortung skaliert, wenn jede Bewegung einen Team-Verantwortlichen und einen Initiativkontext hat – nicht nur ein Kategorielabel.",
+        },
+        connectedOps: {
+          title: "Verbundene Abläufe: Bestand, Umsatz und Liquidität",
+          desc: "Behandeln Sie operative Systeme nicht länger getrennt von der Finanzabteilung. Verknüpfen Sie Bestandsbewegungen und Kalkulation mit der Marge, verbinden Sie die CRM-Pipeline mit erwarteten Zuflüssen und halten Sie alles über die Hauptbuchstruktur konsistent.",
+          chip1: "Bestand",
+          chip1Href: "/products/inventory",
+          chip2: "CRM",
+          chip2Href: "/products/crm",
+          chip3: "Hauptbuch",
+          chip3Href: "/products/ledger",
+          bullets: {
+            b1: "Bestandsbewegungen, verknüpft mit Kalkulation und Bewertung für echte Margentransparenz.",
+            b2: "Operative Eingänge werden zu Planungssignalen für Einkauf und Cash-Timing.",
+            b3: "Erwartungen aus der Umsatzpipeline, übersetzt in Cash-Annahmen und Szenarien.",
+            b4: "Hauptbuchbasierte Klassifizierung hält operative Daten finanzkonsistent.",
+            b5: "Geteilte Verantwortung und Belege reduzieren Streitfälle und Nacharbeit zwischen Teams.",
+          },
+          kpis: {
+            k1: "Trend von Bestandsumschlag, Schwund und Bestandsgenauigkeit.",
+            k2: "Abdeckung erwarteter Zuflüsse und Conversion nach Pipeline-Stufe.",
+            k3: "Margeneffekt durch Bewertung und operative Änderungen.",
+          },
+          controlNote: "Verbundene Abläufe erfordern konsistente Klassifizierung und Verantwortung, damit jedes operative Ereignis sauber in finanzielle Ergebnisse übergeht.",
+        },
+      },
+    },
+    workflowsDeep: {
+      title: "Workflows, die den Kreis geschlossen halten",
+      subtitle: "Diese Workflows machen aus Modulen ein wiederholbares Betriebssystem: laufend abstimmen, Klassifizierung automatisieren und über KPIs berichten, die die Ausführung steuern.",
+      items: {
+        reconciliation: {
+          title: "Abstimmung",
+          desc: "Gleichen Sie geplante Absicht mit Ausführungsereignissen ab, hängen Sie Belege an und klären Sie Ausnahmen laufend – so wird der Abschluss Routine.",
+          point1: "Strukturierter Abgleich nach Konto, Gegenpartei, Zeitfenster und Bewegungstyp.",
+          point2: "Ausnahmen-Workflow: ungeplante oder nicht passende Positionen sind sichtbar, zugeordnet und werden geklärt.",
+          point3: "Belege und Audit-Historie: Änderungen werden nachverfolgt und sind prüfbar.",
+        },
+        accountingAutomation: {
+          title: "Buchhaltungsautomatisierung",
+          desc: "Reduzieren Sie manuelle Arbeit, indem Sie die Klassifizierung standardisieren und Daten in jedem Modul konsistent halten.",
+          point1: "Hauptbuchbasierte Regeln: Klassifizierung wird im Moment der Datenerstellung durchgesetzt.",
+          point2: "Weniger Doppelerfassung: gemeinsame Bausteine in Cashflow, Ausgaben, Banking, Projekten und Abteilungen.",
+          point3: "Konsistente Reporting-Struktur über Zeit und Teams hinweg mit Audit-Trails.",
+        },
+        reportingKpis: {
+          title: "Reporting und KPIs",
+          desc: "Messen Sie, was das Geschäft bewegt: Genauigkeit, Geschwindigkeit, Governance und Profitabilität – nach Verantwortlichem und operativer Struktur.",
+          point1: "Dashboards auf Basis operativer Bausteine statt handgebauter Tabellen.",
+          point2: "KPIs, die Ergebnisse mit Verantwortung verbinden (Teams, Projekte, Abteilungen).",
+          point3: "Trendtransparenz: Abweichung, Verzug, Conversion und Zuordnungsvollständigkeit über die Zeit.",
+        },
+      },
+    },
+    rollout: {
+      title: "So führen Teams die Plattform ein",
+      subtitle: "Spifex ist für eine modulare Einführung konzipiert. Starten Sie mit der Struktur und verbinden Sie dann Ausführung und Abstimmung, damit Reporting zum Nebeneffekt wird.",
+      steps: {
+        connect: {
+          title: "Datenquellen verbinden",
+          desc: "Zentralisieren Sie Konten und operative Eingänge (Banking, Lieferanten, Pipeline, Bestandssignale), damit Finanzereignisse konsistent erfasst werden.",
+        },
+        structure: {
+          title: "Finanzstruktur definieren",
+          desc: "Richten Sie Kontenplan, Klassifizierung, Abteilungen, Projekte und Verantwortung ein, damit das System auch bei wachsendem Volumen kohärent bleibt.",
+        },
+        operate: {
+          title: "Workflows mit Kontrollen betreiben",
+          desc: "Nutzen Sie Freigaben, Abrechnungen, Überweisungen und Abstimmung als Workflows – mit Richtlinien und sichtbaren Ausnahmen nach Verantwortlichem.",
+        },
+        optimize: {
+          title: "Mit KPIs optimieren",
+          desc: "Messen Sie Genauigkeit, Geschwindigkeit und Profitabilität. Verbessern Sie Abweichungstreiber, reduzieren Sie den Abschlussverzug und schärfen Sie Governance-Regeln.",
+        },
+      },
+      ctaPrimary: "Preise ansehen",
+      ctaSecondary: "Konto erstellen",
+    },
+    bottom: {
+      title: "Machen Sie Finanzen operativ",
+      subtitle: "Ersetzen Sie getrennte Silos durch eine einzige operative Schicht für Planung, Ausführung, Abstimmung und KPI-gesteuerte Entscheidungen.",
+      ctaPricing: "Preise ansehen",
+      ctaSignup: "Konto erstellen",
+    },
+  },
+} as const;
 
 export default de;

@@ -162,7 +162,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
               onClick={onClear}
               onMouseDown={(e) => e.preventDefault()}
               className={cn(
-                "pointer-events-auto rounded hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300",
+                "pointer-events-auto rounded hover:bg-gray-100 focus:outline-none",
                 sz.trailingBtnPad
               )}
               aria-label="Clear"
@@ -178,7 +178,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
               onClick={togglePasswordVisibility}
               onMouseDown={(e) => e.preventDefault()}
               className={cn(
-                "pointer-events-auto rounded hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300",
+                "pointer-events-auto rounded hover:bg-gray-100 focus:outline-none",
                 sz.trailingBtnPad
               )}
               disabled={isLoading}

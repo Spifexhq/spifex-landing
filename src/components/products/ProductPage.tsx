@@ -11,17 +11,19 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ProductPreview } from "@/components/products/ProductPreview";
 import { PLAN_CATALOG } from "@/content/plans";
 import { getProductLink } from "@/content/products";
-import type { ProductPageContent } from "@/content/product-pages";
+import { getProductPageContent, type ProductPageContent } from "@/content/product-pages";
 import { getServerI18n } from "@/i18n/server";
 import { currencyForCountry } from "@/lib/location/billing-currency";
 import { breadcrumbSchema, softwareApplicationSchema } from "@/lib/seo/schema";
 
 export async function ProductPage({ content }: { content: ProductPageContent }) {
   const { t, locale, country } = await getServerI18n();
-  const badge = content.name;
+  const page = getProductPageContent(content.key, locale);
+  const copy = page.copy;
+  const badge = page.name;
   const plans = PLAN_CATALOG.business;
   const currency = currencyForCountry(country);
-  const capabilityColumns = content.copy.capabilities.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-2";
+  const capabilityColumns = copy.capabilities.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-2";
 
   const formatPrice = (amount: number) =>
     new Intl.NumberFormat(locale, {
@@ -68,15 +70,15 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                 </p>
 
                 <h1 className="text-balance mt-5 text-[clamp(2.5rem,5.4vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.045em] text-white">
-                  {content.copy.title}
+                  {copy.title}
                 </h1>
 
                 <p className="text-pretty mt-6 max-w-xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
-                  {content.copy.subtitle}
+                  {copy.subtitle}
                 </p>
 
                 <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
-                  {content.copy.bullets.map((bullet) => (
+                  {copy.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2.5 text-[13px] leading-6 text-white/80">
                       <Check size={14} className="mt-1 shrink-0 text-[var(--brand)]" aria-hidden="true" />
                       {bullet}
@@ -107,7 +109,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                 <p className="mt-4 text-[11px] font-medium text-white/50">{t("productPages.heroNote")}</p>
               </div>
 
-              <ProductPreview productKey={content.key} preview={content.preview} tone="dark" />
+              <ProductPreview productKey={content.key} preview={page.preview} tone="dark" locale={locale} />
             </div>
           </Container>
         </div>
@@ -124,7 +126,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
             description={t("productPages.outcomesSubtitle")}
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
-            {content.copy.outcomes.map((outcome, index) => (
+            {copy.outcomes.map((outcome, index) => (
               <Card key={outcome.title} className="p-6">
                 <span className="text-[11px] font-semibold tabular-nums text-[var(--brand-strong)]">
                   {String(index + 1).padStart(2, "0")}
@@ -149,7 +151,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
               description={t("productPages.howSubtitle")}
             />
             <ol className="grid gap-3">
-              {content.copy.steps.map((step, index) => (
+              {copy.steps.map((step, index) => (
                 <li
                   key={step.title}
                   className="flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-5"
@@ -173,11 +175,11 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
         <Container>
           <SectionHeading
             eyebrow={t("productPages.capabilitiesEyebrow")}
-            title={content.copy.capabilitiesTitle}
-            description={content.copy.capabilitiesSubtitle}
+            title={copy.capabilitiesTitle}
+            description={copy.capabilitiesSubtitle}
           />
           <div className={`mt-10 grid gap-3 sm:grid-cols-2 ${capabilityColumns}`}>
-            {content.copy.capabilities.map((capability) => (
+            {copy.capabilities.map((capability) => (
               <Card key={capability.title} className="p-6">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand-strong)]">
                   <Check size={15} aria-hidden="true" />
@@ -272,9 +274,9 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                     <Icon name={related.icon} className="h-4 w-4" />
                   </span>
                   <h3 className="mt-4 text-[15px] font-semibold text-[var(--ink)]">
-                    {related.name}
+                    {t(`products.items.${related.key}.title`)}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{related.summary}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t(`products.items.${related.key}.desc`)}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
                     {t("common.learnMore")}
                     <ArrowUpRight size={13} aria-hidden="true" />
@@ -291,10 +293,10 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
         <Container>
           <div className="rounded-3xl bg-[var(--ink)] px-6 py-12 text-center sm:px-12">
             <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-white">
-              {content.copy.finalTitle}
+              {copy.finalTitle}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/65">
-              {content.copy.finalSubtitle}
+              {copy.finalSubtitle}
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button

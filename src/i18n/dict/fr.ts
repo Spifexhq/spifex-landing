@@ -8,22 +8,162 @@ const fr = {
     products: "Produits",
     solutions: "Solutions",
     customers: "Clients",
-    pricing: "Tarification",
+    pricing: "Tarifs",
+    docs: "Documentation",
+    personal: "Personnel",
+    business: "Professionnel",
     legal: "Mentions légales",
     blog: "Blog",
     signin: "Se connecter",
-    signup: "S’inscrire",
+    signup: "S'inscrire",
+    startFree: "Commencer gratuitement",
     home: "Accueil",
     toggleMenu: "Afficher le menu",
+    closeMenu: "Fermer le menu",
+    menu: "Menu",
+  },
+
+  megaMenu: {
+    products: "Produits",
+    platform: "Plateforme",
+    allSolutions: "Toutes les solutions",
+    personalDesc: "Comptes, budgets et objectifs pour votre argent personnel.",
+    businessDesc: "Trésorerie, banque et contrôle des équipes.",
+    startTitle: "Commencez avec l'espace de travail qu'il vous faut",
+    startCta: "Commencer gratuitement",
+    comparePlans: "Comparer les offres",
+    solutions: "Voyez comment chaque module s'articule.",
+    pricing: "Comparez Gratuit, Starter et Pro.",
+    ai: "Connectez ChatGPT ou Claude en lecture seule.",
+    security: "Rôles, états du cycle de vie et activité des connecteurs.",
+    aiTitle: "Connexions IA",
+    securityTitle: "Rôles et activité",
+    viewAll: "Voir tous les produits",
+  },
+
+  productPages: {
+    startFree: "Commencer gratuitement",
+    seePricing: "Voir les tarifs",
+    heroNote: "Offre gratuite · Sans carte bancaire · Personnel et Professionnel",
+    moduleLabel: "Module professionnel",
+    outcomesEyebrow: "Ce qui change",
+    outcomesTitle: "Le travail que ce module vous retire",
+    outcomesSubtitle: "Un modèle opérationnel plus clair, avec le même espace de travail et les mêmes données.",
+    howEyebrow: "Comment ça marche",
+    howTitle: "De la configuration à la première vue utile",
+    howSubtitle: "Un parcours de mise en œuvre court, sans projet séparé.",
+    capabilitiesEyebrow: "Fonctionnalités",
+    plansEyebrow: "Offres",
+    plansTitle: "Commencez gratuitement. Passez à une offre supérieure quand l'activité grandit.",
+    plansSubtitle: "Chaque produit s'appuie sur le même espace de travail Spifex. Passez à Starter ou Pro lorsque vous avez besoin de plus de capacité.",
+    comparePlans: "Comparer les offres",
+    noCard: "Sans carte bancaire",
+    perMonth: "par mois",
+    relatedEyebrow: "Continuez l'exploration",
+    relatedTitle: "Un seul espace de travail, plus de contrôle",
+    relatedDesc: "Ajoutez les modules connectés à ce flux de travail.",
+  },
+
+  legal: {
+    title: "Mentions légales",
+    toc: "Sommaire",
+  },
+
+  blog: {
+    indexTitle: "Blog",
+    indexSubtitle: "Analyses sur les opérations financières, la trésorerie, la gouvernance et l'automatisation.",
+    searchPlaceholder: "Rechercher",
+    clearSearch: "Effacer la recherche",
+    filter: "Filtrer",
+    topic: "Thème",
+    filterAll: "Tous les thèmes",
+    applyFilter: "Filtrer",
+    activeFilter: "Filtre actif",
+    noActiveFilter: "Aucun filtre actif",
+    clearFilter: "Effacer le filtre",
+    noResults: "Aucun article ne correspond à la recherche ou au filtre actuel.",
+    breadcrumbBlog: "Blog",
+    breadcrumbArticles: "Articles",
+    seriesDefault: "Blog Spifex",
+  },
+
+  products: {
+    groups: {
+      products: "Produits",
+      workflows: "Flux de travail",
+      platform: "Plateforme",
+    },
+    items: {
+      cashflow: {
+        title: "Trésorerie",
+        desc: "Planifiez les entrées et sorties, simulez des scénarios et suivez l'exécution en temps réel.",
+      },
+      banking: {
+        title: "Banque et paiements",
+        desc: "Centralisez vos comptes bancaires, payez vos fournisseurs et gérez les transferts avec des contrôles intégrés.",
+      },
+      spend: {
+        title: "Dépenses et règlements",
+        desc: "Standardisez les validations, les règlements et les mouvements internes de fonds.",
+      },
+      ledger: {
+        title: "Grand livre",
+        desc: "Plan comptable, classification et structure financière prête pour l'audit.",
+      },
+      projects: {
+        title: "Projets",
+        desc: "Affectez coûts et revenus aux initiatives avec une traçabilité complète et des KPI.",
+      },
+      departments: {
+        title: "Départements",
+        desc: "Responsabilité budgétaire, redevabilité et gouvernance opérationnelle par équipe.",
+      },
+      crm: {
+        title: "CRM",
+        desc: "Reliez les signaux du pipeline à la visibilité et à la planification de la trésorerie.",
+      },
+      inventory: {
+        title: "Stock",
+        desc: "Reliez les données opérationnelles aux résultats financiers, sans silos isolés.",
+      },
+      reconciliation: {
+        title: "Rapprochement",
+        desc: "Bouclez la boucle du prévu au réalisé grâce à un appariement structuré.",
+      },
+      automation: {
+        title: "Automatisation comptable",
+        desc: "Réduisez le travail manuel et gardez des données financières cohérentes entre les modules.",
+      },
+      kpis: {
+        title: "Reporting et KPI",
+        desc: "Tableaux de bord et indicateurs pour aligner les équipes sur l'essentiel.",
+      },
+      integrations: {
+        title: "Intégrations",
+        desc: "Connectez Spifex à vos outils et standardisez la base de données.",
+      },
+      intelligence: {
+        title: "Intelligence",
+        desc: "Des analyses exploitables pour repérer tôt les risques et les opportunités.",
+      },
+      governance: {
+        title: "Gouvernance",
+        desc: "Accès par rôle, pistes d'audit et structure cloisonnée par organisation.",
+      },
+      global: {
+        title: "Prêt pour l'international",
+        desc: "Des opérations multi-flux conçues pour l'échelle et la complexité.",
+      },
+    },
+    footer: "Un seul espace de travail pour la trésorerie, la banque, le reporting et les opérations.",
+    explore: "Explorer la plateforme",
   },
 
   pricing: {
-    title: "Tarification",
-    subtitle:
-      "Choisissez l’offre adaptée à votre stade. Les prix sont affichés dans votre devise locale lorsque disponible.",
-    note:
-      "La devise affichée est déterminée selon votre localisation. Le montant final peut varier lors du paiement.",
-    mostPopular: "Le plus populaire",
+    title: "Tarifs",
+    subtitle: "Choisissez l'offre adaptée à votre stade de développement. Les prix s'affichent dans votre devise de facturation régionale lorsque c'est possible.",
+    note: "La devise affichée dépend de la localisation du visiteur lorsqu'elle est disponible. La facturation finale et les taxes peuvent varier au moment du paiement.",
+    mostPopular: "Le plus choisi",
     perMonthFrom: "{price} / mois",
   },
 
@@ -31,125 +171,882 @@ const fr = {
     free: {
       name: "Gratuit",
       priceLabel: "Gratuit",
-      description:
-        "Pour les particuliers et petites équipes qui démarrent avec une gestion financière structurée.",
+      description: "Pour les particuliers et les très petites équipes qui démarrent une gestion financière structurée.",
       highlights: {
-        0: "Accès à l’espace principal",
-        1: "Visibilité basique du cashflow",
-        2: "Onboarding standard",
-        3: "Sans carte bancaire requise",
+        "0": "Accès à l'espace de travail principal",
+        "1": "Visibilité de base sur la trésorerie",
+        "2": "Parcours d'onboarding standard",
+        "3": "Démarrage sans moyen de paiement",
       },
       ctaLabel: "Commencer",
     },
-
     starter: {
       name: "Starter",
-      description:
-        "Pour les équipes en croissance ayant besoin de structure et de contrôle opérationnel.",
+      description: "Pour les équipes en croissance qui ont besoin de plus de structure, de contrôle opérationnel et de flux récurrents.",
       highlights: {
-        0: "Planification et exécution du cashflow",
-        1: "Visibilité bancaire et opérations structurées",
-        2: "Accès basé sur les rôles",
-        3: "Configuration rapide via imports",
+        "0": "Planification et exécution de la trésorerie",
+        "1": "Visibilité bancaire et opérations structurées",
+        "2": "Accès par rôle et responsabilité opérationnelle",
+        "3": "Mise en place plus rapide avec imports et modèles",
       },
       ctaLabel: "Choisir Starter",
     },
-
     pro: {
       name: "Pro",
-      description:
-        "Pour les équipes financières nécessitant gouvernance, automatisation et scalabilité.",
+      description: "Pour les équipes financières qui ont besoin de gouvernance renforcée, d'automatisation et d'évolutivité.",
       highlights: {
-        0: "Workflows avancés",
-        1: "Contrôles et auditabilité",
-        2: "Projets et reporting avancé",
-        3: "Adapté aux opérations complexes",
+        "0": "Flux de travail avancés",
+        "1": "Gouvernance, contrôles et auditabilité",
+        "2": "Projets, départements et reporting enrichi",
+        "3": "Conçu pour une complexité opérationnelle plus forte",
       },
       ctaLabel: "Choisir Pro",
     },
   },
 
-  home: {
+  homeV2: {
     hero: {
-      title: "Contrôle total du cashflow et des paiements",
-      subtitle:
-        "Pilotez votre trésorerie, vos opérations et vos indicateurs dans un seul système.",
-      emailPlaceholder: "Votre email professionnel",
-      ctaPrimary: "Commencer",
-      disclaimer:
-        "En continuant, vous acceptez de recevoir des emails liés au produit.",
+      eyebrow: "Personnel + Professionnel · Un seul système",
+      title: "L'argent, au clair",
+      line1: "L'argent,",
+      line2: "au clair",
+      subtitle: "Une vision en temps réel de chaque compte, plan et règlement — pour vos finances personnelles comme pour votre entreprise.",
+      primary: "Commencer gratuitement",
+      secondary: "Découvrir le produit",
+      emailPlaceholder: "Saisissez votre e-mail professionnel",
+      emailCta: "Commencer gratuitement",
+      disclaimer: "Offre gratuite · Sans carte bancaire · Personnel et Professionnel",
+      proof: "Conçu pour les opérations multi-flux, à forte intensité fournisseurs et organisées par projets.",
+      visualAlt: "Aperçu de l'espace de travail Spifex montrant la position de trésorerie, un graphique du prévu par rapport au réglé, la santé des règlements et un résumé de trésorerie en lecture seule produit par l'IA.",
     },
-
-    features: {
-      title: "La finance comme un système opérationnel",
-      subtitle:
-        "Spifex connecte équipes, workflows et données pour une exécution fiable.",
+    audiences: {
+      title: "Une plateforme pour vos finances personnelles et professionnelles",
       items: {
-        moneyLifecycle: {
-          title: "Cycle complet de l’argent",
-          desc: "Du plan à l’exécution et au rapprochement.",
+        multiEntity: "Opérations multi-entités",
+        financeOps: "Opérations financières",
+        projectLed: "Entreprises organisées par projets",
+        vendorHeavy: "Équipes à forte intensité fournisseurs",
+      },
+    },
+    personal: {
+      eyebrow: "Spifex Personnel",
+      title: "Vos finances personnelles, avec la clarté d'un système d'exploitation",
+      subtitle: "Réunissez comptes, catégories, budgets et objectifs dans un seul espace de travail, puis voyez comment les dépenses du jour modifient ce que vous aviez prévu.",
+      bullets: {
+        accounts: "Regroupez vos comptes bancaires personnels et vos soldes dans une seule vue.",
+        budgets: "Planifiez budgets et objectifs, puis suivez leur progression à partir des transactions réelles.",
+        reporting: "Consultez vos catégories, règlements en attente et indicateurs sans reconstruire un tableur.",
+        ai: "Connectez ChatGPT ou Claude en lecture seule pour résumer votre trésorerie.",
+      },
+      plans: "Personnel Gratuit · Personnel Starter · Personnel Pro",
+      cta: "Découvrir Spifex Personnel",
+      start: "Commencer gratuitement avec Personnel",
+      note: "Offre gratuite disponible. Sans carte bancaire.",
+    },
+    outcomes: {
+      eyebrow: "Pourquoi Spifex",
+      title: "Remplacez les tableurs et outils dispersés par un seul flux de trésorerie",
+      subtitle: "Planifiez ce qui va se produire, exécutez avec des contrôles, rapprochez ce qui s'est produit et produisez vos rapports sans reconstruire les mêmes données à quatre endroits.",
+      items: {
+        visibility: {
+          title: "Voyez l'ensemble de votre argent",
+          desc: "Plans de trésorerie, règlements, soldes bancaires et reporting vivent dans un même espace de travail, et non dans des fichiers séparés.",
         },
-        complexity: {
-          title: "Conçu pour la complexité",
-          desc: "Gérez plusieurs flux avec cohérence.",
+        control: {
+          title: "Contrôlez l'exécution",
+          desc: "L'accès par rôle, les règlements et les transferts suivent un modèle opérationnel cohérent, limité à l'espace de travail.",
         },
-        governance: {
-          title: "Gouvernance intégrée",
-          desc: "Accès, audit et structure par défaut.",
+        traceability: {
+          title: "Gardez chaque mouvement traçable",
+          desc: "Reliez les écritures prévues aux règlements, à la structure du grand livre et à la responsabilité d'un département ou d'un projet.",
         },
-        kpiExecution: {
-          title: "Pilotage par KPI",
-          desc: "Mesurez ce qui impacte réellement le business.",
+        decisions: {
+          title: "Décidez avec des chiffres à jour",
+          desc: "Utilisez les KPI et les vues filtrées pour comprendre les positions en attente, réglées et projetées sans rapprochement manuel.",
+        },
+      },
+    },
+    modules: {
+      eyebrow: "Plateforme",
+      title: "Une plateforme. Tous vos flux financiers.",
+      subtitle: "Utilisez les modules dont vous avez besoin aujourd'hui et ajoutez de la structure à mesure que l'entreprise grandit. Tous les modules partagent le même espace de travail, la même devise et le même modèle d'accès.",
+      cta: "Explorer la plateforme",
+    },
+    ai: {
+      eyebrow: "Connexions IA",
+      title: "Interrogez ChatGPT ou Claude sur votre trésorerie",
+      subtitle: "Connectez Spifex via une connexion MCP en lecture seule. Votre assistant peut lister les espaces de travail, examiner les transactions, résumer les totaux et cartographier les catégories — sans pouvoir créer, modifier, régler ou transférer quoi que ce soit.",
+      bullets: {
+        readOnly: "Portée en lecture seule : cashflow:read",
+        oauth: "OAuth 2.1 par utilisateur avec PKCE",
+        revoke: "Révocation immédiate dans les Paramètres",
+        privacy: "Notes, observations et pièces jointes restent hors des réponses",
+      },
+      cta: "Découvrir le fonctionnement des connexions IA",
+      note: "Disponible dans Paramètres → Connexions IA, pour les espaces Personnel et Professionnel.",
+    },
+    workflow: {
+      eyebrow: "Comment ça marche",
+      title: "Partez de vos données. Ajoutez des contrôles à mesure.",
+      subtitle: "Aucun long projet de mise en œuvre n'est nécessaire pour obtenir la première vue utile.",
+      steps: {
+        create: {
+          title: "Créez votre espace de travail",
+          desc: "Choisissez votre pays, votre devise et le type d'espace de travail. Démarrez avec l'offre gratuite, sans carte.",
+        },
+        structure: {
+          title: "Structurez l'essentiel",
+          desc: "Ajoutez vos comptes bancaires, catégories, projets ou départements. Importez les données dont vous disposez déjà.",
+        },
+        operate: {
+          title: "Opérez et analysez",
+          desc: "Planifiez la trésorerie, réglez les écritures, rapprochez les mouvements et consultez les KPI depuis le même espace de travail.",
+        },
+      },
+    },
+    pricing: {
+      eyebrow: "Tarifs",
+      title: "Commencez gratuitement. Passez à une offre supérieure quand l'activité grandit.",
+      subtitle: "Chaque offre inclut l'espace de travail de base. Les offres payantes ajoutent de la capacité et plus de marge de manœuvre pour les équipes en croissance.",
+      note: "Les tarifs régionaux sont affichés sur la page Tarifs. La facturation finale et les taxes peuvent varier au moment du paiement.",
+      cta: "Comparer les offres",
+    },
+    faq: {
+      eyebrow: "Questions",
+      title: "Ce que les équipes demandent avant de commencer",
+      items: {
+        free: {
+          q: "L'offre gratuite est-elle vraiment gratuite ?",
+          a: "Oui. Vous pouvez créer un espace de travail et démarrer sans moyen de paiement. Les offres payantes sont disponibles lorsque vous avez besoin de plus de capacité.",
+        },
+        replace: {
+          q: "Spifex remplace-t-il mon logiciel comptable ?",
+          a: "Spifex est la couche opérationnelle pour la trésorerie, la visibilité bancaire, les règlements, la gouvernance et le reporting. Il complète votre environnement comptable plutôt qu'il ne remplace la comptabilité légale.",
+        },
+        ai: {
+          q: "L'assistant IA peut-il modifier mes données ?",
+          a: "Non. Le connecteur v1 est en lecture seule et ne demande que la portée cashflow:read. Il ne peut rien créer, modifier, supprimer, régler ni transférer.",
+        },
+        security: {
+          q: "Comment les données de l'espace de travail sont-elles isolées ?",
+          a: "Chaque requête est limitée à un espace de travail dont l'utilisateur authentifié est propriétaire ou membre. Les rôles, les règles de cycle de vie et les droits liés à l'offre sont appliqués côté serveur.",
+        },
+        migrate: {
+          q: "Puis-je importer des données existantes ?",
+          a: "Spifex prend en charge des imports structurés pour les relevés bancaires et les données financières courantes. Vous pouvez aussi démarrer avec un petit espace de travail et ajouter de la structure au fil du temps.",
+        },
+      },
+    },
+    finalCta: {
+      title: "Réunissez votre trésorerie, vos opérations bancaires et votre reporting dans une seule couche opérationnelle.",
+      subtitle: "Commencez gratuitement, invitez votre équipe quand vous êtes prêt et conservez les contrôles dont votre fonction financière a besoin.",
+      primary: "Commencer gratuitement",
+      secondary: "Parler à l'équipe",
+    },
+  },
+
+  pricingV2: {
+    eyebrow: "Offres",
+    title: "Choisissez l'offre adaptée à votre gestion de l'argent",
+    subtitle: "Les offres Personnel et Professionnel démarrent gratuitement, puis évoluent vers Starter ou Pro pour plus de capacité. Chaque limite indiquée ici est celle appliquée dans votre espace de travail.",
+    billedMonthly: "Facturé mensuellement",
+    noCard: "Sans carte bancaire",
+    personal: "Personnel",
+    business: "Professionnel",
+    personalDesc: "Organisez votre trésorerie personnelle, vos comptes, catégories, budgets et objectifs avec la même discipline qu'une entreprise.",
+    businessDesc: "Pilotez la trésorerie de l'entreprise, les opérations bancaires, les règlements, la structure du grand livre, les projets et le reporting avec des contrôles par rôle.",
+    startFree: "Commencer gratuitement",
+    choosePlan: "Choisir {plan}",
+    recommended: "Recommandé",
+    compareTitle: "Comparer les offres",
+    compareSubtitle: "Le même espace de travail de base, avec plus de capacité à mesure que votre activité se développe.",
+    rows: {
+      workspace: "Espaces de travail détenus",
+      cashflow: "Planification et exécution de la trésorerie",
+      banking: "Visibilité bancaire et comptes",
+      settlements: "Règlements et transferts",
+      reporting: "KPI et reporting",
+      governance: "Rôles et gouvernance",
+      ai: "Connexions IA en lecture seule",
+    },
+    included: "Inclus",
+    notIncluded: "Non inclus",
+    faqTitle: "Questions sur les tarifs",
+    faq: {
+      card: {
+        q: "Faut-il une carte bancaire pour l'offre gratuite ?",
+        a: "Non. L'offre gratuite démarre sans moyen de paiement.",
+      },
+      change: {
+        q: "Puis-je changer d'offre plus tard ?",
+        a: "Oui. Vous pouvez passer à une offre supérieure depuis les paramètres de facturation de votre espace de travail lorsque votre activité a besoin de plus de capacité.",
+      },
+      currency: {
+        q: "Pourquoi les prix varient-ils selon le pays ?",
+        a: "Spifex facture dans les devises régionales prises en charge. La page Tarifs utilise le pays détecté et revient à une valeur par défaut lorsqu'elle ne peut pas le déterminer.",
+      },
+      taxes: {
+        q: "Les taxes sont-elles incluses ?",
+        a: "La facturation finale et les taxes applicables sont affichées lors du paiement sécurisé.",
+      },
+    },
+    trustNote: "Aucune limite inventée, aucun supplément caché. Les détails de l'offre sont affichés avant le paiement.",
+  },
+
+  pricingCatalog: {
+    feature: "Fonctionnalité",
+    unlimited: "Illimité",
+    perMonthValue: "{value} / mois",
+    tiers: {
+      free: "Gratuit",
+      starter: "Starter",
+      pro: "Pro",
+    },
+    rows: {
+      workspaces: "Espaces de travail détenus",
+      transactions: "Transactions",
+      accounts: "Comptes bancaires",
+      categories: "Catégories",
+      budgets: "Budgets",
+      goals: "Objectifs",
+      views: "Vues enregistrées",
+      attachments: "Pièces jointes",
+      entries: "Écritures de trésorerie",
+      banks: "Comptes bancaires",
+      members: "Membres de l'équipe",
+      projects: "Projets",
+      ledger: "Comptes du grand livre",
+      statements: "Imports de relevés",
+    },
+    personal: {
+      free: {
+        name: "Personnel Gratuit",
+        description: "Organisez votre trésorerie et vos comptes personnels sans moyen de paiement.",
+        highlights: {
+          "0": "250 transactions par mois",
+          "1": "2 comptes bancaires",
+          "2": "25 catégories et 3 budgets",
+          "3": "3 objectifs et 2 vues enregistrées",
+        },
+      },
+      starter: {
+        name: "Personnel Starter",
+        description: "Plus d'espace pour les flux financiers personnels du quotidien et la planification récurrente.",
+        highlights: {
+          "0": "5 000 transactions par mois",
+          "1": "10 comptes bancaires",
+          "2": "100 catégories et 25 budgets",
+          "3": "25 objectifs et 25 vues enregistrées",
+        },
+      },
+      pro: {
+        name: "Personnel Pro",
+        description: "Planification personnelle à haut volume pour des situations financières complexes.",
+        highlights: {
+          "0": "50 000 transactions par mois",
+          "1": "50 comptes bancaires",
+          "2": "500 catégories et 250 budgets",
+          "3": "250 objectifs et 200 vues enregistrées",
+        },
+      },
+    },
+    business: {
+      free: {
+        name: "Professionnel Gratuit",
+        description: "Démarrez un espace de travail professionnel structuré sans moyen de paiement.",
+        highlights: {
+          "0": "1 000 écritures par mois",
+          "1": "2 comptes bancaires et 1 membre",
+          "2": "2 projets et 10 comptes du grand livre",
+          "3": "2 imports de relevés par mois",
+        },
+      },
+      starter: {
+        name: "Professionnel Starter",
+        description: "Pour les équipes en croissance qui ajoutent structure, contrôles et opérations récurrentes.",
+        highlights: {
+          "0": "10 000 écritures par mois",
+          "1": "10 comptes bancaires et 5 membres",
+          "2": "50 projets et 100 comptes du grand livre",
+          "3": "20 imports de relevés par mois",
+        },
+      },
+      pro: {
+        name: "Professionnel Pro",
+        description: "Pour les équipes financières qui opèrent à grande échelle avec des flux de base non mesurés.",
+        highlights: {
+          "0": "Écritures de trésorerie non mesurées",
+          "1": "Comptes bancaires non mesurés, jusqu'à 50 membres",
+          "2": "Projets, comptes du grand livre et relevés non mesurés",
+          "3": "Jusqu'à 6 espaces de travail détenus",
         },
       },
     },
   },
 
-  cashflowPage: {
-    hero: {
-      badge: "Cashflow",
-      title: "Une vision fiable du cash du plan à l’exécution",
-      subtitle:
-        "Remplacez les tableurs par une couche opérationnelle unique.",
-      bullets: {
-        b1: "Prévisions traçables",
-        b2: "Exécution liée au plan",
-        b3: "Rapprochement continu",
-        b4: "KPIs opérationnels",
-      },
-      emailPlaceholder: "Email professionnel",
-      ctaEmail: "Commencer",
-      ctaPricing: "Voir les tarifs",
+  docsPage: {
+    eyebrow: "Documentation",
+    title: "Documentation produit Spifex",
+    subtitle: "Guides pratiques pour configurer votre espace de travail, exécuter vos flux de trésorerie et connecter des assistants IA.",
+    searchPlaceholder: "Rechercher des guides, flux de travail et paramètres",
+    searchLabel: "Rechercher dans la documentation",
+    noResults: "Aucun guide ne correspond à cette recherche.",
+    all: "Tous les guides",
+    readGuide: "Lire le guide",
+    related: "Guides associés",
+    back: "Toute la documentation",
+    updated: "Dernière mise à jour",
+    reviewNote: "Documentation opérationnelle. Les pages légales sont distinctes et nécessitent une relecture professionnelle avant publication.",
+    categories: {
+      gettingStarted: "Premiers pas",
+      cashflow: "Trésorerie",
+      banking: "Banque et règlements",
+      reporting: "Reporting",
+      ai: "Connexions IA",
+      security: "Sécurité et facturation",
     },
+  },
 
-    outcomes: {
-      title: "Un modèle opérationnel du cash",
-      subtitle:
-        "Planification, exécution et rapprochement réunis.",
-      items: {
-        forecast: {
-          title: "Précision des prévisions",
-          desc: "Suivi des écarts en continu.",
-        },
-        execution: {
-          title: "Exécution contrôlée",
-          desc: "Paiements et transferts structurés.",
-        },
-        reconciliation: {
-          title: "Rapprochement continu",
-          desc: "Clôtures rapides et fiables.",
-        },
-        governance: {
-          title: "Gouvernance",
-          desc: "Auditabilité complète.",
-        },
-      },
+  signup: {
+    workspaceType: "Type d'espace de travail",
+    business: "Professionnel",
+    personal: "Personnel",
+    personalDesc: "Espace personnel pour vos comptes, budgets et objectifs.",
+    businessDesc: "Espace professionnel pour la trésorerie, la banque, les règlements et le reporting de l'équipe.",
+    fullName: "Nom complet",
+    email: "E-mail",
+    password: "Mot de passe",
+    confirmPassword: "Confirmer le mot de passe",
+    language: "Langue",
+    country: "Pays",
+    currency: "Devise",
+    currencyFixed: "Définie à partir de votre pays de facturation et non modifiable.",
+    acceptPrivacy: "J'accepte la politique de confidentialité.",
+    acceptTerms: "J'accepte les conditions d'utilisation.",
+    acceptMarketing: "J'accepte de recevoir des communications marketing.",
+    verifyTitle: "Vérifiez votre compte",
+    redirectingTitle: "Redirection vers le paiement sécurisé",
+    createAccountPaid: "Créez votre compte pour continuer",
+    createAccount: "Créez votre compte",
+    planSelected: "Offre {category} sélectionnée : {plan}. Vous démarrerez sur l'espace de travail Gratuit et poursuivrez vers le paiement sécurisé après vérification.",
+    startFree: "Commencez avec un espace de travail {category} gratuit.",
+    codeSentTo: "Nous avons envoyé un code à 6 chiffres à {email}",
+    preparingCheckout: "Préparation de votre paiement sécurisé…",
+    verificationCode: "Code de vérification",
+    codePlaceholder: "Saisissez le code à 6 chiffres",
+    back: "Retour",
+    resendIn: "Renvoyer ({seconds} s)",
+    resendUnavailable: "Renvoi indisponible",
+    resendCode: "Renvoyer le code",
+    verifyCode: "Vérifier le code",
+    sendCode: "Envoyer le code de vérification",
+    continue: "Continuer",
+    fillAllFields: "Remplissez tous les champs.",
+    invalidEmail: "E-mail invalide.",
+    passwordsMismatch: "Les mots de passe ne correspondent pas.",
+    passwordMin: "Le mot de passe doit comporter au moins 8 caractères.",
+    emailInUse: "Cet e-mail est déjà utilisé.",
+    couldNotValidateEmail: "Impossible de valider l'e-mail.",
+    mustAccept: "Vous devez accepter les consentements requis.",
+    verificationSent: "Code de vérification envoyé.",
+    couldNotStart: "Impossible de démarrer l'inscription.",
+    enterValidCode: "Saisissez un code à 6 chiffres valide.",
+    missingChallenge: "Le défi de vérification est manquant.",
+    missingAccess: "Jeton d'accès manquant après la vérification.",
+    invalidCode: "Code de vérification invalide ou expiré.",
+    codeSentAgain: "Code renvoyé.",
+    couldNotResendCode: "Impossible de renvoyer le code.",
+    couldNotRedirect: "Impossible de rediriger vers le paiement.",
+  },
+
+  signupSuccess: {
+    title: "Votre espace de travail est prêt",
+    subtitle: "Vous pouvez accéder à votre tableau de bord ou consulter les guides de configuration pendant que votre compte est préparé.",
+    dashboard: "Ouvrir le tableau de bord",
+    docs: "Lire le guide de configuration",
+    nextTitle: "Prochaines étapes recommandées",
+    nextItems: {
+      workspace: "Choisissez votre espace de travail actif et votre devise.",
+      banks: "Ajoutez un compte bancaire pour relier soldes et règlements.",
+      categories: "Vérifiez les catégories pour garder un reporting cohérent.",
+      ai: "Connectez ChatGPT ou Claude en lecture seule si vous souhaitez une analyse assistée par IA.",
     },
+  },
+
+  cookiesBanner: {
+    title: "Cookies et mesure d'audience",
+    body: "Nous utilisons des cookies essentiels au fonctionnement de Spifex. Avec votre accord, nous utilisons aussi des cookies marketing pour mesurer nos campagnes.",
+    accept: "Tout accepter",
+    reject: "Essentiels uniquement",
+    policy: "Politique de cookies",
+  },
+
+  trust: {
+    noCard: "Offre gratuite, sans carte bancaire",
+    isolation: "Espaces de travail isolés par locataire",
+    ai: "Accès IA en lecture seule via OAuth 2.1",
+    multiStream: "Conçu pour les opérations multi-flux",
+  },
+
+  languageSwitcher: {
+    label: "Langue",
+    currency: "Devise",
+    currencyFixed: "définie par votre région",
+  },
+
+  meta: {
+    siteTitle: "Spifex — opérations financières personnelles et professionnelles",
+    siteDescription: "Spifex réunit trésorerie personnelle et professionnelle, banque, règlements, reporting et connexions IA en lecture seule dans une seule plateforme opérationnelle.",
   },
 
   footer: {
     rights: "Tous droits réservés.",
+    tagline: "Opérations financières pour la trésorerie, la banque, les règlements, le reporting et la gouvernance.",
+    product: "Produit",
+    resources: "Ressources",
+    company: "Entreprise",
+    aiConnections: "Connexions IA",
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    cookies: "Cookies",
+    notBank: "Spifex est un logiciel d'opérations financières, pas une banque.",
   },
-};
+
+  customersPage: {
+    hero: {
+      title: "Découvrez ce que Spifex peut faire pour vous.",
+      subtitle: "Créez un compte en quelques minutes et pilotez avec rapidité et contrôle.",
+      disclaimer: "Spifex est une plateforme d'opérations financières, pas une banque. Les services bancaires sont fournis par vos banques connectées.",
+    },
+    stories: {
+      title: "Conçu pour le travail que vous faites.",
+      subtitle: "De la planification de trésorerie aux paiements et au reporting, Spifex relie les flux de travail que les équipes exécutent chaque jour.",
+      cards: {
+        limits: {
+          title: "Gardez votre trésorerie visible.",
+          desc: "Suivez les mouvements prévus et réglés dans un seul espace de travail.",
+        },
+        spend: {
+          title: "Réglez en plusieurs fois.",
+          desc: "Enregistrez les écritures sortantes et réglez-les intégralement ou partiellement.",
+        },
+        budget: {
+          title: "Donnez un responsable aux coûts.",
+          desc: "Affectez les écritures aux départements et projets qui en sont responsables.",
+        },
+        ap: {
+          title: "Connectez vos banques.",
+          desc: "Importez les relevés et rapprochez-les des écritures de trésorerie.",
+        },
+      },
+    },
+    already: {
+      title: "Déjà client ?",
+      subtitle: "Échangez avec d'autres clients et opérateurs. Participez à des sessions, à des programmes d'accès anticipé et à des opportunités communautaires.",
+      learnMore: "En savoir plus",
+    },
+    bottom: {
+      title: "Réunissez vos opérations dans une vue claire.",
+      subtitle: "Commencez gratuitement, connectez votre espace de travail et ajoutez de la structure à mesure que votre équipe grandit.",
+    },
+  },
+
+  customersLearnMore: {
+    title: "Restez informé des opportunités de connexion !",
+    intro: "Pour découvrir comment échanger avec d'autres clients Spifex et opérateurs, remplissez le formulaire et nous vous contacterons.",
+    bullets: {
+      productDesign: {
+        title: "Produit et design :",
+        desc: "Participez à des sessions de retour, testez de nouvelles fonctionnalités en version bêta et accédez en avant-première aux nouveautés.",
+      },
+      localGroups: {
+        title: "Groupes d'utilisateurs locaux :",
+        desc: "Rejoignez une cohorte locale pour échanger, partager des conseils et donner votre avis.",
+      },
+      advocate: {
+        title: "Ambassadeur :",
+        desc: "Mettez votre marque en avant et participez à des études de cas, événements ou références.",
+      },
+    },
+    note: "L'envoi du formulaire n'est pas un engagement. C'est une marque d'intérêt. Nous vous contacterons avec les détails lorsque des opportunités se présentent.",
+    form: {
+      title: "Inscrivez-vous pour en savoir plus :",
+      firstName: "Prénom",
+      lastName: "Nom",
+      workEmail: "E-mail professionnel",
+      company: "Nom de l'entreprise",
+      optionsLabel: "Veuillez sélectionner ci-dessous les options d'engagement qui vous intéressent",
+      options: {
+        beta: "Produit et design : tester de nouvelles versions et participer aux programmes d'accès anticipé",
+        coCreation: "Retour produit et design : sessions de co-création et de feedback",
+        userGroup: "Groupe d'utilisateurs : rejoindre une cohorte locale pour échanger et donner son avis",
+        speak: "Ambassadeur : intervenir lors d'un événement (en présentiel ou en ligne)",
+        reference: "Ambassadeur : référence",
+        networking: "Ambassadeur : échanger avec d'autres clients",
+        other: "Autre",
+      },
+      submit: "Envoyer",
+      disclaimer: "Ce formulaire est un modèle marketing. L'envoi ne crée aucun contrat ni obligation commerciale.",
+      thanksTitle: "Merci.",
+      thanksSubtitle: "Nous avons bien reçu vos informations et vous contacterons lorsque des opportunités correspondent à vos centres d'intérêt.",
+    },
+  },
+
+  solutionsPage: {
+    meta: {
+      title: "Solutions",
+      description: "Des solutions financières qui relient planification, exécution, rapprochement et KPI dans une seule couche opérationnelle.",
+    },
+    hero: {
+      title: "Une finance qui fonctionne comme des opérations",
+      subtitle: "Spifex relie équipes, flux de travail et données pour que les dirigeants agissent vite et avec certitude — sans silos isolés.",
+      cards: {
+        lifecycle: {
+          title: "Cycle complet de l'argent",
+          desc: "Des mouvements de trésorerie prévus aux règlements, transferts et rapprochements. Unifié de bout en bout.",
+        },
+        complexity: {
+          title: "Conçu pour la complexité opérationnelle",
+          desc: "Gérez plusieurs flux de revenus et de coûts grâce à la standardisation, l'automatisation et la traçabilité.",
+        },
+        governance: {
+          title: "Gouvernance par défaut",
+          desc: "L'accès par rôle, les pistes d'audit et les structures cloisonnées par organisation gardent les équipes alignées et conformes.",
+        },
+        kpis: {
+          title: "Exécution pilotée par les KPI",
+          desc: "Tableaux de bord et indicateurs gardent chacun concentré sur les métriques qui font avancer l'entreprise.",
+        },
+      },
+      emailPlaceholder: "E-mail professionnel",
+      ctaEmail: "Commencer",
+      ctaPricing: "Voir les tarifs",
+      disclaimer: "En soumettant votre e-mail, vous serez redirigé vers l'inscription. Vous pouvez modifier vos préférences à tout moment.",
+    },
+    map: {
+      productsTitle: "Produits",
+      workflowsTitle: "Flux de travail",
+      products: {
+        cashflow: {
+          title: "Trésorerie",
+          desc: "Planifiez les entrées et sorties, simulez des scénarios et suivez l'exécution en temps réel.",
+        },
+        bankingPayments: {
+          title: "Banque et paiements",
+          desc: "Centralisez vos comptes bancaires, payez vos fournisseurs et gérez les transferts avec des contrôles intégrés.",
+        },
+        spendSettlements: {
+          title: "Dépenses et règlements",
+          desc: "Standardisez les validations, les règlements et les mouvements internes de fonds.",
+        },
+        ledger: {
+          title: "Grand livre",
+          desc: "Plan comptable, classification et structure financière prête pour l'audit.",
+        },
+        projects: {
+          title: "Projets",
+          desc: "Affectez coûts et revenus aux initiatives avec une traçabilité complète et des KPI.",
+        },
+        departments: {
+          title: "Départements",
+          desc: "Responsabilité budgétaire, redevabilité et gouvernance opérationnelle par équipe.",
+        },
+        crm: {
+          title: "CRM",
+          desc: "Reliez les signaux du pipeline à la visibilité et à la planification de la trésorerie.",
+        },
+        inventory: {
+          title: "Stock",
+          desc: "Reliez les données opérationnelles aux résultats financiers, sans silos isolés.",
+        },
+      },
+      workflows: {
+        reconciliation: {
+          title: "Rapprochement",
+          desc: "Bouclez la boucle du prévu au réalisé grâce à un appariement structuré.",
+        },
+        accountingAutomation: {
+          title: "Automatisation comptable",
+          desc: "Réduisez le travail manuel et gardez des données financières cohérentes entre les modules.",
+        },
+        reportingKpis: {
+          title: "Reporting et KPI",
+          desc: "Tableaux de bord et indicateurs pour aligner les équipes sur l'essentiel.",
+        },
+      },
+      governanceCard: {
+        title: "Une couche opérationnelle unique pour toutes les équipes",
+        desc: "Organisations, rôles, responsabilités et pistes d'audit sont des primitives de premier ordre : les données restent cohérentes même lorsque vos flux de travail évoluent.",
+      },
+    },
+    operatingModel: {
+      title: "Un modèle opérationnel unique relie chaque module",
+      subtitle: "Spifex s'articule autour d'une boucle opérationnelle : planifier l'intention, exécuter avec des contrôles, rapprocher avec des preuves. C'est ainsi que la prévision devient fiable et le reporting actionnable.",
+      chips: {
+        cashflow: "Trésorerie",
+        spend: "Dépenses et règlements",
+        banking: "Banque et paiements",
+        ledger: "Grand livre",
+        projects: "Projets",
+        departments: "Départements",
+      },
+      stepPrefix: "Étape",
+      outputsTitle: "Livrables opérationnels",
+      controlsTitle: "Contrôles et gouvernance",
+      steps: {
+        plan: {
+          title: "Planifier l'intention",
+          desc: "Définissez ce qui doit se produire : mouvements prévus, responsables, dates, catégories et contexte. Cela devient votre prévision de référence et votre structure de responsabilité.",
+          outputs: "Mouvements prévus, modèles récurrents, scénarios de prévision et responsabilité par projet ou département.",
+          controls: "Une classification et une structure standardisées (Grand livre + Départements/Projets) évitent le désordre en aval.",
+        },
+        execute: {
+          title: "Exécuter avec des contrôles",
+          desc: "Enregistrez les événements réels : validations, règlements partiels, transferts et paiements fournisseurs. L'exécution est reliée à l'intention planifiée ou explicitement marquée comme non planifiée.",
+          outputs: "Règlements, transferts, événements de paiement et historique opérationnel traçable lié aux responsables.",
+          controls: "Les validations par rôle, les limites et les politiques maintiennent les dépenses sous contrôle sans ralentir les équipes.",
+        },
+        reconcile: {
+          title: "Rapprocher avec des preuves",
+          desc: "Bouclez la boucle en comparant le prévu au réel, en joignant les preuves et en traitant les exceptions en continu — la clôture mensuelle devient une conséquence, pas une crise.",
+          outputs: "Appariement structuré, flux d'exceptions, clôture propre et pistes prêtes pour l'audit.",
+          controls: "L'historique d'audit, les liens vers les preuves et des règles de données cohérentes garantissent un reporting fiable.",
+        },
+      },
+    },
+    teams: {
+      title: "Des solutions pour les équipes qui font tourner l'entreprise",
+      subtitle: "Spifex relie finance et opérations en rendant explicites les responsabilités, la classification et les flux de travail — chaque équipe gagne en clarté sans systèmes séparés.",
+      items: {
+        cfo: {
+          title: "Direction financière / CFO",
+          desc: "Obtenez une visibilité prévisible sur la trésorerie, faites appliquer la gouvernance et mesurez la performance sans attendre le reporting de fin de mois.",
+          point1: "Des scénarios de prévision fondés sur l'exécution, pas sur des tableurs figés.",
+          point2: "Gouvernance par défaut : rôles, pistes d'audit et classification standardisée.",
+          point3: "Des KPI qui relient les résultats financiers aux responsabilités et à la réalité opérationnelle.",
+        },
+        financeOps: {
+          title: "Opérations financières / Contrôleurs de gestion",
+          desc: "Réduisez le travail manuel en standardisant la création, la validation, le règlement et le rapprochement des mouvements.",
+          point1: "Rapprochement structuré et suivi des preuves pour clôturer plus vite.",
+          point2: "Classification et automatisation ancrées dans le grand livre pour des données cohérentes.",
+          point3: "Flux d'exceptions : l'activité non planifiée est visible et attribuée.",
+        },
+        operators: {
+          title: "Opérateurs / Responsables d'équipe",
+          desc: "Pilotez initiatives et équipes avec des budgets, validations et signaux de performance clairs — sans perdre en vitesse.",
+          point1: "Responsabilité budgétaire par département et par projet.",
+          point2: "Des contrôles de dépenses et des validations alignés sur le fonctionnement réel des équipes.",
+          point3: "Des KPI et un reporting qui reflètent la livraison, pas seulement les catégories comptables.",
+        },
+      },
+    },
+    solutions: {
+      title: "Des solutions clés construites sur la plateforme",
+      subtitle: "Chaque solution est un schéma opérationnel concret. Spifex combine les modules adéquats pour un résultat mesurable, gouvernable et évolutif.",
+      sectionLabel: "Solution",
+      whatYouGetTitle: "Ce que vous obtenez",
+      kpisTitle: "KPI sur lesquels piloter",
+      controlTitle: "Note de gouvernance",
+      items: {
+        cashVisibility: {
+          title: "Une visibilité de trésorerie fiable",
+          desc: "La planification devient fiable lorsqu'elle est reliée aux événements d'exécution et rapprochée en continu. Vous voyez ce qui est prévu, ce qui est exécuté et ce qui a changé — par responsable, par équipe et par initiative.",
+          chip1: "Trésorerie",
+          chip1Href: "/products/cashflow",
+          chip2: "CRM",
+          chip2Href: "/products/crm",
+          chip3: "Reporting et KPI",
+          chip3Href: "#workflow-reporting-kpis",
+          bullets: {
+            b1: "Mouvements prévus avec responsables, dates, catégories et modélisation de scénarios.",
+            b2: "Signaux du pipeline traduits en entrées attendues, avec échéance et niveau de confiance.",
+            b3: "Écarts suivis chaque semaine (prévu vs réel) avec facteurs explicatifs et responsabilités.",
+            b4: "Mouvements non planifiés rendus explicites au lieu d'être masqués dans des tableurs.",
+            b5: "Des tableaux de bord qui relient les résultats de trésorerie aux responsabilités opérationnelles.",
+          },
+          kpis: {
+            k1: "Tendance de la précision des prévisions sur 4 semaines, avec facteurs d'écart.",
+            k2: "Part non planifiée et principales sources par département ou projet.",
+            k3: "Délai de clôture et retard de rapprochement par équipe.",
+          },
+          controlNote: "Chaque mouvement est relié à une intention planifiée ou marqué comme non planifié, avec un responsable et une classification — la prévision est donc auditable.",
+        },
+        spendGovernance: {
+          title: "Gouvernance des dépenses sans goulots d'étranglement",
+          desc: "Contrôlez les dépenses grâce à des règles, des validations et des responsabilités alignées sur le fonctionnement des équipes. L'exécution reste rapide, mais la politique est appliquée et les exceptions sont visibles.",
+          chip1: "Dépenses et règlements",
+          chip1Href: "/products/spend-settlements",
+          chip2: "Départements",
+          chip2Href: "/products/departments",
+          chip3: "Projets",
+          chip3Href: "/products/projects",
+          bullets: {
+            b1: "Validations et seuils par rôle pour les demandes, les règlements et les transferts.",
+            b2: "Responsabilité budgétaire par département avec visibilité sur les écarts et les engagements.",
+            b3: "Affectation aux projets pour que les dépenses correspondent aux initiatives, et non à des catégories génériques.",
+            b4: "Flux de règlement standard (partiel, fractionné, mouvement interne) avec traçabilité.",
+            b5: "Des contrôles pilotés par les politiques qui réduisent les reprises et gardent une exécution cohérente.",
+          },
+          kpis: {
+            k1: "Délai de validation par équipe et étape bloquante.",
+            k2: "Écart budgétaire et couverture des engagements par département.",
+            k3: "Complétude de l'affectation des dépenses par projet et par catégorie.",
+          },
+          controlNote: "La gouvernance s'applique au niveau du flux de travail (qui peut faire quoi, quand et pourquoi), et pas seulement dans un reporting a posteriori.",
+        },
+        bankingPayments: {
+          title: "La banque et les paiements comme flux opérationnel",
+          desc: "Centralisez les comptes bancaires et l'exécution des paiements avec des contrôles intégrés. Reliez les événements de paiement à l'intention planifiée, aux responsabilités et au rapprochement pour rendre le calendrier de trésorerie prévisible.",
+          chip1: "Banque et paiements",
+          chip1Href: "/products/banking-payments",
+          chip2: "Trésorerie",
+          chip2Href: "/products/cashflow",
+          chip3: "Rapprochement",
+          chip3Href: "#workflow-reconciliation",
+          bullets: {
+            b1: "Centralisation des comptes bancaires avec une structure et des contrôles cloisonnés par organisation.",
+            b2: "Paiements fournisseurs et transferts reliés aux validations et aux responsabilités.",
+            b3: "Événements d'exécution liés aux mouvements prévus pour une traçabilité claire.",
+            b4: "Les signaux de rapprochement bouclent la boucle avec preuves et gestion des exceptions.",
+            b5: "Une chronologie de trésorerie cohérente : intention → paiement → rapprochement → reporting.",
+          },
+          kpis: {
+            k1: "Vitesse d'exécution des paiements (créé → validé → exécuté).",
+            k2: "Complétude des règlements (partiel/restant) par responsable et par équipe.",
+            k3: "Retard de rapprochement par compte et par type de flux.",
+          },
+          controlNote: "Les paiements ne sont pas de simples transactions : ce sont des événements de flux gouvernés, avec validations, historique et règles de rapprochement.",
+        },
+        closeAudit: {
+          title: "Une clôture plus rapide et une structure prête pour l'audit",
+          desc: "Clôturez plus vite en rendant la classification et le rapprochement continus. Utilisez une structure ancrée dans le grand livre et l'automatisation pour que les données financières restent cohérentes dans chaque module.",
+          chip1: "Grand livre",
+          chip1Href: "/products/ledger",
+          chip2: "Automatisation comptable",
+          chip2Href: "#workflow-accounting-automation",
+          chip3: "Rapprochement",
+          chip3Href: "#workflow-reconciliation",
+          bullets: {
+            b1: "Plan comptable et règles de classification qui standardisent le reporting.",
+            b2: "Rapprochement continu avec appariement structuré et liens vers les preuves.",
+            b3: "Une automatisation qui réduit les reprises manuelles et la double saisie.",
+            b4: "Pistes d'audit sur les modifications, les validations et les actions de rapprochement.",
+            b5: "Des données cohérentes entre Trésorerie, Dépenses, Banque, Projets et Départements.",
+          },
+          kpis: {
+            k1: "Délai de clôture et taux d'achèvement du rapprochement.",
+            k2: "Volume d'exceptions par catégorie et délai de résolution.",
+            k3: "Cohérence de la classification (part inconnue ou non affectée).",
+          },
+          controlNote: "La préparation à l'audit est intégrée aux primitives du système : rôles, historique, preuves et classification cohérente.",
+        },
+        profitability: {
+          title: "Visibilité sur la rentabilité des initiatives et des équipes",
+          desc: "Mesurez la rentabilité et la contribution par projet et par département, et pas seulement au niveau global de l'entreprise. Faites de la responsabilité une boucle opérationnelle mesurable.",
+          chip1: "Projets",
+          chip1Href: "/products/projects",
+          chip2: "Départements",
+          chip2Href: "/products/departments",
+          chip3: "Reporting et KPI",
+          chip3Href: "#workflow-reporting-kpis",
+          bullets: {
+            b1: "Coûts et revenus affectés aux initiatives avec une responsabilité cohérente.",
+            b2: "Budgets et engagements des départements reliés à la gouvernance opérationnelle.",
+            b3: "Vue de la marge et de la contribution par projet, par équipe et par période.",
+            b4: "Suivi des écarts et du burn pour éclairer les décisions de priorisation et de ressourcement.",
+            b5: "Des KPI qui relient la réalité de la livraison aux résultats financiers.",
+          },
+          kpis: {
+            k1: "Tendance de la marge projet et du burn rate par initiative.",
+            k2: "Écart budgétaire par département avec facteurs explicatifs.",
+            k3: "Complétude de l'affectation (pourcentage attribué) sur l'ensemble des mouvements.",
+          },
+          controlNote: "La responsabilité passe à l'échelle lorsque chaque mouvement a un responsable d'équipe et un contexte d'initiative, et pas seulement une étiquette de catégorie.",
+        },
+        connectedOps: {
+          title: "Des opérations connectées : stock, revenus et trésorerie",
+          desc: "Cessez de traiter les systèmes opérationnels comme séparés de la finance. Reliez les mouvements de stock et les coûts à la marge, connectez le pipeline CRM aux entrées attendues et gardez l'ensemble cohérent grâce à la structure du grand livre.",
+          chip1: "Stock",
+          chip1Href: "/products/inventory",
+          chip2: "CRM",
+          chip2Href: "/products/crm",
+          chip3: "Grand livre",
+          chip3Href: "/products/ledger",
+          bullets: {
+            b1: "Mouvements de stock liés aux coûts et à la valorisation pour une visibilité réelle sur la marge.",
+            b2: "Les données opérationnelles deviennent des signaux de planification pour les achats et le calendrier de trésorerie.",
+            b3: "Attentes du pipeline de revenus traduites en hypothèses de trésorerie et en scénarios.",
+            b4: "Une classification ancrée dans le grand livre maintient la cohérence financière des données opérationnelles.",
+            b5: "La responsabilité et les preuves partagées réduisent les litiges et les reprises entre équipes.",
+          },
+          kpis: {
+            k1: "Rotation des stocks, démarque et tendance de la fiabilité du stock.",
+            k2: "Couverture des entrées attendues et conversion par étape du pipeline.",
+            k3: "Impact sur la marge des changements de valorisation et d'opérations.",
+          },
+          controlNote: "Des opérations connectées exigent une classification et une responsabilité cohérentes, afin que chaque événement opérationnel se traduise clairement en résultat financier.",
+        },
+      },
+    },
+    workflowsDeep: {
+      title: "Des flux de travail qui gardent la boucle fermée",
+      subtitle: "Ces flux transforment les modules en un système opérationnel répétable : rapprocher en continu, automatiser la classification et piloter par des KPI qui guident l'exécution.",
+      items: {
+        reconciliation: {
+          title: "Rapprochement",
+          desc: "Reliez l'intention planifiée aux événements d'exécution, joignez les preuves et traitez les exceptions en continu — la clôture devient une routine.",
+          point1: "Appariement structuré par compte, contrepartie, fenêtre de dates et type de mouvement.",
+          point2: "Flux d'exceptions : les éléments non planifiés ou discordants sont visibles, attribués et résolus.",
+          point3: "Preuves et historique d'audit : les modifications sont suivies et consultables.",
+        },
+        accountingAutomation: {
+          title: "Automatisation comptable",
+          desc: "Réduisez le travail manuel en standardisant la classification et en gardant des données cohérentes dans chaque module.",
+          point1: "Règles ancrées dans le grand livre : la classification est appliquée au moment de la création des données.",
+          point2: "Moins de double saisie : des primitives partagées entre Trésorerie, Dépenses, Banque, Projets et Départements.",
+          point3: "Une structure de reporting cohérente dans le temps et entre les équipes, avec pistes d'audit.",
+        },
+        reportingKpis: {
+          title: "Reporting et KPI",
+          desc: "Mesurez ce qui fait avancer l'entreprise : précision, vitesse, gouvernance et rentabilité — par responsable et par structure opérationnelle.",
+          point1: "Des tableaux de bord construits à partir des primitives opérationnelles, pas de tableurs montés à la main.",
+          point2: "Des KPI qui relient les résultats aux responsabilités (équipes, projets, départements).",
+          point3: "Visibilité sur les tendances : écarts, retard, conversion et complétude de l'affectation dans le temps.",
+        },
+      },
+    },
+    rollout: {
+      title: "Comment les équipes le déploient",
+      subtitle: "Spifex est conçu pour une adoption modulaire. Commencez par la structure, puis connectez l'exécution et le rapprochement pour que le reporting en découle naturellement.",
+      steps: {
+        connect: {
+          title: "Connecter les sources de données",
+          desc: "Centralisez les comptes et les données opérationnelles (banque, fournisseurs, pipeline, signaux de stock) pour que les événements financiers soient capturés de manière cohérente.",
+        },
+        structure: {
+          title: "Définir la structure financière",
+          desc: "Mettez en place le plan comptable, la classification, les départements, les projets et les responsabilités pour que le système reste cohérent à mesure que les volumes augmentent.",
+        },
+        operate: {
+          title: "Exécuter les flux avec des contrôles",
+          desc: "Utilisez validations, règlements, transferts et rapprochement comme des flux de travail, avec des politiques et des exceptions visibles par responsable.",
+        },
+        optimize: {
+          title: "Optimiser avec les KPI",
+          desc: "Mesurez la précision, la vitesse et la rentabilité. Améliorez les facteurs d'écart, réduisez le délai de clôture et affinez les règles de gouvernance.",
+        },
+      },
+      ctaPrimary: "Voir les tarifs",
+      ctaSecondary: "Créer un compte",
+    },
+    bottom: {
+      title: "Rendez la finance opérationnelle",
+      subtitle: "Remplacez les silos isolés par une couche opérationnelle unique pour la planification, l'exécution, le rapprochement et les décisions pilotées par les KPI.",
+      ctaPricing: "Voir les tarifs",
+      ctaSignup: "Créer un compte",
+    },
+  },
+} as const;
 
 export default fr;

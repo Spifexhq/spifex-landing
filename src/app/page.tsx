@@ -31,6 +31,7 @@ import Hero from "@/components/home/Hero";
 import { DASHBOARD_URLS } from "@/content/navigation";
 import { PRODUCT_LINKS } from "@/content/products";
 import { getServerI18n } from "@/i18n/server";
+import { UI_LABELS } from "@/i18n/ui-labels";
 import { pageMetadata } from "@/lib/seo/metadata";
 import {
   faqSchema,
@@ -65,7 +66,7 @@ const PRODUCT_ICONS = {
 } as const;
 
 export default async function HomePage() {
-  const { t } = await getServerI18n();
+  const { t, locale } = await getServerI18n();
   const products = PRODUCT_LINKS;
   const faqItems = FAQ_KEYS.map((key) => ({
     question: t(`homeV2.faq.items.${key}.q`),
@@ -257,7 +258,7 @@ export default async function HomePage() {
                   key={product.key}
                   icon={IconComponent}
                   title={t(`products.items.${product.key}.title`)}
-                  description={product.summary}
+                  description={t(`products.items.${product.key}.desc`)}
                   href={product.href}
                 />
               );
@@ -417,7 +418,7 @@ export default async function HomePage() {
             <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--teal)]">
-                  Start with clarity
+                  {UI_LABELS[locale].finalCtaEyebrow}
                 </p>
                 <h2 className="text-balance mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">
                   {t("homeV2.finalCta.title")}

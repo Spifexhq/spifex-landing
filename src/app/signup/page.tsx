@@ -16,7 +16,13 @@ import type { ApiErrorBody } from "@/lib/api/types";
 import { useAutoCountry } from "@/lib/location/getCountryFromLocale";
 import { currencyForCountry } from "@/lib/location/billing-currency";
 import { getCountries, type CountryOption } from "@/lib/location/countries";
-import { getCurrencies, type CurrencyOption } from "@/lib/currency/currencies";
+import {
+  LOCALE_META,
+  SUPPORTED_LOCALES,
+  type Locale,
+} from "@/lib/location/markets";
+import { useI18n, useLocale, useT } from "@/components/i18n/I18nProvider";
+import { Lock } from "lucide-react";
 import {
   setAccessToken,
   setOrgExternalId,
@@ -36,10 +42,9 @@ import {
 } from "@/lib/analytics/meta";
 
 type Step = 1 | 2 | 3 | 4 | 5;
-type AppLanguage = "en" | "pt" | "fr" | "de";
 
 type LanguageOption = {
-  value: AppLanguage;
+  value: Locale;
   label: string;
 };
 
@@ -53,12 +58,10 @@ type Snack =
 const MAX_RESEND_ATTEMPTS = 2;
 const RESEND_COUNTDOWN_SECONDS = 30;
 
-const LANGUAGE_OPTIONS: LanguageOption[] = [
-  { value: "en", label: "English" },
-  { value: "pt", label: "Português" },
-  { value: "fr", label: "Français" },
-  { value: "de", label: "Deutsch" },
-];
+const LANGUAGE_OPTIONS: LanguageOption[] = SUPPORTED_LOCALES.map((code) => ({
+  value: code,
+  label: LOCALE_META[code].nativeName,
+}));
 
 function normalizeCountry(value?: string | null): string {
   const v = (value || "").trim().toUpperCase();
@@ -74,11 +77,14 @@ function isPlanCode(value: string | null): value is PlanCode {
   );
 }
 
-function normalizeLanguageFromLocale(localeValue: string): AppLanguage {
-  const raw = (localeValue || "en").toLowerCase();
-  if (raw.startsWith("pt")) return "pt";
-  if (raw.startsWith("fr")) return "fr";
-  if (raw.startsWith("de")) return "de";
+/**
+ * The signup API currently accepts en/pt/fr/de only. UI languages without a
+ * backend counterpart fall back to English for account communications.
+ */
+function toBackendLanguage(locale: Locale): "en" | "pt" | "fr" | "de" {
+  if (locale === "pt" || locale === "pt-BR") return "pt";
+  if (locale === "fr" || locale === "lb") return "fr";
+  if (locale === "de") return "de";
   return "en";
 }
 
@@ -107,9 +113,13 @@ function getApiMessage(err: unknown, fallback: string): string {
 export default function SignupPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const currentLocale = useLocale();
+  const t = useT();
+
+  const { country: siteCountry } = useI18n();
 
   const { country: autoCountryRaw } = useAutoCountry();
-  const autoCountry = normalizeCountry(autoCountryRaw);
+  const autoCountry = normalizeCountry(siteCountry) || normalizeCountry(autoCountryRaw);
 
   const intent = searchParams.get("intent") === "subscribe" ? "subscribe" : "signup";
   const emailFromQuery = searchParams.get("email")?.trim() || "";
@@ -168,13 +178,13 @@ export default function SignupPage() {
   });
 
   const [prefs, setPrefs] = useState<{
-    language: AppLanguage | "";
+    language: Locale | "";
     country: string;
     currency: string;
   }>({
-    language: normalizeLanguageFromLocale(browserLanguage || locale),
+    language: currentLocale,
     country: "",
-    currency: "EUR",
+    currency: "USD",
   });
 
   const [consents, setConsents] = useState({
@@ -193,14 +203,8 @@ export default function SignupPage() {
     [prefs.language]
   );
 
-  const currencies = useMemo<CurrencyOption[]>(
-    () => getCurrencies(prefs.language || "en"),
-    [prefs.language]
-  );
-
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<CountryOption[]>([]);
-  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyOption[]>([]);
 
   useEffect(() => {
     if (!emailFromQuery) return;
@@ -232,16 +236,6 @@ export default function SignupPage() {
   }, [prefs.country, countries]);
 
   useEffect(() => {
-    if (!prefs.currency) {
-      setSelectedCurrency([]);
-      return;
-    }
-
-    const found = currencies.find((item: CurrencyOption) => item.value === prefs.currency);
-    setSelectedCurrency(found ? [found] : []);
-  }, [prefs.currency, currencies]);
-
-  useEffect(() => {
     if (!autoCountry) return;
 
     setPrefs((prev) => {
@@ -249,7 +243,7 @@ export default function SignupPage() {
       return {
         ...prev,
         country: nextCountry,
-        currency: prev.currency || currencyForCountry(nextCountry),
+        currency: currencyForCountry(nextCountry),
       };
     });
   }, [autoCountry]);
@@ -290,25 +284,28 @@ export default function SignupPage() {
   const canResend = resendCountdown === 0 && resendAttempts < MAX_RESEND_ATTEMPTS;
 
   const heading = useMemo(() => {
-    if (step === 4) return "Verify your account";
-    if (step === 5) return "Redirecting to secure checkout";
-    return isPaidIntent
-      ? "Create your account to continue"
-      : "Create your account";
-  }, [step, isPaidIntent]);
+    if (step === 4) return t("signup.verifyTitle");
+    if (step === 5) return t("signup.redirectingTitle");
+    return isPaidIntent ? t("signup.createAccountPaid") : t("signup.createAccount");
+  }, [step, isPaidIntent, t]);
 
   const subheading = useMemo(() => {
     if (step === 4) {
-      return `We sent a 6-digit code to ${form.email}`;
+      return t("signup.codeSentTo", { email: form.email });
     }
     if (step === 5) {
-      return "Preparing your secure checkout...";
+      return t("signup.preparingCheckout");
     }
     if (isPaidIntent && planCode) {
-      return `${productCategory === "personal" ? "Personal" : "Business"} plan selected: ${planCode}. You will start on the Free workspace and continue to secure checkout after verification.`;
+      return t("signup.planSelected", {
+        category: productCategory === "personal" ? t("signup.personal") : t("signup.business"),
+        plan: planCode,
+      });
     }
-    return `Start with a Free ${productCategory === "personal" ? "Personal" : "Business"} workspace.`;
-  }, [step, isPaidIntent, planCode, form.email, productCategory]);
+    return t("signup.startFree", {
+      category: productCategory === "personal" ? t("signup.personal") : t("signup.business"),
+    });
+  }, [step, isPaidIntent, planCode, form.email, productCategory, t]);
 
   const handleInputChange =
     (field: keyof typeof form) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -342,24 +339,24 @@ export default function SignupPage() {
 
   const submitStep1 = async () => {
     if (isStep1Incomplete) {
-      showSnack("Fill all fields.", "warning");
+      showSnack(t("signup.fillAllFields"), "warning");
       return;
     }
 
     const emailCheck = validateEmailFormat(form.email);
     if (!emailCheck.isValid) {
-      showSnack("Invalid email.", "warning");
+      showSnack(t("signup.invalidEmail"), "warning");
       return;
     }
 
     if (form.password !== form.confirmPassword) {
-      showSnack("Passwords do not match.", "warning");
+      showSnack(t("signup.passwordsMismatch"), "warning");
       return;
     }
 
     const passwordCheck = validatePassword(form.password);
     if (!passwordCheck.isValid) {
-      showSnack(passwordCheck.message, "warning");
+      showSnack(t("signup.passwordMin"), "warning");
       return;
     }
 
@@ -370,7 +367,7 @@ export default function SignupPage() {
       const available = Boolean(res.data?.available);
 
       if (!available) {
-        showSnack("This email is already in use.", "warning");
+        showSnack(t("signup.emailInUse"), "warning");
         return;
       }
 
@@ -382,7 +379,7 @@ export default function SignupPage() {
       trackLead({ email: emailCheck.normalized, contentName: "Signup" });
       setStep(2);
     } catch (err) {
-      showSnack(getApiMessage(err, "Could not validate email."), "error");
+      showSnack(getApiMessage(err, t("signup.couldNotValidateEmail")), "error");
     } finally {
       setIsLoading(false);
     }
@@ -390,7 +387,7 @@ export default function SignupPage() {
 
   const submitStep2 = async () => {
     if (isStep2Incomplete) {
-      showSnack("Fill all fields.", "warning");
+      showSnack(t("signup.fillAllFields"), "warning");
       return;
     }
 
@@ -399,7 +396,7 @@ export default function SignupPage() {
 
   const submitStep3 = async () => {
     if (isStep3Incomplete) {
-      showSnack("You must accept the required consents.", "warning");
+      showSnack(t("signup.mustAccept"), "warning");
       return;
     }
 
@@ -415,8 +412,8 @@ export default function SignupPage() {
         workspace_name: productCategory === "personal" ? "Personal workspace" : "Business workspace",
         timezone,
         country: prefs.country,
-        language: prefs.language || undefined,
-        currency: prefs.currency,
+        language: toBackendLanguage(prefs.language || currentLocale),
+        currency: currencyForCountry(prefs.country),
         browser_language: browserLanguage,
         browser_languages: browserLanguages,
         locale,
@@ -432,9 +429,9 @@ export default function SignupPage() {
       setResendCountdown(RESEND_COUNTDOWN_SECONDS);
       setResendAttempts(0);
       setStep(4);
-      showSnack("Verification code sent.", "success");
+      showSnack(t("signup.verificationSent"), "success");
     } catch (err) {
-      showSnack(getApiMessage(err, "Could not start signup."), "error");
+      showSnack(getApiMessage(err, t("signup.couldNotStart")), "error");
     } finally {
       setIsLoading(false);
     }
@@ -444,12 +441,12 @@ export default function SignupPage() {
     const code = verificationCode.trim();
 
     if (!/^\d{6}$/.test(code)) {
-      showSnack("Enter a valid 6-digit code.", "warning");
+      showSnack(t("signup.enterValidCode"), "warning");
       return;
     }
     
     if (!challengeId) {
-      showSnack("Verification challenge is missing.", "error");
+      showSnack(t("signup.missingChallenge"), "error");
       return;
     }
 
@@ -467,7 +464,7 @@ export default function SignupPage() {
       const userId = verifyRes.data?.user?.id || "";
 
       if (!access) {
-        showSnack("Missing access token after verification.", "error");
+        showSnack(t("signup.missingAccess"), "error");
         return;
       }
 
@@ -496,13 +493,13 @@ export default function SignupPage() {
           return;
         }
 
-        showSnack("Could not redirect to checkout.", "error");
+        showSnack(t("signup.couldNotRedirect"), "error");
         return;
       }
 
       router.push(`/signup/success?plan=${planCode ?? freePlanCode}`);
     } catch (err) {
-      showSnack(getApiMessage(err, "Invalid or expired verification code."), "error");
+      showSnack(getApiMessage(err, t("signup.invalidCode")), "error");
     } finally {
       setIsLoading(false);
     }
@@ -516,9 +513,9 @@ export default function SignupPage() {
       await api.signUpResendCode({ challenge_id: challengeId });
       setResendAttempts((prev) => prev + 1);
       setResendCountdown(RESEND_COUNTDOWN_SECONDS);
-      showSnack("Code sent again.", "success");
+      showSnack(t("signup.codeSentAgain"), "success");
     } catch (err) {
-      showSnack(getApiMessage(err, "Could not resend code."), "error");
+      showSnack(getApiMessage(err, t("signup.couldNotResendCode")), "error");
     } finally {
       setIsLoading(false);
     }
@@ -574,11 +571,11 @@ export default function SignupPage() {
                 <div className="space-y-4">
                   {!paidPlan && (
                     <div>
-                      <p className="text-xs font-medium text-slate-600">Workspace type</p>
+                      <p className="text-xs font-medium text-slate-600">{t("signup.workspaceType")}</p>
                       <div
                         className="mt-2 grid grid-cols-2 gap-1 rounded-xl border border-slate-200 bg-slate-50 p-1"
                         role="group"
-                        aria-label="Workspace type"
+                        aria-label={t("signup.workspaceType")}
                       >
                         {(["business", "personal"] as const).map((key) => (
                           <button
@@ -589,28 +586,28 @@ export default function SignupPage() {
                             disabled={isLoading}
                             className={[
                               "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
-                              "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300",
+                              "focus:outline-none",
                               productCategory === key
                                 ? "bg-white text-slate-900 shadow-sm"
                                 : "text-slate-500 hover:text-slate-900",
                             ].join(" ")}
                           >
-                            {key === "personal" ? "Personal" : "Business"}
+                            {key === "personal" ? t("signup.personal") : t("signup.business")}
                           </button>
                         ))}
                       </div>
                       <p className="mt-2 text-xs leading-5 text-slate-500">
                         {productCategory === "personal"
-                          ? "Personal workspace for your own accounts, budgets and goals."
-                          : "Business workspace for team cash flow, banking, settlements and reporting."}
+                          ? t("signup.personalDesc")
+                          : t("signup.businessDesc")}
                       </p>
                     </div>
                   )}
 
                   <Input
                     kind="text"
-                    label="Full name"
-                    placeholder="Full name"
+                    label={t("signup.fullName")}
+                    placeholder={t("signup.fullName")}
                     type="text"
                     value={form.name}
                     onChange={handleInputChange("name")}
@@ -621,8 +618,8 @@ export default function SignupPage() {
 
                   <Input
                     kind="text"
-                    label="Email"
-                    placeholder="Email"
+                    label={t("signup.email")}
+                    placeholder={t("signup.email")}
                     type="email"
                     value={form.email}
                     onChange={handleInputChange("email")}
@@ -635,8 +632,8 @@ export default function SignupPage() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Input
                       kind="text"
-                      label="Password"
-                      placeholder="Password"
+                      label={t("signup.password")}
+                      placeholder={t("signup.password")}
                       type="password"
                       value={form.password}
                       onChange={handleInputChange("password")}
@@ -648,8 +645,8 @@ export default function SignupPage() {
 
                     <Input
                       kind="text"
-                      label="Confirm password"
-                      placeholder="Confirm password"
+                      label={t("signup.confirmPassword")}
+                      placeholder={t("signup.confirmPassword")}
                       type="password"
                       value={form.confirmPassword}
                       onChange={handleInputChange("confirmPassword")}
@@ -665,11 +662,11 @@ export default function SignupPage() {
               {step === 2 && (
                 <div className="space-y-4">
                   <SelectDropdown<LanguageOption>
-                    label="Language"
+                    label={t("signup.language")}
                     items={LANGUAGE_OPTIONS}
                     selected={selectedLanguage}
                     onChange={(items: LanguageOption[]) => {
-                      const next = (items[0]?.value ?? "") as AppLanguage | "";
+                      const next = (items[0]?.value ?? "") as Locale | "";
                       setSelectedLanguage(items);
                       setPrefs((prev) => ({
                         ...prev,
@@ -681,7 +678,7 @@ export default function SignupPage() {
                     singleSelect
                     hideCheckboxes
                     clearOnClickOutside={false}
-                    buttonLabel={selectedLanguage[0]?.label || "Language"}
+                    buttonLabel={selectedLanguage[0]?.label || t("signup.language")}
                     customStyles={{ maxHeight: "260px" }}
                     disabled={isLoading}
                     hideFilter
@@ -689,7 +686,7 @@ export default function SignupPage() {
                   />
 
                   <SelectDropdown<CountryOption>
-                    label="Country"
+                    label={t("signup.country")}
                     items={countries}
                     selected={selectedCountry}
                     onChange={(items: CountryOption[]) => {
@@ -705,34 +702,24 @@ export default function SignupPage() {
                     singleSelect
                     hideCheckboxes
                     clearOnClickOutside={false}
-                    buttonLabel={selectedCountry[0]?.label || "Country"}
+                    buttonLabel={selectedCountry[0]?.label || t("signup.country")}
                     customStyles={{ maxHeight: "260px" }}
                     disabled={isLoading}
                     size="xl"
                   />
 
-                  <SelectDropdown<CurrencyOption>
-                    label="Currency"
-                    items={currencies}
-                    selected={selectedCurrency}
-                    onChange={(items: CurrencyOption[]) => {
-                      const value = items[0]?.value ?? "";
-                      setSelectedCurrency(items);
-                      setPrefs((prev) => ({
-                        ...prev,
-                        currency: value || prev.currency,
-                      }));
-                    }}
-                    getItemKey={(item: CurrencyOption) => item.value}
-                    getItemLabel={(item: CurrencyOption) => item.label}
-                    singleSelect
-                    hideCheckboxes
-                    clearOnClickOutside={false}
-                    buttonLabel={selectedCurrency[0]?.label || "Currency"}
-                    customStyles={{ maxHeight: "220px" }}
-                    disabled={isLoading}
-                    size="xl"
-                  />
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                    <p className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                      <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+                      {t("signup.currency")}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">
+                      {currencyForCountry(prefs.country)}
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                      {t("signup.currencyFixed")}
+                    </p>
+                  </div>
                 </div>
               )}
 
@@ -745,7 +732,7 @@ export default function SignupPage() {
                       disabled={isLoading}
                       required
                     />
-                    <span>I accept the privacy policy.</span>
+                    <span>{t("signup.acceptPrivacy")}</span>
                   </label>
 
                   <label className="flex items-start gap-3">
@@ -755,7 +742,7 @@ export default function SignupPage() {
                       disabled={isLoading}
                       required
                     />
-                    <span>I accept the terms of service.</span>
+                    <span>{t("signup.acceptTerms")}</span>
                   </label>
 
                   <label className="flex items-start gap-3">
@@ -764,7 +751,7 @@ export default function SignupPage() {
                       onChange={handleConsentChange("marketing")}
                       disabled={isLoading}
                     />
-                    <span>I agree to receive marketing communications.</span>
+                    <span>{t("signup.acceptMarketing")}</span>
                   </label>
                 </div>
               )}
@@ -772,16 +759,13 @@ export default function SignupPage() {
               {step === 4 && (
                 <div className="space-y-4">
                   <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-                    We sent a 6-digit code to{" "}
-                    <span className="font-medium text-slate-900">
-                      {form.email}
-                    </span>
+                    {t("signup.codeSentTo", { email: form.email })}
                   </div>
 
                   <Input
                     kind="text"
-                    label="Verification code"
-                    placeholder="Enter 6-digit code"
+                    label={t("signup.verificationCode")}
+                    placeholder={t("signup.codePlaceholder")}
                     type="text"
                     value={verificationCode}
                     onChange={handleVerificationChange}
@@ -798,7 +782,7 @@ export default function SignupPage() {
                       className="text-slate-600 hover:text-slate-900"
                       disabled={isLoading}
                     >
-                      Back
+                      {t("signup.back")}
                     </button>
 
                     <button
@@ -808,10 +792,10 @@ export default function SignupPage() {
                       disabled={isLoading || !canResend}
                     >
                       {resendCountdown > 0
-                        ? `Resend (${resendCountdown}s)`
+                        ? t("signup.resendIn", { seconds: resendCountdown })
                         : resendAttempts >= MAX_RESEND_ATTEMPTS
-                        ? "Resend unavailable"
-                        : "Resend code"}
+                        ? t("signup.resendUnavailable")
+                        : t("signup.resendCode")}
                     </button>
                   </div>
                 </div>
@@ -827,7 +811,7 @@ export default function SignupPage() {
                     disabled={isLoading}
                     className="w-full sm:w-auto"
                   >
-                    Back
+                    {t("signup.back")}
                   </Button>
                 )}
 
@@ -846,16 +830,16 @@ export default function SignupPage() {
                   className="w-full sm:w-auto"
                 >
                   {step === 4
-                    ? "Verify code"
+                    ? t("signup.verifyCode")
                     : step === 3
-                    ? "Send verification code"
-                    : "Continue"}
+                    ? t("signup.sendCode")
+                    : t("signup.continue")}
                 </Button>
               </div>
             </form>
           ) : (
             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-6 text-sm text-slate-700">
-              Preparing your secure checkout…
+              {t("signup.preparingCheckout")}
             </div>
           )}
         </div>

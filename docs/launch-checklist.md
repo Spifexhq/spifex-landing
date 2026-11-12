@@ -17,7 +17,14 @@
   pages and legal pages return 200.
 - [ ] `/pricing?product=personal` and `/pricing?product=business` server-render
   the correct category, prices and currency.
-- [ ] All eight `/products/*` pages return 200 and show the current English
+- [ ] Geo headers map to the expected defaults: PT → Portuguese/EUR, BR →
+  Portuguese (Brazil)/BRL, DE → German/EUR, US → English/USD, SA → Arabic/USD
+  (RTL) and an unlisted country → English/USD.
+- [ ] The language picker changes the UI, persists across reloads, and never
+  changes the currency; `?lang=auto` returns to the country default.
+- [ ] Arabic renders right-to-left without horizontal overflow at 390/768/1440.
+- [ ] Signup shows the detected country currency as read-only.
+- [ ] All eight `/products/*` pages return 200 and show the localized
   product copy and detected-currency plan prices.
 - [ ] The desktop mega menu opens with pointer and keyboard, closes on Escape and
   outside click, and contains no dead anchors.

@@ -98,6 +98,7 @@ Marketing analytics is consent-gated. With no credentials, tracking is a no-op.
 - [Meta Ads readiness](docs/meta-ads.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Spec Kit feature](specs/001-landing-growth/spec.md)
+- [Country language/currency defaults](specs/002-geo-language-currency/spec.md)
 
 ## Notes
 
@@ -107,5 +108,10 @@ Marketing analytics is consent-gated. With no credentials, tracking is a no-op.
 - Pricing comes from the existing Personal/Business Free, Starter and Pro catalog.
 - The Personal/Business toggle updates the URL (`?product=`) without a reload, and
   prices are server-rendered for the detected currency.
+- The default language and currency come from the visitor's country; supported
+  countries are listed in `src/lib/location/markets.ts`. Language can be changed
+  in the picker (`spifex_locale_user` cookie plus local storage) while currency is
+  server-resolved and never user-selectable. `?lang=<locale>` forces a language
+  and `?lang=auto` returns to the country default.
 - Legal content is an operational draft and requires professional review.
 - Purchase events belong in the server-side Stripe checkout completion path.

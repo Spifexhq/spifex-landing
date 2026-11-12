@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 
 import { ProductPage } from "@/components/products/ProductPage";
-import { PRODUCT_PAGE_CONTENT } from "@/content/product-pages";
+import { PRODUCT_PAGE_CONTENT, getProductPageContent } from "@/content/product-pages";
 import { pageMetadata } from "@/lib/seo/metadata";
+import { getServerI18n } from "@/i18n/server";
 
 const content = PRODUCT_PAGE_CONTENT.ledger;
 
-export const metadata: Metadata = pageMetadata({
-  title: content.copy.title,
-  description: content.copy.subtitle,
-  path: content.href,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale } = await getServerI18n();
+  const localized = getProductPageContent("ledger", locale);
+
+  return pageMetadata({
+    title: localized.copy.title,
+    description: localized.copy.subtitle,
+    path: content.href,
+  });
+}
 
 export default function ProductLandingPage() {
   return <ProductPage content={content} />;

@@ -1,4 +1,6 @@
 import type { ProductKey } from "@/content/products";
+import { LOCALIZED_PRODUCT_PAGES } from "@/content/product-page-locales";
+import type { Locale } from "@/lib/location/markets";
 
 export type PreviewStatus = "positive" | "warning" | "neutral";
 
@@ -724,6 +726,24 @@ export const PRODUCT_PAGE_CONTENT: Record<ProductKey, ProductPageContent> = {
   },
 };
 
-export function getProductPageContent(key: ProductKey): ProductPageContent {
-  return PRODUCT_PAGE_CONTENT[key];
+export type LocalizedProductPage = {
+  name: string;
+  preview: ProductPreviewContent;
+  copy: ProductCopy;
+};
+
+export function getProductPageContent(
+  key: ProductKey,
+  locale: Locale = "en",
+): ProductPageContent {
+  const base = PRODUCT_PAGE_CONTENT[key];
+  const localized = LOCALIZED_PRODUCT_PAGES[locale]?.[key];
+  if (!localized) return base;
+
+  return {
+    ...base,
+    name: localized.name || base.name,
+    preview: localized.preview || base.preview,
+    copy: localized.copy || base.copy,
+  };
 }
