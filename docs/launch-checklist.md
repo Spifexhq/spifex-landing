@@ -43,6 +43,9 @@
   category.
 - [ ] Business signup still uses `free`, `starter` and `pro` codes.
 - [ ] `/sitemap.xml` and `/robots.txt` are correct for the production origin.
+- [ ] Search Console: domain verified, sitemap submitted, and each blog URL
+  requested for indexing; no “Discovered/Crawled – currently not indexed” errors.
+- [ ] Blog index links every article (English and localized) in the rendered HTML.
 - [ ] Homepage hero renders its final state with `prefers-reduced-motion`,
   no horizontal overflow at 390/768/1440 and no stock financial imagery.
 - [ ] Canary share shows the 1200×630 Open Graph image.

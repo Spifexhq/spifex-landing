@@ -1,0 +1,141 @@
+---
+title: "Accounts Payable Automation: How to Approve, Pay and Reconcile Faster"
+description: "A practical accounts payable automation guide: invoice intake, approval rules, payment batches, reconciliation and the metrics that prove it works."
+publishedAt: "2026-11-02"
+updatedAt: "2026-11-13"
+author: "Spifex"
+category: "Banking and payments"
+tags: ["Accounts payable", "Automation", "Approvals", "Reconciliation"]
+---
+
+Accounts payable is where cash flow, controls and vendor relationships meet. When it is manual, every step creates friction: invoices arrive in email, approvals happen in chat, payments are keyed into a bank portal, and reconciliation waits until someone has time.
+
+Accounts payable automation is not just about scanning invoices. It is about turning a sequence of handoffs into a controlled workflow with a complete trail.
+
+## Where manual accounts payable breaks
+
+The failure modes are predictable:
+
+- Invoices arrive in different formats and inboxes.
+- Nobody is sure whether an invoice is approved.
+- Duplicate invoices are paid because no one checks the original commitment.
+- Payment runs depend on one person’s calendar.
+- Bank details change without verification.
+- Reconciliation depends on matching by memory.
+- Month-end becomes an investigation instead of a review.
+
+Each problem is manageable in isolation. Together they create late payments, duplicate payments and weak audit evidence.
+
+## The automation stack
+
+A practical accounts payable workflow has five stages.
+
+### 1. Intake
+
+Standardize how invoices enter the business:
+
+- A single intake channel or a small number of approved channels.
+- Required fields: vendor, invoice number, amount, currency, due date and purchase context.
+- Duplicate detection against vendor and invoice number.
+- Attachments stored with the record, not in an inbox.
+
+The goal is one record per invoice, created once.
+
+### 2. Coding and ownership
+
+Every invoice needs:
+
+- The legal entity or workspace it belongs to.
+- The ledger account or category.
+- A department or project owner.
+- The approver based on amount, vendor or cost type.
+
+Coding at intake prevents the month-end scramble. It also makes budget-versus-actual reporting possible.
+
+### 3. Approval
+
+Approval rules should be explicit:
+
+- Who can approve which amount.
+- Who can approve a new vendor or a change in bank details.
+- Who handles exceptions and urgent payments.
+- What evidence is required before approval.
+
+Use role-based approvals and separation of duties. The person who creates a vendor should not be the only person who approves and pays it.
+
+### 4. Payment execution
+
+Batch payments by run date and payment method. Before release:
+
+- Confirm approved invoices only.
+- Verify payee bank details for new or changed vendors.
+- Check available cash against the forecast.
+- Record the payment event against the original invoice or commitment.
+
+Payment execution should produce a traceable event, not just a bank file.
+
+### 5. Reconciliation
+
+Match bank movements to payment records and invoices. Handle:
+
+- Partial payments
+- Short payments and deductions
+- Failed or returned payments
+- FX differences
+- Payments that were combined into one bank transfer
+
+Reconciliation is what closes the loop between accounts payable and the bank.
+
+## Approval rules that work
+
+A simple tiered model is enough for many businesses:
+
+| Amount | Approval |
+| --- | --- |
+| Under 1,000 | Department owner |
+| 1,000–10,000 | Finance manager |
+| 10,000–50,000 | Finance lead plus department head |
+| Above 50,000 | Two approvers, including an owner or admin |
+| New vendor or bank change | Separate verification step |
+
+Adjust the numbers to your risk profile. The important part is that the rules exist, are enforced in the workflow, and are visible to the people using them.
+
+## Metrics that prove AP automation is working
+
+Track outcomes, not just activity:
+
+- **Invoice cycle time:** from receipt to approval and payment.
+- **On-time payment rate:** percentage paid by the agreed due date.
+- **Duplicate payment rate:** should trend toward zero.
+- **Exception rate:** invoices requiring manual intervention.
+- **Approval time by team:** where the queue actually is.
+- **Reconciliation lag:** days to match payments to bank movements.
+- **Early-payment discount captured:** value recovered through better timing.
+
+## Implementation checklist
+
+1. Map your current AP process end to end.
+2. Standardize invoice intake and required fields.
+3. Define approval tiers and exception paths.
+4. Clean the vendor master and bank-detail verification process.
+5. Move payment runs to a fixed schedule.
+6. Reconcile weekly, not monthly.
+7. Review cycle time and exceptions monthly.
+
+## How Spifex supports accounts payable
+
+Spifex connects spend, banking and reconciliation in one workspace:
+
+- Record planned outgoing entries with owners and categories.
+- Approve and settle entries fully or in parts.
+- Manage vendor payments and transfers with traceable events.
+- Reconcile bank movements against planned and executed records.
+- Report on outstanding, settled and exception items.
+
+Explore [Banking & Payments](/products/banking-payments) and [Spend & Settlements](/products/spend-settlements).
+
+## Next step
+
+Pick the one part of accounts payable that creates the most rework today, usually approval or reconciliation, and standardize it first.
+
+[Start free with Spifex](/signup?intent=signup&plan=free) to connect approvals, payments and reconciliation without another disconnected tool.

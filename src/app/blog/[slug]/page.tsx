@@ -55,7 +55,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const published = post.meta.publishedAt || post.meta.updatedAt;
   return pageMetadata({
-    title: post.meta.seoTitle || post.meta.title,
+    // Use the article's actual title so the document title matches the H1 and
+    // the phrase readers search for.
+    title: post.meta.title,
     description: post.meta.description ?? "Spifex insights on financial operations, cash flow and governance.",
     path: `/blog/${slug}`,
     type: "article",
@@ -86,6 +88,18 @@ export default async function BlogPostPage({ params }: PageProps) {
   const published = post.meta.publishedAt || post.meta.updatedAt;
   const displayDate = formatDate(published);
   const path = `/blog/${slug}`;
+
+  const allPosts = await listMdxMeta("blog", "en");
+  const related = allPosts
+    .filter((candidate) => candidate.slug !== slug)
+    .map((candidate) => {
+      const sharedTags = (candidate.tags ?? []).filter((tag) => (post.meta.tags ?? []).includes(tag)).length;
+      const sameCategory = candidate.category === post.meta.category ? 1 : 0;
+      return { candidate, score: sharedTags * 2 + sameCategory };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((entry) => entry.candidate);
 
   return (
     <>
@@ -190,6 +204,31 @@ export default async function BlogPostPage({ params }: PageProps) {
               </Link>
             </aside>
           </div>
+
+          {related.length > 0 ? (
+            <section className="mt-14 border-t border-(--line) pt-8">
+              <h2 className="text-2xl font-semibold tracking-[-0.03em] text-(--ink)">Related reading</h2>
+              <div className="mt-5 grid gap-3 md:grid-cols-3">
+                {related.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/blog/${item.slug}`}
+                    className="rounded-2xl border border-(--line) bg-white p-5 transition-colors hover:border-(--ink)/20 hover:bg-(--canvas)"
+                  >
+                    {item.category ? (
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-(--brand-strong)">
+                        {item.category}
+                      </p>
+                    ) : null}
+                    <h3 className="mt-2 text-sm font-semibold leading-5 text-(--ink)">{item.title}</h3>
+                    {item.description ? (
+                      <p className="mt-2 line-clamp-3 text-xs leading-5 text-(--muted)">{item.description}</p>
+                    ) : null}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </Container>
       </article>
     </>

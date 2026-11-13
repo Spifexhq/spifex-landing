@@ -1,0 +1,121 @@
+---
+title: "AI for Finance Teams: Safe Use Cases, Read-Only Access and MCP"
+description: "Where AI helps finance teams, which use cases are safe, and how read-only access, MCP and permissions keep financial data under control."
+publishedAt: "2026-11-12"
+updatedAt: "2026-11-13"
+author: "Spifex"
+category: "AI connections"
+tags: ["AI", "MCP", "Finance teams", "Security", "Read-only access"]
+---
+
+AI assistants are becoming part of everyday finance work: summarizing cash movements, answering questions about outstanding payments, and helping teams find the right report. The useful question is no longer whether finance teams will use AI. It is which use cases are safe and how access should be controlled.
+
+For financial data, convenience without permissions is a liability. A useful AI setup starts with a narrow scope, read-only access and a clear audit trail.
+
+## Where AI helps finance teams
+
+The best early use cases are analytical, repetitive and easy to verify:
+
+- Summarize this week’s cash movements.
+- List overdue receivables by customer.
+- Explain the largest variances from the plan.
+- Find transactions in a category or date range.
+- Draft a first-pass month-end summary.
+- Explain a report or metric definition.
+
+These tasks benefit from speed and do not require the assistant to change financial records.
+
+## Use cases that need more control
+
+Be cautious with anything that can move money or change records:
+
+- Creating or editing payment requests
+- Approving payments
+- Changing payee bank details
+- Posting journal entries
+- Deleting or reclassifying transactions
+- Sending instructions to a bank
+
+These workflows need human approval, segregation of duties and a complete audit trail. They should not be delegated to a general-purpose assistant without strong controls.
+
+## Read-only access is the right default
+
+Read-only access means the assistant can retrieve permitted information but cannot create, edit, delete, settle or transfer anything.
+
+For finance teams, this is often the safest starting point because:
+
+- The blast radius of a mistake is smaller.
+- The permission model is easier to explain.
+- Analysts can still get useful answers.
+- Human approval remains in the execution path.
+
+Read-only is not a substitute for access control. The assistant should only see the workspaces and records the user is allowed to access.
+
+## What is MCP?
+
+MCP, the Model Context Protocol, is a standard way to connect AI tools to external systems through defined capabilities. Instead of building a custom integration for every assistant, MCP exposes a structured interface for tools and resources.
+
+For finance, three questions matter:
+
+1. **What can the assistant access?** The available tools and resources are explicit.
+2. **How is access granted?** The connection uses an authorization flow.
+3. **What can the assistant do?** Capabilities can be limited, such as read-only retrieval.
+
+MCP makes the connection model more legible, but it does not remove the need for permissions, revocation and monitoring.
+
+## A safe rollout checklist
+
+### 1. Pick a narrow use case
+
+Start with one read-only question, such as “summarize cash flow for the current month.” Do not start with payment execution.
+
+### 2. Define the data scope
+
+Decide which workspaces, modules and date ranges are in scope. Document what is excluded.
+
+### 3. Use explicit scopes
+
+Prefer a scope such as `cashflow:read` over broad account access. Make the scope visible to the user who authorizes the connection.
+
+### 4. Require user-level authorization
+
+Each user should authorize their own connection. Avoid shared credentials or a single connector with access to everything.
+
+### 5. Make revocation easy
+
+Users and admins should be able to revoke access immediately. Test the revocation path before rollout.
+
+### 6. Review the audit trail
+
+Log who connected what, when, and which scope was granted. Review connector activity regularly.
+
+### 7. Test with known answers
+
+Ask questions where you already know the answer. Verify totals, date ranges and category mapping before trusting summaries.
+
+## Common mistakes
+
+- Giving an assistant write access for a read-only use case.
+- Using shared API keys instead of user-level authorization.
+- Connecting a personal account to a shared workspace without review.
+- Allowing attachments or notes into responses without a data policy.
+- Assuming the model’s summary is correct without reconciliation.
+- Forgetting to revoke access when someone leaves.
+
+## How Spifex approaches AI connections
+
+Spifex supports read-only AI connections for assistants such as ChatGPT or Claude through MCP-based integrations. The design keeps the connector inside the workspace permission model:
+
+- Read-only scope for cash flow data
+- Per-user authorization
+- Revocable access
+- Workspace-scoped data boundaries
+- No ability to create, edit, settle or transfer
+
+Read the [AI connections documentation](/docs/ai-connections) and the [read-only MCP blog post](/blog/ai-financial-assistant-mcp-read-only).
+
+## Next step
+
+Write down the first three questions you want an assistant to answer. If any of them require changing data, keep that workflow human-controlled for now.
+
+[Start free with Spifex](/signup?intent=signup&plan=free) and test a read-only question against your own workspace.

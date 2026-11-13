@@ -1,0 +1,126 @@
+---
+title: "Payment Approval Workflow: How to Prevent Fraud and Speed Up Payments"
+description: "Design a payment approval workflow with roles, thresholds, segregation of duties and an audit trail that speeds up payments without adding risk."
+publishedAt: "2026-11-08"
+updatedAt: "2026-11-13"
+author: "Spifex"
+category: "Financial controls"
+tags: ["Approvals", "Payments", "Fraud prevention", "Financial controls"]
+---
+
+A payment approval workflow is a control, but it is also a product decision. Done badly, it creates queues, bypasses and frustration. Done well, it makes the right payments faster because everyone knows what happens next.
+
+The goal is not to approve everything. The goal is to make risky payments visible before money moves.
+
+## Start with the risks
+
+Payment fraud and error usually come from a small set of failure modes:
+
+- A new payee or changed bank details.
+- A payment above the approver’s authority.
+- One person creating, approving and releasing a payment.
+- Duplicate invoices or duplicate payment requests.
+- Urgent payments that skip the normal process.
+- Approvals given in chat without evidence.
+- No record of who changed what.
+
+Design controls around those risks, not around a generic checklist.
+
+## Define roles clearly
+
+Separate permissions into distinct actions:
+
+| Action | Typical owner |
+| --- | --- |
+| Create a payment request | Requester, department owner |
+| Approve a payment | Manager, finance lead |
+| Release a payment | Finance operator, admin |
+| Change a payee or bank detail | Admin with separate verification |
+| Override or expedite | Owner or finance lead, with reason |
+
+The critical rule is segregation of duties: the person who creates the payee or request should not be the only person who approves and releases it.
+
+## Use thresholds, not one approval path
+
+A tiered model keeps small payments fast and large payments controlled:
+
+| Amount | Approval path |
+| --- | --- |
+| Under 1,000 | Department owner |
+| 1,000–10,000 | Finance manager |
+| 10,000–50,000 | Finance lead plus department head |
+| Above 50,000 | Two approvers, including an owner or admin |
+
+Set thresholds based on your risk tolerance and cash position. Review them quarterly.
+
+## Build the workflow around evidence
+
+Each payment request should carry:
+
+- The business purpose
+- The payee and bank account
+- The amount and currency
+- The related invoice, contract or planned entry
+- The project or department owner
+- The approval history
+
+If the evidence is missing, the request is not ready. This prevents the common pattern where the approver becomes the person who fixes the paperwork.
+
+## Handle exceptions without bypassing controls
+
+Urgent payments are a reality. The answer is an explicit exception path, not an informal shortcut:
+
+- Who can approve an expedited payment
+- What evidence is required after the fact
+- Which limits apply
+- How the exception is reported
+
+Exceptions should be visible in reporting. A high exception rate is a signal that the standard process is too slow or unclear.
+
+## Protect payee changes
+
+Changing a supplier’s bank details is one of the highest-risk events in accounts payable. Require:
+
+- A separate verification step
+- Confirmation through a known channel
+- A second approver for the change
+- A record of the old and new details
+
+Do not let the same request both change the bank details and release a payment.
+
+## Metrics for payment approval
+
+- **Approval cycle time:** request to approval.
+- **Payment cycle time:** approval to release.
+- **Exception rate:** payments that bypass the standard path.
+- **Rework rate:** requests returned for missing information.
+- **Segregation-of-duties violations:** should be zero.
+- **Payment success rate:** executed without failure or correction.
+
+## Common design mistakes
+
+- Approving in chat with no record.
+- One approver for every payment, regardless of size.
+- An “urgent” channel that bypasses all controls.
+- Letting requester and approver be the same person for sensitive payments.
+- No separate control for new payees.
+- Approvals that do not show what is being approved.
+- No visibility into pending payments.
+
+## How Spifex supports controlled payments
+
+Spifex connects payment requests, approvals, execution and reconciliation:
+
+- Role-based approvals with workspace-scoped permissions
+- Planned entries tied to settlements and transfers
+- Partial settlements and exception handling
+- Audit history for changes and approvals
+- Reconciliation back to bank movements
+
+Explore [Banking & Payments](/products/banking-payments) and [Governance](/products/departments).
+
+## Next step
+
+Write down your approval tiers and the one rule that cannot be bypassed. Then make the workflow enforce it.
+
+[Start free with Spifex](/signup?intent=signup&plan=free) and keep approvals, payment execution and reconciliation in one auditable flow.
