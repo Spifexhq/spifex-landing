@@ -26,7 +26,7 @@ export default async function DocsHubPage({
   const { q } = await searchParams;
 
   return (
-    <main className="bg-[var(--canvas)] py-14 sm:py-16">
+    <main className="bg-(--canvas) py-14 sm:py-16">
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -35,19 +35,19 @@ export default async function DocsHubPage({
       />
       <Container>
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">
-            <BookOpen size={13} className="text-[var(--brand)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">
+            <BookOpen size={13} className="text-(--brand)" aria-hidden="true" />
             {t("docsPage.eyebrow")}
           </span>
-          <h1 className="text-balance mt-5 text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-5xl">
+          <h1 className="text-balance mt-5 text-4xl font-semibold tracking-[-0.03em] text-(--ink) sm:text-5xl">
             {t("docsPage.title")}
           </h1>
-          <p className="text-pretty mt-4 text-lg leading-7 text-[var(--muted)]">{t("docsPage.subtitle")}</p>
+          <p className="text-pretty mt-4 text-lg leading-7 text-(--muted)">{t("docsPage.subtitle")}</p>
         </div>
 
         <div className="mt-10 max-w-4xl">
           <DocsSearch initialQuery={q ?? ""} />
-          <p className="mt-6 text-xs leading-5 text-[var(--muted)]">{t("docsPage.reviewNote")}</p>
+          <p className="mt-6 text-xs leading-5 text-(--muted)">{t("docsPage.reviewNote")}</p>
         </div>
       </Container>
     </main>

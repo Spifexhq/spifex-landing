@@ -271,7 +271,7 @@ export const DOCS: DocArticle[] = [
       {
         heading: "What the connector can do",
         body: [
-          "The Spifex MCP connector is read-only. It exposes workspace listing, cash-flow rows, summaries and categories with the cashflow:read scope. It cannot create, edit, delete, settle or transfer anything.",
+          "The Spifex MCP connector is read-only. It exposes workspace listing, cash-flow rows, summaries and categories with the spifex:access scope. It cannot create, edit, delete, settle or transfer anything.",
           "The assistant never receives your Spifex password. Authorization happens on the Spifex consent page and can be revoked from Settings → AI connections.",
         ],
       },

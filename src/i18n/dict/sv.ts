@@ -289,7 +289,7 @@ const sv = {
       subtitle:
         "Anslut Spifex via en skrivskyddad MCP-anslutning. Din assistent kan lista arbetsytor, granska transaktioner, sammanfatta summor och mappa kategorier – men kan inte skapa, redigera, avräkna eller överföra något.",
       bullets: {
-        readOnly: "Skrivskyddat omfång: cashflow:read",
+        readOnly: "Skrivskyddat omfång: spifex:access",
         oauth: "OAuth 2.1 per användare med PKCE",
         revoke: "Återkalla åtkomst direkt i Inställningar",
         privacy: "Anteckningar, observationer och bilagor ingår inte i svaren",
@@ -338,7 +338,7 @@ const sv = {
         },
         ai: {
           q: "Kan AI-assistenten ändra min data?",
-          a: "Nej. Anslutningen i v1 är skrivskyddad och begär endast omfånget cashflow:read. Den kan inte skapa, redigera, radera, avräkna eller överföra något.",
+          a: "Nej. Anslutningen i v1 är skrivskyddad och begär endast omfånget spifex:access. Den kan inte skapa, redigera, radera, avräkna eller överföra något.",
         },
         security: {
           q: "Hur isoleras data mellan arbetsytor?",

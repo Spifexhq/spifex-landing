@@ -1869,7 +1869,7 @@ solutionsPage: {
       subtitle:
         "Connect Spifex through a read-only MCP connection. Your assistant can list workspaces, inspect transactions, summarize totals and map categories — without the ability to create, edit, settle or transfer anything.",
       bullets: {
-        readOnly: "Read-only scope: cashflow:read",
+        readOnly: "Read-only scope: spifex:access",
         oauth: "Per-user OAuth 2.1 with PKCE",
         revoke: "Revoke access instantly in Settings",
         privacy: "Notes, observations and attachments stay out of responses",
@@ -1918,7 +1918,7 @@ solutionsPage: {
         },
         ai: {
           q: "Can the AI assistant change my data?",
-          a: "No. The v1 connector is read-only and requests only the cashflow:read scope. It cannot create, edit, delete, settle or transfer anything.",
+          a: "No. The v1 connector is read-only and requests only the spifex:access scope. It cannot create, edit, delete, settle or transfer anything.",
         },
         security: {
           q: "How is workspace data isolated?",

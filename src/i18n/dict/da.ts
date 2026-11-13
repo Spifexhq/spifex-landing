@@ -283,7 +283,7 @@
       subtitle:
         "Forbind Spifex via en skrivebeskyttet MCP-forbindelse. Din assistent kan liste arbejdsområder, gennemgå posteringer, opsummere totaler og kortlægge kategorier — uden at kunne oprette, redigere, afregne eller overføre noget.",
       bullets: {
-        readOnly: "Skrivebeskyttet omfang: cashflow:read",
+        readOnly: "Skrivebeskyttet omfang: spifex:access",
         oauth: "OAuth 2.1 pr. bruger med PKCE",
         revoke: "Tilbagekald adgang med det samme i Indstillinger",
         privacy: "Noter, observationer og bilag indgår ikke i svarene",
@@ -332,7 +332,7 @@
         },
         ai: {
           q: "Kan AI-assistenten ændre mine data?",
-          a: "Nej. Connector v1 er skrivebeskyttet og anmoder kun om omfanget cashflow:read. Den kan ikke oprette, redigere, slette, afregne eller overføre noget.",
+          a: "Nej. Connector v1 er skrivebeskyttet og anmoder kun om omfanget spifex:access. Den kan ikke oprette, redigere, slette, afregne eller overføre noget.",
         },
         security: {
           q: "Hvordan isoleres data i arbejdsområder?",

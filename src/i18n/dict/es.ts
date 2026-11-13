@@ -268,7 +268,7 @@
       title: "Pregunta a ChatGPT o Claude por tu flujo de caja",
       subtitle: "Conecta Spifex mediante una conexión MCP de solo lectura. Tu asistente puede listar espacios de trabajo, inspeccionar transacciones, resumir totales y clasificar categorías, sin poder crear, editar, liquidar ni transferir nada.",
       bullets: {
-        readOnly: "Ámbito de solo lectura: cashflow:read",
+        readOnly: "Ámbito de solo lectura: spifex:access",
         oauth: "OAuth 2.1 por usuario con PKCE",
         revoke: "Revoca el acceso al instante en Ajustes",
         privacy: "Las notas, observaciones y adjuntos quedan fuera de las respuestas",
@@ -316,7 +316,7 @@
         },
         ai: {
           q: "¿El asistente de IA puede modificar mis datos?",
-          a: "No. El conector v1 es de solo lectura y solo solicita el ámbito cashflow:read. No puede crear, editar, eliminar, liquidar ni transferir nada.",
+          a: "No. El conector v1 es de solo lectura y solo solicita el ámbito spifex:access. No puede crear, editar, eliminar, liquidar ni transferir nada.",
         },
         security: {
           q: "¿Cómo se aíslan los datos del espacio de trabajo?",

@@ -96,19 +96,19 @@ export default function PricingClient({
     <div className="bg-white py-14 sm:py-20">
       <Container>
         <div className="max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-strong)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-(--brand-strong)">
             {t("pricingV2.eyebrow")}
           </p>
-          <h1 className="text-balance mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
+          <h1 className="text-balance mt-3 text-4xl font-semibold tracking-[-0.04em] text-(--ink) sm:text-5xl">
             {t("pricingV2.title")}
           </h1>
-          <p className="text-pretty mt-5 max-w-2xl text-lg leading-7 text-[var(--muted)]">
+          <p className="text-pretty mt-5 max-w-2xl text-lg leading-7 text-(--muted)">
             {t("pricingV2.subtitle")}
           </p>
-          <p className="mt-3 text-xs text-[var(--muted)]">{t("pricing.note")}</p>
+          <p className="mt-3 text-xs text-(--muted)">{t("pricing.note")}</p>
         </div>
 
-        <div className="mt-8 inline-flex rounded-xl border border-[var(--line)] bg-[var(--canvas)] p-1" role="group" aria-label="Product category">
+        <div className="mt-8 inline-flex rounded-xl border border-(--line) bg-(--canvas) p-1" role="group" aria-label="Product category">
           {(["personal", "business"] as const).map((key) => (
             <button
               key={key}
@@ -117,7 +117,7 @@ export default function PricingClient({
               onClick={() => changeCategory(key)}
               className={cn(
                 "rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none",
-                category === key ? "bg-white text-[var(--ink)] shadow-sm" : "text-[var(--muted)] hover:text-[var(--ink)]",
+                category === key ? "bg-white text-(--ink) shadow-sm" : "text-(--muted) hover:text-(--ink)",
               )}
             >
               {t(`pricingV2.${key}`)}
@@ -125,7 +125,7 @@ export default function PricingClient({
           ))}
         </div>
 
-        <div className="mt-4 max-w-2xl text-sm leading-6 text-[var(--muted)]">
+        <div className="mt-4 max-w-2xl text-sm leading-6 text-(--muted)">
           {category === "personal" ? t("pricingV2.personalDesc") : t("pricingV2.businessDesc")}
         </div>
 
@@ -135,32 +135,32 @@ export default function PricingClient({
               key={plan.code}
               className={cn(
                 "relative flex flex-col rounded-3xl border bg-white p-6",
-                plan.featured ? "border-[var(--brand)] shadow-lift" : "border-[var(--line)] shadow-card",
+                plan.featured ? "border-(--brand) shadow-lift" : "border-(--line) shadow-card",
               )}
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-[var(--ink)]">{localizePlanName(t, plan)}</div>
-                  <div className="mt-2 text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+                  <div className="text-sm font-semibold text-(--ink)">{localizePlanName(t, plan)}</div>
+                  <div className="mt-2 text-3xl font-semibold tracking-[-0.03em] text-(--ink)">
                     {priceLabel(plan)}
                   </div>
-                  <div className="mt-1 text-[11px] text-[var(--muted)]">
+                  <div className="mt-1 text-[11px] text-(--muted)">
                     {plan.tier === "free" ? t("pricingV2.noCard") : t("pricingV2.billedMonthly")}
                   </div>
                 </div>
                 {plan.featured && (
-                  <div className="rounded-full bg-[var(--brand-strong)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white">
+                  <div className="rounded-full bg-(--brand-strong) px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white">
                     {t("pricingV2.recommended")}
                   </div>
                 )}
               </div>
 
-              <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{localizePlanDescription(t, plan)}</p>
+              <p className="mt-4 text-sm leading-6 text-(--muted)">{localizePlanDescription(t, plan)}</p>
 
-              <ul className="mt-6 flex-1 space-y-2.5 text-sm text-[var(--ink-soft)]">
+              <ul className="mt-6 flex-1 space-y-2.5 text-sm text-(--ink-soft)">
                 {localizeHighlights(t, plan).map((highlight) => (
                   <li key={highlight} className="flex gap-2">
-                    <Check size={14} className="mt-1 shrink-0 text-[var(--brand)]" aria-hidden="true" />
+                    <Check size={14} className="mt-1 shrink-0 text-(--brand)" aria-hidden="true" />
                     <span>{highlight}</span>
                   </li>
                 ))}
@@ -181,14 +181,14 @@ export default function PricingClient({
             </div>
           ))}
         </div>
-        <p className="mt-4 text-center text-xs text-[var(--muted)]">{t("pricingV2.trustNote")}</p>
+        <p className="mt-4 text-center text-xs text-(--muted)">{t("pricingV2.trustNote")}</p>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)]">{t("pricingV2.compareTitle")}</h2>
-          <p className="mt-2 text-sm text-[var(--muted)]">{t("pricingV2.compareSubtitle")}</p>
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-[var(--line)]">
+          <h2 className="text-2xl font-semibold tracking-[-0.03em] text-(--ink)">{t("pricingV2.compareTitle")}</h2>
+          <p className="mt-2 text-sm text-(--muted)">{t("pricingV2.compareSubtitle")}</p>
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-(--line)">
             <table className="w-full min-w-[680px] text-start text-sm">
-              <thead className="bg-[var(--canvas)] text-xs uppercase tracking-[0.1em] text-[var(--muted)]">
+              <thead className="bg-(--canvas) text-xs uppercase tracking-widest text-(--muted)">
                 <tr>
                   <th className="px-4 py-3 font-semibold">{t("pricingCatalog.feature")}</th>
                   {plans.map((plan) => (
@@ -198,10 +198,10 @@ export default function PricingClient({
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[var(--line)] bg-white text-[var(--ink-soft)]">
+              <tbody className="divide-y divide-(--line) bg-white text-(--ink-soft)">
                 {rows.map((row) => (
                   <tr key={row.key}>
-                    <td className="px-4 py-3 font-medium text-[var(--ink)]">{t(`pricingCatalog.rows.${row.key}`)}</td>
+                    <td className="px-4 py-3 font-medium text-(--ink)">{t(`pricingCatalog.rows.${row.key}`)}</td>
                     {plans.map((plan) => (
                       <td key={plan.code} className="px-4 py-3">
                         {localizeComparisonValue(t, plan.comparison[row.key])}
@@ -215,7 +215,7 @@ export default function PricingClient({
         </section>
 
         <section className="mt-16 grid gap-8 lg:grid-cols-[.7fr_1.3fr]">
-          <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)]">{t("pricingV2.faqTitle")}</h2>
+          <h2 className="text-2xl font-semibold tracking-[-0.03em] text-(--ink)">{t("pricingV2.faqTitle")}</h2>
           <FAQ items={faqItems} />
         </section>
       </Container>

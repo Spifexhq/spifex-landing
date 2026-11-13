@@ -79,7 +79,7 @@ const lb: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Ännert den KI-Assistent Är Daten?",
         answer:
-          "Nee. KI-Verbindungen sinn nëmme liesen a froen ausschliisslech de Scope cashflow:read un.",
+          "Nee. KI-Verbindungen sinn nëmme liesen a froen ausschliisslech de Scope spifex:access un.",
       },
     ],
     otherLabel: "Spifex Business entdecken",
@@ -176,7 +176,7 @@ const lb: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kann ech ChatGPT oder Claude verbannen?",
         answer:
-          "Jo. Business-Arbeitsberäicher ënnerstëtzen nëmme liesen KI-Verbindungen mat OAuth an dem Scope cashflow:read.",
+          "Jo. Business-Arbeitsberäicher ënnerstëtzen nëmme liesen KI-Verbindungen mat OAuth an dem Scope spifex:access.",
       },
     ],
     otherLabel: "Spifex Privat entdecken",

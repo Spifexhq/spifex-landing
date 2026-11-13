@@ -45,13 +45,13 @@ export default async function CampaignPage({ params }: Props) {
         <div className="pointer-events-none absolute inset-0 brand-gradient" aria-hidden="true" />
         <Container className="relative py-16 sm:py-24">
           <div className="max-w-3xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-strong)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-(--brand-strong)">
               {campaign.eyebrow}
             </p>
-            <h1 className="text-balance mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--ink)] sm:text-6xl">
+            <h1 className="text-balance mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-(--ink) sm:text-6xl">
               {campaign.title}
             </h1>
-            <p className="text-pretty mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            <p className="text-pretty mt-6 max-w-2xl text-lg leading-8 text-(--muted)">
               {campaign.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -63,13 +63,13 @@ export default async function CampaignPage({ params }: Props) {
                 {campaign.secondaryLabel}
               </Button>
             </div>
-            <p className="mt-4 text-xs font-medium text-[var(--muted)]">{campaign.proof}</p>
+            <p className="mt-4 text-xs font-medium text-(--muted)">{campaign.proof}</p>
           </div>
 
           <ul className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
             {campaign.bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-2.5 rounded-xl border border-[var(--line)] bg-white p-4 text-sm leading-6 text-[var(--ink-soft)]">
-                <Check size={15} className="mt-1 shrink-0 text-[var(--brand)]" aria-hidden="true" />
+              <li key={bullet} className="flex items-start gap-2.5 rounded-xl border border-(--line) bg-white p-4 text-sm leading-6 text-(--ink-soft)">
+                <Check size={15} className="mt-1 shrink-0 text-(--brand)" aria-hidden="true" />
                 {bullet}
               </li>
             ))}
@@ -81,18 +81,18 @@ export default async function CampaignPage({ params }: Props) {
 
       <section className="py-16 sm:py-20">
         <Container>
-          <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-center sm:p-12">
-            <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+          <div className="rounded-3xl border border-(--line) bg-white p-8 text-center sm:p-12">
+            <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-(--ink)">
               Start with the Free plan. Add structure when you need it.
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)]">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-(--muted)">
               No card required to start. Paid plans are available when your operation needs more workspace capacity.
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href={signupHref} size="lg" dataCta={`campaign-${campaign.slug}-bottom`}>
                 {campaign.primaryLabel}
               </Button>
-              <Link href="/pricing" className="text-sm font-semibold text-[var(--ink)] underline underline-offset-4">
+              <Link href="/pricing" className="text-sm font-semibold text-(--ink) underline underline-offset-4">
                 Compare plans
               </Link>
             </div>

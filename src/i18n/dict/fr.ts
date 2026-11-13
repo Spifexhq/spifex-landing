@@ -277,7 +277,7 @@ const fr = {
       title: "Interrogez ChatGPT ou Claude sur votre trésorerie",
       subtitle: "Connectez Spifex via une connexion MCP en lecture seule. Votre assistant peut lister les espaces de travail, examiner les transactions, résumer les totaux et cartographier les catégories — sans pouvoir créer, modifier, régler ou transférer quoi que ce soit.",
       bullets: {
-        readOnly: "Portée en lecture seule : cashflow:read",
+        readOnly: "Portée en lecture seule : spifex:access",
         oauth: "OAuth 2.1 par utilisateur avec PKCE",
         revoke: "Révocation immédiate dans les Paramètres",
         privacy: "Notes, observations et pièces jointes restent hors des réponses",
@@ -325,7 +325,7 @@ const fr = {
         },
         ai: {
           q: "L'assistant IA peut-il modifier mes données ?",
-          a: "Non. Le connecteur v1 est en lecture seule et ne demande que la portée cashflow:read. Il ne peut rien créer, modifier, supprimer, régler ni transférer.",
+          a: "Non. Le connecteur v1 est en lecture seule et ne demande que la portée spifex:access. Il ne peut rien créer, modifier, supprimer, régler ni transférer.",
         },
         security: {
           q: "Comment les données de l'espace de travail sont-elles isolées ?",

@@ -11,6 +11,7 @@ import { getServerI18n } from "@/i18n/server";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
 import GeoDefaults from "@/components/i18n/GeoDefaults";
 import LanguageSwitcher from "@/components/i18n/LanguageSwitcher";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import { OG_LOCALE } from "@/lib/location/markets";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
@@ -106,49 +107,50 @@ export default async function RootLayout({
         >
           <AnalyticsProvider>
             <GeoDefaults country={country} />
+            <ScrollToTop />
             <div className="min-h-screen flex flex-col">
               <Navbar />
 
               <main className="flex-1">{children}</main>
 
-              <footer className="border-t border-[var(--line)] bg-[#fbfaf7] pb-[env(safe-area-inset-bottom)]">
+              <footer className="border-t border-(--line) bg-[#fbfaf7] pb-[env(safe-area-inset-bottom)]">
                 <Container className="py-12">
                   <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_.8fr_.8fr_.8fr]">
                     <div>
-                      <div className="text-lg font-semibold tracking-tight text-[var(--ink)]">Spifex</div>
-                      <p className="mt-3 max-w-xs text-sm leading-6 text-[var(--muted)]">
+                      <div className="text-lg font-semibold tracking-tight text-(--ink)">Spifex</div>
+                      <p className="mt-3 max-w-xs text-sm leading-6 text-(--muted)">
                         {t("footer.tagline")}
                       </p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">{t("footer.product")}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">{t("footer.product")}</p>
                       <div className="mt-3 flex flex-col gap-2 text-sm">
-                        <Link href="/personal" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.personal")}</Link>
-                        <Link href="/business" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.business")}</Link>
-                        <Link href="/solutions" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.solutions")}</Link>
-                        <Link href="/pricing" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.pricing")}</Link>
-                        <Link href="/docs/ai-connections" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("footer.aiConnections")}</Link>
+                        <Link href="/personal" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.personal")}</Link>
+                        <Link href="/business" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.business")}</Link>
+                        <Link href="/solutions" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.solutions")}</Link>
+                        <Link href="/pricing" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.pricing")}</Link>
+                        <Link href="/docs/ai-connections" className="text-(--ink-soft) hover:text-(--ink)">{t("footer.aiConnections")}</Link>
                       </div>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">{t("footer.resources")}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">{t("footer.resources")}</p>
                       <div className="mt-3 flex flex-col gap-2 text-sm">
-                        <Link href="/docs" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.docs")}</Link>
-                        <Link href="/blog" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.blog")}</Link>
-                        <Link href="/customers" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.customers")}</Link>
+                        <Link href="/docs" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.docs")}</Link>
+                        <Link href="/blog" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.blog")}</Link>
+                        <Link href="/customers" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.customers")}</Link>
                       </div>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">{t("footer.company")}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">{t("footer.company")}</p>
                       <div className="mt-3 flex flex-col gap-2 text-sm">
-                        <Link href="/legal" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("nav.legal")}</Link>
-                        <Link href="/legal/privacy" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("footer.privacy")}</Link>
-                        <Link href="/legal/user_terms" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("footer.terms")}</Link>
-                        <Link href="/legal/cookie_notice" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">{t("footer.cookies")}</Link>
+                        <Link href="/legal" className="text-(--ink-soft) hover:text-(--ink)">{t("nav.legal")}</Link>
+                        <Link href="/legal/privacy" className="text-(--ink-soft) hover:text-(--ink)">{t("footer.privacy")}</Link>
+                        <Link href="/legal/user_terms" className="text-(--ink-soft) hover:text-(--ink)">{t("footer.terms")}</Link>
+                        <Link href="/legal/cookie_notice" className="text-(--ink-soft) hover:text-(--ink)">{t("footer.cookies")}</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10 flex flex-col gap-3 border-t border-[var(--line)] pt-6 text-xs text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+                  <div className="mt-10 flex flex-col gap-3 border-t border-(--line) pt-6 text-xs text-(--muted) sm:flex-row sm:items-center sm:justify-between">
                     <span>© {new Date().getFullYear()} Spifex. {t("footer.rights")}</span>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                       <span>{t("footer.notBank")}</span>

@@ -19,7 +19,7 @@ export const CAMPAIGNS: Campaign[] = [
     description:
       "Connect your workspace through a read-only MCP connection. Your assistant can list workspaces, read transactions, summarize totals and map categories — without the ability to change anything.",
     bullets: [
-      "Read-only cashflow:read scope",
+      "Read-only spifex:access scope",
       "Per-user OAuth 2.1 with PKCE",
       "Revoke access instantly from Settings",
       "Notes, observations and attachments never leave Spifex",

@@ -293,7 +293,7 @@
       subtitle:
         "Connecta Spifex mitjançant una connexió MCP de només lectura. El teu assistent pot llistar espais de treball, inspeccionar transaccions, resumir totals i assignar categories, sense poder crear, editar, liquidar ni transferir res.",
       bullets: {
-        readOnly: "Abast de només lectura: cashflow:read",
+        readOnly: "Abast de només lectura: spifex:access",
         oauth: "OAuth 2.1 per usuari amb PKCE",
         revoke: "Revoca l'accés a l'instant des de Configuració",
         privacy: "Les notes, observacions i adjunts queden fora de les respostes",
@@ -343,7 +343,7 @@
         },
         ai: {
           q: "L'assistent d'IA pot modificar les meves dades?",
-          a: "No. El connector v1 és de només lectura i només sol·licita l'abast cashflow:read. No pot crear, editar, eliminar, liquidar ni transferir res.",
+          a: "No. El connector v1 és de només lectura i només sol·licita l'abast spifex:access. No pot crear, editar, eliminar, liquidar ni transferir res.",
         },
         security: {
           q: "Com s'aïllen les dades dels espais de treball?",

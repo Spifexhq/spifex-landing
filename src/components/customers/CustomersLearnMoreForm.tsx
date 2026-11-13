@@ -40,11 +40,11 @@ export default function CustomersLearnMoreForm() {
 
   if (submitted) {
     return (
-      <Card className="bg-[var(--canvas)] p-8">
-        <div className="text-lg font-semibold text-[var(--ink)]">
+      <Card className="bg-(--canvas) p-8">
+        <div className="text-lg font-semibold text-(--ink)">
           {t("customersLearnMore.form.thanksTitle")}
         </div>
-        <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+        <p className="mt-2 text-sm leading-relaxed text-(--muted)">
           {t("customersLearnMore.form.thanksSubtitle")}
         </p>
       </Card>
@@ -53,13 +53,13 @@ export default function CustomersLearnMoreForm() {
 
   return (
     <form
-      className="rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[0_1px_2px_rgba(32,32,32,0.03)] sm:p-8"
+      className="rounded-2xl border border-(--line) bg-white p-6 shadow-[0_1px_2px_rgba(32,32,32,0.03)] sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
         setSubmitted(true);
       }}
     >
-      <div className="text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
+      <div className="text-2xl font-semibold tracking-[-0.02em] text-(--ink)">
         {t("customersLearnMore.form.title")}
       </div>
 
@@ -89,7 +89,7 @@ export default function CustomersLearnMoreForm() {
         />
 
         <fieldset className="sm:col-span-2">
-          <legend className="text-sm font-semibold text-[var(--ink)]">
+          <legend className="text-sm font-semibold text-(--ink)">
             {t("customersLearnMore.form.optionsLabel")}
           </legend>
           <div className="mt-3 space-y-2.5">
@@ -103,7 +103,7 @@ export default function CustomersLearnMoreForm() {
           <Button type="submit" className="w-full">
             {t("customersLearnMore.form.submit")}
           </Button>
-          <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
+          <p className="mt-3 text-xs leading-relaxed text-(--muted)">
             {t("customersLearnMore.form.disclaimer")}
           </p>
         </div>

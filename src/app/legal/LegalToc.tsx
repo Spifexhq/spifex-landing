@@ -59,7 +59,7 @@ export default function LegalToc({ docs }: { docs: TocDoc[] }) {
           <li key={d.slug}>
             <Link
               href={`/legal/${d.slug}`}
-              className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)]"
+              className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-(--ink-soft) transition-colors hover:bg-(--canvas) hover:text-(--ink)"
             >
               {d.title}
             </Link>
@@ -73,12 +73,12 @@ export default function LegalToc({ docs }: { docs: TocDoc[] }) {
               <button
                 type="button"
                 onClick={() => setOpen((s) => ({ ...s, [g.key]: !s[g.key] }))}
-                className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--canvas)]"
+                className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-(--ink) transition-colors hover:bg-(--canvas)"
                 aria-expanded={isOpen}
               >
                 <span>{g.label}</span>
                 <ChevronDown
-                  className={cn("h-4 w-4 text-[var(--muted)] transition-transform", isOpen && "rotate-180")}
+                  className={cn("h-4 w-4 text-(--muted) transition-transform", isOpen && "rotate-180")}
                   aria-hidden="true"
                 />
               </button>
@@ -90,12 +90,12 @@ export default function LegalToc({ docs }: { docs: TocDoc[] }) {
                 )}
               >
                 <div className="min-h-0">
-                  <ul className="mt-1 space-y-0.5 border-l border-[var(--line)] pl-3 ml-3">
+                  <ul className="mt-1 space-y-0.5 border-l border-(--line) pl-3 ml-3">
                     {g.docs.map((d) => (
                       <li key={d.slug}>
                         <Link
                           href={`/legal/${d.slug}`}
-                          className="block rounded-lg px-3 py-2 text-sm text-[var(--muted)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)]"
+                          className="block rounded-lg px-3 py-2 text-sm text-(--muted) transition-colors hover:bg-(--canvas) hover:text-(--ink)"
                         >
                           {d.title}
                         </Link>

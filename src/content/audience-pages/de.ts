@@ -79,7 +79,7 @@ const de: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Verändert der KI-Assistent meine Daten?",
         answer:
-          "Nein. KI-Verbindungen sind schreibgeschützt und fordern ausschließlich den Scope cashflow:read an.",
+          "Nein. KI-Verbindungen sind schreibgeschützt und fordern ausschließlich den Scope spifex:access an.",
       },
     ],
     otherLabel: "Spifex Business entdecken",
@@ -176,7 +176,7 @@ const de: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kann ich ChatGPT oder Claude verbinden?",
         answer:
-          "Ja. Business-Workspaces unterstützen schreibgeschützte KI-Verbindungen mit OAuth und dem Scope cashflow:read.",
+          "Ja. Business-Workspaces unterstützen schreibgeschützte KI-Verbindungen mit OAuth und dem Scope spifex:access.",
       },
     ],
     otherLabel: "Spifex Personal entdecken",

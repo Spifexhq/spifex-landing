@@ -94,16 +94,16 @@ export default function ProductsMegaMenu() {
         onMouseEnter={openNow}
         onMouseLeave={scheduleClose}
       >
-        <div className="grid overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_40px_90px_-30px_rgba(32,32,32,0.4)] lg:grid-cols-[1fr_19rem]">
+        <div className="grid overflow-hidden rounded-2xl border border-(--line) bg-white shadow-[0_40px_90px_-30px_rgba(32,32,32,0.4)] lg:grid-cols-[1fr_19rem]">
           <div className="flex flex-col p-5 sm:p-6">
             <div className="flex items-center justify-between">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">
                 {t("megaMenu.products")}
               </p>
               <Link
                 href="/solutions"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-(--ink) underline-offset-4 hover:underline"
               >
                 {t("megaMenu.allSolutions")}
                 <ArrowUpRight size={12} aria-hidden="true" />
@@ -116,14 +116,14 @@ export default function ProductsMegaMenu() {
                   key={product.key}
                   href={product.href}
                   onClick={() => setOpen(false)}
-                  className="group flex items-start gap-3.5 rounded-xl p-3 transition-colors hover:bg-[var(--canvas)] focus-visible:bg-[var(--canvas)] focus-visible:outline-none"
+                  className="group flex items-start gap-3.5 rounded-xl p-3 transition-colors hover:bg-(--canvas) focus-visible:bg-(--canvas) focus-visible:outline-none"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--canvas)] text-[var(--ink)] ring-1 ring-[var(--line)] transition-colors group-hover:bg-white group-hover:text-[var(--brand-strong)]">
-                    <Icon name={product.icon} className="h-[18px] w-[18px]" />
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--canvas) text-(--ink) ring-1 ring-(--line) transition-colors group-hover:bg-white group-hover:text-(--brand-strong)">
+                    <Icon name={product.icon} className="h-4.5 w-4.5" />
                   </span>
                   <span className="min-w-0 pt-0.5">
-                    <span className="block text-sm font-semibold text-[var(--ink)]">{t(`products.items.${product.key}.title`)}</span>
-                    <span className="mt-0.5 block text-xs leading-5 text-[var(--muted)]">
+                    <span className="block text-sm font-semibold text-(--ink)">{t(`products.items.${product.key}.title`)}</span>
+                    <span className="mt-0.5 block text-xs leading-5 text-(--muted)">
                       {t(`products.items.${product.key}.desc`)}
                     </span>
                   </span>
@@ -131,22 +131,22 @@ export default function ProductsMegaMenu() {
               ))}
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 border-t border-[var(--line)] pt-4">
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 border-t border-(--line) pt-4">
               {PLATFORM_LINKS.map((link) => (
                 <Link
                   key={link.key}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-(--ink-soft) transition-colors hover:text-(--ink)"
                 >
-                  <Icon name={link.icon} className="h-3.5 w-3.5 text-[var(--muted)]" />
+                  <Icon name={link.icon} className="h-3.5 w-3.5 text-(--muted)" />
                   {t(link.titleKey)}
                 </Link>
               ))}
             </div>
           </div>
 
-          <aside className="flex flex-col bg-[var(--ink)] p-5 text-white sm:p-6">
+          <aside className="flex flex-col bg-(--ink) p-5 text-white sm:p-6">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
               {t("megaMenu.startTitle")}
             </p>
@@ -202,7 +202,7 @@ export default function ProductsMegaMenu() {
         type="button"
         className={cn(
           "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
-          open ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          open ? "text-(--ink)" : "text-(--muted) hover:text-(--ink)",
         )}
         aria-haspopup="true"
         aria-expanded={open}

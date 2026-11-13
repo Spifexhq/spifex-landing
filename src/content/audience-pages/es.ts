@@ -79,7 +79,7 @@ const es: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "¿El asistente de IA modifica mis datos?",
         answer:
-          "No. Las conexiones de IA son de solo lectura y solo solicitan el ámbito cashflow:read.",
+          "No. Las conexiones de IA son de solo lectura y solo solicitan el ámbito spifex:access.",
       },
     ],
     otherLabel: "Explora Spifex Empresas",
@@ -176,7 +176,7 @@ const es: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "¿Puedo conectar ChatGPT o Claude?",
         answer:
-          "Sí. Los espacios de trabajo de empresa admiten conexiones de IA de solo lectura con OAuth y el ámbito cashflow:read.",
+          "Sí. Los espacios de trabajo de empresa admiten conexiones de IA de solo lectura con OAuth y el ámbito spifex:access.",
       },
     ],
     otherLabel: "Explora Spifex Personal",

@@ -109,33 +109,33 @@ export default async function BlogPostPage({ params }: PageProps) {
         ]}
       />
 
-      <article className="bg-[var(--canvas)]">
+      <article className="bg-(--canvas)">
         <Container className="py-14 sm:py-16 lg:py-20">
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
-            <Link href="/" className="hover:text-[var(--ink)]">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-(--muted)">
+            <Link href="/" className="hover:text-(--ink)">Home</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/blog" className="hover:text-[var(--ink)]">Blog</Link>
+            <Link href="/blog" className="hover:text-(--ink)">Blog</Link>
             <span aria-hidden="true">/</span>
-            <span className="max-w-[28ch] truncate text-[var(--ink)] sm:max-w-none">{post.meta.title}</span>
+            <span className="max-w-[28ch] truncate text-(--ink) sm:max-w-none">{post.meta.title}</span>
           </nav>
 
           <header className="mt-8 max-w-3xl">
             {post.meta.category ? (
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">
                 {post.meta.category}
               </p>
             ) : null}
-            <h1 className="mt-3 text-balance text-4xl font-semibold leading-[1.06] tracking-[-0.04em] text-[var(--ink)] sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-3 text-balance text-4xl font-semibold leading-[1.06] tracking-[-0.04em] text-(--ink) sm:text-5xl lg:text-[3.25rem]">
               {post.meta.title}
             </h1>
             {post.meta.description ? (
-              <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-[var(--muted)]">
+              <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-(--muted)">
                 {post.meta.description}
               </p>
             ) : null}
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-[var(--line)] pt-5 text-sm text-[var(--muted)]">
-              <span className="font-medium text-[var(--ink-soft)]">{post.meta.author || "Spifex"}</span>
+            <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-(--line) pt-5 text-sm text-(--muted)">
+              <span className="font-medium text-(--ink-soft)">{post.meta.author || "Spifex"}</span>
               {displayDate ? (
                 <>
                   <span aria-hidden="true">·</span>
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.meta.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="rounded-full border border-[var(--line)] bg-white px-3 py-1 text-xs font-medium text-[var(--ink-soft)]"
+                    className="rounded-full border border-(--line) bg-white px-3 py-1 text-xs font-medium text-(--ink-soft)"
                   >
                     {tag}
                   </li>
@@ -165,27 +165,27 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
-            <div className="min-w-0 rounded-[1.5rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-soft)] sm:p-8 lg:p-10">
-              <div className="prose prose-slate max-w-none prose-headings:tracking-[-0.03em] prose-headings:text-[var(--ink)] prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-p:text-[var(--muted)] prose-p:leading-7 prose-li:text-[var(--muted)] prose-strong:text-[var(--ink)] prose-a:font-medium prose-a:text-[var(--brand-strong)] prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-[var(--brand)] prose-blockquote:text-[var(--ink-soft)] prose-hr:border-[var(--line)]">
+            <div className="min-w-0 rounded-[1.5rem] border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8 lg:p-10">
+              <div className="prose prose-slate max-w-none prose-headings:tracking-[-0.03em] prose-headings:text-(--ink) prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-p:text-(--muted) prose-p:leading-7 prose-li:text-(--muted) prose-strong:text-(--ink) prose-a:font-medium prose-a:text-(--brand-strong) prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-(--brand) prose-blockquote:text-(--ink-soft) prose-hr:border-(--line)">
                 {post.content}
               </div>
             </div>
 
             <aside className="sticky top-24 hidden lg:block">
-              <div className="rounded-2xl border border-[var(--line)] bg-white p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">About Spifex</p>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+              <div className="rounded-2xl border border-(--line) bg-white p-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">About Spifex</p>
+                <p className="mt-3 text-sm leading-6 text-(--muted)">
                   Spifex is financial operations software for cash flow, banking visibility, settlements, reporting and
                   AI connections. Not a bank.
                 </p>
                 <Link
                   href="/signup?intent=signup&plan=free"
-                  className="mt-4 inline-flex text-sm font-semibold text-[var(--brand-strong)] hover:underline"
+                  className="mt-4 inline-flex text-sm font-semibold text-(--brand-strong) hover:underline"
                 >
                   Start free →
                 </Link>
               </div>
-              <Link href="/blog" className="mt-4 inline-flex text-sm font-medium text-[var(--muted)] hover:text-[var(--ink)]">
+              <Link href="/blog" className="mt-4 inline-flex text-sm font-medium text-(--muted) hover:text-(--ink)">
                 ← All articles
               </Link>
             </aside>

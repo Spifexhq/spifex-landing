@@ -40,33 +40,33 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie preferences"
       aria-live="polite"
-      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[80] rounded-2xl border border-[var(--line)] bg-white p-4 shadow-[0_20px_60px_-20px_rgba(32,32,32,.35)] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:w-[380px] sm:p-5"
+      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-[80] rounded-2xl border border-(--line) bg-white p-4 shadow-[0_20px_60px_-20px_rgba(32,32,32,.35)] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:w-[380px] sm:p-5"
     >
       <div className="flex items-start gap-3">
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)]">
+        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-(--brand-soft) text-(--brand)">
           <Cookie size={16} aria-hidden="true" />
         </span>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-[var(--ink)]">{t("cookiesBanner.title")}</p>
-          <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("cookiesBanner.body")}</p>
+          <p className="text-sm font-semibold text-(--ink)">{t("cookiesBanner.title")}</p>
+          <p className="mt-1 text-xs leading-5 text-(--muted)">{t("cookiesBanner.body")}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => decide("accepted")}
-              className="rounded-lg bg-[var(--brand-strong)] px-3 py-2 text-xs font-semibold text-white hover:bg-[var(--brand-strong-hover)]"
+              className="rounded-lg bg-(--brand-strong) px-3 py-2 text-xs font-semibold text-white hover:bg-(--brand-strong-hover)"
             >
               {t("cookiesBanner.accept")}
             </button>
             <button
               type="button"
               onClick={() => decide("rejected")}
-              className="rounded-lg border border-[var(--line)] bg-white px-3 py-2 text-xs font-semibold text-[var(--ink)] hover:bg-[#faf9f7]"
+              className="rounded-lg border border-(--line) bg-white px-3 py-2 text-xs font-semibold text-(--ink) hover:bg-[#faf9f7]"
             >
               {t("cookiesBanner.reject")}
             </button>
             <Link
               href="/legal/cookie_notice"
-              className="inline-flex items-center px-1 py-2 text-xs font-medium text-[var(--muted)] underline underline-offset-4"
+              className="inline-flex items-center px-1 py-2 text-xs font-medium text-(--muted) underline underline-offset-4"
             >
               {t("cookiesBanner.policy")}
             </Link>
@@ -76,7 +76,7 @@ export default function CookieConsent() {
           type="button"
           aria-label="Dismiss"
           onClick={() => setDismissed(true)}
-          className="rounded-md p-1 text-[var(--muted)] hover:bg-black/5"
+          className="rounded-md p-1 text-(--muted) hover:bg-black/5"
         >
           <X size={14} />
         </button>

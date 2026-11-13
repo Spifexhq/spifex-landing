@@ -80,7 +80,7 @@ const fr: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "L'assistant IA modifie-t-il mes données ?",
         answer:
-          "Non. Les connexions IA sont en lecture seule et ne demandent que la portée cashflow:read.",
+          "Non. Les connexions IA sont en lecture seule et ne demandent que la portée spifex:access.",
       },
     ],
     otherLabel: "Découvrir Spifex Professionnel",
@@ -178,7 +178,7 @@ const fr: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Puis-je connecter ChatGPT ou Claude ?",
         answer:
-          "Oui. Les espaces professionnels prennent en charge des connexions IA en lecture seule avec OAuth et la portée cashflow:read.",
+          "Oui. Les espaces professionnels prennent en charge des connexions IA en lecture seule avec OAuth et la portée spifex:access.",
       },
     ],
     otherLabel: "Découvrir Spifex Personnel",

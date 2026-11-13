@@ -18,15 +18,15 @@ export function FeatureCard({
 }) {
   const content = (
     <>
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--canvas)] text-[var(--ink)]">
-        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-(--line) bg-(--canvas) text-(--ink)">
+        <Icon className="h-4.5 w-4.5" aria-hidden="true" />
       </span>
-      <h3 className="mt-5 text-[15px] font-semibold tracking-[-0.01em] text-[var(--ink)]">
+      <h3 className="mt-5 text-[15px] font-semibold tracking-[-0.01em] text-(--ink)">
         {title}
       </h3>
-      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{description}</p>
+      <p className="mt-2 text-sm leading-6 text-(--muted)">{description}</p>
       {href ? (
-        <span className="mt-5 inline-flex items-center gap-1 text-[13px] font-semibold text-[var(--ink)]">
+        <span className="mt-5 inline-flex items-center gap-1 text-[13px] font-semibold text-(--ink)">
           Learn more <ArrowUpRight size={14} aria-hidden="true" />
         </span>
       ) : null}
@@ -34,7 +34,7 @@ export function FeatureCard({
   );
 
   const classes = cn(
-    "group flex h-full flex-col rounded-2xl border border-[var(--line)] bg-white p-6 transition-colors hover:border-[#d7d1c8] hover:bg-[#fffdfa]",
+    "group flex h-full flex-col rounded-2xl border border-(--line) bg-white p-6 transition-colors hover:border-[#d7d1c8] hover:bg-[#fffdfa]",
     className,
   );
 

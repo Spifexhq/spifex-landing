@@ -79,7 +79,7 @@ const sv: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Ändrar AI-assistenten mina data?",
         answer:
-          "Nej. AI-anslutningarna är skrivskyddade och begär endast omfånget cashflow:read.",
+          "Nej. AI-anslutningarna är skrivskyddade och begär endast omfånget spifex:access.",
       },
     ],
     otherLabel: "Utforska Spifex Företag",
@@ -175,7 +175,7 @@ const sv: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kan jag ansluta ChatGPT eller Claude?",
         answer:
-          "Ja. Företagsarbetsytor stöder skrivskyddade AI-anslutningar med OAuth och omfånget cashflow:read.",
+          "Ja. Företagsarbetsytor stöder skrivskyddade AI-anslutningar med OAuth och omfånget spifex:access.",
       },
     ],
     otherLabel: "Utforska Spifex Privat",

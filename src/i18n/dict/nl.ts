@@ -289,7 +289,7 @@
       subtitle:
         "Koppel Spifex via een alleen-lezen MCP-verbinding. Uw assistent kan werkruimten opvragen, transacties bekijken, totalen samenvatten en categorieën in kaart brengen — zonder iets te kunnen aanmaken, wijzigen, afwikkelen of overboeken.",
       bullets: {
-        readOnly: "Alleen-lezen scope: cashflow:read",
+        readOnly: "Alleen-lezen scope: spifex:access",
         oauth: "OAuth 2.1 per gebruiker met PKCE",
         revoke: "Toegang direct intrekken via Instellingen",
         privacy: "Notities, observaties en bijlagen blijven buiten de antwoorden",
@@ -338,7 +338,7 @@
         },
         ai: {
           q: "Kan de AI-assistent mijn gegevens wijzigen?",
-          a: "Nee. De v1-connector is alleen-lezen en vraagt uitsluitend de scope cashflow:read aan. Hij kan niets aanmaken, wijzigen, verwijderen, afwikkelen of overboeken.",
+          a: "Nee. De v1-connector is alleen-lezen en vraagt uitsluitend de scope spifex:access aan. Hij kan niets aanmaken, wijzigen, verwijderen, afwikkelen of overboeken.",
         },
         security: {
           q: "Hoe worden werkruimten van elkaar geïsoleerd?",

@@ -277,7 +277,7 @@ const lb = {
       title: "Frot ChatGPT oder Claude iwwer Äre Cashflow",
       subtitle: "Verbindt Spifex iwwer eng MCP-Verbindung mat nëmme Lieszougang. Ären Assistent kann Workspaces oplëschten, Transaktiounen inspectéieren, Totalen zesummenfaassen a Kategorien zouordnen — ouni eppes kënnen ze erstellen, z'änneren, ofzerchnen oder z'iwwerweisen.",
       bullets: {
-        readOnly: "Nëmme Lies-Beräich: cashflow:read",
+        readOnly: "Nëmme Lies-Beräich: spifex:access",
         oauth: "Pro Benotzer OAuth 2.1 mat PKCE",
         revoke: "Zougang direkt an den Astellungen entzéien",
         privacy: "Notizen, Observatiounen an Annexen bleiwen aus den Äntwerten eraus",
@@ -325,7 +325,7 @@ const lb = {
         },
         ai: {
           q: "Kann den KI-Assistent meng Daten änneren?",
-          a: "Nee. De v1-Connector ass nëmme Lies a freet nëmmen de Beräich cashflow:read u. Et kann näischt erstellen, änneren, läschen, ofrechnen oder iwwerweisen.",
+          a: "Nee. De v1-Connector ass nëmme Lies a freet nëmmen de Beräich spifex:access u. Et kann näischt erstellen, änneren, läschen, ofrechnen oder iwwerweisen.",
         },
         security: {
           q: "Wéi ginn d'Workspace-Daten isoléiert?",

@@ -13,16 +13,16 @@ export async function TrustStrip() {
   const { t } = await getServerI18n();
 
   return (
-    <div className="border-y border-[var(--line)] bg-white">
+    <div className="border-y border-(--line) bg-white">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-4 sm:px-6 lg:px-8">
         {FACTS.map(({ icon: Icon, key }) => {
           const label = t(key);
           return (
             <span
               key={key}
-              className="inline-flex items-center gap-2 text-[12px] font-medium text-[var(--muted)]"
+              className="inline-flex items-center gap-2 text-[12px] font-medium text-(--muted)"
             >
-              <Icon size={14} className="text-[var(--brand)]" aria-hidden="true" />
+              <Icon size={14} className="text-(--brand)" aria-hidden="true" />
               {label}
             </span>
           );

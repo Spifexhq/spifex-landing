@@ -46,14 +46,14 @@ export default async function LegalHubPage() {
         ]}
       />
 
-      <div className="bg-[var(--canvas)] py-14 sm:py-16 lg:py-20">
+      <div className="bg-(--canvas) py-14 sm:py-16 lg:py-20">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">Legal</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">Legal</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-(--ink) sm:text-5xl">
               Policies and terms
             </h1>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-5 text-lg leading-8 text-(--muted)">
               These documents explain how Spifex handles data, cookies and use of the website and services. They are
               provided for general information and should be reviewed by qualified legal counsel for your organization.
             </p>
@@ -66,19 +66,19 @@ export default async function LegalHubPage() {
                 <Link
                   key={item.slug}
                   href={`/legal/${item.slug}`}
-                  className="group flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  className="group flex gap-4 rounded-2xl border border-(--line) bg-white p-6 shadow-(--shadow-soft) transition-all hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--canvas)] text-[var(--ink)] ring-1 ring-[var(--line)]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-(--canvas) text-(--ink) ring-1 ring-(--line)">
                     <Icon size={20} aria-hidden="true" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-center justify-between gap-3">
-                      <span className="text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] group-hover:text-[var(--brand-strong)]">
+                      <span className="text-lg font-semibold tracking-[-0.02em] text-(--ink) group-hover:text-(--brand-strong)">
                         {item.title}
                       </span>
-                      <ArrowRight size={16} className="shrink-0 text-[var(--muted)]" aria-hidden="true" />
+                      <ArrowRight size={16} className="shrink-0 text-(--muted)" aria-hidden="true" />
                     </span>
-                    <span className="mt-2 block text-sm leading-6 text-[var(--muted)]">{item.description}</span>
+                    <span className="mt-2 block text-sm leading-6 text-(--muted)">{item.description}</span>
                   </span>
                 </Link>
               );
@@ -86,8 +86,8 @@ export default async function LegalHubPage() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-xl font-semibold tracking-[-0.03em] text-[var(--ink)]">All documents</h2>
-            <div className="mt-4 rounded-2xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+            <h2 className="text-xl font-semibold tracking-[-0.03em] text-(--ink)">All documents</h2>
+            <div className="mt-4 rounded-2xl border border-(--line) bg-white p-5 shadow-(--shadow-soft)">
               <LegalToc docs={docs.map((d) => ({ slug: d.slug, title: d.title, category: d.category }))} />
             </div>
           </div>

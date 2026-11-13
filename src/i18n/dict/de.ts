@@ -277,7 +277,7 @@ const de = {
       title: "Fragen Sie ChatGPT oder Claude zu Ihrem Cashflow",
       subtitle: "Verbinden Sie Spifex über eine schreibgeschützte MCP-Verbindung. Ihr Assistent kann Workspaces auflisten, Transaktionen prüfen, Summen zusammenfassen und Kategorien zuordnen – ohne etwas erstellen, bearbeiten, abrechnen oder überweisen zu können.",
       bullets: {
-        readOnly: "Schreibgeschützter Scope: cashflow:read",
+        readOnly: "Schreibgeschützter Scope: spifex:access",
         oauth: "OAuth 2.1 pro Benutzer mit PKCE",
         revoke: "Zugriff jederzeit in den Einstellungen widerrufen",
         privacy: "Notizen, Beobachtungen und Anhänge bleiben außerhalb der Antworten",
@@ -325,7 +325,7 @@ const de = {
         },
         ai: {
           q: "Kann der KI-Assistent meine Daten verändern?",
-          a: "Nein. Der Connector der Version 1 ist schreibgeschützt und fordert ausschließlich den Scope cashflow:read an. Er kann nichts erstellen, bearbeiten, löschen, abrechnen oder überweisen.",
+          a: "Nein. Der Connector der Version 1 ist schreibgeschützt und fordert ausschließlich den Scope spifex:access an. Er kann nichts erstellen, bearbeiten, löschen, abrechnen oder überweisen.",
         },
         security: {
           q: "Wie sind Workspace-Daten isoliert?",

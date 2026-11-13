@@ -79,7 +79,7 @@ const pl: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Czy asystent AI zmienia dane?",
         answer:
-          "Nie. Połączenia AI działają tylko do odczytu i żądają wyłącznie zakresu cashflow:read.",
+          "Nie. Połączenia AI działają tylko do odczytu i żądają wyłącznie zakresu spifex:access.",
       },
     ],
     otherLabel: "Poznaj Spifex Business",
@@ -177,7 +177,7 @@ const pl: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Czy można połączyć ChatGPT lub Claude?",
         answer:
-          "Tak. Firmowe przestrzenie robocze obsługują połączenia AI tylko do odczytu z OAuth i zakresem cashflow:read.",
+          "Tak. Firmowe przestrzenie robocze obsługują połączenia AI tylko do odczytu z OAuth i zakresem spifex:access.",
       },
     ],
     otherLabel: "Poznaj Spifex Personal",

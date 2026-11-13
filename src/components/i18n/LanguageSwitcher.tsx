@@ -69,7 +69,7 @@ export default function LanguageSwitcher({ className }: { className?: string }) 
   return (
     <Menu as="div" className={cn("relative", className)}>
       <MenuButton
-        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--ink)] focus:outline-none"
+        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium text-(--muted) transition-colors hover:text-(--ink) focus:outline-none"
         aria-label={`${t("languageSwitcher.label")}: ${LOCALE_META[locale].nativeName}`}
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
@@ -80,9 +80,9 @@ export default function LanguageSwitcher({ className }: { className?: string }) 
       <MenuItems
         transition
         anchor="bottom end"
-        className="z-[60] w-64 origin-top-right rounded-xl border border-[var(--line)] bg-white p-1.5 shadow-[0_24px_60px_-24px_rgba(32,32,32,0.4)] transition duration-150 ease-out [--anchor-gap:0.5rem] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+        className="z-[60] w-64 origin-top-right rounded-xl border border-(--line) bg-white p-1.5 shadow-[0_24px_60px_-24px_rgba(32,32,32,0.4)] transition duration-150 ease-out [--anchor-gap:0.5rem] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
       >
-        <p className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+        <p className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-(--muted)">
           {t("languageSwitcher.label")}
         </p>
 
@@ -99,14 +99,14 @@ export default function LanguageSwitcher({ className }: { className?: string }) 
                   className={cn(
                     "flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-start text-sm transition-colors",
                     active
-                      ? "bg-[var(--canvas)] font-semibold text-[var(--ink)]"
-                      : "text-[var(--ink-soft)] hover:bg-[var(--canvas)] hover:text-[var(--ink)]",
+                      ? "bg-(--canvas) font-semibold text-(--ink)"
+                      : "text-(--ink-soft) hover:bg-(--canvas) hover:text-(--ink)",
                   )}
                 >
                   <span className="min-w-0">
                     <span className="block truncate">{meta.nativeName}</span>
                     {meta.name !== meta.nativeName ? (
-                      <span className="block truncate text-[11px] font-normal text-[var(--muted)]">
+                      <span className="block truncate text-[11px] font-normal text-(--muted)">
                         {meta.name}
                       </span>
                     ) : null}

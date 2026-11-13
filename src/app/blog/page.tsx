@@ -37,7 +37,7 @@ export default async function BlogPage() {
           ]),
         ]}
       />
-      <div className="bg-[var(--canvas)] py-14 sm:py-16 lg:py-20">
+      <div className="bg-(--canvas) py-14 sm:py-16 lg:py-20">
         <Container>
           <BlogIndexClient posts={posts} />
         </Container>

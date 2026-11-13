@@ -37,15 +37,14 @@ export function AudienceLanding({
 
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden bg-[#fbfaf7]">
-        <div className="pointer-events-none absolute inset-0 brand-gradient" aria-hidden="true" />
-        <Container className="relative py-16 sm:py-24">
+      <section className="bg-white">
+        <Container className="py-14 sm:py-20">
           <div className="max-w-3xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-strong)]">{eyebrow}</p>
-            <h1 className="text-balance mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--ink)] sm:text-6xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-(--brand-strong)">{eyebrow}</p>
+            <h1 className="text-balance mt-4 text-4xl font-semibold tracking-[-0.03em] text-(--ink) sm:text-5xl">
               {title}
             </h1>
-            <p className="text-pretty mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">{description}</p>
+            <p className="text-pretty mt-5 max-w-2xl text-lg leading-7 text-(--muted)">{description}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href={primaryHref} size="lg" dataCta={`audience-${kind}-start`}>
                 {primaryLabel}
@@ -55,11 +54,11 @@ export function AudienceLanding({
                 {labels.comparePlans}
               </Button>
             </div>
-            <p className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--muted)]">
-              <Check size={14} className="text-[var(--success)]" aria-hidden="true" />
+            <p className="mt-4 flex items-center gap-2 text-xs font-medium text-(--muted)">
+              <Check size={14} className="text-(--success)" aria-hidden="true" />
               {proof}
             </p>
-            <p className="mt-2 text-xs text-[var(--muted)]">{plans.join(" · ")}</p>
+            <p className="mt-2 text-xs text-(--muted)">{plans.join(" · ")}</p>
           </div>
         </Container>
       </section>
@@ -75,9 +74,9 @@ export function AudienceLanding({
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {outcomes.map((outcome) => (
-              <div key={outcome.title} className="rounded-2xl border border-[var(--line)] bg-white p-6">
-                <h3 className="text-[15px] font-semibold text-[var(--ink)]">{outcome.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{outcome.description}</p>
+              <div key={outcome.title} className="rounded-2xl border border-(--line) bg-white p-6">
+                <h3 className="text-[15px] font-semibold text-(--ink)">{outcome.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-(--muted)">{outcome.description}</p>
               </div>
             ))}
           </div>
@@ -89,12 +88,12 @@ export function AudienceLanding({
           <SectionHeading eyebrow={labels.howEyebrow} title={labels.howTitle} />
           <div className="mt-10 grid gap-3 md:grid-cols-3">
             {workflow.map((step, index) => (
-              <div key={step.title} className="rounded-2xl border border-[var(--line)] bg-white p-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-xs font-semibold text-white">
+              <div key={step.title} className="rounded-2xl border border-(--line) bg-white p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-(--ink) text-xs font-semibold text-white">
                   {index + 1}
                 </span>
-                <h3 className="mt-5 text-[15px] font-semibold text-[var(--ink)]">{step.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
+                <h3 className="mt-5 text-[15px] font-semibold text-(--ink)">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-(--muted)">{step.description}</p>
               </div>
             ))}
           </div>
@@ -112,7 +111,7 @@ export function AudienceLanding({
 
       <Section tone="white" className="pb-20">
         <Container>
-          <div className="rounded-3xl bg-[var(--ink)] px-6 py-12 text-center sm:px-12">
+          <div className="rounded-3xl bg-(--ink) px-6 py-12 text-center sm:px-12">
             <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-white">
               {labels.finalTitle}
             </h2>

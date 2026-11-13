@@ -23,7 +23,7 @@ function Wordmark() {
   return (
     <span className="flex items-center gap-2">
       <Image src="/icon/logo.svg" alt="" aria-hidden="true" width={22} height={22} />
-      <span className="text-[17px] font-semibold tracking-[-0.02em] text-[var(--ink)]">Spifex</span>
+      <span className="text-[17px] font-semibold tracking-[-0.02em] text-(--ink)">Spifex</span>
     </span>
   );
 }
@@ -118,7 +118,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 hidden border-b border-[var(--line)] bg-white/85 backdrop-blur-xl nav:block">
+      <header className="sticky top-0 z-40 hidden border-b border-(--line) bg-white/85 backdrop-blur-xl nav:block">
         <Container className="flex h-16 items-center gap-8">
           <Link
             href="/"
@@ -137,17 +137,13 @@ export default function Navbar() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
-                    active ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]",
+                    "rounded-lg px-3 py-2 text-sm font-medium focus:outline-none",
+                    active
+                      ? "bg-(--canvas) text-(--ink)"
+                      : "text-(--muted) hover:bg-(--canvas) hover:text-(--ink)",
                   )}
                 >
                   {t(item.i18nKey)}
-                  {active ? (
-                    <span
-                      className="absolute inset-x-3 -bottom-[18px] h-[2px] rounded-full bg-[var(--brand)]"
-                      aria-hidden="true"
-                    />
-                  ) : null}
                 </Link>
               );
             })}
@@ -165,7 +161,7 @@ export default function Navbar() {
         </Container>
       </header>
 
-      <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-[var(--line)] bg-white/90 px-4 backdrop-blur-xl nav:hidden">
+      <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-(--line) bg-white/90 px-4 backdrop-blur-xl nav:hidden">
         <Link
           href="/"
           className="rounded-lg focus:outline-none"
@@ -184,16 +180,16 @@ export default function Navbar() {
             aria-expanded={mobileOpen}
             aria-controls={DRAWER_ID}
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--line)] bg-white text-[var(--ink)] transition-colors hover:bg-[var(--canvas)] focus:outline-none"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--line) bg-white text-(--ink) transition-colors hover:bg-(--canvas) focus:outline-none"
           >
-            <Menu className="h-[18px] w-[18px]" aria-hidden="true" />
+            <Menu className="h-4.5 w-4.5" aria-hidden="true" />
           </button>
         </div>
       </header>
 
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-[var(--ink)]/40 backdrop-blur-[2px] transition-opacity duration-300 nav:hidden",
+          "fixed inset-0 z-50 bg-(--ink)/40 backdrop-blur-[2px] transition-opacity duration-300 nav:hidden",
           mobileOpen ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={closeDrawer}
@@ -215,16 +211,16 @@ export default function Navbar() {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="flex h-14 shrink-0 items-center justify-between border-b border-[var(--line)] px-4">
-          <span className="text-sm font-semibold text-[var(--ink)]">{t("nav.menu")}</span>
+        <div className="flex h-14 shrink-0 items-center justify-between border-b border-(--line) px-4">
+          <span className="text-sm font-semibold text-(--ink)">{t("nav.menu")}</span>
           <button
             ref={closeButtonRef}
             type="button"
             onClick={closeDrawer}
             aria-label={t("nav.closeMenu")}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)] focus:outline-none"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-(--muted) transition-colors hover:bg-(--canvas) hover:text-(--ink) focus:outline-none"
           >
-            <X className="h-[18px] w-[18px]" aria-hidden="true" />
+            <X className="h-4.5 w-4.5" aria-hidden="true" />
           </button>
         </div>
 
@@ -253,10 +249,10 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl border border-[var(--line)] bg-[var(--canvas)] p-3.5 transition-colors hover:border-[#d7d1c8] hover:bg-white"
+                className="rounded-xl border border-(--line) bg-(--canvas) p-3.5 transition-colors hover:border-[#d7d1c8] hover:bg-white"
               >
-                <span className="block text-sm font-semibold text-[var(--ink)]">{item.title}</span>
-                <span className="mt-1 block text-[11px] leading-4 text-[var(--muted)]">{item.desc}</span>
+                <span className="block text-sm font-semibold text-(--ink)">{item.title}</span>
+                <span className="mt-1 block text-[11px] leading-4 text-(--muted)">{item.desc}</span>
               </Link>
             ))}
           </div>
@@ -264,7 +260,7 @@ export default function Navbar() {
           <section className="mt-7" aria-labelledby="mobile-products-heading">
             <p
               id="mobile-products-heading"
-              className="px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]"
+              className="px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-(--muted)"
             >
               {t("megaMenu.products")}
             </p>
@@ -274,25 +270,25 @@ export default function Navbar() {
                   <Link
                     href={product.href}
                     onClick={() => setMobileOpen(false)}
-                    className="group flex items-center gap-3 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--canvas)]"
+                    className="group flex items-center gap-3 rounded-xl px-2 py-2.5 transition-colors hover:bg-(--canvas)"
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--canvas)] text-[var(--ink)] ring-1 ring-[var(--line)] group-hover:bg-white">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-(--canvas) text-(--ink) ring-1 ring-(--line) group-hover:bg-white">
                       <Icon name={product.icon} className="h-4 w-4" />
                     </span>
-                    <span className="min-w-0 flex-1 text-sm font-medium text-[var(--ink-soft)] group-hover:text-[var(--ink)]">
+                    <span className="min-w-0 flex-1 text-sm font-medium text-(--ink-soft) group-hover:text-(--ink)">
                       {t(`products.items.${product.key}.title`)}
                     </span>
-                    <ChevronRight size={14} className="text-[var(--muted)]" aria-hidden="true" />
+                    <ChevronRight size={14} className="text-(--muted)" aria-hidden="true" />
                   </Link>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section className="mt-7 border-t border-[var(--line)] pt-5" aria-labelledby="mobile-explore-heading">
+          <section className="mt-7 border-t border-(--line) pt-5" aria-labelledby="mobile-explore-heading">
             <p
               id="mobile-explore-heading"
-              className="px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]"
+              className="px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-(--muted)"
             >
               {t("megaMenu.platform")}
             </p>
@@ -302,10 +298,10 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between rounded-xl px-2 py-2.5 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-[var(--canvas)] hover:text-[var(--ink)]"
+                    className="flex items-center justify-between rounded-xl px-2 py-2.5 text-sm font-medium text-(--ink-soft) transition-colors hover:bg-(--canvas) hover:text-(--ink)"
                   >
                     {t(item.key)}
-                    <ChevronRight size={14} className="text-[var(--muted)]" aria-hidden="true" />
+                    <ChevronRight size={14} className="text-(--muted)" aria-hidden="true" />
                   </Link>
                 </li>
               ))}
@@ -313,14 +309,14 @@ export default function Navbar() {
           </section>
         </div>
 
-        <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-t border-[var(--line)] px-6 py-4 text-xs text-[var(--muted)]">
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-t border-(--line) px-6 py-4 text-xs text-(--muted)">
           <div className="flex items-center gap-4">
-            <Link href="/legal" className="hover:text-[var(--ink)]" onClick={() => setMobileOpen(false)}>
+            <Link href="/legal" className="hover:text-(--ink)" onClick={() => setMobileOpen(false)}>
               {t("nav.legal")}
             </Link>
             <Link
               href="/legal/cookie_notice"
-              className="hover:text-[var(--ink)]"
+              className="hover:text-(--ink)"
               onClick={() => setMobileOpen(false)}
             >
               {t("cookiesBanner.policy")}

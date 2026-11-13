@@ -15,9 +15,9 @@ export function Section({
 }) {
   const tones = {
     white: "bg-white",
-    canvas: "bg-[var(--canvas)]",
-    ink: "bg-[var(--ink)] text-white",
-    brand: "bg-[var(--brand-soft)]",
+    canvas: "bg-(--canvas)",
+    ink: "bg-(--ink) text-white",
+    brand: "bg-(--brand-soft)",
   };
   return (
     <section id={id} className={cn("py-16 sm:py-20 lg:py-24", tones[tone], className)}>
@@ -53,7 +53,7 @@ export function SectionHeading({
         <p
           className={cn(
             "text-[11px] font-semibold uppercase tracking-[0.16em]",
-            dark ? "text-[var(--teal)]" : "text-[var(--brand-strong)]",
+            dark ? "text-(--teal)" : "text-(--brand-strong)",
           )}
         >
           {eyebrow}
@@ -62,7 +62,7 @@ export function SectionHeading({
       <h2
         className={cn(
           "text-balance mt-3 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]",
-          dark ? "text-white" : "text-[var(--ink)]",
+          dark ? "text-white" : "text-(--ink)",
         )}
       >
         {title}
@@ -71,7 +71,7 @@ export function SectionHeading({
         <p
           className={cn(
             "text-pretty mt-4 text-base leading-7 sm:text-lg",
-            dark ? "text-white/65" : "text-[var(--muted)]",
+            dark ? "text-white/65" : "text-(--muted)",
           )}
         >
           {description}

@@ -1733,7 +1733,7 @@ const pt = {
       "title": "Pergunte ao ChatGPT ou ao Claude sobre o seu fluxo de caixa",
       "subtitle": "Ligue o Spifex através de uma ligação MCP só de leitura. O seu assistente pode listar workspaces, inspecionar transações, resumir totais e mapear categorias — sem poder criar, editar, liquidar ou transferir nada.",
       "bullets": {
-        "readOnly": "Âmbito só de leitura: cashflow:read",
+        "readOnly": "Âmbito só de leitura: spifex:access",
         "oauth": "OAuth 2.1 por utilizador com PKCE",
         "revoke": "Revoque o acesso de imediato nas Definições",
         "privacy": "Notas, observações e anexos ficam de fora das respostas"
@@ -1781,7 +1781,7 @@ const pt = {
         },
         "ai": {
           "q": "O assistente de IA pode alterar os meus dados?",
-          "a": "Não. O conector v1 é só de leitura e pede apenas o âmbito cashflow:read. Não pode criar, editar, eliminar, liquidar ou transferir nada."
+          "a": "Não. O conector v1 é só de leitura e pede apenas o âmbito spifex:access. Não pode criar, editar, eliminar, liquidar ou transferir nada."
         },
         "security": {
           "q": "Como são isolados os dados do workspace?",

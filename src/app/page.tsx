@@ -93,22 +93,22 @@ export default async function HomePage() {
       <Section tone="white" className="py-10 sm:py-12">
         <Container>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-            <p className="text-sm font-semibold text-[var(--ink)]">{t("homeV2.audiences.title")}</p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--muted)]">
+            <p className="text-sm font-semibold text-(--ink)">{t("homeV2.audiences.title")}</p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-(--muted)">
               {AUDIENCE_KEYS.map((key) => (
                 <span key={key}>{t(`homeV2.audiences.items.${key}`)}</span>
               ))}
-              <span className="hidden h-3 w-px bg-[var(--line)] sm:block" aria-hidden="true" />
+              <span className="hidden h-3 w-px bg-(--line) sm:block" aria-hidden="true" />
               <Link
                 href="/personal"
-                className="inline-flex items-center gap-1 font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-(--ink) underline-offset-4 hover:underline"
               >
                 {t("nav.personal")}
                 <ArrowUpRight size={12} aria-hidden="true" />
               </Link>
               <Link
                 href="/business"
-                className="inline-flex items-center gap-1 font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-(--ink) underline-offset-4 hover:underline"
               >
                 {t("nav.business")}
                 <ArrowUpRight size={12} aria-hidden="true" />
@@ -158,8 +158,8 @@ export default async function HomePage() {
                   const icons = [Wallet, Target, ChartNoAxesCombined, Bot];
                   const IconComponent = icons[index];
                   return (
-                    <li key={key} className="flex gap-3 text-sm leading-6 text-[var(--ink-soft)]">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--brand-soft)] text-[var(--brand)]">
+                    <li key={key} className="flex gap-3 text-sm leading-6 text-(--ink-soft)">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-(--brand-soft) text-(--brand)">
                         <IconComponent size={13} aria-hidden="true" />
                       </span>
                       <span>{t(`homeV2.personal.bullets.${key}`)}</span>
@@ -179,17 +179,17 @@ export default async function HomePage() {
                   {t("homeV2.personal.cta")}
                 </Button>
               </div>
-              <p className="mt-4 text-xs font-medium text-[var(--muted)]">{t("homeV2.personal.note")}</p>
+              <p className="mt-4 text-xs font-medium text-(--muted)">{t("homeV2.personal.note")}</p>
             </div>
 
-            <div className="rounded-3xl border border-[var(--line)] bg-[#fbfaf7] p-4 shadow-card sm:p-6">
-              <div className="rounded-2xl border border-[var(--line)] bg-white p-5">
+            <div className="rounded-3xl border border-(--line) bg-[#fbfaf7] p-4 shadow-card sm:p-6">
+              <div className="rounded-2xl border border-(--line) bg-white p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-[var(--ink)]">Personal workspace</p>
-                    <p className="mt-0.5 text-[11px] text-[var(--muted)]">This month · all accounts</p>
+                    <p className="text-sm font-semibold text-(--ink)">Personal workspace</p>
+                    <p className="mt-0.5 text-[11px] text-(--muted)">This month · all accounts</p>
                   </div>
-                  <span className="rounded-full border border-[var(--line)] bg-[var(--canvas)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+                  <span className="rounded-full border border-(--line) bg-(--canvas) px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--muted)">
                     Personal
                   </span>
                 </div>
@@ -201,13 +201,13 @@ export default async function HomePage() {
                     { label: "Goals on track", value: "3 of 4", width: "75%" },
                   ].map((row) => (
                     <div key={row.label}>
-                      <div className="flex items-center justify-between text-[11px] font-medium text-[var(--ink-soft)]">
+                      <div className="flex items-center justify-between text-[11px] font-medium text-(--ink-soft)">
                         <span>{row.label}</span>
-                        <span className="text-[var(--muted)]">{row.value}</span>
+                        <span className="text-(--muted)">{row.value}</span>
                       </div>
                       <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#eeeae4]">
                         <div
-                          className="h-full rounded-full bg-[var(--brand)]"
+                          className="h-full rounded-full bg-(--brand)"
                           style={{ width: row.width }}
                         />
                       </div>
@@ -215,8 +215,8 @@ export default async function HomePage() {
                   ))}
                 </div>
 
-                <div className="mt-5 flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[#fbfaf7] p-3 text-[11px] text-[var(--muted)]">
-                  <Check size={13} className="text-[var(--success)]" aria-hidden="true" />
+                <div className="mt-5 flex items-center gap-2 rounded-xl border border-(--line) bg-[#fbfaf7] p-3 text-[11px] text-(--muted)">
+                  <Check size={13} className="text-(--success)" aria-hidden="true" />
                   Accounts, categories and goals share one currency and workspace.
                 </div>
               </div>
@@ -225,7 +225,7 @@ export default async function HomePage() {
                 {["Free", "Starter", "Pro"].map((tier) => (
                   <div
                     key={tier}
-                    className="rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-center text-xs font-semibold text-[var(--ink-soft)]"
+                    className="rounded-xl border border-(--line) bg-white px-3 py-2.5 text-center text-xs font-semibold text-(--ink-soft)"
                   >
                     Personal {tier}
                   </div>
@@ -269,7 +269,7 @@ export default async function HomePage() {
 
       {/* AI connections */}
       <Section tone="ink" id="ai-connections" className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-[var(--brand)]/20 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-(--brand)/20 blur-3xl" aria-hidden="true" />
         <Container className="relative">
           <div className="grid gap-10 lg:grid-cols-[1.02fr_.98fr] lg:items-center">
             <div>
@@ -282,7 +282,7 @@ export default async function HomePage() {
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                 {(["readOnly", "oauth", "revoke", "privacy"] as const).map((key) => (
                   <li key={key} className="flex items-start gap-2.5 text-sm leading-6 text-white/75">
-                    <Check size={15} className="mt-1 shrink-0 text-[var(--teal)]" aria-hidden="true" />
+                    <Check size={15} className="mt-1 shrink-0 text-(--teal)" aria-hidden="true" />
                     {t(`homeV2.ai.bullets.${key}`)}
                   </li>
                 ))}
@@ -296,10 +296,10 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur">
+            <div className="rounded-2xl border border-white/10 bg-white/6 p-5 backdrop-blur">
               <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-[var(--teal)]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-(--teal)">
                     <Bot size={16} aria-hidden="true" />
                   </span>
                   <div>
@@ -307,19 +307,19 @@ export default async function HomePage() {
                     <p className="text-[11px] text-white/50">Streamable HTTP · MCP</p>
                   </div>
                 </div>
-                <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--teal)]">
+                <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-widest text-(--teal)">
                   <LockKeyhole size={11} aria-hidden="true" />
                   Read only
                 </span>
               </div>
               <div className="mt-4 space-y-3 font-mono text-[12px] text-white/70">
-                <p><span className="text-white/60">scope</span> cashflow:read</p>
+                <p><span className="text-white/60">scope</span> spifex:access</p>
                 <p><span className="text-white/60">tools</span> list_workspaces, list_cashflow_rows</p>
                 <p><span className="text-white/60">summary</span> summarize_cashflow</p>
                 <p><span className="text-white/60">categories</span> list_cashflow_categories</p>
               </div>
               <div className="mt-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/15 p-3 text-xs text-white/60">
-                <LockKeyhole size={14} className="text-[var(--teal)]" aria-hidden="true" />
+                <LockKeyhole size={14} className="text-(--teal)" aria-hidden="true" />
                 Cannot create, edit, settle or transfer.
               </div>
             </div>
@@ -337,14 +337,14 @@ export default async function HomePage() {
           />
           <div className="mt-10 grid gap-3 md:grid-cols-3">
             {WORKFLOW_KEYS.map((key, index) => (
-              <div key={key} className="rounded-2xl border border-[var(--line)] bg-white p-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-xs font-semibold text-white">
+              <div key={key} className="rounded-2xl border border-(--line) bg-white p-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-(--ink) text-xs font-semibold text-white">
                   {index + 1}
                 </span>
-                <h3 className="mt-5 text-[15px] font-semibold text-[var(--ink)]">
+                <h3 className="mt-5 text-[15px] font-semibold text-(--ink)">
                   {t(`homeV2.workflow.steps.${key}.title`)}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+                <p className="mt-2 text-sm leading-6 text-(--muted)">
                   {t(`homeV2.workflow.steps.${key}.desc`)}
                 </p>
               </div>
@@ -356,7 +356,7 @@ export default async function HomePage() {
       {/* Pricing preview */}
       <Section tone="white" id="pricing-preview">
         <Container>
-          <div className="rounded-3xl border border-[var(--line)] bg-[#fbfaf7] p-6 sm:p-10">
+          <div className="rounded-3xl border border-(--line) bg-[#fbfaf7] p-6 sm:p-10">
             <div className="grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
               <div>
                 <SectionHeading
@@ -364,7 +364,7 @@ export default async function HomePage() {
                   title={t("homeV2.pricing.title")}
                   description={t("homeV2.pricing.subtitle")}
                 />
-                <p className="mt-4 text-xs leading-5 text-[var(--muted)]">{t("homeV2.pricing.note")}</p>
+                <p className="mt-4 text-xs leading-5 text-(--muted)">{t("homeV2.pricing.note")}</p>
                 <Button href="/pricing" variant="dark" className="mt-6" dataCta="home-compare-plans">
                   {t("homeV2.pricing.cta")}
                   <ArrowRight size={16} aria-hidden="true" />
@@ -372,19 +372,19 @@ export default async function HomePage() {
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {(["personal", "business"] as const).map((category) => (
-                  <div key={category} className="rounded-2xl border border-[var(--line)] bg-white p-5">
-                    <p className="text-sm font-semibold text-[var(--ink)]">
+                  <div key={category} className="rounded-2xl border border-(--line) bg-white p-5">
+                    <p className="text-sm font-semibold text-(--ink)">
                       {t(`pricingV2.${category}`)}
                     </p>
-                    <p className="mt-2 text-xs leading-5 text-[var(--muted)]">
+                    <p className="mt-2 text-xs leading-5 text-(--muted)">
                       {t(`pricingV2.${category}Desc`)}
                     </p>
-                    <p className="mt-3 text-xs font-semibold text-[var(--ink-soft)]">
+                    <p className="mt-3 text-xs font-semibold text-(--ink-soft)">
                       Free · Starter · Pro
                     </p>
                     <Link
                       href={`/pricing?product=${category}`}
-                      className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                      className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-(--ink) underline-offset-4 hover:underline"
                       data-cta={`home-plans-${category}`}
                     >
                       {t("homeV2.pricing.cta")} <ArrowUpRight size={12} aria-hidden="true" />
@@ -413,11 +413,11 @@ export default async function HomePage() {
       {/* Final CTA */}
       <Section tone="white" className="pb-20">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl bg-[var(--ink)] px-6 py-12 sm:px-12 sm:py-16">
-            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[var(--brand)]/25 blur-3xl" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-3xl bg-(--ink) px-6 py-12 sm:px-12 sm:py-16">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-(--brand)/25 blur-3xl" aria-hidden="true" />
             <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--teal)]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-(--teal)">
                   {UI_LABELS[locale].finalCtaEyebrow}
                 </p>
                 <h2 className="text-balance mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">

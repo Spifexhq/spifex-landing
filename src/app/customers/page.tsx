@@ -24,13 +24,13 @@ export default async function CustomersPage() {
   return (
     <main className="bg-white">
       {/* Hero */}
-      <section className="bg-[var(--canvas)] py-16 sm:py-20 lg:py-24">
+      <section className="bg-(--canvas) py-16 sm:py-20 lg:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-balance text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-6xl">
+            <h1 className="text-balance text-4xl font-semibold tracking-[-0.04em] text-(--ink) sm:text-6xl">
               {t("customersPage.hero.title")}
             </h1>
-            <p className="text-pretty mx-auto mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            <p className="text-pretty mx-auto mt-5 max-w-2xl text-lg leading-8 text-(--muted)">
               {t("customersPage.hero.subtitle")}
             </p>
 
@@ -47,7 +47,7 @@ export default async function CustomersPage() {
               </Button>
             </div>
 
-            <p className="mx-auto mt-5 max-w-2xl text-xs leading-6 text-[var(--muted)]">
+            <p className="mx-auto mt-5 max-w-2xl text-xs leading-6 text-(--muted)">
               {t("customersPage.hero.disclaimer")}
             </p>
           </div>
@@ -58,10 +58,10 @@ export default async function CustomersPage() {
       <section className="py-16 sm:py-20">
         <Container>
           <div className="max-w-2xl">
-            <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl">
+            <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-(--ink) sm:text-4xl">
               {t("customersPage.stories.title")}
             </h2>
-            <p className="mt-4 text-base leading-7 text-[var(--muted)]">
+            <p className="mt-4 text-base leading-7 text-(--muted)">
               {t("customersPage.stories.subtitle")}
             </p>
           </div>
@@ -69,13 +69,13 @@ export default async function CustomersPage() {
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {STORY_KEYS.map((key, index) => (
               <Card key={key} className="p-6">
-                <span className="text-[11px] font-semibold tabular-nums text-[var(--brand-strong)]">
+                <span className="text-[11px] font-semibold tabular-nums text-(--brand-strong)">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-2 text-[15px] font-semibold text-[var(--ink)]">
+                <h3 className="mt-2 text-[15px] font-semibold text-(--ink)">
                   {t(`customersPage.stories.cards.${key}.title`)}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+                <p className="mt-2 text-sm leading-6 text-(--muted)">
                   {t(`customersPage.stories.cards.${key}.desc`)}
                 </p>
               </Card>
@@ -85,19 +85,19 @@ export default async function CustomersPage() {
       </section>
 
       {/* Community */}
-      <section className="bg-[var(--canvas)] py-16 sm:py-20">
+      <section className="bg-(--canvas) py-16 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center">
             <div>
-              <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl">
+              <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-(--ink) sm:text-4xl">
                 {t("customersPage.already.title")}
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
+              <p className="mt-4 max-w-xl text-base leading-7 text-(--muted)">
                 {t("customersPage.already.subtitle")}
               </p>
               <Link
                 href="/customers/learn-more"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-(--ink) underline-offset-4 hover:underline"
               >
                 {t("customersPage.already.learnMore")}
                 <span aria-hidden="true">→</span>
@@ -107,8 +107,8 @@ export default async function CustomersPage() {
             <Card className="bg-white p-6 sm:p-7">
               <ul className="space-y-3">
                 {(["productDesign", "localGroups", "advocate"] as const).map((key) => (
-                  <li key={key} className="text-sm leading-6 text-[var(--muted)]">
-                    <span className="font-semibold text-[var(--ink)]">
+                  <li key={key} className="text-sm leading-6 text-(--muted)">
+                    <span className="font-semibold text-(--ink)">
                       {t(`customersLearnMore.bullets.${key}.title`)}
                     </span>{" "}
                     {t(`customersLearnMore.bullets.${key}.desc`)}
@@ -123,7 +123,7 @@ export default async function CustomersPage() {
       {/* Final CTA */}
       <section className="py-16 sm:py-20">
         <Container>
-          <div className="rounded-3xl bg-[var(--ink)] px-6 py-12 text-center sm:px-12">
+          <div className="rounded-3xl bg-(--ink) px-6 py-12 text-center sm:px-12">
             <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-white">
               {t("customersPage.bottom.title")}
             </h2>

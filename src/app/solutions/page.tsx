@@ -67,7 +67,7 @@ function ChipLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)] underline-offset-4 hover:underline"
+      className="inline-flex items-center gap-1 text-xs font-semibold text-(--ink) underline-offset-4 hover:underline"
     >
       {label}
       <span aria-hidden="true">→</span>

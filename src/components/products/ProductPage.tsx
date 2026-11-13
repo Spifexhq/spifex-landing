@@ -64,8 +64,8 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
 
             <div className="mt-10 grid gap-12 lg:mt-14 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-14">
               <div>
-                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--brand)]">
-                  <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-[var(--brand)]" aria-hidden="true" />
+                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-(--brand)">
+                  <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-(--brand)" aria-hidden="true" />
                   {t("productPages.moduleLabel")}
                 </p>
 
@@ -80,7 +80,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                 <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
                   {copy.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2.5 text-[13px] leading-6 text-white/80">
-                      <Check size={14} className="mt-1 shrink-0 text-[var(--brand)]" aria-hidden="true" />
+                      <Check size={14} className="mt-1 shrink-0 text-(--brand)" aria-hidden="true" />
                       {bullet}
                     </li>
                   ))}
@@ -128,13 +128,13 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {copy.outcomes.map((outcome, index) => (
               <Card key={outcome.title} className="p-6">
-                <span className="text-[11px] font-semibold tabular-nums text-[var(--brand-strong)]">
+                <span className="text-[11px] font-semibold tabular-nums text-(--brand-strong)">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-2 text-[15px] font-semibold text-[var(--ink)]">
+                <h3 className="mt-2 text-[15px] font-semibold text-(--ink)">
                   {outcome.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{outcome.desc}</p>
+                <p className="mt-2 text-sm leading-6 text-(--muted)">{outcome.desc}</p>
               </Card>
             ))}
           </div>
@@ -154,14 +154,14 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
               {copy.steps.map((step, index) => (
                 <li
                   key={step.title}
-                  className="flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-5"
+                  className="flex gap-4 rounded-2xl border border-(--line) bg-white p-5"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ink)] text-xs font-semibold text-white">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--ink) text-xs font-semibold text-white">
                     {index + 1}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="text-[15px] font-semibold text-[var(--ink)]">{step.title}</h3>
-                    <p className="mt-1.5 text-sm leading-6 text-[var(--muted)]">{step.desc}</p>
+                    <h3 className="text-[15px] font-semibold text-(--ink)">{step.title}</h3>
+                    <p className="mt-1.5 text-sm leading-6 text-(--muted)">{step.desc}</p>
                   </div>
                 </li>
               ))}
@@ -181,13 +181,13 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
           <div className={`mt-10 grid gap-3 sm:grid-cols-2 ${capabilityColumns}`}>
             {copy.capabilities.map((capability) => (
               <Card key={capability.title} className="p-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand-strong)]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-(--brand-soft) text-(--brand-strong)">
                   <Check size={15} aria-hidden="true" />
                 </span>
-                <h3 className="mt-4 text-[15px] font-semibold text-[var(--ink)]">
+                <h3 className="mt-4 text-[15px] font-semibold text-(--ink)">
                   {capability.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{capability.desc}</p>
+                <p className="mt-2 text-sm leading-6 text-(--muted)">{capability.desc}</p>
               </Card>
             ))}
           </div>
@@ -210,21 +210,21 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                   return (
                     <div
                       key={plan.code}
-                      className="flex items-center justify-between gap-4 rounded-xl border border-[var(--line)] bg-white px-4 py-3.5"
+                      className="flex items-center justify-between gap-4 rounded-xl border border-(--line) bg-white px-4 py-3.5"
                     >
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-[var(--ink)]">{plan.name}</p>
-                        <p className="mt-0.5 truncate text-xs text-[var(--muted)]">
+                        <p className="text-sm font-semibold text-(--ink)">{plan.name}</p>
+                        <p className="mt-0.5 truncate text-xs text-(--muted)">
                           {plan.comparison.entries} entries · {plan.comparison.banks} bank accounts
                         </p>
                       </div>
                       <div className="shrink-0 text-right">
-                        <p className="text-sm font-semibold tabular-nums text-[var(--ink)]">
+                        <p className="text-sm font-semibold tabular-nums text-(--ink)">
                           {plan.tier === "free" || amount == null
                             ? t("pricingTiers.free.priceLabel")
                             : formatPrice(amount)}
                         </p>
-                        <p className="text-[10px] text-[var(--muted)]">
+                        <p className="text-[10px] text-(--muted)">
                           {plan.tier === "free" ? t("productPages.noCard") : t("productPages.perMonth")}
                         </p>
                       </div>
@@ -268,16 +268,16 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                 <Link
                   key={key}
                   href={related.href}
-                  className="group rounded-2xl border border-[var(--line)] bg-white p-6 transition-colors hover:border-[#d7d1c8] hover:bg-[#fffdfa]"
+                  className="group rounded-2xl border border-(--line) bg-white p-6 transition-colors hover:border-[#d7d1c8] hover:bg-[#fffdfa]"
                 >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--canvas)] text-[var(--ink)]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-(--canvas) text-(--ink)">
                     <Icon name={related.icon} className="h-4 w-4" />
                   </span>
-                  <h3 className="mt-4 text-[15px] font-semibold text-[var(--ink)]">
+                  <h3 className="mt-4 text-[15px] font-semibold text-(--ink)">
                     {t(`products.items.${related.key}.title`)}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t(`products.items.${related.key}.desc`)}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
+                  <p className="mt-2 text-sm leading-6 text-(--muted)">{t(`products.items.${related.key}.desc`)}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-(--ink)">
                     {t("common.learnMore")}
                     <ArrowUpRight size={13} aria-hidden="true" />
                   </span>
@@ -291,7 +291,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
       {/* Final CTA */}
       <Section tone="white" className="pb-20 pt-4 sm:pt-6">
         <Container>
-          <div className="rounded-3xl bg-[var(--ink)] px-6 py-12 text-center sm:px-12">
+          <div className="rounded-3xl bg-(--ink) px-6 py-12 text-center sm:px-12">
             <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-white">
               {copy.finalTitle}
             </h2>

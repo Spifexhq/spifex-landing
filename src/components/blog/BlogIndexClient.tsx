@@ -93,7 +93,7 @@ function SearchBox({
   return (
     <div className={cn("relative transition-[width] duration-200 ease-out motion-reduce:transition-none", expanded ? "w-full lg:w-[460px]" : "w-full lg:w-[320px]")}>
       <div className="relative">
-        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" />
+        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-(--muted)" />
 
         <input
           value={value}
@@ -102,8 +102,8 @@ function SearchBox({
           onBlur={() => setFocused(false)}
           placeholder={expanded ? placeholder : ""}
           className={cn(
-            "w-full rounded-xl border border-[var(--line)] bg-white py-3 pl-10 pr-10",
-            "text-sm text-[var(--ink)] placeholder:text-[var(--muted)]",
+            "w-full rounded-xl border border-(--line) bg-white py-3 pl-10 pr-10",
+            "text-sm text-(--ink) placeholder:text-(--muted)",
             "focus:outline-none"
           )}
         />
@@ -111,7 +111,7 @@ function SearchBox({
         <div
           className={cn(
             "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2",
-            "text-sm text-[var(--muted)] transition-all duration-200",
+            "text-sm text-(--muted) transition-all duration-200",
             expanded ? "opacity-0 translate-x-1" : "opacity-100 translate-x-0"
           )}
         >
@@ -123,7 +123,7 @@ function SearchBox({
             type="button"
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => onChange("")}
-            className="absolute right-2 inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] hover:bg-[var(--canvas)] hover:text-[var(--ink)]"
+            className="absolute right-2 inline-flex h-9 w-9 items-center justify-center rounded-lg text-(--muted) hover:bg-(--canvas) hover:text-(--ink)"
             aria-label={clearLabel}
           >
             <X className="h-4 w-4" />
@@ -163,7 +163,7 @@ function TopicOptionsPortal({
       <ListboxOptions
         static
         style={{ position: "fixed", left: pos.left, top: pos.top, width: pos.width }}
-        className="z-[9999] max-h-72 overflow-auto rounded-xl border border-[var(--line)] bg-white shadow-xl focus:outline-none"
+        className="z-[9999] max-h-72 overflow-auto rounded-xl border border-(--line) bg-white shadow-xl focus:outline-none"
       >
         {options.map((opt) => (
           <ListboxOption
@@ -172,18 +172,18 @@ function TopicOptionsPortal({
             className={({ active }) =>
               cn(
                 "relative cursor-pointer select-none px-4 py-3 text-sm",
-                active ? "bg-[var(--canvas)] text-[var(--ink)]" : "text-[var(--ink-soft)]"
+                active ? "bg-(--canvas) text-(--ink)" : "text-(--ink-soft)"
               )
             }
           >
             {({ selected }) => (
               <div className="flex items-center justify-between gap-3">
-                <span className={cn("truncate", selected ? "font-semibold text-[var(--ink)]" : "font-medium")}>
+                <span className={cn("truncate", selected ? "font-semibold text-(--ink)" : "font-medium")}>
                   {opt.value === "__all__" ? allLabel : opt.label}
                 </span>
                 {selected ? (
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--line)] bg-white">
-                    <Check className="h-4 w-4 text-[var(--brand-strong)]" />
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-(--line) bg-white">
+                    <Check className="h-4 w-4 text-(--brand-strong)" />
                   </span>
                 ) : null}
               </div>
@@ -240,7 +240,7 @@ function TopicDropdown({
 
   return (
     <div>
-      <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">{label}</div>
+      <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">{label}</div>
       <Listbox value={value} onChange={onChange}>
         {({ open }) => (
           <div className="relative mt-2">
@@ -248,11 +248,11 @@ function TopicDropdown({
               ref={buttonRef}
               onClick={() => requestAnimationFrame(updatePos)}
               onKeyDown={() => requestAnimationFrame(updatePos)}
-              className="relative w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 pr-10 text-left text-sm text-[var(--ink)] focus:outline-none"
+              className="relative w-full rounded-xl border border-(--line) bg-white px-4 py-3 pr-10 text-left text-sm text-(--ink) focus:outline-none"
             >
               <span className="block truncate">{displayValue}</span>
               <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                <ChevronDown className="h-4 w-4 text-[var(--muted)]" />
+                <ChevronDown className="h-4 w-4 text-(--muted)" />
               </span>
             </ListboxButton>
             <TopicOptionsPortal open={open} pos={pos} options={portalOptions} allLabel={allLabel} />
@@ -297,11 +297,11 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
     <div>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-strong)]">Insights</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">Insights</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-(--ink) sm:text-5xl">
             {t("blog.indexTitle")}
           </h1>
-          <p className="mt-4 text-lg leading-8 text-[var(--muted)]">{t("blog.indexSubtitle")}</p>
+          <p className="mt-4 text-lg leading-8 text-(--muted)">{t("blog.indexSubtitle")}</p>
         </div>
 
         <div className="flex w-full items-center gap-3 lg:w-auto">
@@ -317,8 +317,8 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
             className={cn(
               "inline-flex shrink-0 items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none",
               filterOpen
-                ? "border-[var(--ink)]/15 bg-[var(--ink)] text-white"
-                : "border-[var(--line)] bg-white text-[var(--ink-soft)] hover:bg-[var(--canvas)]"
+                ? "border-(--ink)/15 bg-(--ink) text-white"
+                : "border-(--line) bg-white text-(--ink-soft) hover:bg-(--canvas)"
             )}
             aria-expanded={filterOpen}
             aria-controls="blog-filter-bar"
@@ -330,7 +330,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
       </div>
 
       <Collapse open={filterOpen} className="mt-8">
-        <div id="blog-filter-bar" className="rounded-2xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+        <div id="blog-filter-bar" className="rounded-2xl border border-(--line) bg-white p-5 shadow-(--shadow-soft)">
           <div className="grid gap-4 lg:grid-cols-[1fr_180px] lg:items-end">
             <TopicDropdown
               label={t("blog.topic")}
@@ -345,17 +345,17 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
                 setTopicApplied(topicDraft);
                 setFilterOpen(false);
               }}
-              className="h-[46px] rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white transition-colors hover:bg-[var(--ink-soft)] focus:outline-none"
+              className="h-[46px] rounded-xl bg-(--ink) px-4 text-sm font-semibold text-white transition-colors hover:bg-(--ink-soft) focus:outline-none"
             >
               {t("blog.applyFilter")}
             </button>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted)]">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-(--muted)">
             <div>
               {topicApplied !== "__all__" ? (
                 <span>
-                  {t("blog.activeFilter")}: <span className="font-semibold text-[var(--ink)]">{topicApplied}</span>
+                  {t("blog.activeFilter")}: <span className="font-semibold text-(--ink)">{topicApplied}</span>
                 </span>
               ) : (
                 <span>{t("blog.noActiveFilter")}</span>
@@ -368,7 +368,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
                   setTopicDraft("__all__");
                   setTopicApplied("__all__");
                 }}
-                className="rounded-lg px-2 py-1 font-medium text-[var(--ink-soft)] hover:bg-[var(--canvas)]"
+                className="rounded-lg px-2 py-1 font-medium text-(--ink-soft) hover:bg-(--canvas)"
               >
                 {t("blog.clearFilter")}
               </button>
@@ -379,7 +379,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
 
       <div className="mt-10">
         {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-[var(--line)] bg-white p-8 text-sm text-[var(--muted)]">
+          <div className="rounded-2xl border border-(--line) bg-white p-8 text-sm text-(--muted)">
             {t("blog.noResults")}
           </div>
         ) : (
@@ -388,33 +388,33 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
               <article key={p.slug} className="group">
                 <Link
                   href={`/blog/${p.slug}`}
-                  className="flex h-full flex-col rounded-2xl border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-soft)] transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  className="flex h-full flex-col rounded-2xl border border-(--line) bg-white p-6 shadow-(--shadow-soft) transition-all hover:-translate-y-0.5 hover:shadow-md"
                 >
                   {p.category || p.tags?.length ? (
                     <div className="mb-4 flex flex-wrap gap-2">
                       {p.category ? (
-                        <span className="rounded-full bg-[var(--canvas)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--brand-strong)]">
+                        <span className="rounded-full bg-(--canvas) px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-(--brand-strong)">
                           {p.category}
                         </span>
                       ) : null}
                       {(p.tags ?? []).slice(0, 2).map((tg) => (
-                        <span key={tg} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-[11px] font-medium text-[var(--muted)]">
+                        <span key={tg} className="rounded-full border border-(--line) px-2.5 py-1 text-[11px] font-medium text-(--muted)">
                           {tg}
                         </span>
                       ))}
                     </div>
                   ) : null}
 
-                  <h2 className="text-xl font-semibold leading-snug tracking-[-0.03em] text-[var(--ink)] group-hover:text-[var(--brand-strong)]">
+                  <h2 className="text-xl font-semibold leading-snug tracking-[-0.03em] text-(--ink) group-hover:text-(--brand-strong)">
                     {p.title}
                   </h2>
                   {p.description ? (
-                    <p className="mt-3 flex-1 text-sm leading-6 text-[var(--muted)]">{p.description}</p>
+                    <p className="mt-3 flex-1 text-sm leading-6 text-(--muted)">{p.description}</p>
                   ) : (
                     <div className="flex-1" />
                   )}
 
-                  <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-[var(--line)] pt-4 text-xs text-[var(--muted)]">
+                  <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-(--line) pt-4 text-xs text-(--muted)">
                     {formatDate(p.publishedAt || p.updatedAt) ? <time>{formatDate(p.publishedAt || p.updatedAt)}</time> : null}
                     {p.readingTime ? <span aria-hidden="true">·</span> : null}
                     {p.readingTime ? <span>{p.readingTime}</span> : null}

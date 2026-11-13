@@ -277,7 +277,7 @@ const no = {
       title: "Spør ChatGPT eller Claude om kontantstrømmen din",
       subtitle: "Koble til Spifex via en lesbar MCP-tilkobling. Assistenten din kan liste arbeidsområder, inspisere transaksjoner, oppsummere totaler og kartlegge kategorier — uten mulighet til å opprette, redigere, gjøre opp eller overføre noe.",
       bullets: {
-        readOnly: "Lesbart omfang: cashflow:read",
+        readOnly: "Lesbart omfang: spifex:access",
         oauth: "OAuth 2.1 per bruker med PKCE",
         revoke: "Tilbakekall tilgang umiddelbart i Innstillinger",
         privacy: "Notater, observasjoner og vedlegg holdes utenfor svarene",
@@ -325,7 +325,7 @@ const no = {
         },
         ai: {
           q: "Kan AI-assistenten endre dataene mine?",
-          a: "Nei. v1-koblingen er kun lesbar og ber bare om omfanget cashflow:read. Den kan ikke opprette, redigere, slette, gjøre opp eller overføre noe.",
+          a: "Nei. v1-koblingen er kun lesbar og ber bare om omfanget spifex:access. Den kan ikke opprette, redigere, slette, gjøre opp eller overføre noe.",
         },
         security: {
           q: "Hvordan isoleres data i arbeidsområdet?",

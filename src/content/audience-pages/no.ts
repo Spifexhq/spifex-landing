@@ -79,7 +79,7 @@ const no: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Endrer AI-assistenten dataene mine?",
         answer:
-          "Nei. AI-tilkoblingene er kun for lesing og ber bare om omfanget cashflow:read.",
+          "Nei. AI-tilkoblingene er kun for lesing og ber bare om omfanget spifex:access.",
       },
     ],
     otherLabel: "Utforsk Spifex Bedrift",
@@ -175,7 +175,7 @@ const no: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kan jeg koble til ChatGPT eller Claude?",
         answer:
-          "Ja. Bedriftsarbeidsområder støtter skrivebeskyttede AI-tilkoblinger med OAuth og omfanget cashflow:read.",
+          "Ja. Bedriftsarbeidsområder støtter skrivebeskyttede AI-tilkoblinger med OAuth og omfanget spifex:access.",
       },
     ],
     otherLabel: "Utforsk Spifex Privat",

@@ -292,7 +292,7 @@
       subtitle:
         "Collega Spifex tramite una connessione MCP in sola lettura. Il tuo assistente può elencare workspace, esaminare transazioni, riepilogare totali e mappare categorie — senza poter creare, modificare, regolare o trasferire nulla.",
       bullets: {
-        readOnly: "Ambito in sola lettura: cashflow:read",
+        readOnly: "Ambito in sola lettura: spifex:access",
         oauth: "OAuth 2.1 per utente con PKCE",
         revoke: "Revoca l'accesso subito dalle Impostazioni",
         privacy: "Note, osservazioni e allegati restano fuori dalle risposte",
@@ -341,7 +341,7 @@
         },
         ai: {
           q: "L'assistente AI può modificare i miei dati?",
-          a: "No. Il connettore v1 è in sola lettura e richiede solo l'ambito cashflow:read. Non può creare, modificare, eliminare, regolare o trasferire nulla.",
+          a: "No. Il connettore v1 è in sola lettura e richiede solo l'ambito spifex:access. Non può creare, modificare, eliminare, regolare o trasferire nulla.",
         },
         security: {
           q: "Come vengono isolati i dati dei workspace?",

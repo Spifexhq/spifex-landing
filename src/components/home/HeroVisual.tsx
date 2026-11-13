@@ -89,11 +89,11 @@ export default function HeroVisual({ label }: { label: string }) {
       style={{ "--px": "0", "--py": "0" } as CSSProperties}
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-10 h-[300px] w-[80%] -translate-x-1/2 rounded-[50%] bg-[var(--brand)]/15 blur-[90px]"
+        className="pointer-events-none absolute left-1/2 top-10 h-[300px] w-[80%] -translate-x-1/2 rounded-[50%] bg-(--brand)/15 blur-[90px]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-6 left-[14%] h-24 w-52 rounded-[50%] bg-[var(--teal)]/10 blur-[70px]"
+        className="pointer-events-none absolute bottom-6 left-[14%] h-24 w-52 rounded-[50%] bg-(--teal)/10 blur-[70px]"
         aria-hidden="true"
       />
 
@@ -118,7 +118,7 @@ export default function HeroVisual({ label }: { label: string }) {
                 <span className="hidden font-medium text-[#202020] sm:inline">Spifex</span>
                 <span className="text-black/25">/</span>
                 <span className="truncate font-medium text-[#202020]">Cash flow</span>
-                <span className="hidden rounded-full bg-[var(--brand-soft)] px-1.5 py-[2px] text-[7px] font-semibold text-[var(--brand-strong)] sm:inline">
+                <span className="hidden rounded-full bg-(--brand-soft) px-1.5 py-[2px] text-[7px] font-semibold text-(--brand-strong) sm:inline">
                   Business
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       <span className="text-[11px] font-semibold tracking-[-0.01em] sm:text-[13px]">
                         Cash flow
                       </span>
-                      <span className="flex items-center gap-1 rounded-full border border-[#cbe9d8] bg-[#effaf3] px-1.5 py-[2px] text-[7px] font-semibold uppercase tracking-[0.1em] text-[#15803d]">
+                      <span className="flex items-center gap-1 rounded-full border border-[#cbe9d8] bg-[#effaf3] px-1.5 py-[2px] text-[7px] font-semibold uppercase tracking-widest text-[#15803d]">
                         <span className="hero-live-dot h-[3px] w-[3px] rounded-full bg-[#16a34a]" />
                         Live
                       </span>
@@ -179,7 +179,7 @@ export default function HeroVisual({ label }: { label: string }) {
                 {/* KPIs */}
                 <div className="mt-2 grid grid-cols-2 gap-1.5 sm:grid-cols-3">
                   <div className="col-span-2 rounded-md border border-black/[0.06] bg-white px-2 py-1.5 sm:col-span-1 sm:px-2.5 sm:py-2">
-                    <p className="text-[7px] uppercase tracking-[0.1em] text-[#5f6b7d] sm:text-[8px]">
+                    <p className="text-[7px] uppercase tracking-widest text-[#5f6b7d] sm:text-[8px]">
                       Cash position
                     </p>
                     <p className="mt-0.5 text-[14px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[17px]">
@@ -188,7 +188,7 @@ export default function HeroVisual({ label }: { label: string }) {
                     <p className="text-[7px] font-medium text-[#15803d] sm:text-[8px]">+8.2% vs plan</p>
                   </div>
                   <div className="rounded-md border border-black/[0.06] bg-white px-2 py-1.5 sm:px-2.5 sm:py-2">
-                    <p className="text-[7px] uppercase tracking-[0.1em] text-[#5f6b7d] sm:text-[8px]">
+                    <p className="text-[7px] uppercase tracking-widest text-[#5f6b7d] sm:text-[8px]">
                       Planned
                     </p>
                     <p className="mt-0.5 text-[12px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[15px]">
@@ -196,7 +196,7 @@ export default function HeroVisual({ label }: { label: string }) {
                     </p>
                   </div>
                   <div className="rounded-md border border-black/[0.06] bg-white px-2 py-1.5 sm:px-2.5 sm:py-2">
-                    <p className="text-[7px] uppercase tracking-[0.1em] text-[#5f6b7d] sm:text-[8px]">
+                    <p className="text-[7px] uppercase tracking-widest text-[#5f6b7d] sm:text-[8px]">
                       Settled
                     </p>
                     <p className="mt-0.5 text-[12px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[15px]">
@@ -212,7 +212,7 @@ export default function HeroVisual({ label }: { label: string }) {
                       <span className="text-[9px] font-semibold sm:text-[10px]">Plan vs settled</span>
                       <div className="flex items-center gap-2 text-[7px] text-[#5f6b7d] sm:text-[8px]">
                         <span className="flex items-center gap-1">
-                          <span className="h-1 w-3 rounded-full bg-[var(--brand)]" />
+                          <span className="h-1 w-3 rounded-full bg-(--brand)" />
                           Settled
                         </span>
                         <span className="flex items-center gap-1">
@@ -345,10 +345,10 @@ export default function HeroVisual({ label }: { label: string }) {
             <div className="hero-idle rounded-xl border border-white/10 bg-[#151515]/95 p-3 text-white shadow-[0_30px_60px_-20px_rgba(0,0,0,.9)] backdrop-blur">
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5 text-[10px] font-semibold">
-                  <Wallet size={12} className="text-[var(--brand)]" aria-hidden="true" />
+                  <Wallet size={12} className="text-(--brand)" aria-hidden="true" />
                   Personal
                 </span>
-                <span className="rounded-full bg-white/10 px-1.5 py-[2px] text-[7px] uppercase tracking-[0.1em] text-white/70">
+                <span className="rounded-full bg-white/10 px-1.5 py-[2px] text-[7px] uppercase tracking-widest text-white/70">
                   Live
                 </span>
               </div>
@@ -358,7 +358,7 @@ export default function HeroVisual({ label }: { label: string }) {
               </p>
               <p className="text-[19px] font-semibold tabular-nums tracking-[-0.03em]">68%</p>
               <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
-                <div className="hero-bar h-full w-[68%] rounded-full bg-[var(--brand)]" />
+                <div className="hero-bar h-full w-[68%] rounded-full bg-(--brand)" />
               </div>
 
               <div className="mt-2.5 flex items-center justify-between text-[7.5px] text-white/70">
@@ -366,9 +366,9 @@ export default function HeroVisual({ label }: { label: string }) {
                 <span>3 of 4 on track</span>
               </div>
               <div className="mt-1 flex gap-1">
-                <span className="h-1 flex-1 rounded-full bg-[var(--teal)]" />
-                <span className="h-1 flex-1 rounded-full bg-[var(--teal)]" />
-                <span className="h-1 flex-1 rounded-full bg-[var(--teal)]" />
+                <span className="h-1 flex-1 rounded-full bg-(--teal)" />
+                <span className="h-1 flex-1 rounded-full bg-(--teal)" />
+                <span className="h-1 flex-1 rounded-full bg-(--teal)" />
                 <span className="h-1 flex-1 rounded-full bg-white/15" />
               </div>
             </div>
@@ -380,7 +380,7 @@ export default function HeroVisual({ label }: { label: string }) {
           <div className="hero-float-in" style={{ animationDelay: "1.2s" }}>
             <div className="hero-idle rounded-xl border border-white/10 bg-[#141414]/95 p-3 text-white shadow-[0_30px_60px_-20px_rgba(0,0,0,.9)] backdrop-blur">
               <div className="flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[var(--brand)]/15 text-[var(--brand)]">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-(--brand)/15 text-(--brand)">
                   <Sparkles size={12} aria-hidden="true" />
                 </span>
                 <span className="text-[10px] font-semibold">AI cash-flow summary</span>
@@ -390,9 +390,9 @@ export default function HeroVisual({ label }: { label: string }) {
                 “Settlements are 82% matched. Three payouts remain outstanding this week.”
               </p>
 
-              <div className="mt-2 flex items-center gap-1 text-[7px] uppercase tracking-[0.1em] text-[var(--teal)]">
+              <div className="mt-2 flex items-center gap-1 text-[7px] uppercase tracking-widest text-(--teal)">
                 <LockKeyhole size={9} aria-hidden="true" />
-                Read-only · cashflow:read
+                Read-only · spifex:access
               </div>
             </div>
           </div>

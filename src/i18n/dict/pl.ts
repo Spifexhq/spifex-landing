@@ -277,7 +277,7 @@
       title: "Pytaj ChatGPT lub Claude o swoje przepływy pieniężne",
       subtitle: "Połącz Spifex przez połączenie MCP tylko do odczytu. Asystent może wyświetlać przestrzenie robocze, sprawdzać transakcje, podsumowywać sumy i mapować kategorie — bez możliwości tworzenia, edycji, rozliczania czy przelewania środków.",
       bullets: {
-        readOnly: "Zakres tylko do odczytu: cashflow:read",
+        readOnly: "Zakres tylko do odczytu: spifex:access",
         oauth: "OAuth 2.1 z PKCE dla każdego użytkownika",
         revoke: "Natychmiastowe cofnięcie dostępu w Ustawieniach",
         privacy: "Notatki, obserwacje i załączniki nie trafiają do odpowiedzi",
@@ -325,7 +325,7 @@
         },
         ai: {
           q: "Czy asystent AI może zmieniać dane?",
-          a: "Nie. Konektor w wersji 1 działa tylko do odczytu i żąda wyłącznie zakresu cashflow:read. Nie może tworzyć, edytować, usuwać, rozliczać ani przelewać środków.",
+          a: "Nie. Konektor w wersji 1 działa tylko do odczytu i żąda wyłącznie zakresu spifex:access. Nie może tworzyć, edytować, usuwać, rozliczać ani przelewać środków.",
         },
         security: {
           q: "Jak izolowane są dane przestrzeni roboczej?",

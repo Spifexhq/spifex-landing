@@ -79,7 +79,7 @@ const da: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Ændrer AI-assistenten mine data?",
         answer:
-          "Nej. AI-forbindelser er skrivebeskyttede og anmoder kun om omfanget cashflow:read.",
+          "Nej. AI-forbindelser er skrivebeskyttede og anmoder kun om omfanget spifex:access.",
       },
     ],
     otherLabel: "Udforsk Spifex Erhverv",
@@ -175,7 +175,7 @@ const da: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kan jeg forbinde ChatGPT eller Claude?",
         answer:
-          "Ja. Erhvervsarbejdsområder understøtter skrivebeskyttede AI-forbindelser med OAuth og omfanget cashflow:read.",
+          "Ja. Erhvervsarbejdsområder understøtter skrivebeskyttede AI-forbindelser med OAuth og omfanget spifex:access.",
       },
     ],
     otherLabel: "Udforsk Spifex Privat",

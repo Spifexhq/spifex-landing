@@ -79,7 +79,7 @@ const nl: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Wijzigt de AI-assistent mijn gegevens?",
         answer:
-          "Nee. AI-koppelingen zijn alleen-lezen en vragen uitsluitend de scope cashflow:read aan.",
+          "Nee. AI-koppelingen zijn alleen-lezen en vragen uitsluitend de scope spifex:access aan.",
       },
     ],
     otherLabel: "Ontdek Spifex Zakelijk",
@@ -177,7 +177,7 @@ const nl: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "Kan ik ChatGPT of Claude koppelen?",
         answer:
-          "Ja. Zakelijke werkruimten ondersteunen alleen-lezen AI-koppelingen met OAuth en de scope cashflow:read.",
+          "Ja. Zakelijke werkruimten ondersteunen alleen-lezen AI-koppelingen met OAuth en de scope spifex:access.",
       },
     ],
     otherLabel: "Ontdek Spifex Privé",

@@ -79,7 +79,7 @@ const ar: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "هل يغيّر مساعد الذكاء الاصطناعي بياناتي؟",
         answer:
-          "لا. اتصالات الذكاء الاصطناعي للقراءة فقط وتطلب نطاق cashflow:read وحده.",
+          "لا. اتصالات الذكاء الاصطناعي للقراءة فقط وتطلب نطاق spifex:access وحده.",
       },
     ],
     otherLabel: "استكشف Spifex Business",
@@ -176,7 +176,7 @@ const ar: Partial<Record<AudiencePageKind, AudiencePageContent>> = {
       {
         question: "هل يمكنني ربط ChatGPT أو Claude؟",
         answer:
-          "نعم. تدعم مساحات عمل الأعمال اتصالات ذكاء اصطناعي للقراءة فقط عبر OAuth ونطاق cashflow:read.",
+          "نعم. تدعم مساحات عمل الأعمال اتصالات ذكاء اصطناعي للقراءة فقط عبر OAuth ونطاق spifex:access.",
       },
     ],
     otherLabel: "استكشف Spifex Personal",

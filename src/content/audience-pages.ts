@@ -119,7 +119,7 @@ export const AUDIENCE_PAGE_CONTENT: Record<AudiencePageKind, AudiencePageContent
       {
         question: "Does the AI assistant change my data?",
         answer:
-          "No. AI connections are read-only and request only the cashflow:read scope.",
+          "No. AI connections are read-only and request only the spifex:access scope.",
       },
     ],
     otherLabel: "Explore Spifex Business",
@@ -202,7 +202,7 @@ export const AUDIENCE_PAGE_CONTENT: Record<AudiencePageKind, AudiencePageContent
       {
         question: "Can I connect ChatGPT or Claude?",
         answer:
-          "Yes. Business workspaces support read-only AI connections with OAuth and a cashflow:read scope.",
+          "Yes. Business workspaces support read-only AI connections with OAuth and a spifex:access scope.",
       },
     ],
     otherLabel: "Explore Spifex Personal",

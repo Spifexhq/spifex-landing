@@ -23,7 +23,7 @@ export default async function Hero() {
                 className="hero-reveal flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 sm:text-[11px]"
                 style={{ animationDelay: "0.05s" }}
               >
-                <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
+                <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-(--brand)" />
                 {t("homeV2.hero.eyebrow")}
               </p>
 
@@ -69,7 +69,7 @@ export default async function Hero() {
                 </span>
                 <span className="block overflow-hidden pb-[0.06em]">
                   <span className="hero-line block" style={{ animationDelay: "0.28s" }}>
-                    {t("homeV2.hero.line2")}<span className="text-[var(--brand)]">.</span>
+                    {t("homeV2.hero.line2")}<span className="text-(--brand)">.</span>
                   </span>
                 </span>
               </h1>
@@ -86,7 +86,7 @@ export default async function Hero() {
                   <Button
                     href="/signup?intent=signup&plan=free"
                     size="lg"
-                    className="w-full bg-[var(--brand)] text-[var(--ink)] shadow-[0_18px_44px_-18px_rgba(0,0,0,.55)] hover:bg-[#ff7a45] active:bg-[#e85f2b] sm:w-auto"
+                    className="w-full bg-(--brand) text-(--ink) shadow-[0_18px_44px_-18px_rgba(0,0,0,.55)] hover:bg-[#ff7a45] active:bg-[#e85f2b] sm:w-auto"
                     dataCta="hero-start-free"
                   >
                     {t("homeV2.hero.primary")}
