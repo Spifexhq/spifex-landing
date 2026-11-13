@@ -185,8 +185,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             </div>
 
-            <aside className="sticky top-24 hidden lg:block">
-              <div className="rounded-2xl border border-(--line) bg-white p-5">
+            <aside className="sticky top-24 hidden max-h-[calc(100dvh-7rem)] flex-col lg:flex">
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-2xl border border-(--line) bg-white p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">About Spifex</p>
                 <p className="mt-3 text-sm leading-6 text-(--muted)">
                   Spifex is financial operations software for cash flow, banking visibility, settlements, reporting and
@@ -199,7 +199,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   Start free →
                 </Link>
               </div>
-              <Link href="/blog" className="mt-4 inline-flex text-sm font-medium text-(--muted) hover:text-(--ink)">
+              <Link href="/blog" className="mt-4 inline-flex shrink-0 text-sm font-medium text-(--muted) hover:text-(--ink)">
                 ← All articles
               </Link>
             </aside>

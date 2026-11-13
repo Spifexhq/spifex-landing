@@ -104,7 +104,7 @@ export default async function LegalDocPage({ params }: PageProps) {
       />
 
       <article className="bg-(--canvas)">
-        <Container className="py-14 sm:py-16 lg:py-20">
+        <Container className="py-10 sm:py-12">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-(--muted)">
             <Link href="/" className="hover:text-(--ink)">Home</Link>
             <span aria-hidden="true">/</span>
@@ -113,40 +113,36 @@ export default async function LegalDocPage({ params }: PageProps) {
             <span className="text-(--ink)">{doc.meta.title}</span>
           </nav>
 
-          <header className="mt-8 max-w-3xl">
+          <header className="mt-6 max-w-3xl">
             {doc.meta.category ? (
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">
                 {doc.meta.category}
               </p>
             ) : null}
-            <h1 className="mt-3 text-balance text-4xl font-semibold leading-[1.06] tracking-[-0.04em] text-(--ink) sm:text-5xl">
+            <h1 className="mt-3 text-balance text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-(--ink) sm:text-4xl">
               {doc.meta.title}
             </h1>
             {doc.meta.description ? (
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-(--muted)">{doc.meta.description}</p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-(--muted)">{doc.meta.description}</p>
             ) : null}
             {updated ? (
-              <p className="mt-5 border-t border-(--line) pt-5 text-sm text-(--muted)">
+              <p className="mt-4 border-t border-(--line) pt-4 text-sm text-(--muted)">
                 Last updated: <time dateTime={doc.meta.updatedAt}>{updated}</time>
               </p>
             ) : null}
           </header>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
-            <div className="min-w-0 rounded-[1.5rem] border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8 lg:p-10">
-              <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950">
-                These materials are provided for general information. They do not constitute legal advice and should be
-                reviewed by qualified counsel for your organization and jurisdictions.
-              </div>
-              <div className="prose prose-slate max-w-none prose-headings:tracking-[-0.03em] prose-headings:text-(--ink) prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-p:text-(--muted) prose-p:leading-7 prose-li:text-(--muted) prose-strong:text-(--ink) prose-a:font-medium prose-a:text-(--brand-strong) prose-a:no-underline hover:prose-a:underline prose-hr:border-(--line)">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
+            <div className="min-w-0 rounded-[1.5rem] border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8">
+              <div className="prose prose-slate max-w-none text-[15px] [&>*:first-child]:mt-0 prose-headings:tracking-[-0.03em] prose-headings:text-(--ink) prose-h2:mt-8 prose-h2:text-xl prose-h3:mt-6 prose-h3:text-lg prose-p:text-(--muted) prose-p:leading-6 prose-li:text-(--muted) prose-li:leading-6 prose-strong:text-(--ink) prose-a:font-medium prose-a:text-(--brand-strong) prose-a:no-underline hover:prose-a:underline prose-hr:border-(--line)">
                 {doc.content}
               </div>
             </div>
 
-            <aside className="sticky top-24 hidden lg:block">
-              <div className="rounded-2xl border border-(--line) bg-white p-5">
+            <aside className="sticky top-24 hidden max-h-[calc(100dvh-7rem)] flex-col lg:flex">
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-2xl border border-(--line) bg-white p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">Legal</p>
-                <nav className="mt-3 flex flex-col gap-2 text-sm" aria-label="Legal documents">
+                <nav className="mt-3 flex flex-col divide-y divide-(--line) text-sm" aria-label="Legal documents">
                   {legalDocs.map((item) => (
                     <Link
                       key={item.slug}
@@ -154,8 +150,8 @@ export default async function LegalDocPage({ params }: PageProps) {
                       aria-current={item.slug === slug ? "page" : undefined}
                       className={
                         item.slug === slug
-                          ? "font-semibold text-(--ink)"
-                          : "text-(--ink-soft) hover:text-(--ink)"
+                          ? "py-2 font-semibold text-(--ink)"
+                          : "py-2 text-(--ink-soft) hover:text-(--ink)"
                       }
                     >
                       {item.title}
@@ -163,7 +159,7 @@ export default async function LegalDocPage({ params }: PageProps) {
                   ))}
                 </nav>
               </div>
-              <Link href="/legal" className="mt-4 inline-flex text-sm font-medium text-(--muted) hover:text-(--ink)">
+              <Link href="/legal" className="mt-4 inline-flex shrink-0 text-sm font-medium text-(--muted) hover:text-(--ink)">
                 ← All legal documents
               </Link>
             </aside>

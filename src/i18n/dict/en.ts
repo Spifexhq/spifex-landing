@@ -70,7 +70,7 @@ const en = {
     toc: "Table of Contents",
     hubTitle: "Policies and terms",
     hubIntro:
-      "These documents explain how Spifex handles data, cookies, security, payments, accessibility and AI connections, and how our services are provided. They are designed to support EU/EEA requirements including the GDPR, ePrivacy rules, consumer information, the European Accessibility Act and AI transparency. They are general information and should be reviewed by qualified counsel for your organization.",
+      "These documents explain how Spifex handles data, cookies, security, payments, accessibility and AI connections, and how our services are provided. They are designed to support EU/EEA requirements including the GDPR, ePrivacy rules, consumer information, the European Accessibility Act and AI transparency.",
   },
 
   blog: {
