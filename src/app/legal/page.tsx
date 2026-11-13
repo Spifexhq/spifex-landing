@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileText, Scale, Cookie, ShieldAlert } from "lucide-react";
+import {
+  ArrowRight,
+  Accessibility,
+  Bot,
+  BookOpen,
+  Building2,
+  Clock,
+  Cookie,
+  FileLock2,
+  FileText,
+  ReceiptText,
+  Scale,
+  Server,
+  ShieldAlert,
+  ShieldCheck,
+} from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -13,22 +28,65 @@ import LegalToc from "./LegalToc";
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
     title: "Legal",
-    description: "Spifex privacy policy, terms of service, cookie notice and acceptable use information.",
+    description:
+      "Spifex legal information: privacy, terms, DPA, subprocessors, security, data retention, refunds, accessibility and AI transparency.",
     path: "/legal",
   });
 }
 
-const primary = [
-  { slug: "privacy", title: "Privacy Policy", description: "How Spifex handles personal data, account information and service data.", icon: FileText },
-  { slug: "user_terms", title: "Terms of Service", description: "Rules for using the Spifex website, platform and related services.", icon: Scale },
-  { slug: "cookie_notice", title: "Cookie Notice", description: "Cookies, local storage and similar technologies used by this website.", icon: Cookie },
-  { slug: "prohibited_and_restricted_activities", title: "Acceptable Use", description: "Activities that are prohibited or restricted when using Spifex.", icon: ShieldAlert },
+const featuredSlugs = [
+  "privacy",
+  "user_terms",
+  "legal_notice",
+  "cookie_notice",
+  "data_processing_agreement",
+  "subprocessors",
+  "security_measures",
+  "data_retention",
+  "refund_and_cancellation",
+  "accessibility_statement",
+  "ai_transparency",
+  "data_portability_and_switching",
+  "prohibited_and_restricted_activities",
+  "gdpr_compliance_guide",
 ] as const;
 
+const cardIcons: Record<string, typeof FileText> = {
+  privacy: FileText,
+  user_terms: Scale,
+  legal_notice: Building2,
+  cookie_notice: Cookie,
+  data_processing_agreement: FileLock2,
+  subprocessors: Server,
+  security_measures: ShieldCheck,
+  data_retention: Clock,
+  refund_and_cancellation: ReceiptText,
+  accessibility_statement: Accessibility,
+  ai_transparency: Bot,
+  data_portability_and_switching: ArrowRight,
+  prohibited_and_restricted_activities: ShieldAlert,
+  gdpr_compliance_guide: BookOpen,
+};
+
+async function getLegalDocs(contentLocale: "en" | "pt") {
+  const [localized, english] = await Promise.all([
+    listMdxMeta("legal", contentLocale),
+    listMdxMeta("legal", "en"),
+  ]);
+  const bySlug = new Map(english.map((doc) => [doc.slug, doc]));
+  for (const doc of localized) bySlug.set(doc.slug, doc);
+  return Array.from(bySlug.values());
+}
+
 export default async function LegalHubPage() {
-  const { locale } = await getServerI18n();
+  const { locale, t } = await getServerI18n();
   const contentLocale = toContentLocale(locale);
-  const docs = await listMdxMeta("legal", contentLocale);
+  const docs = await getLegalDocs(contentLocale);
+  const docsBySlug = new Map(docs.map((doc) => [doc.slug, doc]));
+  const featured = featuredSlugs.flatMap((slug) => {
+    const doc = docsBySlug.get(slug);
+    return doc ? [doc] : [];
+  });
 
   return (
     <>
@@ -51,17 +109,14 @@ export default async function LegalHubPage() {
           <div className="max-w-3xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--brand-strong)">Legal</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-(--ink) sm:text-5xl">
-              Policies and terms
+              {t("legal.hubTitle")}
             </h1>
-            <p className="mt-5 text-lg leading-8 text-(--muted)">
-              These documents explain how Spifex handles data, cookies and use of the website and services. They are
-              provided for general information and should be reviewed by qualified legal counsel for your organization.
-            </p>
+            <p className="mt-5 text-lg leading-8 text-(--muted)">{t("legal.hubIntro")}</p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {primary.map((item) => {
-              const Icon = item.icon;
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((item) => {
+              const Icon = cardIcons[item.slug] ?? FileText;
               return (
                 <Link
                   key={item.slug}
@@ -78,7 +133,9 @@ export default async function LegalHubPage() {
                       </span>
                       <ArrowRight size={16} className="shrink-0 text-(--muted)" aria-hidden="true" />
                     </span>
-                    <span className="mt-2 block text-sm leading-6 text-(--muted)">{item.description}</span>
+                    <span className="mt-2 block text-sm leading-6 text-(--muted)">
+                      {item.description ?? "Spifex legal information and policies."}
+                    </span>
                   </span>
                 </Link>
               );

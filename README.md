@@ -113,5 +113,9 @@ Marketing analytics is consent-gated. With no credentials, tracking is a no-op.
   in the picker (`spifex_locale_user` cookie plus local storage) while currency is
   server-resolved and never user-selectable. `?lang=<locale>` forces a language
   and `?lang=auto` returns to the country default.
-- Legal content is an operational draft and requires professional review.
+- Legal content is an operational draft and requires professional review. The
+  EU-oriented pack covers legal notice, privacy, cookies, terms, DPA,
+  subprocessors, security measures, retention, refunds/withdrawal,
+  accessibility, AI transparency and data portability. Complete the bracketed
+  company details in the Legal Notice and Privacy Policy before publication.
 - Purchase events belong in the server-side Stripe checkout completion path.

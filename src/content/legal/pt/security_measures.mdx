@@ -1,0 +1,99 @@
+---
+title: "Medidas de Segurança e Medidas Técnicas e Organizativas"
+description: "As medidas técnicas e organizativas utilizadas pela Spifex para proteger os dados dos clientes e o acesso aos workspaces."
+updatedAt: "2026-11-13"
+category: "Segurança"
+---
+
+Esta página descreve as medidas técnicas e organizativas que a Spifex utiliza para proteger o site, os serviços e os dados do workspace dos clientes. Complementa o [Acordo de Tratamento de Dados](/legal/data_processing_agreement) e é revista à medida que a plataforma evolui.
+
+Nenhum sistema é completamente seguro. Estas medidas destinam-se a reduzir o risco, detetar problemas e apoiar uma resposta controlada quando algo corre mal.
+
+## Controlo de acesso
+
+- **Utilizadores únicos:** O acesso aos workspaces dos clientes exige uma conta de utilizador autenticada. Não são suportadas credenciais partilhadas.
+- **Acesso baseado em funções:** Os proprietários, administradores e membros recebem permissões em função da sua função e do âmbito do workspace. As ações privilegiadas são restringidas.
+- **Privilégio mínimo:** O acesso do pessoal aos sistemas de produção está limitado a quem dele necessite para operações, suporte ou segurança.
+- **Autenticação:** As palavras-passe, os controlos de sessão e a autenticação multifator opcional protegem o acesso à conta. As ações sensíveis em termos de segurança exigem nova autenticação ou verificação, quando adequado.
+- **Revisões de acesso:** O acesso é revisto quando as funções mudam e quando o pessoal sai.
+- **Isolamento de workspaces:** As consultas da aplicação são limitadas ao workspace ou à organização do utilizador autenticado. Os limites entre inquilinos são aplicados do lado do servidor.
+
+## Encriptação
+
+- Os dados em trânsito são encriptados com TLS.
+- Os dados em repouso são encriptados pelos prestadores de infraestrutura utilizados para alojar a aplicação e as bases de dados.
+- Os segredos e as credenciais são armazenados em configurações geridas ou em cofres de segredos, e não no código-fonte.
+- As cópias de segurança são protegidas com os mesmos controlos de acesso e encriptação que os dados de produção.
+
+## Registo e monitorização
+
+- Os eventos de aplicação e de segurança são registados para apoiar a resolução de problemas, a deteção de abusos e as necessidades de auditoria.
+- As ações administrativas e as alterações que afetam o acesso ou os registos financeiros são concebidas para manter um registo de auditoria.
+- Os registos são monitorizados para detetar erros, padrões de acesso invulgares e o estado do serviço.
+- O acesso aos registos é restringido e conservado durante um período definido descrito na [Política de Retenção de Dados](/legal/data_retention).
+
+## Segurança das aplicações
+
+- A segurança é considerada durante a conceção e a revisão de código.
+- As dependências são monitorizadas e atualizadas para corrigir vulnerabilidades conhecidas.
+- As alterações são testadas antes do lançamento, com ambientes de desenvolvimento e de produção separados.
+- As migrações de bases de dados e as operações financeiras são concebidas para serem controladas e auditáveis.
+- As mensagens de erro evitam a exposição de detalhes internos sensíveis.
+
+## Cópias de segurança e resiliência
+
+- São efetuadas cópias de segurança dos dados de produção de acordo com o calendário e as definições de retenção do prestador de infraestrutura.
+- As cópias de segurança são testadas periodicamente quanto à possibilidade de restauro.
+- O serviço é concebido para a disponibilidade através de infraestrutura gerida e monitorização.
+- Existe um processo de continuidade de negócio e de recuperação de desastres para interrupções significativas.
+
+## Resposta a incidentes
+
+- Os incidentes de segurança são triados, contidos e investigados.
+- Um processo documentado de resposta a incidentes atribui funções para comunicação, resposta técnica e revisão pós-incidente.
+- Os clientes são notificados sem demora injustificada quando uma violação de dados pessoais afete os seus dados, conforme exigido pelo DPA e pela lei aplicável.
+- As revisões pós-incidente identificam as causas principais e as ações corretivas.
+
+## Gestão de fornecedores e subcontratados
+
+- Os subcontratados são avaliados antes da contratação quanto à adequação em matéria de segurança e proteção de dados.
+- São exigidos termos de proteção de dados quando sejam tratados dados pessoais.
+- As categorias atuais estão descritas na página [Subcontratados](/legal/subprocessors).
+- O acesso dos fornecedores está limitado ao âmbito necessário à prestação do serviço.
+
+## Pessoal e organização
+
+- O pessoal está vinculado por obrigações de confidencialidade.
+- São atribuídas responsabilidades em matéria de segurança e privacidade.
+- O acesso aos dados dos clientes está limitado ao pessoal de suporte, engenharia e segurança que dele necessite.
+- A sensibilização para a segurança faz parte da integração e da prática contínua.
+
+## Segurança física e da infraestrutura
+
+A Spifex recorre a prestadores de infraestrutura gerida para a segurança física dos centros de dados, incluindo controlos de acesso, proteções ambientais e gestão do ciclo de vida do hardware. Selecionamos prestadores que mantêm programas de segurança conformes com as normas do setor e que assumem compromissos contratuais adequados.
+
+## Ligações de IA
+
+As ligações de IA são concebidas para serem apenas de leitura:
+
+- O conector solicita um âmbito limitado, como `cashflow:read`.
+- O assistente não pode criar, editar, apagar, liquidar ou transferir registos através da ligação.
+- O acesso é autorizado por utilizador e pode ser revogado.
+- Os limites do workspace aplicam-se aos dados ligados.
+- A Spifex não utiliza dados dos clientes para treinar modelos externos de IA.
+
+Consulte o [Aviso de Transparência sobre IA](/legal/ai_transparency) para mais detalhes.
+
+## Responsabilidades do cliente
+
+A segurança é partilhada. Os clientes são responsáveis por:
+
+- gerir o acesso e as funções dos utilizadores;
+- proteger as credenciais e ativar a MFA quando disponível;
+- rever as permissões do workspace;
+- configurar adequadamente a retenção e as exportações; e
+- notificar prontamente a Spifex de suspeitas de acesso não autorizado.
+
+## Comunicação de um problema de segurança
+
+Se considerar que encontrou uma vulnerabilidade de segurança ou suspeitar de acesso não autorizado, contacte [legal@spifex.com](mailto:legal@spifex.com). Inclua detalhes suficientes para reproduzir o problema e evite aceder a dados que não lhe pertençam.

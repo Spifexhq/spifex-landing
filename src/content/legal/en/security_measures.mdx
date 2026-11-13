@@ -1,0 +1,99 @@
+---
+title: "Security and Technical Organisational Measures"
+description: "The technical and organizational measures Spifex uses to protect customer data and workspace access."
+updatedAt: "2026-11-13"
+category: "Security"
+---
+
+This page describes the technical and organizational measures Spifex uses to protect the website, services and customer workspace data. It supports the [Data Processing Agreement](/legal/data_processing_agreement) and is reviewed as the platform evolves.
+
+No system is completely secure. These measures are designed to reduce risk, detect issues and support a controlled response when something goes wrong.
+
+## Access control
+
+- **Unique users:** Access to customer workspaces requires an authenticated user account. Shared credentials are not supported.
+- **Role-based access:** Owners, administrators and members receive permissions based on their role and workspace scope. Privileged actions are restricted.
+- **Least privilege:** Personnel access to production systems is limited to those who need it for operations, support or security.
+- **Authentication:** Passwords, session controls and optional multi-factor authentication protect account access. Security-sensitive actions require re-authentication or verification where appropriate.
+- **Access reviews:** Access is reviewed when roles change and when personnel leave.
+- **Workspace isolation:** Application queries are scoped to the authenticated user’s workspace or organization. Tenant boundaries are enforced server-side.
+
+## Encryption
+
+- Data in transit is encrypted using TLS.
+- Data at rest is encrypted by the infrastructure providers used to host the application and databases.
+- Secrets and credentials are stored in managed configuration or secret stores rather than in source code.
+- Backups are protected with the same access and encryption controls as production data.
+
+## Logging and monitoring
+
+- Application and security events are logged to support troubleshooting, abuse detection and audit needs.
+- Administrative actions and changes affecting access or financial records are designed to retain an audit trail.
+- Logs are monitored for errors, unusual access patterns and service health.
+- Access to logs is restricted and retained for a defined period described in the [Data Retention Policy](/legal/data_retention).
+
+## Application security
+
+- Security is considered during design and code review.
+- Dependencies are monitored and updated to address known vulnerabilities.
+- Changes are tested before release, with separate development and production environments.
+- Database migrations and financial operations are designed to be controlled and auditable.
+- Error messages avoid exposing sensitive internal details.
+
+## Backups and resilience
+
+- Production data is backed up according to the infrastructure provider’s schedule and retention settings.
+- Backups are tested periodically for restoreability.
+- The service is designed for availability through managed infrastructure and monitoring.
+- A business continuity and disaster recovery process exists for significant outages.
+
+## Incident response
+
+- Security incidents are triaged, contained and investigated.
+- A documented incident response process assigns roles for communication, technical response and post-incident review.
+- Customers are notified without undue delay when a personal data breach affects their data, as required by the DPA and applicable law.
+- Post-incident reviews identify root causes and corrective actions.
+
+## Vendor and subprocessor management
+
+- Subprocessors are assessed before onboarding for security and data protection suitability.
+- Data protection terms are required where personal data is processed.
+- The current categories are described on the [Subprocessors](/legal/subprocessors) page.
+- Vendor access is limited to the scope needed to provide the service.
+
+## Personnel and organization
+
+- Personnel are bound by confidentiality obligations.
+- Security and privacy responsibilities are assigned.
+- Access to customer data is limited to support, engineering and security personnel who need it.
+- Security awareness is part of onboarding and ongoing practice.
+
+## Physical and infrastructure security
+
+Spifex relies on managed infrastructure providers for physical data center security, including access controls, environmental protections and hardware lifecycle management. We select providers that maintain industry-standard security programs and make appropriate contractual commitments.
+
+## AI connections
+
+AI connections are designed to be read-only:
+
+- The connector requests a limited scope such as `cashflow:read`.
+- The assistant cannot create, edit, delete, settle or transfer records through the connection.
+- Access is authorized per user and can be revoked.
+- Workspace boundaries apply to connected data.
+- Customer data is not used to train external AI models by Spifex.
+
+See the [AI Transparency Notice](/legal/ai_transparency) for more detail.
+
+## Customer responsibilities
+
+Security is shared. Customers are responsible for:
+
+- managing user access and roles;
+- protecting credentials and enabling MFA where available;
+- reviewing workspace permissions;
+- configuring retention and exports appropriately; and
+- notifying Spifex promptly of suspected unauthorized access.
+
+## Reporting a security issue
+
+If you believe you have found a security vulnerability or suspect unauthorized access, contact [legal@spifex.com](mailto:legal@spifex.com). Please include enough detail to reproduce the issue and avoid accessing data that does not belong to you.

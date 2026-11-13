@@ -1,0 +1,103 @@
+---
+title: "AI Transparency Notice"
+description: "How Spifex uses AI connections, what the assistant can access, human oversight and the limits of AI-generated output."
+updatedAt: "2026-11-13"
+category: "AI"
+---
+
+Spifex offers optional AI connections that let users ask questions about their workspace data through assistants such as ChatGPT or Claude. This notice explains what those connections do, what they do not do, and how responsibility is shared.
+
+It should be read with the [Security and Technical Organisational Measures](/legal/security_measures), the [Privacy Policy](/legal/privacy) and the [AI connections documentation](/docs/ai-connections).
+
+## What the AI connection is
+
+The AI connection is an optional, read-only integration based on the Model Context Protocol (MCP). It allows an authorized assistant to retrieve permitted financial context from a Spifex workspace and use it to answer a user’s question.
+
+Examples of supported use cases include:
+
+- summarizing cash flow for a period;
+- listing outstanding or overdue items;
+- explaining categories, totals or reporting views; and
+- helping a user navigate workspace data.
+
+The connection does not create, edit, delete, settle or transfer records.
+
+## What the assistant can access
+
+Access is limited by:
+
+- the workspace and data the authorized user can already access;
+- the scope granted to the connection, such as `cashflow:read`;
+- the tools and resources exposed by the connector; and
+- the user’s ability to revoke access.
+
+Spifex does not grant the assistant broader access than the authorizing user has.
+
+## What the assistant cannot do
+
+Through the Spifex connector, the assistant cannot:
+
+- approve or release payments;
+- create or change payees or bank details;
+- post journal entries or change classifications;
+- delete workspace records;
+- transfer funds; or
+- change permissions or workspace settings.
+
+## Human oversight
+
+AI output is assistance, not authority. Users remain responsible for reviewing answers before making financial, accounting, tax, legal or operational decisions.
+
+Spifex does not use the AI connection to make automated decisions with legal or similarly significant effects about individuals. The connector is intended for analysis and navigation, not for credit, employment, insurance, education or other high-risk decision-making.
+
+## Model providers
+
+When you connect an assistant, you choose the external provider and authorize the connection. That provider processes data under its own terms and privacy notice. Spifex does not control the external model’s general behavior outside the connector.
+
+Spifex does not use customer workspace data to train external AI models.
+
+## Accuracy and limitations
+
+AI systems can produce incomplete, outdated or incorrect output. A summary is not a reconciliation. A generated answer is not an audit opinion, tax filing, payment instruction or legal conclusion.
+
+Always verify:
+
+- totals against the underlying records;
+- dates and currency;
+- counterparties and categories;
+- outstanding or partial settlements; and
+- any recommendation before acting on it.
+
+## Security and revocation
+
+- Connections require user authorization.
+- Access can be revoked by the user or an administrator.
+- Connector activity may be logged for security and audit.
+- Workspace boundaries are enforced by Spifex.
+- Attachments, notes or other sensitive fields may be excluded from connector responses.
+
+## EU AI Act context
+
+Regulation (EU) 2024/1689 (the AI Act) sets obligations for providers and deployers of AI systems in the EU. Spifex provides a read-only connector to third-party general-purpose AI assistants. It does not provide a high-risk AI system or make automated decisions about individuals.
+
+Where the AI Act requires transparency about AI interaction, this notice and the product interface are intended to make the role of the assistant clear. The legal classification of a specific use case can depend on how a customer deploys the assistant and on national implementation.
+
+## Prohibited uses
+
+You must not use Spifex AI connections to:
+
+- make automated decisions about individuals in ways that require human review;
+- circumvent approvals or access controls;
+- process data you are not authorized to use;
+- generate deceptive or unlawful content; or
+- provide regulated advice without qualified human oversight.
+
+See the [Acceptable Use Policy](/legal/prohibited_and_restricted_activities).
+
+## Contact
+
+For questions about AI connections or this notice:
+
+- **Email:** [legal@spifex.com](mailto:legal@spifex.com)
+- **Privacy:** [privacy@spifex.com](mailto:privacy@spifex.com)
+- **Documentation:** [AI connections](/docs/ai-connections)

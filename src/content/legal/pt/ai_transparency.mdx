@@ -1,0 +1,103 @@
+---
+title: "Aviso de Transparência sobre IA"
+description: "Como a Spifex utiliza ligações de IA, a que pode o assistente aceder, a supervisão humana e os limites dos resultados gerados por IA."
+updatedAt: "2026-11-13"
+category: "IA"
+---
+
+A Spifex disponibiliza ligações de IA opcionais que permitem aos utilizadores colocar questões sobre os dados do seu workspace através de assistentes como o ChatGPT ou o Claude. Este aviso explica o que essas ligações fazem, o que não fazem e como se reparte a responsabilidade.
+
+Deve ser lido em conjunto com as [Medidas de Segurança e Medidas Técnicas e Organizativas](/legal/security_measures), a [Política de Privacidade](/legal/privacy) e a [documentação das ligações de IA](/docs/ai-connections).
+
+## O que é a ligação de IA
+
+A ligação de IA é uma integração opcional e de leitura apenas, baseada no Model Context Protocol (MCP). Permite que um assistente autorizado obtenha contexto financeiro permitido a partir de um workspace da Spifex e o utilize para responder à questão de um utilizador.
+
+Exemplos de casos de utilização suportados:
+
+- resumir o fluxo de caixa de um período;
+- listar itens pendentes ou em atraso;
+- explicar categorias, totais ou vistas de relatório; e
+- ajudar um utilizador a navegar nos dados do workspace.
+
+A ligação não cria, edita, elimina, liquida nem transfere registos.
+
+## A que pode o assistente aceder
+
+O acesso está limitado por:
+
+- o workspace e os dados a que o utilizador autorizado já tem acesso;
+- o âmbito concedido à ligação, como `cashflow:read`;
+- as ferramentas e os recursos expostos pelo conector; e
+- a capacidade de o utilizador revogar o acesso.
+
+A Spifex não concede ao assistente um acesso mais amplo do que aquele de que dispõe o utilizador que o autoriza.
+
+## O que o assistente não pode fazer
+
+Através do conector da Spifex, o assistente não pode:
+
+- aprovar ou libertar pagamentos;
+- criar ou alterar beneficiários ou dados bancários;
+- registar lançamentos contabilísticos ou alterar classificações;
+- eliminar registos do workspace;
+- transferir fundos; ou
+- alterar permissões ou definições do workspace.
+
+## Supervisão humana
+
+Os resultados da IA constituem um auxílio, não uma autoridade. Os utilizadores continuam responsáveis por rever as respostas antes de tomarem decisões financeiras, contabilísticas, fiscais, jurídicas ou operacionais.
+
+A Spifex não utiliza a ligação de IA para tomar decisões automatizadas relativas a pessoas singulares que produzam efeitos jurídicos ou que as afetem de forma igualmente significativa. O conector destina-se à análise e à navegação, e não à tomada de decisões em matéria de crédito, emprego, seguros, educação ou outras decisões de alto risco.
+
+## Prestadores de modelos
+
+Quando liga um assistente, é o utilizador que escolhe o prestador externo e autoriza a ligação. Esse prestador trata os dados ao abrigo dos seus próprios termos e do seu aviso de privacidade. A Spifex não controla o comportamento geral do modelo externo fora do conector.
+
+A Spifex não utiliza dados do workspace dos clientes para treinar modelos de IA externos.
+
+## Exatidão e limitações
+
+Os sistemas de IA podem produzir resultados incompletos, desatualizados ou incorretos. Um resumo não é uma reconciliação. Uma resposta gerada não constitui uma opinião de auditoria, uma declaração fiscal, uma instrução de pagamento ou uma conclusão jurídica.
+
+Verifique sempre:
+
+- os totais face aos registos subjacentes;
+- as datas e a moeda;
+- as contrapartes e as categorias;
+- as liquidações pendentes ou parciais; e
+- qualquer recomendação antes de agir em conformidade com a mesma.
+
+## Segurança e revogação
+
+- As ligações exigem autorização do utilizador.
+- O acesso pode ser revogado pelo utilizador ou por um administrador.
+- A atividade do conector pode ser registada para efeitos de segurança e auditoria.
+- Os limites do workspace são aplicados pela Spifex.
+- Anexos, notas ou outros campos sensíveis podem ser excluídos das respostas do conector.
+
+## Contexto do Regulamento IA da UE
+
+O Regulamento (UE) 2024/1689 (Regulamento IA) estabelece obrigações para os prestadores e para os responsáveis pela implementação de sistemas de IA na UE. A Spifex disponibiliza um conector de leitura apenas para assistentes de IA de uso geral de terceiros. Não disponibiliza um sistema de IA de alto risco nem toma decisões automatizadas sobre pessoas singulares.
+
+Sempre que o Regulamento IA exija transparência quanto à interação com IA, este aviso e a interface do produto destinam-se a clarificar o papel do assistente. A qualificação jurídica de um caso de utilização concreto pode depender da forma como o cliente implementa o assistente e da transposição para o direito nacional.
+
+## Utilizações proibidas
+
+Não deve utilizar as ligações de IA da Spifex para:
+
+- tomar decisões automatizadas sobre pessoas singulares de formas que exijam revisão humana;
+- contornar aprovações ou controlos de acesso;
+- tratar dados que não está autorizado a utilizar;
+- gerar conteúdo enganoso ou ilícito; ou
+- prestar aconselhamento regulado sem supervisão humana qualificada.
+
+Consulte a [Política de Utilização Aceitável](/legal/prohibited_and_restricted_activities).
+
+## Contacto
+
+Para questões sobre as ligações de IA ou sobre este aviso:
+
+- **E-mail:** [legal@spifex.com](mailto:legal@spifex.com)
+- **Privacidade:** [privacy@spifex.com](mailto:privacy@spifex.com)
+- **Documentação:** [Ligações de IA](/docs/ai-connections)

@@ -23,7 +23,9 @@ const pt = {
   },
   "legal": {
     "title": "Legal",
-    "toc": "Sumário"
+    "toc": "Sumário",
+    "hubTitle": "Políticas e termos",
+    "hubIntro": "Estes documentos explicam como a Spifex trata dados, cookies, segurança, pagamentos, acessibilidade e ligações de IA, e como os nossos serviços são prestados. Foram concebidos para apoiar os requisitos da UE/EEE, incluindo o RGPD, as regras sobre cookies, a informação ao consumidor, o Ato Europeu de Acessibilidade e a transparência em matéria de IA. Constituem informação geral e devem ser revistos por advogados qualificados para a sua organização."
   },
   "blog": {
     "indexTitle": "Blog",

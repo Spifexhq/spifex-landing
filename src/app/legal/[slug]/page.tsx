@@ -64,6 +64,14 @@ export default async function LegalDocPage({ params }: PageProps) {
   const { locale } = await getServerI18n();
   const contentLocale = toContentLocale(locale);
 
+  const [localizedDocs, englishDocs] = await Promise.all([
+    listMdxMeta("legal", contentLocale),
+    listMdxMeta("legal", "en"),
+  ]);
+  const docsBySlug = new Map(englishDocs.map((item) => [item.slug, item]));
+  for (const item of localizedDocs) docsBySlug.set(item.slug, item);
+  const legalDocs = Array.from(docsBySlug.values());
+
   let doc;
   try {
     doc = await renderMdxBySlug("legal", contentLocale, slug);
@@ -139,10 +147,20 @@ export default async function LegalDocPage({ params }: PageProps) {
               <div className="rounded-2xl border border-(--line) bg-white p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-(--muted)">Legal</p>
                 <nav className="mt-3 flex flex-col gap-2 text-sm" aria-label="Legal documents">
-                  <Link href="/legal/privacy" className="text-(--ink-soft) hover:text-(--ink)">Privacy Policy</Link>
-                  <Link href="/legal/user_terms" className="text-(--ink-soft) hover:text-(--ink)">Terms of Service</Link>
-                  <Link href="/legal/cookie_notice" className="text-(--ink-soft) hover:text-(--ink)">Cookie Notice</Link>
-                  <Link href="/legal/prohibited_and_restricted_activities" className="text-(--ink-soft) hover:text-(--ink)">Acceptable Use</Link>
+                  {legalDocs.map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/legal/${item.slug}`}
+                      aria-current={item.slug === slug ? "page" : undefined}
+                      className={
+                        item.slug === slug
+                          ? "font-semibold text-(--ink)"
+                          : "text-(--ink-soft) hover:text-(--ink)"
+                      }
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
                 </nav>
               </div>
               <Link href="/legal" className="mt-4 inline-flex text-sm font-medium text-(--muted) hover:text-(--ink)">

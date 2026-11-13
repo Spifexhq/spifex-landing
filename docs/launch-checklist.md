@@ -59,8 +59,15 @@
 
 ## Legal and content review
 
-- Privacy Policy, Terms of Service and Cookie Notice are existing operational
-  drafts and **require professional legal review** before launch.
+- Privacy Policy, Terms of Service, Cookie Notice, Legal Notice, DPA,
+  Subprocessors, Security Measures, Data Retention, Refunds/Withdrawal,
+  Accessibility and AI Transparency are operational drafts and **require
+  professional legal review** before launch.
+- Complete the bracketed company details in the Legal Notice and Privacy Policy
+  (legal entity, registered office, commercial register, VAT ID, responsible
+  person) before publication.
+- Confirm the governing law, consumer withdrawal flow, DPA/SCC annexes and
+  subprocessor list with counsel for the operating entity.
 - No testimonials, customer logos, performance metrics or compliance
   certifications were invented.
 - Pricing displayed on the landing page is limited to the existing Personal and
