@@ -90,7 +90,7 @@ export default function ProductsMegaMenu() {
       <div
         id={PANEL_ID}
         ref={panelRef}
-        className="fixed left-1/2 top-[4.25rem] z-50 w-[min(66rem,calc(100vw-2rem))] -translate-x-1/2 origin-top"
+        className="fixed left-1/2 top-17 z-50 w-[min(66rem,calc(100vw-2rem))] -translate-x-1/2 origin-top"
         onMouseEnter={openNow}
         onMouseLeave={scheduleClose}
       >
@@ -160,7 +160,7 @@ export default function ProductsMegaMenu() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 p-3.5 transition-colors hover:border-white/25 hover:bg-white/[0.05]"
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 p-3.5 transition-colors hover:border-white/25 hover:bg-white/5"
                 >
                   <span className="min-w-0">
                     <span className="block text-sm font-semibold">{item.title}</span>

@@ -187,7 +187,7 @@ export default function PricingClient({
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-(--ink)">{t("pricingV2.compareTitle")}</h2>
           <p className="mt-2 text-sm text-(--muted)">{t("pricingV2.compareSubtitle")}</p>
           <div className="mt-6 overflow-x-auto rounded-2xl border border-(--line)">
-            <table className="w-full min-w-[680px] text-start text-sm">
+            <table className="w-full min-w-170 text-start text-sm">
               <thead className="bg-(--canvas) text-xs uppercase tracking-widest text-(--muted)">
                 <tr>
                   <th className="px-4 py-3 font-semibold">{t("pricingCatalog.feature")}</th>

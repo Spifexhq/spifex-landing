@@ -96,7 +96,7 @@ function SelectDropdown<T>({
     xs: {
       trigger: "h-7 px-2.5 text-[11px]",
       chevron: "w-3.5 h-3.5",
-      badge: "min-w-[1.25rem] h-4 px-1 text-[10px]",
+      badge: "min-w-5 h-4 px-1 text-[10px]",
       actionBtn: "h-6 px-2 text-[10px]",
       filterInput: "h-7 pl-7 pr-2 text-[11px]",
       item: "px-2.5 py-2 text-[11px]",
@@ -105,7 +105,7 @@ function SelectDropdown<T>({
     sm: {
       trigger: "h-8 px-3 text-xs",
       chevron: "w-4 h-4",
-      badge: "min-w-[1.5rem] h-5 px-1.5 text-[10px]",
+      badge: "min-w-6 h-5 px-1.5 text-[10px]",
       actionBtn: "h-6.5 px-2 text-[11px]",
       filterInput: "h-7.5 pl-7 pr-2 text-[12px]",
       item: "px-3 py-2 text-xs",
@@ -114,7 +114,7 @@ function SelectDropdown<T>({
     md: {
       trigger: "h-10 px-3 text-xs",
       chevron: "w-4 h-4",
-      badge: "min-w-[1.5rem] h-5 px-1.5 text-[10px]",
+      badge: "min-w-6 h-5 px-1.5 text-[10px]",
       actionBtn: "h-7 px-2 text-[11px]",
       filterInput: "h-8 pl-7 pr-2 text-[12px]",
       item: "px-3 py-2.5 text-xs",
@@ -123,7 +123,7 @@ function SelectDropdown<T>({
     lg: {
       trigger: "h-11 px-4 text-[13px]",
       chevron: "w-4 h-4",
-      badge: "min-w-[1.75rem] h-6 px-2 text-[11px]",
+      badge: "min-w-7 h-6 px-2 text-[11px]",
       actionBtn: "h-8 px-3 text-[12px]",
       filterInput: "h-9 pl-8 pr-3 text-[13px]",
       item: "px-4 py-3 text-[13px]",
@@ -132,7 +132,7 @@ function SelectDropdown<T>({
     xl: {
       trigger: "h-12 px-5 text-[15px]",
       chevron: "w-5 h-5",
-      badge: "min-w-[2rem] h-7 px-2.5 text-[12px]",
+      badge: "min-w-8 h-7 px-2.5 text-[12px]",
       actionBtn: "h-9 px-3.5 text-[13px]",
       filterInput: "h-10 pl-9 pr-3 text-[14px]",
       item: "px-5 py-3.5 text-[14px]",

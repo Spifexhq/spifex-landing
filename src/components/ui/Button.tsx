@@ -44,7 +44,7 @@ export function Button({
       "bg-(--brand-strong) text-white shadow-[0_10px_24px_-14px_rgba(0,0,0,.35)] hover:bg-(--brand-strong-hover) active:bg-(--brand-strong-pressed) active:scale-[0.98]",
     secondary:
       "border border-(--line) bg-white text-(--ink) hover:border-[#d9d4cc] hover:bg-[#faf9f7] active:scale-[0.99]",
-    ghost: "bg-transparent text-(--ink) hover:bg-black/[0.05]",
+    ghost: "bg-transparent text-(--ink) hover:bg-black/5",
     dark: "bg-(--ink) text-white hover:bg-[#343434] active:scale-[0.99]",
     outline:
       "border border-[#d6d0c8] bg-transparent text-(--ink) hover:border-(--ink) hover:bg-white",

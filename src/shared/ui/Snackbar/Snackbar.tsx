@@ -55,7 +55,7 @@ const anchorToClasses = (anchor: NonNullable<SnackbarProps["anchor"]>) => {
       ? "left-4"
       : "right-4";
   const enterDir = anchor.vertical === "top" ? "-translate-y-2" : "translate-y-2";
-  return { container: cls("fixed z-[9999]", v, h), enterDir };
+  return { container: cls("fixed z-9999", v, h), enterDir };
 };
 
 /* -------------------------------- Component ------------------------------ */

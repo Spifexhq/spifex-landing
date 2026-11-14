@@ -31,10 +31,10 @@ export function ProductPreview({
   );
 
   return (
-    <figure className="relative mx-auto w-full max-w-[560px]">
+    <figure className="relative mx-auto w-full max-w-140">
       <div
         className={`pointer-events-none absolute -inset-6 rounded-[2.5rem] blur-3xl ${
-          dark ? "bg-(--brand)/20" : "bg-(--brand)/[0.07]"
+          dark ? "bg-(--brand)/20" : "bg-(--brand)/7"
         }`}
         aria-hidden="true"
       />
@@ -86,7 +86,7 @@ export function ProductPreview({
             </div>
             <svg
               viewBox="0 0 320 82"
-              className="mt-2 h-[70px] w-full"
+              className="mt-2 h-17.5 w-full"
               preserveAspectRatio="none"
               aria-hidden="true"
             >

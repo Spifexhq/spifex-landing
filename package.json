@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint && node scripts/check-tailwind-canonical.mjs",
+    "lint:tailwind": "node scripts/check-tailwind-canonical.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

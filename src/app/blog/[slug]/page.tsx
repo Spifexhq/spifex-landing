@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
-            <div className="min-w-0 rounded-[1.5rem] border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8 lg:p-10">
+            <div className="min-w-0 rounded-3xl border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8 lg:p-10">
               <div className="prose prose-slate max-w-none prose-headings:tracking-[-0.03em] prose-headings:text-(--ink) prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-p:text-(--muted) prose-p:leading-7 prose-li:text-(--muted) prose-strong:text-(--ink) prose-a:font-medium prose-a:text-(--brand-strong) prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-(--brand) prose-blockquote:text-(--ink-soft) prose-hr:border-(--line)">
                 {post.content}
               </div>

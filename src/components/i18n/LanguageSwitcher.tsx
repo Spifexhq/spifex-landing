@@ -73,20 +73,20 @@ export default function LanguageSwitcher({ className }: { className?: string }) 
         aria-label={`${t("languageSwitcher.label")}: ${LOCALE_META[locale].nativeName}`}
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
-        <span className="max-w-[9rem] truncate">{LOCALE_META[locale].nativeName}</span>
+        <span className="max-w-36 truncate">{LOCALE_META[locale].nativeName}</span>
         <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
       </MenuButton>
 
       <MenuItems
         transition
         anchor="bottom end"
-        className="z-[60] w-64 origin-top-right rounded-xl border border-(--line) bg-white p-1.5 shadow-[0_24px_60px_-24px_rgba(32,32,32,0.4)] transition duration-150 ease-out [--anchor-gap:0.5rem] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+        className="z-60 w-64 origin-top-right rounded-xl border border-(--line) bg-white p-1.5 shadow-[0_24px_60px_-24px_rgba(32,32,32,0.4)] transition duration-150 ease-out [--anchor-gap:0.5rem] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
       >
         <p className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-(--muted)">
           {t("languageSwitcher.label")}
         </p>
 
-        <div className="max-h-[19rem] overflow-y-auto overscroll-contain">
+        <div className="max-h-76 overflow-y-auto overscroll-contain">
           {SUPPORTED_LOCALES.map((code) => {
             const meta = LOCALE_META[code];
             const active = code === locale;

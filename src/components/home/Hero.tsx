@@ -12,7 +12,7 @@ export default async function Hero() {
 
   return (
     <section className="relative px-2 pt-2 sm:px-3 sm:pt-3 lg:px-4 lg:pt-4">
-      <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0c0c0c] sm:rounded-[2rem]">
+      <div className="relative overflow-hidden rounded-3xl bg-[#0c0c0c] sm:rounded-4xl">
         <div className="hero-aurora pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
 
@@ -75,7 +75,7 @@ export default async function Hero() {
               </h1>
 
               <div
-                className="hero-reveal max-w-[460px] lg:justify-self-end lg:pb-3"
+                className="hero-reveal max-w-115 lg:justify-self-end lg:pb-3"
                 style={{ animationDelay: "0.4s" }}
               >
                 <p className="text-pretty text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
@@ -96,7 +96,7 @@ export default async function Hero() {
                     href="/solutions"
                     variant="ghost"
                     size="lg"
-                    className="w-full border border-white/15 bg-white/[0.04] text-white hover:bg-white/[0.09] hover:text-white sm:w-auto"
+                    className="w-full border border-white/15 bg-white/4 text-white hover:bg-white/9 hover:text-white sm:w-auto"
                     dataCta="hero-explore"
                   >
                     {t("homeV2.hero.secondary")}

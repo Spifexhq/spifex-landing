@@ -133,7 +133,7 @@ export default async function LegalDocPage({ params }: PageProps) {
           </header>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
-            <div className="min-w-0 rounded-[1.5rem] border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8">
+            <div className="min-w-0 rounded-3xl border border-(--line) bg-white p-6 shadow-(--shadow-soft) sm:p-8">
               <div className="prose prose-slate max-w-none text-[15px] [&>*:first-child]:mt-0 prose-headings:tracking-[-0.03em] prose-headings:text-(--ink) prose-h2:mt-8 prose-h2:text-xl prose-h3:mt-6 prose-h3:text-lg prose-p:text-(--muted) prose-p:leading-6 prose-li:text-(--muted) prose-li:leading-6 prose-strong:text-(--ink) prose-a:font-medium prose-a:text-(--brand-strong) prose-a:no-underline hover:prose-a:underline prose-hr:border-(--line)">
                 {doc.content}
               </div>

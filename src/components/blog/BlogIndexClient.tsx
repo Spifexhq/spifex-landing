@@ -91,7 +91,7 @@ function SearchBox({
   const expanded = focused || value.trim().length > 0;
 
   return (
-    <div className={cn("relative transition-[width] duration-200 ease-out motion-reduce:transition-none", expanded ? "w-full lg:w-[460px]" : "w-full lg:w-[320px]")}>
+    <div className={cn("relative transition-[width] duration-200 ease-out motion-reduce:transition-none", expanded ? "w-full lg:w-115" : "w-full lg:w-80")}>
       <div className="relative">
         <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-(--muted)" />
 
@@ -163,7 +163,7 @@ function TopicOptionsPortal({
       <ListboxOptions
         static
         style={{ position: "fixed", left: pos.left, top: pos.top, width: pos.width }}
-        className="z-[9999] max-h-72 overflow-auto rounded-xl border border-(--line) bg-white shadow-xl focus:outline-none"
+        className="z-9999 max-h-72 overflow-auto rounded-xl border border-(--line) bg-white shadow-xl focus:outline-none"
       >
         {options.map((opt) => (
           <ListboxOption
@@ -345,7 +345,7 @@ export default function BlogIndexClient({ posts }: { posts: DocMeta[] }) {
                 setTopicApplied(topicDraft);
                 setFilterOpen(false);
               }}
-              className="h-[46px] rounded-xl bg-(--ink) px-4 text-sm font-semibold text-white transition-colors hover:bg-(--ink-soft) focus:outline-none"
+              className="h-11.5 rounded-xl bg-(--ink) px-4 text-sm font-semibold text-white transition-colors hover:bg-(--ink-soft) focus:outline-none"
             >
               {t("blog.applyFilter")}
             </button>

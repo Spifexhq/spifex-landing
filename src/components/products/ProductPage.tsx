@@ -47,7 +47,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
 
       {/* Hero */}
       <section className="relative px-2 pt-2 sm:px-3 sm:pt-3 lg:px-4 lg:pt-4">
-        <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0c0c0c] sm:rounded-[2rem]">
+        <div className="relative overflow-hidden rounded-3xl bg-[#0c0c0c] sm:rounded-4xl">
           <div className="hero-aurora pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
 
@@ -99,7 +99,7 @@ export async function ProductPage({ content }: { content: ProductPageContent }) 
                     href="/pricing?product=business"
                     variant="ghost"
                     size="lg"
-                    className="border border-white/15 bg-white/[0.04] text-white hover:bg-white/[0.09] hover:text-white"
+                    className="border border-white/15 bg-white/4 text-white hover:bg-white/9 hover:text-white"
                     dataCta={`${content.key}-hero-pricing`}
                   >
                     {t("productPages.seePricing")}
